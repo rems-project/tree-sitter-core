@@ -1,0 +1,59 @@
+proc main (): eff loaded integer :=
+  let strong x: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('char*'), 'char*') in
+  {- §6.2.4#6 -}
+  store('signed int', x, Unspecified('signed int')) ;
+  let strong a_536: loaded pointer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.4 -}
+      let weak a_537: loaded integer =
+        {- §6.5.6 -}
+        let weak (a_539: loaded integer, a_540: loaded integer) =
+          unseq(
+            {- §6.5.4 -}
+            let weak a_544: loaded pointer =
+              {- §6.5.3.2#3, sentence 5 -}
+              let weak a_546: pointer = pure(x) in
+              pure(Specified(a_546)) in
+            let Specified(a_545: pointer) = a_544 in
+            let weak a_547: integer =
+              memop(IntFromPtr, 'signed int', 'uintptr_t', a_545) in
+            pure(Specified(a_547))
+          ,
+            pure(Specified(1))
+          ) in
+        pure(
+          let (Specified(a_541: integer), Specified(a_542: integer)) =
+            (a_539, a_540) in
+          Specified(wrapI('uintptr_t',
+          conv_int('uintptr_t', a_541) + conv_int('uintptr_t', a_542)))
+        ) in
+      let Specified(a_538: integer) = a_537 in
+      let weak a_548: pointer =
+        memop(PtrFromInt, 'uintptr_t', 'char', a_538) in
+      pure(Specified(a_548))
+    ) in
+  store('char*', p, a_536) ;
+  let strong _: loaded integer =
+    {- §6.5#2 -}
+    bound(
+      let weak a_552: pointer =
+        {- §6.5.3.2 -}
+        let weak a_535: loaded pointer =
+          let weak a_551: pointer = pure(p) in
+          load('char*', a_551) in
+        let Specified(a_549: pointer) = a_535 in
+        let weak a_550: boolean = memop(PtrValidForDeref, 'char', a_549) in
+        pure(
+          if a_550 then a_549 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('char', a_552)
+    ) in
+  pure(Unit) ;
+  kill('signed int', x) ;
+  kill('char*', p) ;
+  pure(Unit) ;
+  save ret_534: loaded integer (a_553: loaded integer:= Specified(0)) in
+    pure(a_553)
+

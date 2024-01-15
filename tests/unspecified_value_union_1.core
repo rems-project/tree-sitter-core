@@ -1,0 +1,141 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def union __cerbty_unnamed_tag_646 :=
+  i: 'signed int'
+  f: 'float'
+
+-- Globals
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong u: pointer =
+    create(Ivalignof('union __cerbty_unnamed_tag_646'), 'union __cerbty_unnamed_tag_646') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong k: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong g: pointer = create(Ivalignof('float'), 'float') in
+  {- §6.2.4#6 -}
+  store('union __cerbty_unnamed_tag_646', u,
+  Unspecified('union __cerbty_unnamed_tag_646')) ;
+  {- §6.2.4#6 -}
+  store('signed int', j, Unspecified('signed int')) ;
+  let strong _: loaded integer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.16#3, sentence 4 -}
+      let weak (a_657: pointer, a_660: loaded integer) =
+        {- §6.5.16#3, sentence 5 -}
+        unseq(
+          {- §6.5.2.3#3, sentence 2 -}
+          let strong a_658: pointer = pure(u) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_646, i], a_658)
+        ,
+          let weak a_659: pointer = pure(j) in
+          load('signed int', a_659)
+        ) in
+      let weak _: unit =
+        {- §6.5.16.1#2, store -}
+        neg(store('signed int', a_657, conv_loaded_int('signed int', a_660))) in
+      pure(conv_loaded_int('signed int', a_660))
+    ) in
+  pure(Unit) ;
+  {- §6.2.4#6 -}
+  store('signed int', k, Unspecified('signed int')) ;
+  {- §6.2.4#6 -}
+  store('float', g, Unspecified('float')) ;
+  let strong _: loaded integer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.16#3, sentence 4 -}
+      let weak (a_656: pointer, a_669: loaded integer) =
+        {- §6.5.16#3, sentence 5 -}
+        unseq(
+          pure(k)
+        ,
+          let weak a_668: pointer =
+            {- §6.5.3.2 -}
+            let weak a_661: loaded pointer =
+              {- §6.5.4 -}
+              let weak a_664: loaded pointer =
+                {- §6.5.3.2#3, sentence 5 -}
+                let weak a_666: pointer = pure(u) in
+                pure(Specified(a_666)) in
+              let Specified(a_665: pointer) = a_664 in
+              let weak a_667: boolean =
+                memop(PtrWellAligned, 'signed int', a_665) in
+              pure(
+                Specified(if a_667 then
+                  a_665
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              ) in
+            let Specified(a_662: pointer) = a_661 in
+            let weak a_663: boolean =
+              memop(PtrValidForDeref, 'signed int', a_662) in
+            pure(
+              if a_663 then
+                a_662
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_668)
+        ) in
+      let weak _: unit =
+        {- §6.5.16.1#2, store -}
+        neg(store('signed int', a_656, conv_loaded_int('signed int', a_669))) in
+      pure(conv_loaded_int('signed int', a_669))
+    ) in
+  pure(Unit) ;
+  let strong _: loaded floating =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.16#3, sentence 4 -}
+      let weak (a_655: pointer, a_678: loaded floating) =
+        {- §6.5.16#3, sentence 5 -}
+        unseq(
+          pure(g)
+        ,
+          let weak a_677: pointer =
+            {- §6.5.3.2 -}
+            let weak a_670: loaded pointer =
+              {- §6.5.4 -}
+              let weak a_673: loaded pointer =
+                {- §6.5.3.2#3, sentence 5 -}
+                let weak a_675: pointer = pure(u) in
+                pure(Specified(a_675)) in
+              let Specified(a_674: pointer) = a_673 in
+              let weak a_676: boolean =
+                memop(PtrWellAligned, 'float', a_674) in
+              pure(
+                Specified(if a_676 then
+                  a_674
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              ) in
+            let Specified(a_671: pointer) = a_670 in
+            let weak a_672: boolean =
+              memop(PtrValidForDeref, 'float', a_671) in
+            pure(
+              if a_672 then
+                a_671
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('float', a_677)
+        ) in
+      let weak _: unit =
+        {- §6.5.16.1#2, store -}
+        neg(store('float', a_655, a_678)) in
+      pure(a_678)
+    ) in
+  pure(Unit) ;
+  kill('union __cerbty_unnamed_tag_646', u) ;
+  kill('signed int', j) ;
+  kill('signed int', k) ;
+  kill('float', g) ;
+  pure(Unit) ;
+  save ret_654: loaded integer (a_679: loaded integer:= Specified(0)) in
+    pure(a_679)
+

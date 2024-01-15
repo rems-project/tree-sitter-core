@@ -1,0 +1,39 @@
+proc main (): eff loaded integer :=
+  let strong a: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong b: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong c: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong a_536: loaded integer =
+    {- §6.5#2 -}
+    bound(pure(Specified(0))) in
+  store('intptr_t', a, conv_loaded_int('intptr_t', a_536)) ;
+  let strong a_537: loaded integer =
+    {- §6.5#2 -}
+    bound(pure(Specified(0))) in
+  store('intptr_t', b, conv_loaded_int('intptr_t', a_537)) ;
+  let strong a_538: loaded integer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.6 -}
+      let weak (a_539: loaded integer, a_540: loaded integer) =
+        unseq(
+          let weak a_544: pointer = pure(a) in
+          load('intptr_t', a_544)
+        ,
+          let weak a_545: pointer = pure(b) in
+          load('intptr_t', a_545)
+        ) in
+      pure(
+        let (Specified(a_541: integer), Specified(a_542: integer)) =
+          (a_539, a_540) in
+        Specified(catch_exceptional_condition('intptr_t',
+        conv_int('intptr_t', a_541) + conv_int('intptr_t', a_542)))
+      )
+    ) in
+  store('intptr_t', c, conv_loaded_int('intptr_t', a_538)) ;
+  kill('intptr_t', a) ;
+  kill('intptr_t', b) ;
+  kill('intptr_t', c) ;
+  pure(Unit) ;
+  save ret_535: loaded integer (a_546: loaded integer:= Specified(0)) in
+    pure(a_546)
+

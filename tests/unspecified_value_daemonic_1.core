@@ -1,0 +1,58 @@
+proc main (): eff loaded integer :=
+  let strong i: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong k: pointer = create(Ivalignof('signed int'), 'signed int') in
+  {- §6.2.4#6 -}
+  store('signed int', i, Unspecified('signed int')) ;
+  let strong a_509: loaded pointer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.3.2#3, sentence 5 -}
+      let weak a_510: pointer = pure(i) in
+      pure(Specified(a_510))
+    ) in
+  store('signed int*', p, a_509) ;
+  let strong a_511: loaded integer =
+    {- §6.5#2 -}
+    bound(
+      let weak a_512: pointer = pure(i) in
+      load('signed int', a_512)
+    ) in
+  store('signed int', j, conv_loaded_int('signed int', a_511)) ;
+  let strong a_513: loaded integer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.5 -}
+      let weak (a_515: loaded integer, a_516: loaded integer) =
+        unseq(
+          pure(Specified(1))
+        ,
+          let weak a_514: pointer = pure(j) in
+          load('signed int', a_514)
+        ) in
+      pure(
+        let (Specified(a_517: integer), Specified(a_518: integer)) =
+          (a_515, a_516) in
+        let a_519: integer = conv_int('signed int', a_517) in
+        let a_520: integer = conv_int('signed int', a_518) in
+        if a_520 = 0 then
+          undef(<<UB045a_division_by_zero>>)
+        else
+          if is_representable_integer(conv_int('signed int', a_517) / a_520,
+          'signed int') then
+            Specified(catch_exceptional_condition('signed int',
+            conv_int('signed int', a_517) / a_520))
+          else
+            undef(<<UB045c_quotient_not_representable>>)
+      )
+    ) in
+  store('signed int', k, conv_loaded_int('signed int', a_513)) ;
+  kill('signed int', i) ;
+  kill('signed int*', p) ;
+  kill('signed int', j) ;
+  kill('signed int', k) ;
+  pure(Unit) ;
+  save ret_508: loaded integer (a_521: loaded integer:= Specified(0)) in
+    pure(a_521)
+

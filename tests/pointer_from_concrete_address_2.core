@@ -1,0 +1,93 @@
+-- Globals
+glob port: pointer [ail_ctype = 'unsigned int*'] :=
+  let strong a_523: pointer =
+    create(Ivalignof('volatile unsigned int*'), 'volatile unsigned int*') in
+  let strong a_527: loaded pointer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.4 -}
+      let weak a_524: loaded integer = pure(Specified(1073741824)) in
+      let Specified(a_525: integer) = a_524 in
+      let weak a_526: pointer =
+        memop(PtrFromInt, 'signed int', 'unsigned int', a_525) in
+      pure(Specified(a_526))
+    ) in
+  store_lock('volatile unsigned int*', a_523, a_527) ;
+  pure(a_523)
+
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong value: pointer =
+    create(Ivalignof('unsigned int'), 'unsigned int') in
+  let strong a_509: loaded integer =
+    {- §6.5#2 -}
+    bound(pure(Specified(0))) in
+  store('unsigned int', value, conv_loaded_int('unsigned int', a_509)) ;
+  let strong _: loaded integer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.16#3, sentence 4 -}
+      let weak (a_508: pointer, a_515: loaded integer) =
+        {- §6.5.16#3, sentence 5 -}
+        unseq(
+          {- §6.5.3.2 -}
+          let weak a_510: loaded pointer =
+            let weak a_513: pointer = pure(port) in
+            load('volatile unsigned int*', a_513) in
+          let Specified(a_511: pointer) = a_510 in
+          let weak a_512: boolean =
+            memop(PtrValidForDeref, 'unsigned int', a_511) in
+          pure(
+            if a_512 then
+              a_511
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          let weak a_514: pointer = pure(value) in
+          load('unsigned int', a_514)
+        ) in
+      let weak _: unit =
+        {- §6.5.16.1#2, store -}
+        neg(store('unsigned int', a_508,
+        conv_loaded_int('unsigned int', a_515))) in
+      pure(conv_loaded_int('unsigned int', a_515))
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    {- §6.5#2 -}
+    bound(
+      {- §6.5.16#3, sentence 4 -}
+      let weak (a_507: pointer, a_521: loaded integer) =
+        {- §6.5.16#3, sentence 5 -}
+        unseq(
+          pure(value)
+        ,
+          let weak a_520: pointer =
+            {- §6.5.3.2 -}
+            let weak a_516: loaded pointer =
+              let weak a_519: pointer = pure(port) in
+              load('volatile unsigned int*', a_519) in
+            let Specified(a_517: pointer) = a_516 in
+            let weak a_518: boolean =
+              memop(PtrValidForDeref, 'unsigned int', a_517) in
+            pure(
+              if a_518 then
+                a_517
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned int', a_520)
+        ) in
+      let weak _: unit =
+        {- §6.5.16.1#2, store -}
+        neg(store('unsigned int', a_507,
+        conv_loaded_int('unsigned int', a_521))) in
+      pure(conv_loaded_int('unsigned int', a_521))
+    ) in
+  pure(Unit) ;
+  kill('unsigned int', value) ;
+  pure(Unit) ;
+  save ret_506: loaded integer (a_522: loaded integer:= Specified(0)) in
+    pure(a_522)
+
