@@ -255,9 +255,9 @@ module.exports = grammar({
             "consume",
             "acq_rel"),
         
-        action: $ => seq(
-            seq("create", "(", $.pexpr, ",", $.pexpr, ")"),
+        action: $ => choice(
             seq("create_readonly", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ")"),
+            seq("create", "(", $.pexpr, ",", $.pexpr, ")"),
             seq("alloc", "(", $.pexpr, ",", $.pexpr, ")"),
             seq("free", "(", $.pexpr, ")"),
             seq("kill", "(", $.core_ctype, ",", $.pexpr, ")"),
