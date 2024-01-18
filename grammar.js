@@ -37,7 +37,7 @@ module.exports = grammar({
         ),
 
         int_const: $ => /[0-9_]+/,
-        sym: $ => /[_A-Za-z][_A-Za-z0-9_]+/,
+        sym: $ => /[_A-Za-z][_A-Za-z0-9_]*/,
 
         def_fields: $ => repeat1 ($.def_field),
 
@@ -121,7 +121,7 @@ module.exports = grammar({
             ":=",
             $.expr),
 
-        expr: $ => choice(
+        expr: $ => prec.left(1,choice(
             seq("(", $.expr, ")"),
             seq("pure", "(", $.pexpr,")"),
             seq("memop", "(", $.memop_op, ",", separated_list(",", $.pexpr), ")"),
@@ -141,13 +141,13 @@ module.exports = grammar({
             seq("save", $.sym, ":", $.core_base_type),
             seq("run", $.sym, "(", separated_list(",", $.pexpr), ")"),
             seq("nd", "(", separated_list(",", $.expr), ")"),
-            seq("par", "(", separated_list(",", $.expr), ")")),
+            seq("par", "(", separated_list(",", $.expr), ")"))),
 
         core_type: $ => choice(
             $.core_base_type,
             seq("eff", $.core_base_type)),
 
-        pexpr: $=> choice(
+        pexpr: $=> prec.left(1,choice(
             seq("(", $.pexpr, ")"),
             seq("undef", "(", $.ub, ")"),
             seq("error", "(", $.string, ",", $.pexpr, ")"),
@@ -175,12 +175,12 @@ module.exports = grammar({
             seq("is_signed","(", $.pexpr, ")"),
             seq("is_unsigned", "(", $.pexpr, ")"),
             seq("are_compatible", "(", $.pexpr, ",", $.pexpr, ")")
-        ),
+        )),
 
-        list_pexpr: $ => choice(
+        list_pexpr: $ => prec.left(1,choice(
             seq("[]", ":", $.core_base_type),
             seq($.pexpr, "::", $.pexpr),
-            seq("[", separated_list(",", $.pexpr) , "]", ":", $.core_base_type)),
+            seq("[", separated_list(",", $.pexpr) , "]", ":", $.core_base_type))),
 
         pure_memop_op: $ => choice(
             "DeriveCap",
@@ -211,10 +211,10 @@ module.exports = grammar({
             seq($.ctor, "(", separated_list(",", $.pattern), ")")
         ),
 
-        list_pattern: $ => choice(
-            seq("[]", ":",$.core_base_type),
+        list_pattern: $ => prec.left(1,choice(
+            seq("[]", ":", $.core_base_type),
             seq($.pattern, "::", $.pattern),
-            seq("[", separated_list(",", $.pattern) , "]", ":", $.core_base_type)),
+            seq("[", separated_list(",", $.pattern) , "]", ":", $.core_base_type))),
     
         name: $ => choice(
             $.sym,
@@ -230,7 +230,52 @@ module.exports = grammar({
             seq("loaded", $.core_object_type),
             "storable"
         ),
+        
+        core_object_type: $ => choice(
+            "integer",
+            "floating",
+            "pointer",
+            /*
+              | CFUNCTION LPAREN UNDERSCORE COMMA nparams= INT_CONST RPAREN
+              | CFUNCTION LPAREN UNDERSCORE COMMA nparams= INT_CONST COMMA DOTS RPAREN
+              | CFUNCTION LPAREN ret_oTy= core_object_type COMMA nparams= INT_CONST RPAREN
+              | CFUNCTION LPAREN ret_oTy= core_object_type COMMA nparams= INT_CONST COMMA DOTS RPAREN
+              | CFUNCTION LPAREN UNDERSCORE COMMA oTys= separated_list(COMMA, core_object_type) RPAREN
+              | CFUNCTION LPAREN ret_oTy= core_object_type COMMA oTys= separated_list(COMMA, core_object_type) RPAREN
+            */
+            seq("array","(", $.core_object_type, ")"),
+            seq("struct", $.sym),
+            seq("union", $.sym)),
 
+        memory_order: $ => choice(
+            "seq_cst",
+            "relaxed",
+            "release",
+            "acquire",
+            "consume",
+            "acq_rel"),
+        
+        action: $ => seq(
+            seq("create", "(", $.pexpr, ",", $.pexpr, ")"),
+            seq("create_readonly", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ")"),
+            seq("alloc", "(", $.pexpr, ",", $.pexpr, ")"),
+            seq("free", "(", $.pexpr, ")"),
+            seq("kill", "(", $.core_ctype, ",", $.pexpr, ")"),
+            seq("store", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr , ")"),
+            seq("store_lock", "(", $.pexpr, ",",$.pexpr, ",", $.pexpr, ")"),
+            seq("load", "(", $.pexpr, ",", $.pexpr, ")"),
+            seq("store", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ",", $.memory_order , ")"),
+            seq("store_lock", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ",", $.memory_order , ")"),
+            seq("load", "(", $.pexpr, ",", $.pexpr, ",", $.memory_order , ")"),
+            seq("seq_rmw", "(", $.pexpr, ",", $.pexpr, ",", $.sym, "=>", $.pexpr /*",", $.memory_order*/ , ")"),
+            seq("seq_rmw_with_forward", "(", $.pexpr, ",", $.pexpr, ",", $.sym, "=>", $.pexpr /*",", $.memory_order*/ , ")"),
+            seq("rmw", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ",", $.pexpr, ",", $.memory_order, ",", $.memory_order , ")"),
+            seq("fence", "(", $.memory_order, ")")
+            /*
+              | COMPARE_EXCHANGE_STRONG "(", $.pexpr, ",", $.pexpr, ",", $.pexpr ",", _pe4= pexpr ",", mo1= memory_order ",", mo2= memory_order , ")"
+            */
+        ),
+        
         paction: $ => choice(
             $.action,
             seq("neg", "(", $.action, ")")
@@ -291,9 +336,36 @@ module.exports = grammar({
             "False",
             $.core_ctype),
 
-        impl: $ => $.int_const //TODO not sure
-
-
+        impl: $ => choice(
+            "Environment.startup_name",
+            "Environment.startup_type",
+            "Characters.bits_in_byte",
+            "Characters.execution_character_set_values",
+            "Characters.TODO1",
+            "Characters.TODO2",
+            "Characters.plain_char_is_signed",
+            "Characters.TODO3",
+            "Characters.TODO4",
+            "Characters.TODO5",
+            "Characters.TODO6",
+            "Characters.TODO7",
+            "Characters.TODO8",
+            "Characters.TODO9",
+            "Characters.TODO10",
+            "Integer.encode",
+            "Integer.decode",
+            "Integer.conv_nonrepresentable_signed_integer",
+            "sizeof",
+            "alignof",
+            "SHR_signed_negative",
+            "Bitwise_complement",
+            "Plain_bitfield_sign",
+            "Bitfield_other_types",
+            "Atomic_bitfield_permitted",
+            "ctype_min",
+            "ctype_max",
+            /builtin_[A-Za-z][_A-Za-z0-9_]*/
+        ),            
     }
 });
 
