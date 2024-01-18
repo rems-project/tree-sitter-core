@@ -6,7 +6,6 @@ function separated_nonempty_list(del, rule) {
     return seq(rule, repeat(seq(del, rule)))
 }
 
-
 module.exports = grammar({
     name: 'core',
 
@@ -128,7 +127,7 @@ module.exports = grammar({
             seq("memop", "(", $.memop_op, ",", separated_list(",", $.pexpr), ")"),
             seq("let", $.pattern, "=", $.pexpr, "in", $.expr),
             seq("if", $.pexpr, "then", $.expr, "else", $.expr),
-            seq("case", $.pexpr, "of", repeat($.pattern_pair($.expr)), "end"),
+            seq("case", $.pexpr, "of", repeat(seq("|", $.pattern, "=>", $.expr)), "end"),
             seq("pcall", "(", $.name, ")"),
             seq("pcall", "(", $.name, ",", separated_nonempty_list(",", $.pexpr),")"),
             seq("ccal", "(", $.pexpr, ",", $.pexpr, ")"),
@@ -149,16 +148,16 @@ module.exports = grammar({
             seq("eff", $.core_base_type)),
 
         pexpr: $=> choice(
-            seq("(", pexpr, ")"),
+            seq("(", $.pexpr, ")"),
             seq("undef", "(", $.ub, ")"),
             seq("error", "(", $.string, ",", $.pexpr, ")"),
             $.value,
             $.sym,
             $.impl,
-            seq("(", $.pexpr, ",", separated_nonempty_list(",", $,pexpr), ")"),
+            seq("(", $.pexpr, ",", separated_nonempty_list(",", $.pexpr), ")"),
             $.list_pexpr,
             seq($.ctor, "(", separated_list(",", $.pexpr), ")"),
-            seq("case", $.pexpr, "of", repeat($.pattern_pair($.pexpr)), "end"),
+            seq("case", $.pexpr, "of", repeat(seq("|", $.pattern, "=>",$.pexpr)), "end"),
             seq("array_shift", "(", $.pexpr, ",", $.core_ctype, ",", $.pexpr, ")"),
             seq("member_shift", "(", $.pexpr, ",", $.sym, ",", ".", $.cabs_id, ")"),
             seq("not", "(", $.pexpr, ")"),
@@ -176,7 +175,124 @@ module.exports = grammar({
             seq("is_signed","(", $.pexpr, ")"),
             seq("is_unsigned", "(", $.pexpr, ")"),
             seq("are_compatible", "(", $.pexpr, ",", $.pexpr, ")")
-        )
+        ),
+
+        list_pexpr: $ => choice(
+            seq("[]", ":", $.core_base_type),
+            seq($.pexpr, "::", $.pexpr),
+            seq("[", separated_list(",", $.pexpr) , "]", ":", $.core_base_type)),
+
+        pure_memop_op: $ => choice(
+            "DeriveCap",
+            "CapAssignValue",
+            "Ptr_tIntValue"),
+
+        memop_op: $ => choice(
+            "PtrEq",
+            "PtrNe",
+            "PtrLt",
+            "PtrGt",
+            "PtrLe",
+            "PtrGe",
+            "Ptrdiff",
+            "IntFromPtr",
+            "PtrFromInt",
+            "PtrValidForDeref",
+            "PtrWellAligned",
+            "PtrArrayShift",
+            "PtrMemberShift"
+        ),
+
+        pattern: $ => choice(
+            seq($.sym, ":", $.core_base_type),
+            seq("_", ":", $.core_base_type),
+            $.list_pattern,
+            seq("(", $.pattern, ",", separated_nonempty_list(",", $.pattern), ")"),
+            seq($.ctor, "(", separated_list(",", $.pattern), ")")
+        ),
+
+        list_pattern: $ => choice(
+            seq("[]", ":",$.core_base_type),
+            seq($.pattern, "::", $.pattern),
+            seq("[", separated_list(",", $.pattern) , "]", ":", $.core_base_type)),
+    
+        name: $ => choice(
+            $.sym,
+            $.impl),
+
+        core_base_type: $ => choice(
+            "unit",
+            "boolean",
+            "ctype",
+            seq("[", $.core_base_type, "]"),
+            seq("(", separated_list(",", $.core_base_type), ")"),
+            $.core_object_type,
+            seq("loaded", $.core_object_type),
+            "storable"
+        ),
+
+        paction: $ => choice(
+            $.action,
+            seq("neg", "(", $.action, ")")
+        ),
+
+        ub: $ => /<<([A-Za-z_0-9]*)|(DUMMY\([A-Za-z_ .:-=<>0-9()]*\))>>/,
+
+        string: $ => /"[^\"]*"/,
+
+        ctor: $ => choice(
+            "Array",       
+            "Ivmax",       
+            "Ivmin",       
+            "Ivsizeof",    
+            "Ivalignof",   
+            "Specified",   
+            "Unspecified", 
+            "Fvfromint",   
+            "Ivfromfloat", 
+            "IvCOMPL",     
+            "IvAND",       
+            "IvOR",
+            "IvXOR"),
+
+        cabs_id: $ => $.sym,
+
+        binary_operator: $ => choice(
+            '+',   
+            '-',   
+            '*',   
+            '/',   
+            "rem_t", 
+            "rem_f", 
+            '^',   
+            '=',   
+            '>',   
+            '<',   
+            ">=",  
+            "<=",  
+            "/\\", 
+            "\\/"),
+
+        member: $ => seq(".", $.cabs_id, "=", $.pexpr),
+
+        value: $ => choice(
+            // TODO:
+            //  | Vconstrained of list (list Mem.mem_constraint * value)
+            //  | Vobject of object_value
+            //  | Vloaded of object_value
+            //  | Vunspecified of ctype
+            $.int_const,
+            "IvMaxAlignment",
+            seq("NULL", "(", $.ctype, ")"),
+            seq("Cfunction","(", $.name, ")"),
+            //{ (*TODO*) Vobject (OVpointer (Impl_mem.null_ptrval Ctype.void)) }
+            "Unit",
+            "True",
+            "False",
+            $.core_ctype),
+
+        impl: $ => $.int_const //TODO not sure
+
 
     }
 });
