@@ -23,7 +23,7 @@ module.exports = grammar({
             //$.ifun_declaration,
             $.glob_declaration,
             //$.fun_declaration,
-            //$.proc_declaration,
+            $.proc_declaration,
             //$.builtin_declaration,
             $.def_aggregate_declaration
         ),
@@ -51,7 +51,7 @@ module.exports = grammar({
             "void",
             $.basic_type,
             seq($.ctype, '[', optional($.int_const), ']'),
-            seq($.ctype, '(', $.params,')'),
+            seq($.ctype, '(', optional($.params),')'),
             seq('const', prec(1, $.ctype_star)),
             $.ctype_star,
             seq('_Atomic', '(', $.ctype, ')'),
@@ -62,12 +62,10 @@ module.exports = grammar({
 
         ctype_star: $ => seq($.ctype, '*'),
 
-        //TODO: check how it works on empty
-        params: $=> seq(
-            $.ctype,
-            repeat(seq(',',$.ctype))
-        ),
-
+        params: $ => choice(
+            separated_nonempty_list(",", $.ctype),
+            seq(separated_nonempty_list(",", $.ctype), ",", "...")),
+        
         integer_base_type: $ => choice(
             "ichar",
             "short",
@@ -123,7 +121,7 @@ module.exports = grammar({
 
         expr: $ => prec.left(1,choice(
             seq("(", $.expr, ")"),
-            seq("pure", "(", $.pexpr,")"),
+            seq("pure", "(", $.pexpr, ")"),
             seq("memop", "(", $.memop_op, ",", separated_list(",", $.pexpr), ")"),
             seq("let", $.pattern, "=", $.pexpr, "in", $.expr),
             seq("if", $.pexpr, "then", $.expr, "else", $.expr),
@@ -138,7 +136,7 @@ module.exports = grammar({
             seq($.expr, ";", $.expr),
             seq("let", "strong", $.pattern, "=", $.expr, "in", $.expr),
             seq("bound", "(", $.expr, ")"),
-            seq("save", $.sym, ":", $.core_base_type),
+            seq("save", $.sym, ":", $.core_base_type, "(", separated_list(",", seq($.sym, ":", seq($.core_base_type, ":=", $.pexpr))), ")", "in", $.expr),
             seq("run", $.sym, "(", separated_list(",", $.pexpr), ")"),
             seq("nd", "(", separated_list(",", $.expr), ")"),
             seq("par", "(", separated_list(",", $.expr), ")"))),
@@ -284,6 +282,7 @@ module.exports = grammar({
         ub: $ => /<<([A-Za-z_0-9]*)|(DUMMY\([A-Za-z_ .:-=<>0-9()]*\))>>/,
 
         string: $ => /"[^\"]*"/,
+        cstring: $ => /"[^\"]*"/,
 
         ctor: $ => choice(
             "Array",       
@@ -365,7 +364,17 @@ module.exports = grammar({
             "ctype_min",
             "ctype_max",
             /builtin_[A-Za-z][_A-Za-z0-9_]*/
-        ),            
+        ),
+
+        attribute: $ => seq("[", separated_list(",", $.attribute_pair), "]"),
+
+        attribute_pair: $ =>  seq("ailname", "=", $.cstring),
+        
+        proc_declaration: $ => seq(
+            seq("proc", optional($.attribute), $.sym, "(", separated_list(",", seq($.sym), ":", $.core_base_type), ")"),
+            seq(":", "eff", $.core_base_type),
+            seq(":=", $.expr)),
+
     }
 });
 

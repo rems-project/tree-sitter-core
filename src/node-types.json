@@ -8,7 +8,49 @@
       "required": true,
       "types": [
         {
+          "type": "core_ctype",
+          "named": true
+        },
+        {
+          "type": "memory_order",
+          "named": true
+        },
+        {
           "type": "pexpr",
+          "named": true
+        },
+        {
+          "type": "sym",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_pair",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_pair",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "cstring",
           "named": true
         }
       ]
@@ -122,6 +164,11 @@
     }
   },
   {
+    "type": "cstring",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "ctor",
     "named": true,
     "fields": {}
@@ -190,6 +237,10 @@
         },
         {
           "type": "glob_declaration",
+          "named": true
+        },
+        {
+          "type": "proc_declaration",
           "named": true
         }
       ]
@@ -426,6 +477,11 @@
     "fields": {}
   },
   {
+    "type": "memory_order",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "name",
     "named": true,
     "fields": {},
@@ -577,6 +633,33 @@
     }
   },
   {
+    "type": "proc_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "core_base_type",
+          "named": true
+        },
+        {
+          "type": "expr",
+          "named": true
+        },
+        {
+          "type": "sym",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "pure_memop_op",
     "named": true,
     "fields": {}
@@ -595,6 +678,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "value",
@@ -653,6 +741,10 @@
   },
   {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": "...",
     "named": false
   },
   {
@@ -980,7 +1072,15 @@
     "named": false
   },
   {
+    "type": "ailname",
+    "named": false
+  },
+  {
     "type": "alignof",
+    "named": false
+  },
+  {
+    "type": "alloc",
     "named": false
   },
   {
@@ -1028,6 +1128,10 @@
     "named": false
   },
   {
+    "type": "create",
+    "named": false
+  },
+  {
     "type": "create_readonly",
     "named": false
   },
@@ -1068,11 +1172,19 @@
     "named": false
   },
   {
+    "type": "fence",
+    "named": false
+  },
+  {
     "type": "float",
     "named": false
   },
   {
     "type": "floating",
+    "named": false
+  },
+  {
+    "type": "free",
     "named": false
   },
   {
@@ -1144,7 +1256,15 @@
     "named": false
   },
   {
+    "type": "kill",
+    "named": false
+  },
+  {
     "type": "let",
+    "named": false
+  },
+  {
+    "type": "load",
     "named": false
   },
   {
@@ -1200,6 +1320,10 @@
     "named": false
   },
   {
+    "type": "proc",
+    "named": false
+  },
+  {
     "type": "ptrdiff_t",
     "named": false
   },
@@ -1224,6 +1348,10 @@
     "named": false
   },
   {
+    "type": "rmw",
+    "named": false
+  },
+  {
     "type": "run",
     "named": false
   },
@@ -1233,6 +1361,14 @@
   },
   {
     "type": "seq_cst",
+    "named": false
+  },
+  {
+    "type": "seq_rmw",
+    "named": false
+  },
+  {
+    "type": "seq_rmw_with_forward",
     "named": false
   },
   {
@@ -1256,8 +1392,12 @@
     "named": false
   },
   {
-    "type": "string",
-    "named": true
+    "type": "store",
+    "named": false
+  },
+  {
+    "type": "store_lock",
+    "named": false
   },
   {
     "type": "strong",
