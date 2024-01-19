@@ -96,7 +96,8 @@ module.exports = grammar({
             seq("signed", $.integer_base_type),
             seq("unsigned", $.integer_base_type),
             "size_t",
-            "ptrdiff_t"
+            "ptrdiff_t",
+            "ptraddr_t", (* CHERI-specific *)
         ),
 
         floating_type: $ => choice(
