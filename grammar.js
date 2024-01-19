@@ -159,7 +159,9 @@ module.exports = grammar({
         list_pexpr: $ => prec.left(1,choice(
             seq("[]", ":", $.core_base_type),
             seq($.pexpr, "::", $.pexpr),
-            seq("[", separated_list(",", $.pexpr) , "]", ":", $.core_base_type))),
+            seq("[", separated_list(",", $.pexpr) , "]",
+                /* ":", $.core_base_type */
+               ))),
 
         pure_memop_op: $ => choice(
             "DeriveCap",
