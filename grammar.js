@@ -128,13 +128,12 @@ module.exports = grammar({
             seq("eff", $.core_base_type)),
 
         pexpr: $=> prec.left(1,choice(
-            seq("(", $.pexpr, ")"),
             seq("undef", "(", $.ub, ")"),
             seq("error", "(", $.string, ",", $.pexpr, ")"),
             $.value,
             $.sym,
             $.impl,
-            seq("(", $.pexpr, ",", separated_nonempty_list(",", $.pexpr), ")"),
+            seq("(", separated_nonempty_list(",", $.pexpr), ")"),
             $.list_pexpr,
             seq($.ctor, "(", separated_list(",", $.pexpr), ")"),
             seq("case", $.pexpr, "of", repeat(seq("|", $.pattern, "=>",$.pexpr)), "end"),
