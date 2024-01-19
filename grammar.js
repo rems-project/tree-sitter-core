@@ -133,6 +133,7 @@ module.exports = grammar({
             $.sym,
             $.impl,
             seq("(", separated_nonempty_list(",", $.pexpr), ")"),
+            seq('(', $.pexpr, ',', $.pexpr, ')'),
             $.list_pexpr,
             seq($.ctor, "(", separated_list(",", $.pexpr), ")"),
             seq("case", $.pexpr, "of", repeat(seq("|", $.pattern, "=>",$.pexpr)), "end"),
