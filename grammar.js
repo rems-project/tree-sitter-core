@@ -19,7 +19,7 @@ module.exports = grammar({
         source_file: $ => repeat1($.declaration),
 
         declaration: $ => choice(
-            //$.def_declaration,
+            $.def_declaration,
             //$.ifun_declaration,
             $.glob_declaration,
             //$.fun_declaration,
@@ -370,6 +370,8 @@ module.exports = grammar({
             seq("proc", optional($.attribute), $.sym, "(", separated_list(",", seq($.sym), ":", $.core_base_type), ")"),
             seq(":", "eff", $.core_base_type),
             seq(":=", $.expr)),
+
+        def_declaration: $ => seq("def", $.impl, ":", $.core_base_type, ":=", $.pexpr),
 
     }
 });
