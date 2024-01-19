@@ -71,35 +71,11 @@ module.exports = grammar({
             separated_nonempty_list(",", $.ctype),
             seq(separated_nonempty_list(",", $.ctype), ",", "...")),
         
-        integer_base_type: $ => choice(
-            "ichar",
-            "short",
-            "int",
-            "long",
-            "long_long"),
-
-        integer_type: $ => choice(
-            "char",
-            "_Bool",
-            "int8_t",
-            "int16_t",
-            "int32_t",
-            "int64_t",
-            "uint8_t",
-            "uint16_t",
-            "uint32_t",
-            "uint64_t",
-            "intmax_t",
-            "intptr_t",
-            "uintmax_t",
-            "uintptr_t",
-            seq("signed", $.integer_base_type),
-            seq("unsigned", $.integer_base_type),
-            "size_t",
-            "ptrdiff_t",
-            "ptraddr_t", // CHERI-specific
-        ),
-
+        // For purpose of simple syntax parsing
+        // we do not enforce type names
+        integer_type: $ =>
+        seq(optional(choice("signed","unsigned")),$.sym),
+        
         floating_type: $ => choice(
             "float",
             "double",

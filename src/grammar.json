@@ -370,127 +370,33 @@
         }
       ]
     },
-    "integer_base_type": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "ichar"
-        },
-        {
-          "type": "STRING",
-          "value": "short"
-        },
-        {
-          "type": "STRING",
-          "value": "int"
-        },
-        {
-          "type": "STRING",
-          "value": "long"
-        },
-        {
-          "type": "STRING",
-          "value": "long_long"
-        }
-      ]
-    },
     "integer_type": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "char"
-        },
-        {
-          "type": "STRING",
-          "value": "_Bool"
-        },
-        {
-          "type": "STRING",
-          "value": "int8_t"
-        },
-        {
-          "type": "STRING",
-          "value": "int16_t"
-        },
-        {
-          "type": "STRING",
-          "value": "int32_t"
-        },
-        {
-          "type": "STRING",
-          "value": "int64_t"
-        },
-        {
-          "type": "STRING",
-          "value": "uint8_t"
-        },
-        {
-          "type": "STRING",
-          "value": "uint16_t"
-        },
-        {
-          "type": "STRING",
-          "value": "uint32_t"
-        },
-        {
-          "type": "STRING",
-          "value": "uint64_t"
-        },
-        {
-          "type": "STRING",
-          "value": "intmax_t"
-        },
-        {
-          "type": "STRING",
-          "value": "intptr_t"
-        },
-        {
-          "type": "STRING",
-          "value": "uintmax_t"
-        },
-        {
-          "type": "STRING",
-          "value": "uintptr_t"
-        },
-        {
-          "type": "SEQ",
+          "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "signed"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "signed"
+                },
+                {
+                  "type": "STRING",
+                  "value": "unsigned"
+                }
+              ]
             },
             {
-              "type": "SYMBOL",
-              "name": "integer_base_type"
+              "type": "BLANK"
             }
           ]
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "unsigned"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "integer_base_type"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "size_t"
-        },
-        {
-          "type": "STRING",
-          "value": "ptrdiff_t"
-        },
-        {
-          "type": "STRING",
-          "value": "ptraddr_t"
+          "type": "SYMBOL",
+          "name": "sym"
         }
       ]
     },
