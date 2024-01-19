@@ -27,6 +27,6 @@ for file in $(find tests/ -name '*.core' -type f -print0 | xargs -0 du -b | sort
 done
 
 echo ""
-echo -e "Tests Passed: ${green}$ok_count${no_color}"
+echo -e "Total Passed: ${green}$ok_count${no_color}"
 echo -e "Total Failed: ${red}$error_count${no_color}"
 
