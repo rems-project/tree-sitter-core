@@ -202,7 +202,7 @@ module.exports = grammar({
             "PtrFromInt",
             "PtrValidForDeref",
             "PtrWellAligned",
-            "PtrArrayShift",
+            seq("PtrArrayShift",optional(seq('[', $.sym, ",", $.sym, "]"))),
             "PtrMemberShift"
         ),
 
