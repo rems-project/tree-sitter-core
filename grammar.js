@@ -60,7 +60,12 @@ module.exports = grammar({
             seq('union', $.sym),
         ),
 
-        ctype_star: $ => seq($.ctype, '*'),
+        qualifier: $ => choice(
+            "const",
+            "volatile",
+            "restrict"),
+        
+        ctype_star: $ => seq($.ctype, choice('*',"(*)"), optional($.qualifier)),
 
         params: $ => choice(
             separated_nonempty_list(",", $.ctype),
@@ -128,8 +133,8 @@ module.exports = grammar({
             seq("case", $.pexpr, "of", repeat(seq("|", $.pattern, "=>", $.expr)), "end"),
             seq("pcall", "(", $.name, ")"),
             seq("pcall", "(", $.name, ",", separated_nonempty_list(",", $.pexpr),")"),
-            seq("ccall", "(", $.pexpr, ",", $.pexpr, ")"),
-            seq("ccall", "(", $.pexpr, ",", $.pexpr, ",", separated_nonempty_list(",",$.pexpr), ")"),
+            seq("ccall", "(", $.core_ctype, ",", $.pexpr, ")"),
+            seq("ccall", "(", $.core_ctype, ",", $.pexpr, ",", separated_nonempty_list(",",$.pexpr), ")"),
             $.paction,
             seq("unseq", "(", separated_list(",", $.expr), ")"),
             seq("let", "weak", $.pattern, "=", $.expr, "in", $.expr),
