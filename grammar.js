@@ -37,6 +37,16 @@ module.exports = grammar({
         ),
 
         int_const: $ => /[0-9_]+/,
+
+        /*
+          "Optional sign, integer, and fraction. If the integer part
+          is omitted, the fraction is mandatory. If the fraction is
+          omitted, the decimal dot is optional. No exponent."
+
+          Regular Expressions Cookbook, 2nd Edition, O’Reilly
+          */
+        floating_const: $ => /[-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)/,
+        
         sym: $ => /[_A-Za-z][_A-Za-z0-9_]*/,
 
         def_fields: $ => repeat1 ($.def_field),
@@ -305,6 +315,7 @@ module.exports = grammar({
             //  | Vloaded of object_value
             //  | Vunspecified of ctype
             $.int_const,
+            $.floating_const,
             "IvMaxAlignment",
             seq("NULL", "(", $.ctype, ")"),
             seq("Cfunction","(", $.name, ")"),
