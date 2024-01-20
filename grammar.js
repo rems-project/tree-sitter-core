@@ -341,7 +341,7 @@ module.exports = grammar({
         attribute_pair: $ =>  seq("ailname", "=", $.cstring),
         
         proc_declaration: $ => seq(
-            seq("proc", optional($.attribute), $.sym, "(", separated_list(",", seq($.sym), ":", $.core_base_type), ")"),
+            seq("proc", optional($.attribute), $.sym, "(", separated_list(",", seq($.sym, ":", $.core_base_type)), ")"),
             seq(":", "eff", $.core_base_type),
             seq(":=", $.expr)),
 
