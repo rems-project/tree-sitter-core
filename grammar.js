@@ -330,7 +330,7 @@ module.exports = grammar({
             "Environment.startup_type",
             "Characters.bits_in_byte",
             "Characters.execution_character_set_values",
-            /Characters.TODO[0-9]*/,
+            /Characters\.TODO[0-9]*/,
             "Characters.plain_char_is_signed",
             "Integer.encode",
             "Integer.decode",
