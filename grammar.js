@@ -53,19 +53,15 @@ module.exports = grammar({
             seq($.ctype, '[', optional($.int_const), ']'),
             seq($.ctype, '(', optional($.params),')'),
             seq('const', prec(1, $.ctype_star)),
-            $.ctype_star,
+            seq('volatile', prec(1, $.ctype_star)),
             seq('_Atomic', '(', $.ctype, ')'),
+            $.ctype_star,
             // TODO: "__cerbty_"  handling
             seq('struct', $.sym),
             seq('union', $.sym),
         ),
 
-        qualifier: $ => choice(
-            "const",
-            "volatile",
-            "restrict"),
-        
-        ctype_star: $ => seq($.ctype, choice('*',"(*)"), optional($.qualifier)),
+        ctype_star: $ => seq($.ctype, choice('*',"(*)"), optional("restrict")),
 
         params: $ => choice(
             separated_nonempty_list(",", $.ctype),
