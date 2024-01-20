@@ -350,12 +350,26 @@ module.exports = grammar({
         attribute: $ => seq("[", separated_list(",", $.attribute_pair), "]"),
 
         attribute_pair: $ =>  seq("ailname", "=", $.cstring),
-        
-        proc_declaration: $ => seq(
-            seq("proc", optional($.attribute), $.sym, "(", separated_list(",", seq($.sym, ":", $.core_base_type)), ")"),
-            seq(":", "eff", $.core_base_type),
-            seq(":=", $.expr)),
 
+        proc_declaration: $ => choice(
+            $.proc_full_declaration,
+            $.proc_forward_declaration,
+        ),
+        
+        proc_full_declaration: $ => seq(
+            seq("proc", optional($.attribute), $.sym,
+                "(",
+                separated_list(",", seq($.sym, ":", $.core_base_type)),
+                ")",
+                ":", "eff", $.core_base_type,
+                ":=", $.expr)),
+
+        proc_forward_declaration: $ => seq(
+            seq("proc", $.sym,
+                "(",
+                separated_list(",", $.core_base_type),
+                ")")),
+        
         def_declaration: $ => seq("def", $.impl, ":", $.core_base_type, ":=", $.pexpr),
 
     }
