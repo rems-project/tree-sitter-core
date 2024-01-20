@@ -77,11 +77,10 @@ module.exports = grammar({
             separated_nonempty_list(",", $.ctype),
             seq(separated_nonempty_list(",", $.ctype), ",", "...")),
         
-        // For purpose of simple syntax parsing
-        // we do not enforce type names
-        integer_type: $ =>
-        seq(optional(choice("signed","unsigned")),$.sym),
-        
+        // For the purpose of simple syntax parsing we do not enforce
+        // integer type names.
+        integer_type: $ => repeat1($.sym),
+
         floating_type: $ => choice(
             "float",
             "double",
