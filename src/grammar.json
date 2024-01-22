@@ -382,21 +382,24 @@
       }
     },
     "floating_type": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "float"
-        },
-        {
-          "type": "STRING",
-          "value": "double"
-        },
-        {
-          "type": "STRING",
-          "value": "long_double"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "float"
+          },
+          {
+            "type": "STRING",
+            "value": "double"
+          },
+          {
+            "type": "STRING",
+            "value": "long_double"
+          }
+        ]
+      }
     },
     "basic_type": {
       "type": "CHOICE",
@@ -2648,33 +2651,36 @@
       ]
     },
     "memory_order": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "seq_cst"
-        },
-        {
-          "type": "STRING",
-          "value": "relaxed"
-        },
-        {
-          "type": "STRING",
-          "value": "release"
-        },
-        {
-          "type": "STRING",
-          "value": "acquire"
-        },
-        {
-          "type": "STRING",
-          "value": "consume"
-        },
-        {
-          "type": "STRING",
-          "value": "acq_rel"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "seq_cst"
+          },
+          {
+            "type": "STRING",
+            "value": "relaxed"
+          },
+          {
+            "type": "STRING",
+            "value": "release"
+          },
+          {
+            "type": "STRING",
+            "value": "acquire"
+          },
+          {
+            "type": "STRING",
+            "value": "consume"
+          },
+          {
+            "type": "STRING",
+            "value": "acq_rel"
+          }
+        ]
+      }
     },
     "action": {
       "type": "CHOICE",
@@ -3332,65 +3338,68 @@
       "name": "sym"
     },
     "binary_operator": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "+"
-        },
-        {
-          "type": "STRING",
-          "value": "-"
-        },
-        {
-          "type": "STRING",
-          "value": "*"
-        },
-        {
-          "type": "STRING",
-          "value": "/"
-        },
-        {
-          "type": "STRING",
-          "value": "rem_t"
-        },
-        {
-          "type": "STRING",
-          "value": "rem_f"
-        },
-        {
-          "type": "STRING",
-          "value": "^"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "STRING",
-          "value": ">"
-        },
-        {
-          "type": "STRING",
-          "value": "<"
-        },
-        {
-          "type": "STRING",
-          "value": ">="
-        },
-        {
-          "type": "STRING",
-          "value": "<="
-        },
-        {
-          "type": "STRING",
-          "value": "/\\"
-        },
-        {
-          "type": "STRING",
-          "value": "\\/"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "+"
+          },
+          {
+            "type": "STRING",
+            "value": "-"
+          },
+          {
+            "type": "STRING",
+            "value": "*"
+          },
+          {
+            "type": "STRING",
+            "value": "/"
+          },
+          {
+            "type": "STRING",
+            "value": "rem_t"
+          },
+          {
+            "type": "STRING",
+            "value": "rem_f"
+          },
+          {
+            "type": "STRING",
+            "value": "^"
+          },
+          {
+            "type": "STRING",
+            "value": "="
+          },
+          {
+            "type": "STRING",
+            "value": ">"
+          },
+          {
+            "type": "STRING",
+            "value": "<"
+          },
+          {
+            "type": "STRING",
+            "value": ">="
+          },
+          {
+            "type": "STRING",
+            "value": "<="
+          },
+          {
+            "type": "STRING",
+            "value": "/\\"
+          },
+          {
+            "type": "STRING",
+            "value": "\\/"
+          }
+        ]
+      }
     },
     "member": {
       "type": "SEQ",
@@ -3412,6 +3421,22 @@
           "name": "pexpr"
         }
       ]
+    },
+    "bool_literal": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "True"
+          },
+          {
+            "type": "STRING",
+            "value": "False"
+          }
+        ]
+      }
     },
     "value": {
       "type": "CHOICE",
@@ -3475,12 +3500,8 @@
           "value": "Unit"
         },
         {
-          "type": "STRING",
-          "value": "True"
-        },
-        {
-          "type": "STRING",
-          "value": "False"
+          "type": "SYMBOL",
+          "name": "bool_literal"
         },
         {
           "type": "SYMBOL",
@@ -3489,85 +3510,88 @@
       ]
     },
     "impl": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "Environment.startup_name"
-        },
-        {
-          "type": "STRING",
-          "value": "Environment.startup_type"
-        },
-        {
-          "type": "STRING",
-          "value": "Characters.bits_in_byte"
-        },
-        {
-          "type": "STRING",
-          "value": "Characters.execution_character_set_values"
-        },
-        {
-          "type": "PATTERN",
-          "value": "Characters\\.TODO[0-9]*"
-        },
-        {
-          "type": "STRING",
-          "value": "Characters.plain_char_is_signed"
-        },
-        {
-          "type": "STRING",
-          "value": "Integer.encode"
-        },
-        {
-          "type": "STRING",
-          "value": "Integer.decode"
-        },
-        {
-          "type": "STRING",
-          "value": "Integer.conv_nonrepresentable_signed_integer"
-        },
-        {
-          "type": "STRING",
-          "value": "sizeof"
-        },
-        {
-          "type": "STRING",
-          "value": "alignof"
-        },
-        {
-          "type": "STRING",
-          "value": "SHR_signed_negative"
-        },
-        {
-          "type": "STRING",
-          "value": "Bitwise_complement"
-        },
-        {
-          "type": "STRING",
-          "value": "Plain_bitfield_sign"
-        },
-        {
-          "type": "STRING",
-          "value": "Bitfield_other_types"
-        },
-        {
-          "type": "STRING",
-          "value": "Atomic_bitfield_permitted"
-        },
-        {
-          "type": "STRING",
-          "value": "ctype_min"
-        },
-        {
-          "type": "STRING",
-          "value": "ctype_max"
-        },
-        {
-          "type": "PATTERN",
-          "value": "builtin_[A-Za-z][_A-Za-z0-9_]*"
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "Environment.startup_name"
+          },
+          {
+            "type": "STRING",
+            "value": "Environment.startup_type"
+          },
+          {
+            "type": "STRING",
+            "value": "Characters.bits_in_byte"
+          },
+          {
+            "type": "STRING",
+            "value": "Characters.execution_character_set_values"
+          },
+          {
+            "type": "PATTERN",
+            "value": "Characters\\.TODO[0-9]*"
+          },
+          {
+            "type": "STRING",
+            "value": "Characters.plain_char_is_signed"
+          },
+          {
+            "type": "STRING",
+            "value": "Integer.encode"
+          },
+          {
+            "type": "STRING",
+            "value": "Integer.decode"
+          },
+          {
+            "type": "STRING",
+            "value": "Integer.conv_nonrepresentable_signed_integer"
+          },
+          {
+            "type": "STRING",
+            "value": "sizeof"
+          },
+          {
+            "type": "STRING",
+            "value": "alignof"
+          },
+          {
+            "type": "STRING",
+            "value": "SHR_signed_negative"
+          },
+          {
+            "type": "STRING",
+            "value": "Bitwise_complement"
+          },
+          {
+            "type": "STRING",
+            "value": "Plain_bitfield_sign"
+          },
+          {
+            "type": "STRING",
+            "value": "Bitfield_other_types"
+          },
+          {
+            "type": "STRING",
+            "value": "Atomic_bitfield_permitted"
+          },
+          {
+            "type": "STRING",
+            "value": "ctype_min"
+          },
+          {
+            "type": "STRING",
+            "value": "ctype_max"
+          },
+          {
+            "type": "PATTERN",
+            "value": "builtin_[A-Za-z][_A-Za-z0-9_]*"
+          }
+        ]
+      }
     },
     "attribute": {
       "type": "SEQ",

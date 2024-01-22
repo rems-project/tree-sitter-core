@@ -81,10 +81,10 @@ module.exports = grammar({
         // integer type names.
         integer_type: $ => repeat1($.sym),
 
-        floating_type: $ => choice(
+        floating_type: $ => token(choice(
             "float",
             "double",
-            "long_double"),
+            "long_double")),
 
         basic_type: $ => choice(
             $.integer_type,
@@ -233,13 +233,13 @@ module.exports = grammar({
             seq("struct", $.sym),
             seq("union", $.sym)),
 
-        memory_order: $ => choice(
+        memory_order: $ => token(choice(
             "seq_cst",
             "relaxed",
             "release",
             "acquire",
             "consume",
-            "acq_rel"),
+            "acq_rel")),
         
         action: $ => choice(
             seq("create_readonly", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ")"),
@@ -289,7 +289,7 @@ module.exports = grammar({
 
         cabs_id: $ => $.sym,
 
-        binary_operator: $ => choice(
+        binary_operator: $ => token(choice(
             '+',   
             '-',   
             '*',   
@@ -303,9 +303,13 @@ module.exports = grammar({
             ">=",  
             "<=",  
             "/\\", 
-            "\\/"),
+            "\\/")),
 
         member: $ => seq(".", $.cabs_id, "=", $.pexpr),
+
+        bool_literal: $ => token(choice(
+            "True",
+            "False")),
 
         value: $ => choice(
             // TODO:
@@ -320,11 +324,10 @@ module.exports = grammar({
             seq("Cfunction","(", $.name, ")"),
             //{ (*TODO*) Vobject (OVpointer (Impl_mem.null_ptrval Ctype.void)) }
             "Unit",
-            "True",
-            "False",
+            $.bool_literal,
             $.core_ctype),
 
-        impl: $ => choice(
+        impl: $ => token(choice(
             "Environment.startup_name",
             "Environment.startup_type",
             "Characters.bits_in_byte",
@@ -344,7 +347,7 @@ module.exports = grammar({
             "ctype_min",
             "ctype_max",
             /builtin_[A-Za-z][_A-Za-z0-9_]*/
-        ),
+        )),
 
         attribute: $ => seq("[", separated_list(",", $.attribute_pair), "]"),
 
