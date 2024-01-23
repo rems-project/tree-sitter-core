@@ -79,7 +79,7 @@ module.exports = grammar({
         
         // For the purpose of simple syntax parsing we do not enforce
         // integer type names.
-        integer_type: $ => repeat1($.sym),
+        integer_type: $ => repeat1(/[_A-Za-z][_A-Za-z0-9_]*/),
 
         floating_type: $ => token(choice(
             "float",
@@ -285,7 +285,8 @@ module.exports = grammar({
             "IvCOMPL",     
             "IvAND",       
             "IvOR",
-            "IvXOR"),
+            "IvXOR"         
+        ),
 
         cabs_id: $ => $.sym,
 
