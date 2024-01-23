@@ -8,6 +8,22 @@
         "name": "declaration"
       }
     },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "--.*\\n"
+          },
+          {
+            "type": "PATTERN",
+            "value": "{-.*-}"
+          }
+        ]
+      }
+    },
     "declaration": {
       "type": "CHOICE",
       "members": [
@@ -3881,12 +3897,8 @@
       "value": "\\s"
     },
     {
-      "type": "PATTERN",
-      "value": "--.*\\n"
-    },
-    {
-      "type": "PATTERN",
-      "value": "{-.*-}"
+      "type": "SYMBOL",
+      "name": "comment"
     }
   ],
   "conflicts": [],

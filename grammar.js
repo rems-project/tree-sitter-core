@@ -11,13 +11,17 @@ module.exports = grammar({
 
     extras: $ => [
         /\s/,
-        /--.*\n/,
-        /{-.*-}/,
+        $.comment,
     ],
 
+    
     rules: {
         source_file: $ => repeat1($.declaration),
 
+        comment: _ => token(choice(
+            /--.*\n/,
+            /{-.*-}/)),
+          
         declaration: $ => choice(
             $.def_declaration,
             //$.ifun_declaration,

@@ -88,3 +88,5 @@
 
 (memop_op) @constant.builtin
 
+(comment) @comment
+
