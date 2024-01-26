@@ -1433,6 +1433,44 @@
             "type": "SEQ",
             "members": [
               {
+                "type": "STRING",
+                "value": "CivNULLcap"
+              },
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "signed"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "unsigned"
+                  }
+                ]
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              },
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
                 "type": "SYMBOL",
                 "name": "ctor"
               },
@@ -2144,8 +2182,30 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "DeriveCap"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "DeriveCap"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "["
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "[a-zA-Z:]+"
+                },
+                {
+                  "type": "STRING",
+                  "value": "]"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "STRING",

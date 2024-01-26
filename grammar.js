@@ -144,6 +144,7 @@ module.exports = grammar({
             seq("(", separated_nonempty_list(",", $.pexpr), ")"),
             seq('(', $.pexpr, ',', separated_nonempty_list(',', $.pexpr), ')'),
             $.list_pexpr,
+            seq("CivNULLcap","(", choice("signed","unsigned"),")","(",")"),
             seq($.ctor, "(", separated_list(",", $.pexpr), ")"),
             seq("case", $.pexpr, "of", repeat(seq("|", $.pattern, "=>",$.pexpr)), "end"),
             seq("array_shift", "(", $.pexpr, ",", $.core_ctype, ",", $.pexpr, ")"),
@@ -173,7 +174,7 @@ module.exports = grammar({
                ))),
 
         pure_memop_op: $ => choice(
-            "DeriveCap",
+            seq("DeriveCap",seq('[', /[a-zA-Z:]+/ , "]")),
             "CapAssignValue",
             "Ptr_tIntValue"),
 
@@ -190,7 +191,7 @@ module.exports = grammar({
             "PtrValidForDeref",
             "PtrWellAligned",
             seq("PtrArrayShift",optional(seq('[', $.sym, ",", $.sym, "]"))),
-            "PtrMemberShift"
+            "PtrMemberShift",
         ),
 
         pattern: $ => choice(
@@ -289,7 +290,7 @@ module.exports = grammar({
             "IvCOMPL",     
             "IvAND",       
             "IvOR",
-            "IvXOR"         
+            "IvXOR"
         ),
 
         cabs_id: $ => $.sym,
