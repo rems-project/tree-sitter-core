@@ -47,7 +47,7 @@
 "fence" @function.builtin
 "NULL" @function.builtin
 "Cfunction" @function.builtin
-;"conv_loaded_int" @function.builtin
+"conv_loaded_int" @function.builtin
 
 (int_const) @number
 (floating_const) @number
