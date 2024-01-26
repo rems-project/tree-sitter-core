@@ -1,0 +1,311 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_648 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_680 :=
+  quot: 'intmax_t'
+  rem: 'intmax_t'
+
+def struct __cerbty_unnamed_tag_698 :=
+  c: 'char'
+  u: 'unsigned short'
+
+-- Globals
+glob a_762: pointer [ail_ctype = 'char[8]'] :=
+  create_readonly(Ivalignof('char[8]'), 'char[8]', Specified(Array(Specified(conv_int('char',
+  99)), Specified(conv_int('char', 61)), Specified(conv_int('char', 48)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:6:11, ./de_facto_memory_model/padding_unspecified_value_3.c:19:1> #-} let strong a_742: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_698'), 'struct __cerbty_unnamed_tag_698') in
+  let strong offset_padding: pointer =
+    create(Ivalignof('size_t'), 'size_t') in
+  let strong s: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_698'), 'struct __cerbty_unnamed_tag_698') in
+  let strong p: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong c: pointer =
+    create(Ivalignof('unsigned char'), 'unsigned char') in
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:8:2, ./de_facto_memory_model/padding_unspecified_value_3.c:8:54> #-} let strong a_712: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/padding_unspecified_value_3.c:8:26, ./de_facto_memory_model/padding_unspecified_value_3.c:8:53> ./de_facto_memory_model/padding_unspecified_value_3.c:8:40 #-} let weak (a_713: loaded integer,
+      a_714: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:8:26, ./de_facto_memory_model/padding_unspecified_value_3.c:8:40> #-} pure(
+            Specified(0)
+          )
+        ,
+          {-# §6.5.3.4#4, sentence 1 #-}
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:8:41, ./de_facto_memory_model/padding_unspecified_value_3.c:8:53> ./de_facto_memory_model/padding_unspecified_value_3.c:8:41 #-} pure(
+            Specified(1)
+          )
+        ) in
+      pure(
+        let (Specified(a_715: integer), Specified(a_716: integer)) =
+          (a_713, a_714) in
+        Specified(wrapI_add('size_t', __conv_int__('size_t', a_715), __conv_int__('size_t', a_716)))
+      )
+    ) in
+  store('size_t', offset_padding, conv_loaded_int('size_t', a_712)) ;
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:9:2, ./de_facto_memory_model/padding_unspecified_value_3.c:9:40> #-} {-# §6.5#2 #-}
+  bound(
+    {-# <./de_facto_memory_model/padding_unspecified_value_3.c:9:2, ./de_facto_memory_model/padding_unspecified_value_3.c:9:39> #-} let strong a_711: loaded integer =
+      {-# §6.5.8 #-}
+      {-# <./de_facto_memory_model/padding_unspecified_value_3.c:9:9, ./de_facto_memory_model/padding_unspecified_value_3.c:9:38> ./de_facto_memory_model/padding_unspecified_value_3.c:9:23 #-} let weak (a_721: loaded integer,
+      a_722: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:9:9, ./de_facto_memory_model/padding_unspecified_value_3.c:9:23> #-} pure(
+            Specified(2)
+          )
+        ,
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:9:24, ./de_facto_memory_model/padding_unspecified_value_3.c:9:38> #-} let weak a_720: pointer =
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:9:24, ./de_facto_memory_model/padding_unspecified_value_3.c:9:38> #-} pure(
+              offset_padding
+            ) in
+          load('size_t', a_720)
+        ) in
+      let (Specified(a_723: integer), Specified(a_724: integer)) =
+        (a_721, a_722) in
+      {-# §6.5.8#6 #-}
+      pure(
+        if conv_int('size_t', a_723) > conv_int('size_t', a_724) then
+          Specified(1)
+        else
+          Specified(0)
+      ) in
+    pure(
+      let Specified(a_718: integer) = a_711 in
+      if a_718 = 0 then error("assert() failure", Unit) else Unit
+    )
+  ) ;
+  pure(Unit) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:10:2, ./de_facto_memory_model/padding_unspecified_value_3.c:10:7> #-} store('struct __cerbty_unnamed_tag_698',
+  s, Unspecified('struct __cerbty_unnamed_tag_698')) ;
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:11:2, ./de_facto_memory_model/padding_unspecified_value_3.c:12:44> #-} let strong a_726: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/padding_unspecified_value_3.c:12:4, ./de_facto_memory_model/padding_unspecified_value_3.c:12:43> ./de_facto_memory_model/padding_unspecified_value_3.c:12:27 #-} let weak (a_727: loaded pointer,
+      a_729: loaded integer) =
+        unseq(
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:12:4, ./de_facto_memory_model/padding_unspecified_value_3.c:12:26> #-} let weak a_732: loaded pointer =
+            {-# §6.5.3.2#3, sentence 5 #-}
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:12:21, ./de_facto_memory_model/padding_unspecified_value_3.c:12:25> #-} let weak a_734: pointer =
+              {-# <./de_facto_memory_model/padding_unspecified_value_3.c:12:23, ./de_facto_memory_model/padding_unspecified_value_3.c:12:24> #-} pure(
+                s
+              ) in
+            pure(Specified(a_734)) in
+          let Specified(a_733: pointer) = a_732 in
+          let weak a_735: boolean =
+            memop(PtrWellAligned, 'unsigned char', a_733) in
+          pure(
+            Specified(if a_735 then
+              a_733
+            else
+              undef(<<UB025_misaligned_pointer_conversion>>))
+          )
+        ,
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:12:29, ./de_facto_memory_model/padding_unspecified_value_3.c:12:43> #-} let weak a_736: pointer =
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:12:29, ./de_facto_memory_model/padding_unspecified_value_3.c:12:43> #-} pure(
+              offset_padding
+            ) in
+          load('size_t', a_736)
+        ) in
+      let (Specified(a_728: pointer), Specified(a_730: integer)) =
+        (a_727, a_729) in
+      let weak a_731: pointer =
+        memop(PtrArrayShift, a_728, 'unsigned char', a_730) in
+      pure(Specified(a_731))
+    ) in
+  store('unsigned char*', p, a_726) ;
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:13:2, ./de_facto_memory_model/padding_unspecified_value_3.c:13:11> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/padding_unspecified_value_3.c:13:2, ./de_facto_memory_model/padding_unspecified_value_3.c:13:10> ./de_facto_memory_model/padding_unspecified_value_3.c:13:5 #-} let weak (a_710: pointer,
+      a_741: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:13:2, ./de_facto_memory_model/padding_unspecified_value_3.c:13:4> ./de_facto_memory_model/padding_unspecified_value_3.c:13:2 #-} let weak a_737: loaded pointer =
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:13:3, ./de_facto_memory_model/padding_unspecified_value_3.c:13:4> #-} let weak a_740: pointer =
+              {-# <./de_facto_memory_model/padding_unspecified_value_3.c:13:3, ./de_facto_memory_model/padding_unspecified_value_3.c:13:4> #-} pure(
+                p
+              ) in
+            load('unsigned char*', a_740) in
+          let Specified(a_738: pointer) = a_737 in
+          let weak a_739: boolean =
+            memop(PtrValidForDeref, 'unsigned char', a_738) in
+          pure(
+            if a_739 then
+              a_738
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:13:7, ./de_facto_memory_model/padding_unspecified_value_3.c:13:10> #-} pure(
+            Specified(66)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned char', a_710,
+        conv_loaded_int('unsigned char', a_741))) in
+      pure(conv_loaded_int('unsigned char', a_741))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:14:2, ./de_facto_memory_model/padding_unspecified_value_3.c:14:26> #-} let strong _: loaded struct a_698 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/padding_unspecified_value_3.c:14:2, ./de_facto_memory_model/padding_unspecified_value_3.c:14:25> ./de_facto_memory_model/padding_unspecified_value_3.c:14:4 #-} let weak (a_709: pointer,
+      a_747: loaded struct a_698) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:14:2, ./de_facto_memory_model/padding_unspecified_value_3.c:14:3> #-} pure(
+            s
+          )
+        ,
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:14:6, ./de_facto_memory_model/padding_unspecified_value_3.c:14:25> #-} let weak a_746: pointer =
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:14:6, ./de_facto_memory_model/padding_unspecified_value_3.c:14:25> #-} let weak a_743: loaded struct a_698 =
+              {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_745: loaded integer,
+              a_744: loaded integer) =
+                {-# §6.7.9#23 #-}
+                unseq(
+                  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:14:23, ./de_facto_memory_model/padding_unspecified_value_3.c:14:24> #-} pure(
+                    Specified(1)
+                  )
+                ,
+                  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:14:15, ./de_facto_memory_model/padding_unspecified_value_3.c:14:18> #-} pure(
+                    Specified(69)
+                  )
+                ) in
+              pure(
+                Specified((struct __cerbty_unnamed_tag_698){.c= conv_loaded_int('char',
+                a_744), .u= conv_loaded_int('unsigned short', a_745)})
+              ) in
+            let weak _: unit =
+              store('struct __cerbty_unnamed_tag_698', a_742, a_743) in
+            pure(a_742) in
+          load('struct __cerbty_unnamed_tag_698', a_746)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('struct __cerbty_unnamed_tag_698', a_709, a_747)) in
+      pure(a_747)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:15:2, ./de_facto_memory_model/padding_unspecified_value_3.c:15:23> #-} let strong a_748: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/padding_unspecified_value_3.c:15:20, ./de_facto_memory_model/padding_unspecified_value_3.c:15:22> ./de_facto_memory_model/padding_unspecified_value_3.c:15:20 #-} let weak a_753: pointer =
+        {-# §6.5.3.2 #-}
+        {-# <./de_facto_memory_model/padding_unspecified_value_3.c:15:20, ./de_facto_memory_model/padding_unspecified_value_3.c:15:22> ./de_facto_memory_model/padding_unspecified_value_3.c:15:20 #-} let weak a_749: loaded pointer =
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:15:21, ./de_facto_memory_model/padding_unspecified_value_3.c:15:22> #-} let weak a_752: pointer =
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:15:21, ./de_facto_memory_model/padding_unspecified_value_3.c:15:22> #-} pure(
+              p
+            ) in
+          load('unsigned char*', a_752) in
+        let Specified(a_750: pointer) = a_749 in
+        let weak a_751: boolean =
+          memop(PtrValidForDeref, 'unsigned char', a_750) in
+        pure(
+          if a_751 then a_750 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('unsigned char', a_753)
+    ) in
+  store('unsigned char', c, conv_loaded_int('unsigned char', a_748)) ;
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:17:2, ./de_facto_memory_model/padding_unspecified_value_3.c:17:28> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/padding_unspecified_value_3.c:17:2, ./de_facto_memory_model/padding_unspecified_value_3.c:17:27> #-} let strong ((a_754: loaded pointer,
+      (a_755: ctype, a_756: [ctype], a_757: boolean, a_758: boolean)),
+      a_761: loaded pointer, a_765: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_708: loaded pointer =
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:17:2, ./de_facto_memory_model/padding_unspecified_value_3.c:17:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_708, cfunction(a_708)))
+        ,
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:17:9, ./de_facto_memory_model/padding_unspecified_value_3.c:17:19> #-} let weak a_763: pointer =
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:17:9, ./de_facto_memory_model/padding_unspecified_value_3.c:17:19> #-} pure(
+              a_762
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_764: pointer = memop(PtrArrayShift, a_763, 'char', 0) in
+          pure(Specified(a_764))
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/padding_unspecified_value_3.c:17:20, ./de_facto_memory_model/padding_unspecified_value_3.c:17:26> ./de_facto_memory_model/padding_unspecified_value_3.c:17:20 #-} let weak a_766: loaded integer =
+            {-# <./de_facto_memory_model/padding_unspecified_value_3.c:17:25, ./de_facto_memory_model/padding_unspecified_value_3.c:17:26> #-} let weak a_768: pointer =
+              {-# <./de_facto_memory_model/padding_unspecified_value_3.c:17:25, ./de_facto_memory_model/padding_unspecified_value_3.c:17:26> #-} pure(
+                c
+              ) in
+            load('unsigned char', a_768) in
+          pure(conv_loaded_int('signed int', a_766))
+        ) in
+      if not(params_length(a_756) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_757) \/ not(are_compatible ('signed int', a_755)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_760: pointer =
+            let a_770: ctype = params_nth(a_756, 0) in
+            if not(are_compatible ('const char*', a_770)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_771: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_771, a_761) in
+              pure(a_771) in
+          let strong a_759: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_765)) in
+          let strong a_772: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_754, a_760,
+            [('signed int', a_759)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_760), kill('signed int', a_759)) in
+          pure(a_772)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:18:2, ./de_facto_memory_model/padding_unspecified_value_3.c:18:11> #-} let strong a_773: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/padding_unspecified_value_3.c:18:9, ./de_facto_memory_model/padding_unspecified_value_3.c:18:10> #-} pure(
+        Specified(0)
+      )
+    ) in
+  kill('size_t', offset_padding) ;
+  kill('struct __cerbty_unnamed_tag_698', s) ;
+  kill('unsigned ichar*', p) ;
+  kill('unsigned ichar', c) ;
+  run ret_707(conv_loaded_int('signed int', a_773)) ;
+  kill('size_t', offset_padding) ;
+  kill('struct __cerbty_unnamed_tag_698', s) ;
+  kill('unsigned ichar*', p) ;
+  kill('unsigned ichar', c) ;
+  kill('struct __cerbty_unnamed_tag_698', a_742) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/padding_unspecified_value_3.c:6:0, ./de_facto_memory_model/padding_unspecified_value_3.c:19:1> ./de_facto_memory_model/padding_unspecified_value_3.c:6:4 - ./de_facto_memory_model/padding_unspecified_value_3.c:6:8 #-} save ret_707: loaded integer (a_774: loaded integer:= Specified(0)) in
+    pure(a_774)
+

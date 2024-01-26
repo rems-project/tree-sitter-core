@@ -1,0 +1,145 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_673: pointer [ail_ctype = 'char[6]'] :=
+  create_readonly(Ivalignof('char[6]'), 'char[6]', Specified(Array(Specified(conv_int('char',
+  120)), Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/compcertMMv2-1.c:2:11, ./de_facto_memory_model/compcertMMv2-1.c:6:1> #-} let strong x: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  {-# <./de_facto_memory_model/compcertMMv2-1.c:3:2, ./de_facto_memory_model/compcertMMv2-1.c:3:10> #-} let strong a_653: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/compcertMMv2-1.c:3:8, ./de_facto_memory_model/compcertMMv2-1.c:3:9> #-} pure(
+        Specified(3)
+      )
+    ) in
+  store('signed int', x, conv_loaded_int('signed int', a_653)) ;
+  {-# <./de_facto_memory_model/compcertMMv2-1.c:4:2, ./de_facto_memory_model/compcertMMv2-1.c:4:29> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-1.c:4:2, ./de_facto_memory_model/compcertMMv2-1.c:4:28> ./de_facto_memory_model/compcertMMv2-1.c:4:25 #-} let weak (a_652: pointer,
+      a_664: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/compcertMMv2-1.c:4:2, ./de_facto_memory_model/compcertMMv2-1.c:4:24> ./de_facto_memory_model/compcertMMv2-1.c:4:2 #-} let weak a_654: loaded pointer =
+            {-# §6.5.4 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-1.c:4:3, ./de_facto_memory_model/compcertMMv2-1.c:4:24> #-} let weak a_657: loaded pointer =
+              {-# §6.5.4 #-}
+              {-# <./de_facto_memory_model/compcertMMv2-1.c:4:12, ./de_facto_memory_model/compcertMMv2-1.c:4:23> ./de_facto_memory_model/compcertMMv2-1.c:4:12 #-} let weak a_659: loaded pointer =
+                {-# §6.5.3.2#3, sentence 5 #-}
+                {-# <./de_facto_memory_model/compcertMMv2-1.c:4:21, ./de_facto_memory_model/compcertMMv2-1.c:4:23> ./de_facto_memory_model/compcertMMv2-1.c:4:21 #-} let weak a_661: pointer =
+                  {-# <./de_facto_memory_model/compcertMMv2-1.c:4:22, ./de_facto_memory_model/compcertMMv2-1.c:4:23> #-} pure(
+                    x
+                  ) in
+                pure(Specified(a_661)) in
+              let Specified(a_660: pointer) = a_659 in
+              let weak a_662: boolean =
+                memop(PtrWellAligned, 'float', a_660) in
+              pure(
+                Specified(if a_662 then
+                  a_660
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              ) in
+            let Specified(a_658: pointer) = a_657 in
+            let weak a_663: boolean =
+              memop(PtrWellAligned, 'signed int', a_658) in
+            pure(
+              Specified(if a_663 then
+                a_658
+              else
+                undef(<<UB025_misaligned_pointer_conversion>>))
+            ) in
+          let Specified(a_655: pointer) = a_654 in
+          let weak a_656: boolean =
+            memop(PtrValidForDeref, 'signed int', a_655) in
+          pure(
+            if a_656 then
+              a_655
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-1.c:4:27, ./de_facto_memory_model/compcertMMv2-1.c:4:28> #-} pure(
+            Specified(4)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_652, conv_loaded_int('signed int', a_664))) in
+      pure(conv_loaded_int('signed int', a_664))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-1.c:5:2, ./de_facto_memory_model/compcertMMv2-1.c:5:21> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-1.c:5:2, ./de_facto_memory_model/compcertMMv2-1.c:5:20> #-} let strong ((a_665: loaded pointer,
+      (a_666: ctype, a_667: [ctype], a_668: boolean, a_669: boolean)),
+      a_672: loaded pointer, a_676: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_651: loaded pointer =
+            {-# <./de_facto_memory_model/compcertMMv2-1.c:5:2, ./de_facto_memory_model/compcertMMv2-1.c:5:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_651, cfunction(a_651)))
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-1.c:5:9, ./de_facto_memory_model/compcertMMv2-1.c:5:17> #-} let weak a_674: pointer =
+            {-# <./de_facto_memory_model/compcertMMv2-1.c:5:9, ./de_facto_memory_model/compcertMMv2-1.c:5:17> #-} pure(
+              a_673
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_675: pointer = memop(PtrArrayShift, a_674, 'char', 0) in
+          pure(Specified(a_675))
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-1.c:5:18, ./de_facto_memory_model/compcertMMv2-1.c:5:19> #-} let weak a_677: pointer =
+            {-# <./de_facto_memory_model/compcertMMv2-1.c:5:18, ./de_facto_memory_model/compcertMMv2-1.c:5:19> #-} pure(
+              x
+            ) in
+          load('signed int', a_677)
+        ) in
+      if not(params_length(a_667) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_668) \/ not(are_compatible ('signed int', a_666)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_671: pointer =
+            let a_678: ctype = params_nth(a_667, 0) in
+            if not(are_compatible ('const char*', a_678)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_679: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_679, a_672) in
+              pure(a_679) in
+          let strong a_670: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_676)) in
+          let strong a_680: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_665, a_671,
+            [('signed int', a_670)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_671), kill('signed int', a_670)) in
+          pure(a_680)
+    ) in
+  pure(Unit) ;
+  kill('signed int', x) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-1.c:2:0, ./de_facto_memory_model/compcertMMv2-1.c:6:1> ./de_facto_memory_model/compcertMMv2-1.c:2:4 - ./de_facto_memory_model/compcertMMv2-1.c:2:8 #-} save ret_650: loaded integer (a_681: loaded integer:= Specified(0)) in
+    pure(a_681)
+

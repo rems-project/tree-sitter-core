@@ -1,0 +1,32 @@
+proc main (): eff loaded integer :=
+  let strong _: loaded integer =
+    bound(
+      let weak (a_506: pointer, a_513: loaded integer) =
+        unseq(
+          let weak a_507: loaded pointer =
+            let weak a_510: loaded integer = pure(Specified(2748)) in
+            let Specified(a_511: integer) = a_510 in
+            let weak a_512: pointer =
+              memop(PtrFromInt, 'signed int', 'signed int', a_511) in
+            pure(Specified(a_512)) in
+          let Specified(a_508: pointer) = a_507 in
+          let weak a_509: boolean =
+            memop(PtrValidForDeref, 'signed int', a_508) in
+          pure(
+            if a_509 then
+              a_508
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          pure(Specified(123))
+        ) in
+      let weak _: unit =
+        neg(store('signed int', a_506, conv_loaded_int('signed int', a_513))) in
+      pure(conv_loaded_int('signed int', a_513))
+    ) in
+  pure(Unit) ;
+  pure(Unit) ;
+  save ret_505: loaded integer (a_514: loaded integer:= Specified(0)) in
+    pure(a_514)
+

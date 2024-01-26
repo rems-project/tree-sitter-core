@@ -1,0 +1,384 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob y: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_825: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_826: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:3:6, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:3:7> #-} pure(
+        Specified(2)
+      )
+    ) in
+  store('signed int', a_825, conv_loaded_int('signed int', a_826)) ;
+  pure(a_825)
+
+glob x: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_823: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_824: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:3:11, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:3:12> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', a_823, conv_loaded_int('signed int', a_824)) ;
+  pure(a_823)
+
+glob a_753: pointer [ail_ctype = 'char[22]'] :=
+  create_readonly(Ivalignof('char[22]'), 'char[22]', Specified(Array(Specified(conv_int('char',
+  65)), Specified(conv_int('char', 100)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 114)), Specified(conv_int('char', 101)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 101)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 58)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 113)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+glob a_792: pointer [ail_ctype = 'char[7]'] :=
+  create_readonly(Ivalignof('char[7]'), 'char[7]', Specified(Array(Specified(conv_int('char',
+  101)), Specified(conv_int('char', 113)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+glob a_812: pointer [ail_ctype = 'char[11]'] :=
+  create_readonly(Ivalignof('char[11]'), 'char[11]', Specified(Array(Specified(conv_int('char',
+  120)), Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 121)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:4:11, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:13:1> #-} let strong p: pointer =
+    create(Ivalignof('signed int*'), 'signed int*') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:18> #-} let strong a_735: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:11, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:17> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:14 #-} let weak (a_736: loaded pointer,
+      a_738: loaded integer) =
+        unseq(
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:11, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:13> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:11 #-} let weak a_741: pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:12, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:13> #-} pure(
+              x
+            ) in
+          pure(Specified(a_741))
+        ,
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:16, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:5:17> #-} pure(
+            Specified(1)
+          )
+        ) in
+      let (Specified(a_737: pointer), Specified(a_739: integer)) =
+        (a_736, a_738) in
+      let weak a_740: pointer =
+        memop(PtrArrayShift, a_737, 'signed int', a_739) in
+      pure(Specified(a_740))
+    ) in
+  store('signed int*', p, a_735) ;
+  {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:6:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:6:14> #-} let strong a_742: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:6:11, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:6:13> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:6:11 #-} let weak a_743: pointer =
+        {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:6:12, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:6:13> #-} pure(
+          y
+        ) in
+      pure(Specified(a_743))
+    ) in
+  store('signed int*', q, a_742) ;
+  {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:53> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:52> #-} let strong ((a_744: loaded pointer,
+      (a_745: ctype, a_746: [ctype], a_747: boolean, a_748: boolean)),
+      a_752: loaded pointer, a_756: loaded pointer, a_761: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_734: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_734, cfunction(a_734)))
+        ,
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:9, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:33> #-} let weak a_754: pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:9, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:33> #-} pure(
+              a_753
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_755: pointer = memop(PtrArrayShift, a_754, 'char', 0) in
+          pure(Specified(a_755))
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:34, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:42> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:34 #-} let weak a_759: pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:41, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:42> #-} pure(
+              p
+            ) in
+          load('signed int*', a_759)
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:43, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:51> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:43 #-} let weak a_764: pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:50, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:7:51> #-} pure(
+              q
+            ) in
+          load('signed int*', a_764)
+        ) in
+      if not(params_length(a_746) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_747) \/ not(are_compatible ('signed int', a_745)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_751: pointer =
+            let a_766: ctype = params_nth(a_746, 0) in
+            if not(are_compatible ('const char*', a_766)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_767: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_767, a_752) in
+              pure(a_767) in
+          let strong a_750: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_756) in
+          let strong a_749: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_761) in
+          let strong a_768: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_744, a_751,
+            [('void*', a_750), ('void*', a_749)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_751)
+            ,
+              kill('void*', a_750)
+            ,
+              kill('void*', a_749)
+            ) in
+          pure(a_768)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:11:3> #-} let strong a_769: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:6, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:10> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:7 #-} let weak (a_771: loaded integer,
+      a_772: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:6, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:10> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:7 #-} let weak (a_776: loaded pointer,
+          a_777: loaded pointer) =
+            unseq(
+              {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:6, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:7> #-} let weak a_781: pointer =
+                {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:6, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:7> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_781)
+            ,
+              {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:9, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:10> #-} let weak a_782: pointer =
+                {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:9, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:10> #-} pure(
+                  q
+                ) in
+              load('signed int*', a_782)
+            ) in
+          let (Specified(a_778: pointer), Specified(a_779: pointer)) =
+            (a_776, a_777) in
+          let weak a_780: boolean = memop(PtrEq, a_778, a_779) in
+          pure(if a_780 then Specified(1) else Specified(0))
+        ,
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:6, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:10> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:7 #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        let (Specified(a_773: integer), Specified(a_774: integer)) =
+          (a_771, a_772) in
+        if conv_int('signed int', a_773) = conv_int('signed int', a_774) then
+          Specified(1)
+        else
+          Specified(0)
+      )
+    ) in
+  let strong a_733: boolean =
+    let Specified(a_770: integer) = a_769 in
+    pure(if not(a_770 = 1) then True else False) in
+  if a_733 then
+    {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:12, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:11:3> #-} {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:4, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:22> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.2.2#10, sentence 1 #-}
+        {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:4, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:21> #-} let strong ((a_785: loaded pointer,
+        (a_786: ctype, a_787: [ctype], a_788: boolean, a_789: boolean)),
+        a_791: loaded pointer) =
+          {-# §6.5.2.2#4, sentence 2 #-}
+          unseq(
+            let strong a_784: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:4, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:10> #-} pure(
+                Specified(Cfunction(printf_proxy))
+              ) in
+            pure((a_784, cfunction(a_784)))
+          ,
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:11, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:20> #-} let weak a_793: pointer =
+              {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:11, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:9:20> #-} pure(
+                a_792
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_794: pointer =
+              memop(PtrArrayShift, a_793, 'char', 0) in
+            pure(Specified(a_794))
+          ) in
+        if not(params_length(a_787) <= 1) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if not(a_788) \/ not(are_compatible ('signed int', a_786)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_790: pointer =
+              let a_795: ctype = params_nth(a_787, 0) in
+              if not(are_compatible ('const char*', a_795)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_796: pointer =
+                  create(Ivalignof('const char*'), 'const char*') in
+                let weak _: unit = store('const char*', a_796, a_791) in
+                pure(a_796) in
+            let strong a_797: loaded integer =
+              ccall('signed int (*) (const char*restrict , ...)', a_785, a_790,
+              []: (ctype,pointer)) in
+            kill('char*', a_790) ;
+            pure(a_797)
+      ) in
+    pure(Unit) ;
+    {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:4, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:10> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.16#3, sentence 4 #-}
+        {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:4, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:9> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:6 #-} let weak (a_783: pointer,
+        a_802: loaded integer) =
+          {-# §6.5.16#3, sentence 5 #-}
+          unseq(
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:4, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:6> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:4 #-} let weak a_798: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:5, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:6> #-} let weak a_801: pointer =
+                {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:5, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:6> #-} pure(
+                  q
+                ) in
+              load('signed int*', a_801) in
+            let Specified(a_799: pointer) = a_798 in
+            let weak a_800: boolean =
+              memop(PtrValidForDeref, 'signed int', a_799) in
+            pure(
+              if a_800 then
+                a_799
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            )
+          ,
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:7, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:10:9> #-} pure(
+              Specified(22)
+            )
+          ) in
+        let weak _: unit =
+          {-# §6.5.16.1#2, store #-}
+          neg(store('signed int', a_783, conv_loaded_int('signed int', a_802))) in
+        pure(conv_loaded_int('signed int', a_802))
+      ) in
+    pure(Unit) ;
+    pure(Unit)
+  else
+    {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:8:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:11:3> #-} pure(
+      Unit
+    ) ;
+  {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:28> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:27> #-} let strong ((a_803: loaded pointer,
+      (a_804: ctype, a_805: [ctype], a_806: boolean, a_807: boolean)),
+      a_811: loaded pointer, a_815: loaded integer, a_817: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_732: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:2, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_732, cfunction(a_732)))
+        ,
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:9, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:22> #-} let weak a_813: pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:9, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:22> #-} pure(
+              a_812
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_814: pointer = memop(PtrArrayShift, a_813, 'char', 0) in
+          pure(Specified(a_814))
+        ,
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:23, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:24> #-} let weak a_816: pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:23, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:24> #-} pure(
+              x
+            ) in
+          load('signed int', a_816)
+        ,
+          {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:25, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:26> #-} let weak a_818: pointer =
+            {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:25, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:12:26> #-} pure(
+              y
+            ) in
+          load('signed int', a_818)
+        ) in
+      if not(params_length(a_805) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_806) \/ not(are_compatible ('signed int', a_804)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_810: pointer =
+            let a_819: ctype = params_nth(a_805, 0) in
+            if not(are_compatible ('const char*', a_819)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_820: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_820, a_811) in
+              pure(a_820) in
+          let strong a_809: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_815)) in
+          let strong a_808: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_817)) in
+          let strong a_821: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_803, a_810,
+            [('signed int', a_809), ('signed int', a_808)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_810)
+            ,
+              kill('signed int', a_809)
+            ,
+              kill('signed int', a_808)
+            ) in
+          pure(a_821)
+    ) in
+  pure(Unit) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_equality_global_use_q_yx.c:4:0, ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:13:1> ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:4:4 - ./de_facto_memory_model/pointer_equality_global_use_q_yx.c:4:8 #-} save ret_731: loaded integer (a_822: loaded integer:= Specified(0)) in
+    pure(a_822)
+

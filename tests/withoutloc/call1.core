@@ -1,0 +1,176 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_673: pointer [ail_ctype = 'char[10]'] :=
+  create_readonly(Ivalignof('char[10]'), 'char[10]', Specified(Array(Specified(conv_int('char',
+  86)), Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 101)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc f (a: pointer, b: pointer, c: pointer): eff loaded integer :=
+  let strong a_717: loaded integer =
+    bound(
+      let weak (a_704: loaded integer, a_705: loaded integer) =
+        unseq(
+          let weak (a_709: loaded integer, a_710: loaded integer) =
+            unseq(
+              let weak a_714: pointer = pure(a) in
+              load('signed int', a_714)
+            ,
+              let weak a_715: pointer = pure(b) in
+              load('signed int', a_715)
+            ) in
+          pure(
+            case (a_709, a_710) of
+              | (Specified(a_711: integer), Specified(a_712: integer)) =>
+                  Specified(catch_exceptional_condition_add('signed int', __conv_int__('signed int', a_711), __conv_int__('signed int', a_712)))
+              | _: (loaded integer,loaded integer) =>
+                  undef(<<UB036_exceptional_condition>>)
+            end
+          )
+        ,
+          let weak a_716: pointer = pure(c) in
+          load('signed int', a_716)
+        ) in
+      pure(
+        case (a_704, a_705) of
+          | (Specified(a_706: integer), Specified(a_707: integer)) =>
+              Specified(catch_exceptional_condition_add('signed int', __conv_int__('signed int', a_706), __conv_int__('signed int', a_707)))
+          | _: (loaded integer,loaded integer) =>
+              undef(<<UB036_exceptional_condition>>)
+        end
+      )
+    ) in
+  run ret_703(conv_loaded_int('signed int', a_717)) ;
+  pure(Unit) ;
+  save ret_703: loaded integer (a_718: loaded integer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_718)
+
+proc main (): eff loaded integer :=
+  let strong g: pointer =
+    create(Ivalignof('signed int (*) (signed int, ...)'), 'signed int (*) (signed int, ...)') in
+  let strong a_658: loaded pointer = bound(pure(Specified(Cfunction(f)))) in
+  store('signed int (*) (signed int, ...)', g, a_658) ;
+  let strong _: loaded integer =
+    bound(
+      let strong ((a_662: loaded pointer,
+      (a_663: ctype, a_664: [ctype], a_665: boolean, a_666: boolean)),
+      a_670: loaded pointer, a_672: loaded pointer, a_676: loaded integer) =
+        unseq(
+          let strong a_657: loaded pointer =
+            pure(Specified(Cfunction(fprintf))) in
+          pure((a_657, cfunction(a_657)))
+        ,
+          let weak a_671: pointer = pure(__stderr) in
+          load('struct _IO_FILE*', a_671)
+        ,
+          let weak a_674: pointer = pure(a_673) in
+          let weak a_675: pointer = memop(PtrArrayShift, a_674, 'char', 0) in
+          pure(Specified(a_675))
+        ,
+          let strong ((a_678: loaded pointer,
+          (a_679: ctype, a_680: [ctype], a_681: boolean, a_682: boolean)),
+          a_688: loaded integer, a_689: loaded integer, a_690: loaded integer) =
+            unseq(
+              let strong a_677: loaded pointer =
+                let strong a_683: loaded pointer =
+                  let weak a_684: pointer = pure(g) in
+                  load('signed int (*) (signed int, ...)', a_684) in
+                pure(a_683) in
+              pure((a_677, cfunction(a_677)))
+            ,
+              pure(Specified(1))
+            ,
+              pure(Specified(10))
+            ,
+              pure(Specified(100))
+            ) in
+          if not(params_length(a_680) <= 3) then
+            pure(undef(<<UB038_number_of_args>>))
+          else
+            if not(a_681) \/ not(are_compatible ('signed int', a_679)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let strong a_687: pointer =
+                let a_691: ctype = params_nth(a_680, 0) in
+                if not(are_compatible ('signed int', a_691)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  let weak a_692: pointer =
+                    create(Ivalignof('signed int'), 'signed int') in
+                  let weak _: unit =
+                    store('signed int', a_692,
+                    conv_loaded_int('signed int', a_688)) in
+                  pure(a_692) in
+              let strong a_686: pointer =
+                pcall(create_and_store, 'signed int',
+                conv_loaded_int('signed int', a_689)) in
+              let strong a_685: pointer =
+                pcall(create_and_store, 'signed int',
+                conv_loaded_int('signed int', a_690)) in
+              let strong a_693: loaded integer =
+                ccall('signed int (*) (signed int, ...)', a_678, a_687,
+                [('signed int', a_686), ('signed int', a_685)]) in
+              let strong _: (unit,unit,unit) =
+                unseq(
+                  kill('signed int', a_687)
+                ,
+                  kill('signed int', a_686)
+                ,
+                  kill('signed int', a_685)
+                ) in
+              pure(a_693)
+        ) in
+      if not(params_length(a_664) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_665) \/ not(are_compatible ('signed int', a_663)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_669: pointer =
+            let a_694: ctype = params_nth(a_664, 0) in
+            if not(are_compatible ('struct _IO_FILE*', a_694)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_695: pointer =
+                create(Ivalignof('struct _IO_FILE*'), 'struct _IO_FILE*') in
+              let weak _: unit = store('struct _IO_FILE*', a_695, a_670) in
+              pure(a_695) in
+          let strong a_668: pointer =
+            let a_696: ctype = params_nth(a_664, 1) in
+            if not(are_compatible ('const char*', a_696)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_697: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_697, a_672) in
+              pure(a_697) in
+          let strong a_667: pointer =
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_676)) in
+          let strong a_698: loaded integer =
+            ccall('signed int (*) (struct _IO_FILE*restrict , const char*restrict , ...)',
+            a_662, a_669, a_668, [('signed int', a_667)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('struct _IO_FILE*', a_669)
+            ,
+              kill('char*', a_668)
+            ,
+              kill('signed int', a_667)
+            ) in
+          pure(a_698)
+    ) in
+  pure(Unit) ;
+  kill('signed int (signed int, ...)*', g) ;
+  pure(Unit) ;
+  save ret_656: loaded integer (a_699: loaded integer:= Specified(0)) in
+    pure(a_699)
+

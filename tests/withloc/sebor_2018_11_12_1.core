@@ -1,0 +1,276 @@
+-- Globals
+glob offset: pointer [ail_ctype = 'uintptr_t'] :=
+  {-# <unknown location> #-} let strong a_608: pointer =
+    create(Ivalignof('uintptr_t'), 'uintptr_t') in
+  let strong a_609: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:3:17, ./de_facto_memory_model/sebor_2018_11_12_1.c:3:18> #-} pure(
+        Specified(4)
+      )
+    ) in
+  store('uintptr_t', a_608, conv_loaded_int('uintptr_t', a_609)) ;
+  pure(a_608)
+
+-- Fun map
+proc f (): eff unit :=
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:6:0, ./de_facto_memory_model/sebor_2018_11_12_1.c:25:1> #-} let strong x: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong y: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong save_y: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong ux: pointer = create(Ivalignof('uintptr_t'), 'uintptr_t') in
+  let strong uy: pointer = create(Ivalignof('uintptr_t'), 'uintptr_t') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:7:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:7:19> #-} let strong a_550: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:7:10, ./de_facto_memory_model/sebor_2018_11_12_1.c:7:11> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', x, conv_loaded_int('signed int', a_550)) ;
+  let strong a_551: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:7:17, ./de_facto_memory_model/sebor_2018_11_12_1.c:7:18> #-} pure(
+        Specified(2)
+      )
+    ) in
+  store('signed int', y, conv_loaded_int('signed int', a_551)) ;
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:9:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:9:17> #-} let strong a_552: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:9:15, ./de_facto_memory_model/sebor_2018_11_12_1.c:9:16> #-} let weak a_553: pointer =
+        {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:9:15, ./de_facto_memory_model/sebor_2018_11_12_1.c:9:16> #-} pure(
+          y
+        ) in
+      load('signed int', a_553)
+    ) in
+  store('signed int', save_y, conv_loaded_int('signed int', a_552)) ;
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:11:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:11:31> #-} let strong a_554: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:11:17, ./de_facto_memory_model/sebor_2018_11_12_1.c:11:30> ./de_facto_memory_model/sebor_2018_11_12_1.c:11:17 #-} let weak a_555: loaded pointer =
+        {-# §6.5.3.2#3, sentence 5 #-}
+        {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:11:28, ./de_facto_memory_model/sebor_2018_11_12_1.c:11:30> ./de_facto_memory_model/sebor_2018_11_12_1.c:11:28 #-} let weak a_557: pointer =
+          {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:11:29, ./de_facto_memory_model/sebor_2018_11_12_1.c:11:30> #-} pure(
+            x
+          ) in
+        pure(Specified(a_557)) in
+      let Specified(a_556: pointer) = a_555 in
+      let weak a_558: integer =
+        memop(IntFromPtr, 'signed int', 'uintptr_t', a_556) in
+      pure(Specified(a_558))
+    ) in
+  store('uintptr_t', ux, conv_loaded_int('uintptr_t', a_554)) ;
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:12:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:12:31> #-} let strong a_559: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:12:17, ./de_facto_memory_model/sebor_2018_11_12_1.c:12:30> ./de_facto_memory_model/sebor_2018_11_12_1.c:12:17 #-} let weak a_560: loaded pointer =
+        {-# §6.5.3.2#3, sentence 5 #-}
+        {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:12:28, ./de_facto_memory_model/sebor_2018_11_12_1.c:12:30> ./de_facto_memory_model/sebor_2018_11_12_1.c:12:28 #-} let weak a_562: pointer =
+          {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:12:29, ./de_facto_memory_model/sebor_2018_11_12_1.c:12:30> #-} pure(
+            y
+          ) in
+        pure(Specified(a_562)) in
+      let Specified(a_561: pointer) = a_560 in
+      let weak a_563: integer =
+        memop(IntFromPtr, 'signed int', 'uintptr_t', a_561) in
+      pure(Specified(a_563))
+    ) in
+  store('uintptr_t', uy, conv_loaded_int('uintptr_t', a_559)) ;
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:14:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:14:32> #-} let strong a_564: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:14:11, ./de_facto_memory_model/sebor_2018_11_12_1.c:14:31> ./de_facto_memory_model/sebor_2018_11_12_1.c:14:11 #-} let weak a_565: loaded integer =
+        {-# §6.5.6 #-}
+        {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:14:18, ./de_facto_memory_model/sebor_2018_11_12_1.c:14:31> #-} let weak (a_567: loaded integer,
+        a_568: loaded integer) =
+          unseq(
+            {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:14:19, ./de_facto_memory_model/sebor_2018_11_12_1.c:14:21> #-} let weak a_572: pointer =
+              {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:14:19, ./de_facto_memory_model/sebor_2018_11_12_1.c:14:21> #-} pure(
+                ux
+              ) in
+            load('uintptr_t', a_572)
+          ,
+            {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:14:24, ./de_facto_memory_model/sebor_2018_11_12_1.c:14:30> #-} let weak a_573: pointer =
+              {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:14:24, ./de_facto_memory_model/sebor_2018_11_12_1.c:14:30> #-} pure(
+                offset
+              ) in
+            load('uintptr_t', a_573)
+          ) in
+        pure(
+          let (Specified(a_569: integer), Specified(a_570: integer)) =
+            (a_567, a_568) in
+          Specified(wrapI_add('uintptr_t', __conv_int__('uintptr_t', a_569), __conv_int__('uintptr_t', a_570)))
+        ) in
+      let Specified(a_566: integer) = a_565 in
+      let weak a_574: pointer =
+        memop(PtrFromInt, 'uintptr_t', 'signed int', a_566) in
+      pure(Specified(a_574))
+    ) in
+  store('signed int*', p, a_564) ;
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:15:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:15:14> #-} let strong a_575: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:15:11, ./de_facto_memory_model/sebor_2018_11_12_1.c:15:13> ./de_facto_memory_model/sebor_2018_11_12_1.c:15:11 #-} let weak a_576: pointer =
+        {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:15:12, ./de_facto_memory_model/sebor_2018_11_12_1.c:15:13> #-} pure(
+          y
+        ) in
+      pure(Specified(a_576))
+    ) in
+  store('signed int*', q, a_575) ;
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:24:5> #-} let strong a_577: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:17:12> ./de_facto_memory_model/sebor_2018_11_12_1.c:17:8 #-} let weak (a_579: loaded integer,
+      a_580: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:17:12> ./de_facto_memory_model/sebor_2018_11_12_1.c:17:8 #-} let weak (a_584: loaded pointer,
+          a_585: loaded pointer) =
+            unseq(
+              {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:17:7> #-} let weak a_589: pointer =
+                {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:17:7> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_589)
+            ,
+              {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:11, ./de_facto_memory_model/sebor_2018_11_12_1.c:17:12> #-} let weak a_590: pointer =
+                {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:11, ./de_facto_memory_model/sebor_2018_11_12_1.c:17:12> #-} pure(
+                  q
+                ) in
+              load('signed int*', a_590)
+            ) in
+          let (Specified(a_586: pointer), Specified(a_587: pointer)) =
+            (a_584, a_585) in
+          let weak a_588: boolean = memop(PtrEq, a_586, a_587) in
+          pure(if a_588 then Specified(1) else Specified(0))
+        ,
+          {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:17:12> ./de_facto_memory_model/sebor_2018_11_12_1.c:17:8 #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        let (Specified(a_581: integer), Specified(a_582: integer)) =
+          (a_579, a_580) in
+        if conv_int('signed int', a_581) = conv_int('signed int', a_582) then
+          Specified(1)
+        else
+          Specified(0)
+      )
+    ) in
+  let strong a_549: boolean =
+    let Specified(a_578: integer) = a_577 in
+    pure(if not(a_578 = 1) then True else False) in
+  if a_549 then
+    {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:18:4, ./de_facto_memory_model/sebor_2018_11_12_1.c:24:5> #-} {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:19:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:19:14> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.16#3, sentence 4 #-}
+        {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:19:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:19:13> ./de_facto_memory_model/sebor_2018_11_12_1.c:19:9 #-} let weak (a_592: pointer,
+        a_597: loaded integer) =
+          {-# §6.5.16#3, sentence 5 #-}
+          unseq(
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:19:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:19:8> ./de_facto_memory_model/sebor_2018_11_12_1.c:19:6 #-} let weak a_593: loaded pointer =
+              {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:19:7, ./de_facto_memory_model/sebor_2018_11_12_1.c:19:8> #-} let weak a_596: pointer =
+                {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:19:7, ./de_facto_memory_model/sebor_2018_11_12_1.c:19:8> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_596) in
+            let Specified(a_594: pointer) = a_593 in
+            let weak a_595: boolean =
+              memop(PtrValidForDeref, 'signed int', a_594) in
+            pure(
+              if a_595 then
+                a_594
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            )
+          ,
+            {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:19:11, ./de_facto_memory_model/sebor_2018_11_12_1.c:19:13> #-} pure(
+              Specified(11)
+            )
+          ) in
+        let weak _: unit =
+          {-# §6.5.16.1#2, store #-}
+          neg(store('signed int', a_592, conv_loaded_int('signed int', a_597))) in
+        pure(conv_loaded_int('signed int', a_597))
+      ) in
+    pure(Unit) ;
+    {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:23:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:23:27> #-} {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:23:6, ./de_facto_memory_model/sebor_2018_11_12_1.c:23:26> #-} let strong a_591: loaded integer =
+        {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:23:14, ./de_facto_memory_model/sebor_2018_11_12_1.c:23:25> ./de_facto_memory_model/sebor_2018_11_12_1.c:23:16 #-} let weak (a_600: loaded integer,
+        a_601: loaded integer) =
+          unseq(
+            {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:23:14, ./de_facto_memory_model/sebor_2018_11_12_1.c:23:15> #-} let weak a_605: pointer =
+              {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:23:14, ./de_facto_memory_model/sebor_2018_11_12_1.c:23:15> #-} pure(
+                y
+              ) in
+            load('signed int', a_605)
+          ,
+            {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:23:19, ./de_facto_memory_model/sebor_2018_11_12_1.c:23:25> #-} let weak a_606: pointer =
+              {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:23:19, ./de_facto_memory_model/sebor_2018_11_12_1.c:23:25> #-} pure(
+                save_y
+              ) in
+            load('signed int', a_606)
+          ) in
+        pure(
+          let (Specified(a_602: integer), Specified(a_603: integer)) =
+            (a_600, a_601) in
+          if conv_int('signed int', a_602) = conv_int('signed int', a_603) then
+            Specified(1)
+          else
+            Specified(0)
+        ) in
+      pure(
+        let Specified(a_598: integer) = a_591 in
+        if a_598 = 0 then error("assert() failure", Unit) else Unit
+      )
+    ) ;
+    pure(Unit) ;
+    pure(Unit)
+  else
+    {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:17:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:24:5> #-} pure(
+      Unit
+    ) ;
+  kill('signed int', x) ;
+  kill('signed int', y) ;
+  kill('signed int', save_y) ;
+  kill('uintptr_t', ux) ;
+  kill('uintptr_t', uy) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:5:0, ./de_facto_memory_model/sebor_2018_11_12_1.c:25:1> ./de_facto_memory_model/sebor_2018_11_12_1.c:5:5 - ./de_facto_memory_model/sebor_2018_11_12_1.c:5:6 #-} save ret_548: unit (a_607: unit:= Unit) in
+    pure(a_607)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:28:0, ./de_facto_memory_model/sebor_2018_11_12_1.c:30:1> #-} {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:29:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:29:6> #-} {-# §6.5#2 #-}
+  bound(
+    {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:29:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:29:5> #-} let strong a_544: loaded pointer =
+      {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:29:2, ./de_facto_memory_model/sebor_2018_11_12_1.c:29:3> #-} pure(
+        Specified(Cfunction(f))
+      ) in
+    let (a_545: ctype, a_546: [ctype], _: boolean, _: boolean) =
+      cfunction(a_544) in
+    if params_length(a_546) = 0 then
+      if are_compatible ('void', a_545) then
+        ccall('void (*) (void)', a_544)
+      else
+        pure(undef(<<UB041_function_not_compatible>>))
+    else
+      pure(undef(<<UB038_number_of_args>>))
+  ) ;
+  pure(Unit) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/sebor_2018_11_12_1.c:27:0, ./de_facto_memory_model/sebor_2018_11_12_1.c:30:1> ./de_facto_memory_model/sebor_2018_11_12_1.c:27:4 - ./de_facto_memory_model/sebor_2018_11_12_1.c:27:8 #-} save ret_543: loaded integer (a_547: loaded integer:= Specified(0)) in
+    pure(a_547)
+

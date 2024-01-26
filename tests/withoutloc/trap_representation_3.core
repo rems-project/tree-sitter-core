@@ -1,0 +1,33 @@
+proc f (): eff loaded integer :=
+  let strong i: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  store('signed int', i, Unspecified('signed int')) ;
+  store('signed int', j, Unspecified('signed int')) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_508: pointer, a_510: loaded integer) =
+        unseq(
+          pure(j)
+        ,
+          let weak a_509: pointer = pure(i) in
+          load('signed int', a_509)
+        ) in
+      let weak _: unit =
+        neg(store('signed int', a_508, conv_loaded_int('signed int', a_510))) in
+      pure(conv_loaded_int('signed int', a_510))
+    ) in
+  pure(Unit) ;
+  let strong a_512: loaded integer =
+    bound(
+      let weak a_511: pointer = pure(j) in
+      load('signed int', a_511)
+    ) in
+  kill('signed int', i) ;
+  kill('signed int', j) ;
+  run ret_507(conv_loaded_int('signed int', a_512)) ;
+  kill('signed int', i) ;
+  kill('signed int', j) ;
+  pure(Unit) ;
+  save ret_507: loaded integer (a_513: loaded integer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_513)
+

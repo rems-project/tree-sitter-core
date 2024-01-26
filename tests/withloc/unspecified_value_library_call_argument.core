@@ -1,0 +1,101 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_663: pointer [ail_ctype = 'char[11]'] :=
+  create_readonly(Ivalignof('char[11]'), 'char[11]', Specified(Array(Specified(conv_int('char',
+  99)), Specified(conv_int('char', 104)), Specified(conv_int('char', 97)),
+  Specified(conv_int('char', 114)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 48)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:3:0, ./de_facto_memory_model/unspecified_value_library_call_argument.c:8:1> #-} let strong c: pointer =
+    create(Ivalignof('unsigned char'), 'unsigned char') in
+  let strong p: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:4:2, ./de_facto_memory_model/unspecified_value_library_call_argument.c:4:18> #-} store('unsigned char',
+  c, Unspecified('unsigned ichar')) ;
+  {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:5:2, ./de_facto_memory_model/unspecified_value_library_call_argument.c:5:24> #-} let strong a_653: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:5:21, ./de_facto_memory_model/unspecified_value_library_call_argument.c:5:23> ./de_facto_memory_model/unspecified_value_library_call_argument.c:5:21 #-} let weak a_654: pointer =
+        {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:5:22, ./de_facto_memory_model/unspecified_value_library_call_argument.c:5:23> #-} pure(
+          c
+        ) in
+      pure(Specified(a_654))
+    ) in
+  store('unsigned char*', p, a_653) ;
+  {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:6:2, ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:40> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:6:2, ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:39> #-} let strong ((a_655: loaded pointer,
+      (a_656: ctype, a_657: [ctype], a_658: boolean, a_659: boolean)),
+      a_662: loaded pointer, a_666: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_652: loaded pointer =
+            {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:6:2, ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_652, cfunction(a_652)))
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:6:9, ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:22> #-} let weak a_664: pointer =
+            {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:6:9, ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:22> #-} pure(
+              a_663
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_665: pointer = memop(PtrArrayShift, a_664, 'char', 0) in
+          pure(Specified(a_665))
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:6:23, ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:38> ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:23 #-} let weak a_667: loaded integer =
+            {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:6:37, ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:38> #-} let weak a_669: pointer =
+              {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:6:37, ./de_facto_memory_model/unspecified_value_library_call_argument.c:6:38> #-} pure(
+                c
+              ) in
+            load('unsigned char', a_669) in
+          pure(conv_loaded_int('unsigned int', a_667))
+        ) in
+      if not(params_length(a_657) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_658) \/ not(are_compatible ('signed int', a_656)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_661: pointer =
+            let a_671: ctype = params_nth(a_657, 0) in
+            if not(are_compatible ('const char*', a_671)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_672: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_672, a_662) in
+              pure(a_672) in
+          let strong a_660: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned int',
+            conv_loaded_int('unsigned int', a_666)) in
+          let strong a_673: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_655, a_661,
+            [('unsigned int', a_660)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_661), kill('unsigned int', a_660)) in
+          pure(a_673)
+    ) in
+  pure(Unit) ;
+  kill('unsigned ichar', c) ;
+  kill('unsigned ichar*', p) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/unspecified_value_library_call_argument.c:2:0, ./de_facto_memory_model/unspecified_value_library_call_argument.c:8:1> ./de_facto_memory_model/unspecified_value_library_call_argument.c:2:4 - ./de_facto_memory_model/unspecified_value_library_call_argument.c:2:8 #-} save ret_651: loaded integer (a_674: loaded integer:= Specified(0)) in
+    pure(a_674)
+

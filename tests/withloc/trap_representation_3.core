@@ -1,0 +1,50 @@
+proc f (): eff loaded integer :=
+  {-# <./de_facto_memory_model/trap_representation_3.c:1:8, ./de_facto_memory_model/trap_representation_3.c:6:1> #-} let strong i: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  {-# <./de_facto_memory_model/trap_representation_3.c:2:2, ./de_facto_memory_model/trap_representation_3.c:2:10> #-} {-# §6.2.4#6 #-}
+  store('signed int', i, Unspecified('signed int')) ;
+  {-# §6.2.4#6 #-}
+  store('signed int', j, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/trap_representation_3.c:3:2, ./de_facto_memory_model/trap_representation_3.c:3:6> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/trap_representation_3.c:3:2, ./de_facto_memory_model/trap_representation_3.c:3:5> ./de_facto_memory_model/trap_representation_3.c:3:3 #-} let weak (a_508: pointer,
+      a_510: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/trap_representation_3.c:3:2, ./de_facto_memory_model/trap_representation_3.c:3:3> #-} pure(
+            j
+          )
+        ,
+          {-# <./de_facto_memory_model/trap_representation_3.c:3:4, ./de_facto_memory_model/trap_representation_3.c:3:5> #-} let weak a_509: pointer =
+            {-# <./de_facto_memory_model/trap_representation_3.c:3:4, ./de_facto_memory_model/trap_representation_3.c:3:5> #-} pure(
+              i
+            ) in
+          load('signed int', a_509)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_508, conv_loaded_int('signed int', a_510))) in
+      pure(conv_loaded_int('signed int', a_510))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/trap_representation_3.c:5:2, ./de_facto_memory_model/trap_representation_3.c:5:11> #-} let strong a_512: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/trap_representation_3.c:5:9, ./de_facto_memory_model/trap_representation_3.c:5:10> #-} let weak a_511: pointer =
+        {-# <./de_facto_memory_model/trap_representation_3.c:5:9, ./de_facto_memory_model/trap_representation_3.c:5:10> #-} pure(
+          j
+        ) in
+      load('signed int', a_511)
+    ) in
+  kill('signed int', i) ;
+  kill('signed int', j) ;
+  run ret_507(conv_loaded_int('signed int', a_512)) ;
+  kill('signed int', i) ;
+  kill('signed int', j) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/trap_representation_3.c:1:0, ./de_facto_memory_model/trap_representation_3.c:6:1> ./de_facto_memory_model/trap_representation_3.c:1:4 - ./de_facto_memory_model/trap_representation_3.c:1:5 #-} save ret_507: loaded integer (a_513: loaded integer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_513)
+

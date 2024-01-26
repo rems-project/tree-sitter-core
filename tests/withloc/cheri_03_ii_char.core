@@ -1,0 +1,274 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_690: pointer [ail_ctype = 'char[26]'] :=
+  create_readonly(Ivalignof('char[26]'), 'char[26]', Specified(Array(Specified(conv_int('char',
+  120)), Specified(conv_int('char', 61)), Specified(conv_int('char', 48)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 42)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 48)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 113)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 48)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/cheri_03_ii_char.c:2:11, ./de_facto_memory_model/cheri_03_ii_char.c:10:1> #-} let strong x: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong q: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/cheri_03_ii_char.c:3:2, ./de_facto_memory_model/cheri_03_ii_char.c:3:8> #-} store('signed int',
+  x, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/cheri_03_ii_char.c:4:2, ./de_facto_memory_model/cheri_03_ii_char.c:4:40> #-} let strong a_656: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/cheri_03_ii_char.c:4:21, ./de_facto_memory_model/cheri_03_ii_char.c:4:39> ./de_facto_memory_model/cheri_03_ii_char.c:4:21 #-} let weak a_657: loaded pointer =
+        {-# §6.5.3.2#3, sentence 5 #-}
+        {-# <./de_facto_memory_model/cheri_03_ii_char.c:4:37, ./de_facto_memory_model/cheri_03_ii_char.c:4:39> ./de_facto_memory_model/cheri_03_ii_char.c:4:37 #-} let weak a_659: pointer =
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:4:38, ./de_facto_memory_model/cheri_03_ii_char.c:4:39> #-} pure(
+            x
+          ) in
+        pure(Specified(a_659)) in
+      let Specified(a_658: pointer) = a_657 in
+      let weak a_660: boolean =
+        memop(PtrWellAligned, 'unsigned char', a_658) in
+      pure(
+        Specified(if a_660 then
+          a_658
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('unsigned char*', p, a_656) ;
+  {-# <./de_facto_memory_model/cheri_03_ii_char.c:6:2, ./de_facto_memory_model/cheri_03_ii_char.c:6:28> #-} let strong a_661: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/cheri_03_ii_char.c:6:21, ./de_facto_memory_model/cheri_03_ii_char.c:6:27> ./de_facto_memory_model/cheri_03_ii_char.c:6:23 #-} let weak (a_662: loaded pointer,
+      a_664: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:6:21, ./de_facto_memory_model/cheri_03_ii_char.c:6:22> #-} let weak a_667: pointer =
+            {-# <./de_facto_memory_model/cheri_03_ii_char.c:6:21, ./de_facto_memory_model/cheri_03_ii_char.c:6:22> #-} pure(
+              p
+            ) in
+          load('unsigned char*', a_667)
+        ,
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:6:25, ./de_facto_memory_model/cheri_03_ii_char.c:6:27> #-} pure(
+            Specified(11)
+          )
+        ) in
+      let (Specified(a_663: pointer), Specified(a_665: integer)) =
+        (a_662, a_664) in
+      let weak a_666: pointer =
+        memop(PtrArrayShift, a_663, 'unsigned char', a_665) in
+      pure(Specified(a_666))
+    ) in
+  store('unsigned char*', q, a_661) ;
+  {-# <./de_facto_memory_model/cheri_03_ii_char.c:7:2, ./de_facto_memory_model/cheri_03_ii_char.c:7:13> #-} let strong _: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/cheri_03_ii_char.c:7:2, ./de_facto_memory_model/cheri_03_ii_char.c:7:12> ./de_facto_memory_model/cheri_03_ii_char.c:7:4 #-} let weak (a_655: pointer,
+      a_674: loaded pointer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:7:2, ./de_facto_memory_model/cheri_03_ii_char.c:7:3> #-} pure(
+            q
+          )
+        ,
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:7:6, ./de_facto_memory_model/cheri_03_ii_char.c:7:12> ./de_facto_memory_model/cheri_03_ii_char.c:7:8 #-} let weak (a_669: loaded pointer,
+          a_670: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/cheri_03_ii_char.c:7:6, ./de_facto_memory_model/cheri_03_ii_char.c:7:7> #-} let weak a_668: pointer =
+                {-# <./de_facto_memory_model/cheri_03_ii_char.c:7:6, ./de_facto_memory_model/cheri_03_ii_char.c:7:7> #-} pure(
+                  q
+                ) in
+              load('unsigned char*', a_668)
+            ,
+              {-# <./de_facto_memory_model/cheri_03_ii_char.c:7:10, ./de_facto_memory_model/cheri_03_ii_char.c:7:12> #-} pure(
+                Specified(10)
+              )
+            ) in
+          let (Specified(a_671: pointer), Specified(a_672: integer)) =
+            (a_669, a_670) in
+          let weak a_673: pointer =
+            memop(PtrArrayShift, a_671, 'unsigned char', 0 - a_672) in
+          pure(Specified(a_673))
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned char*', a_655, a_674)) in
+      pure(a_674)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/cheri_03_ii_char.c:8:2, ./de_facto_memory_model/cheri_03_ii_char.c:8:9> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/cheri_03_ii_char.c:8:2, ./de_facto_memory_model/cheri_03_ii_char.c:8:8> ./de_facto_memory_model/cheri_03_ii_char.c:8:5 #-} let weak (a_654: pointer,
+      a_679: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:8:2, ./de_facto_memory_model/cheri_03_ii_char.c:8:4> ./de_facto_memory_model/cheri_03_ii_char.c:8:2 #-} let weak a_675: loaded pointer =
+            {-# <./de_facto_memory_model/cheri_03_ii_char.c:8:3, ./de_facto_memory_model/cheri_03_ii_char.c:8:4> #-} let weak a_678: pointer =
+              {-# <./de_facto_memory_model/cheri_03_ii_char.c:8:3, ./de_facto_memory_model/cheri_03_ii_char.c:8:4> #-} pure(
+                q
+              ) in
+            load('unsigned char*', a_678) in
+          let Specified(a_676: pointer) = a_675 in
+          let weak a_677: boolean =
+            memop(PtrValidForDeref, 'unsigned char', a_676) in
+          pure(
+            if a_677 then
+              a_676
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:8:7, ./de_facto_memory_model/cheri_03_ii_char.c:8:8> #-} pure(
+            Specified(1)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned char', a_654,
+        conv_loaded_int('unsigned char', a_679))) in
+      pure(conv_loaded_int('unsigned char', a_679))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:2, ./de_facto_memory_model/cheri_03_ii_char.c:9:47> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:2, ./de_facto_memory_model/cheri_03_ii_char.c:9:46> #-} let strong ((a_680: loaded pointer,
+      (a_681: ctype, a_682: [ctype], a_683: boolean, a_684: boolean)),
+      a_689: loaded pointer, a_693: loaded integer, a_695: loaded integer,
+      a_701: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_653: loaded pointer =
+            {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:2, ./de_facto_memory_model/cheri_03_ii_char.c:9:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_653, cfunction(a_653)))
+        ,
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:9, ./de_facto_memory_model/cheri_03_ii_char.c:9:37> #-} let weak a_691: pointer =
+            {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:9, ./de_facto_memory_model/cheri_03_ii_char.c:9:37> #-} pure(
+              a_690
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_692: pointer = memop(PtrArrayShift, a_691, 'char', 0) in
+          pure(Specified(a_692))
+        ,
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:38, ./de_facto_memory_model/cheri_03_ii_char.c:9:39> #-} let weak a_694: pointer =
+            {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:38, ./de_facto_memory_model/cheri_03_ii_char.c:9:39> #-} pure(
+              x
+            ) in
+          load('signed int', a_694)
+        ,
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:40, ./de_facto_memory_model/cheri_03_ii_char.c:9:42> ./de_facto_memory_model/cheri_03_ii_char.c:9:40 #-} let weak a_700: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:40, ./de_facto_memory_model/cheri_03_ii_char.c:9:42> ./de_facto_memory_model/cheri_03_ii_char.c:9:40 #-} let weak a_696: loaded pointer =
+              {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:41, ./de_facto_memory_model/cheri_03_ii_char.c:9:42> #-} let weak a_699: pointer =
+                {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:41, ./de_facto_memory_model/cheri_03_ii_char.c:9:42> #-} pure(
+                  p
+                ) in
+              load('unsigned char*', a_699) in
+            let Specified(a_697: pointer) = a_696 in
+            let weak a_698: boolean =
+              memop(PtrValidForDeref, 'unsigned char', a_697) in
+            pure(
+              if a_698 then
+                a_697
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned char', a_700)
+        ,
+          {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:43, ./de_facto_memory_model/cheri_03_ii_char.c:9:45> ./de_facto_memory_model/cheri_03_ii_char.c:9:43 #-} let weak a_706: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:43, ./de_facto_memory_model/cheri_03_ii_char.c:9:45> ./de_facto_memory_model/cheri_03_ii_char.c:9:43 #-} let weak a_702: loaded pointer =
+              {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:44, ./de_facto_memory_model/cheri_03_ii_char.c:9:45> #-} let weak a_705: pointer =
+                {-# <./de_facto_memory_model/cheri_03_ii_char.c:9:44, ./de_facto_memory_model/cheri_03_ii_char.c:9:45> #-} pure(
+                  q
+                ) in
+              load('unsigned char*', a_705) in
+            let Specified(a_703: pointer) = a_702 in
+            let weak a_704: boolean =
+              memop(PtrValidForDeref, 'unsigned char', a_703) in
+            pure(
+              if a_704 then
+                a_703
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned char', a_706)
+        ) in
+      if not(params_length(a_682) <= 4) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_683) \/ not(are_compatible ('signed int', a_681)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_688: pointer =
+            let a_707: ctype = params_nth(a_682, 0) in
+            if not(are_compatible ('const char*', a_707)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_708: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_708, a_689) in
+              pure(a_708) in
+          let strong a_687: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_693)) in
+          let strong a_686: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_695)) in
+          let strong a_685: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_701)) in
+          let strong a_709: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_680, a_688,
+            [('signed int', a_687), ('signed int', a_686),
+            ('signed int', a_685)]) in
+          let strong _: (unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_688)
+            ,
+              kill('signed int', a_687)
+            ,
+              kill('signed int', a_686)
+            ,
+              kill('signed int', a_685)
+            ) in
+          pure(a_709)
+    ) in
+  pure(Unit) ;
+  kill('signed int', x) ;
+  kill('unsigned ichar*', p) ;
+  kill('unsigned ichar*', q) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/cheri_03_ii_char.c:2:0, ./de_facto_memory_model/cheri_03_ii_char.c:10:1> ./de_facto_memory_model/cheri_03_ii_char.c:2:4 - ./de_facto_memory_model/cheri_03_ii_char.c:2:8 #-} save ret_652: loaded integer (a_710: loaded integer:= Specified(0)) in
+    pure(a_710)
+

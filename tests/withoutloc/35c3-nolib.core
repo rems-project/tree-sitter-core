@@ -1,0 +1,76 @@
+-- Globals
+glob x: pointer [ail_ctype = 'signed int'] :=
+  let strong a_531: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong a_532: loaded integer = bound(pure(Specified(1))) in
+  store('signed int', a_531, conv_loaded_int('signed int', a_532)) ;
+  pure(a_531)
+
+glob secret_key: pointer [ail_ctype = 'signed int'] :=
+  let strong a_529: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong a_530: loaded integer = bound(pure(Specified(83))) in
+  store('signed int', a_529, conv_loaded_int('signed int', a_530)) ;
+  pure(a_529)
+
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong a_511: loaded pointer =
+    bound(
+      let weak a_512: pointer = pure(x) in
+      pure(Specified(a_512))
+    ) in
+  store('signed int*', p, a_511) ;
+  let strong _: loaded pointer =
+    bound(
+      let weak (a_510: pointer, a_519: loaded pointer) =
+        unseq(
+          pure(p)
+        ,
+          let weak (a_513: loaded pointer, a_515: loaded integer) =
+            unseq(
+              let weak a_518: pointer = pure(p) in
+              load('signed int*', a_518)
+            ,
+              pure(Specified(1))
+            ) in
+          let (Specified(a_514: pointer), Specified(a_516: integer)) =
+            (a_513, a_515) in
+          let weak a_517: pointer =
+            memop(PtrArrayShift, a_514, 'signed int', a_516) in
+          pure(Specified(a_517))
+        ) in
+      let weak _: unit = neg(store('signed int*', a_510, a_519)) in
+      pure(a_519)
+    ) in
+  pure(Unit) ;
+  let strong leak: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong a_520: loaded integer =
+    bound(
+      let weak a_525: pointer =
+        let weak a_521: loaded pointer =
+          let weak a_524: pointer = pure(p) in
+          load('signed int*', a_524) in
+        let Specified(a_522: pointer) = a_521 in
+        let weak a_523: boolean =
+          memop(PtrValidForDeref, 'signed int', a_522) in
+        pure(
+          if a_523 then a_522 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('signed int', a_525)
+    ) in
+  store('signed int', leak, conv_loaded_int('signed int', a_520)) ;
+  let strong a_527: loaded integer =
+    bound(
+      let weak a_526: pointer = pure(leak) in
+      load('signed int', a_526)
+    ) in
+  kill('signed int', leak) ;
+  kill('signed int*', p) ;
+  run ret_509(conv_loaded_int('signed int', a_527)) ;
+  kill('signed int', leak) ;
+  pure(Unit) ;
+  kill('signed int*', p) ;
+  pure(Unit) ;
+  save ret_509: loaded integer (a_528: loaded integer:= Specified(0)) in
+    pure(a_528)
+

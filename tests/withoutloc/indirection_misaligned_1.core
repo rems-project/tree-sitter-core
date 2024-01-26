@@ -1,0 +1,51 @@
+proc main (): eff loaded integer :=
+  let strong x: pointer = create(Ivalignof('char[8]'), 'char[8]') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  store('char[8]', x, Unspecified('char[8]')) ;
+  let strong a_539: loaded pointer =
+    bound(
+      let weak a_540: loaded integer =
+        let weak (a_542: loaded integer, a_543: loaded integer) =
+          unseq(
+            let weak a_547: loaded pointer =
+              let weak a_549: pointer = pure(x) in
+              pure(Specified(a_549)) in
+            let Specified(a_548: pointer) = a_547 in
+            let weak a_550: integer =
+              memop(IntFromPtr, 'char[8]', 'uintptr_t', a_548) in
+            pure(Specified(a_550))
+          ,
+            pure(Specified(1))
+          ) in
+        pure(
+          let (Specified(a_544: integer), Specified(a_545: integer)) =
+            (a_542, a_543) in
+          Specified(wrapI_add('uintptr_t', __conv_int__('uintptr_t', a_544), __conv_int__('uintptr_t', a_545)))
+        ) in
+      let Specified(a_541: integer) = a_540 in
+      let weak a_551: pointer =
+        memop(PtrFromInt, 'uintptr_t', 'signed int', a_541) in
+      pure(Specified(a_551))
+    ) in
+  store('signed int*', p, a_539) ;
+  let strong _: loaded integer =
+    bound(
+      let weak a_555: pointer =
+        let weak a_538: loaded pointer =
+          let weak a_554: pointer = pure(p) in
+          load('signed int*', a_554) in
+        let Specified(a_552: pointer) = a_538 in
+        let weak a_553: boolean =
+          memop(PtrValidForDeref, 'signed int', a_552) in
+        pure(
+          if a_553 then a_552 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('signed int', a_555)
+    ) in
+  pure(Unit) ;
+  kill('char[8]', x) ;
+  kill('signed int*', p) ;
+  pure(Unit) ;
+  save ret_537: loaded integer (a_556: loaded integer:= Specified(0)) in
+    pure(a_556)
+

@@ -1,0 +1,117 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def union __cerbty_unnamed_tag_646 :=
+  i: 'signed int'
+  f: 'float'
+
+-- Globals
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong u: pointer =
+    create(Ivalignof('union __cerbty_unnamed_tag_646'), 'union __cerbty_unnamed_tag_646') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong k: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong g: pointer = create(Ivalignof('float'), 'float') in
+  store('union __cerbty_unnamed_tag_646', u,
+  Unspecified('union __cerbty_unnamed_tag_646')) ;
+  store('signed int', j, Unspecified('signed int')) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_658: pointer, a_661: loaded integer) =
+        unseq(
+          let strong a_659: pointer = pure(u) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_646, i], a_659)
+        ,
+          let weak a_660: pointer = pure(j) in
+          load('signed int', a_660)
+        ) in
+      let weak _: unit =
+        neg(store('signed int', a_658, conv_loaded_int('signed int', a_661))) in
+      pure(conv_loaded_int('signed int', a_661))
+    ) in
+  pure(Unit) ;
+  store('signed int', k, Unspecified('signed int')) ;
+  store('float', g, Unspecified('float')) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_657: pointer, a_670: loaded integer) =
+        unseq(
+          pure(k)
+        ,
+          let weak a_669: pointer =
+            let weak a_662: loaded pointer =
+              let weak a_665: loaded pointer =
+                let weak a_667: pointer = pure(u) in
+                pure(Specified(a_667)) in
+              let Specified(a_666: pointer) = a_665 in
+              let weak a_668: boolean =
+                memop(PtrWellAligned, 'signed int', a_666) in
+              pure(
+                Specified(if a_668 then
+                  a_666
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              ) in
+            let Specified(a_663: pointer) = a_662 in
+            let weak a_664: boolean =
+              memop(PtrValidForDeref, 'signed int', a_663) in
+            pure(
+              if a_664 then
+                a_663
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_669)
+        ) in
+      let weak _: unit =
+        neg(store('signed int', a_657, conv_loaded_int('signed int', a_670))) in
+      pure(conv_loaded_int('signed int', a_670))
+    ) in
+  pure(Unit) ;
+  let strong _: loaded floating =
+    bound(
+      let weak (a_656: pointer, a_679: loaded floating) =
+        unseq(
+          pure(g)
+        ,
+          let weak a_678: pointer =
+            let weak a_671: loaded pointer =
+              let weak a_674: loaded pointer =
+                let weak a_676: pointer = pure(u) in
+                pure(Specified(a_676)) in
+              let Specified(a_675: pointer) = a_674 in
+              let weak a_677: boolean =
+                memop(PtrWellAligned, 'float', a_675) in
+              pure(
+                Specified(if a_677 then
+                  a_675
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              ) in
+            let Specified(a_672: pointer) = a_671 in
+            let weak a_673: boolean =
+              memop(PtrValidForDeref, 'float', a_672) in
+            pure(
+              if a_673 then
+                a_672
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('float', a_678)
+        ) in
+      let weak _: unit = neg(store('float', a_656, a_679)) in
+      pure(a_679)
+    ) in
+  pure(Unit) ;
+  kill('union __cerbty_unnamed_tag_646', u) ;
+  kill('signed int', j) ;
+  kill('signed int', k) ;
+  kill('float', g) ;
+  pure(Unit) ;
+  save ret_655: loaded integer (a_680: loaded integer:= Specified(0)) in
+    pure(a_680)
+

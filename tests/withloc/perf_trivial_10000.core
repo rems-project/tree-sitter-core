@@ -1,0 +1,186 @@
+-- Globals
+glob x: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_545: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_546: loaded integer =
+    {-# §6.5#2 #-}
+    bound({-# <unknown location> #-} pure(Specified(0))) in
+  store('signed int', a_545, conv_loaded_int('signed int', a_546)) ;
+  pure(a_545)
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./perf/perf_trivial_10000.c:2:11, ./perf/perf_trivial_10000.c:7:1> #-} let strong i: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  {-# <./perf/perf_trivial_10000.c:3:2, ./perf/perf_trivial_10000.c:3:6> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./perf/perf_trivial_10000.c:3:2, ./perf/perf_trivial_10000.c:3:5> ./perf/perf_trivial_10000.c:3:3 #-} let weak (a_516: pointer,
+      a_517: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./perf/perf_trivial_10000.c:3:2, ./perf/perf_trivial_10000.c:3:3> #-} pure(
+            x
+          )
+        ,
+          {-# <./perf/perf_trivial_10000.c:3:4, ./perf/perf_trivial_10000.c:3:5> #-} pure(
+            Specified(0)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_516, conv_loaded_int('signed int', a_517))) in
+      pure(conv_loaded_int('signed int', a_517))
+    ) in
+  pure(Unit) ;
+  {-# §6.2.4#6 #-}
+  {-# <./perf/perf_trivial_10000.c:4:2, ./perf/perf_trivial_10000.c:4:8> #-} store('signed int',
+  i, Unspecified('signed int')) ;
+  {-# <./perf/perf_trivial_10000.c:5:7, ./perf/perf_trivial_10000.c:5:10> ./perf/perf_trivial_10000.c:5:8 #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./perf/perf_trivial_10000.c:5:7, ./perf/perf_trivial_10000.c:5:10> ./perf/perf_trivial_10000.c:5:8 #-} let weak (a_515: pointer,
+      a_518: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./perf/perf_trivial_10000.c:5:7, ./perf/perf_trivial_10000.c:5:8> #-} pure(
+            i
+          )
+        ,
+          {-# <./perf/perf_trivial_10000.c:5:9, ./perf/perf_trivial_10000.c:5:10> #-} pure(
+            Specified(0)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_515, conv_loaded_int('signed int', a_518))) in
+      pure(conv_loaded_int('signed int', a_518))
+    ) in
+  pure(Unit) ;
+  {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} save while_513: unit (i: pointer:= i) in
+    let strong a_519: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# <./perf/perf_trivial_10000.c:5:12, ./perf/perf_trivial_10000.c:5:19> ./perf/perf_trivial_10000.c:5:13 #-} let weak (a_521: loaded integer,
+        a_522: loaded integer) =
+          unseq(
+            {-# §6.5.8 #-}
+            {-# <./perf/perf_trivial_10000.c:5:12, ./perf/perf_trivial_10000.c:5:19> ./perf/perf_trivial_10000.c:5:13 #-} let weak (a_527: loaded integer,
+            a_528: loaded integer) =
+              unseq(
+                {-# <./perf/perf_trivial_10000.c:5:12, ./perf/perf_trivial_10000.c:5:13> #-} let weak a_526: pointer =
+                  {-# <./perf/perf_trivial_10000.c:5:12, ./perf/perf_trivial_10000.c:5:13> #-} pure(
+                    i
+                  ) in
+                load('signed int', a_526)
+              ,
+                {-# <./perf/perf_trivial_10000.c:5:14, ./perf/perf_trivial_10000.c:5:19> #-} pure(
+                  Specified(10000)
+                )
+              ) in
+            let (Specified(a_529: integer), Specified(a_530: integer)) =
+              (a_527, a_528) in
+            {-# §6.5.8#6 #-}
+            pure(
+              if conv_int('signed int', a_529) < conv_int('signed int', a_530) then
+                Specified(1)
+              else
+                Specified(0)
+            )
+          ,
+            {-# <./perf/perf_trivial_10000.c:5:12, ./perf/perf_trivial_10000.c:5:19> ./perf/perf_trivial_10000.c:5:13 #-} pure(
+              Specified(0)
+            )
+          ) in
+        pure(
+          let (Specified(a_523: integer), Specified(a_524: integer)) =
+            (a_521, a_522) in
+          if conv_int('signed int', a_523) = conv_int('signed int', a_524) then
+            Specified(1)
+          else
+            Specified(0)
+        )
+      ) in
+    let strong a_514: boolean =
+      let Specified(a_520: integer) = a_519 in
+      pure(if not(a_520 = 1) then True else False) in
+    if a_514 then
+      {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} {-# <./perf/perf_trivial_10000.c:6:4, ./perf/perf_trivial_10000.c:6:14> #-} let strong _: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./perf/perf_trivial_10000.c:6:4, ./perf/perf_trivial_10000.c:6:13> ./perf/perf_trivial_10000.c:6:6 #-} let weak (a_532: pointer,
+          a_540: loaded integer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# <./perf/perf_trivial_10000.c:6:4, ./perf/perf_trivial_10000.c:6:5> #-} pure(
+                x
+              )
+            ,
+              {-# §6.5.6 #-}
+              {-# <./perf/perf_trivial_10000.c:6:8, ./perf/perf_trivial_10000.c:6:13> ./perf/perf_trivial_10000.c:6:10 #-} let weak (a_533: loaded integer,
+              a_534: loaded integer) =
+                unseq(
+                  {-# <./perf/perf_trivial_10000.c:6:8, ./perf/perf_trivial_10000.c:6:9> #-} let weak a_538: pointer =
+                    {-# <./perf/perf_trivial_10000.c:6:8, ./perf/perf_trivial_10000.c:6:9> #-} pure(
+                      x
+                    ) in
+                  load('signed int', a_538)
+                ,
+                  {-# <./perf/perf_trivial_10000.c:6:12, ./perf/perf_trivial_10000.c:6:13> #-} let weak a_539: pointer =
+                    {-# <./perf/perf_trivial_10000.c:6:12, ./perf/perf_trivial_10000.c:6:13> #-} pure(
+                      i
+                    ) in
+                  load('signed int', a_539)
+                ) in
+              pure(
+                let (Specified(a_535: integer), Specified(a_536: integer)) =
+                  (a_533, a_534) in
+                Specified(catch_exceptional_condition_add('signed int', __conv_int__('signed int', a_535), __conv_int__('signed int', a_536)))
+              )
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('signed int', a_532,
+            conv_loaded_int('signed int', a_540))) in
+          pure(conv_loaded_int('signed int', a_540))
+        ) in
+      pure(Unit) ;
+      {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} save __cerb_continue0: unit (i: pointer:= i) in
+        {-# <./perf/perf_trivial_10000.c:5:21, ./perf/perf_trivial_10000.c:5:24> ./perf/perf_trivial_10000.c:5:22 #-} let strong _: loaded integer =
+          {-# §6.5#2 #-}
+          bound(
+            {-# §6.5.2.4#2, sentence 3 #-}
+            {-# §6.5.2.4#2, sentence 1 #-}
+            {-# §6.5.2.4 #-}
+            {-# <./perf/perf_trivial_10000.c:5:21, ./perf/perf_trivial_10000.c:5:24> ./perf/perf_trivial_10000.c:5:22 #-} let weak a_541: pointer =
+              {-# <./perf/perf_trivial_10000.c:5:21, ./perf/perf_trivial_10000.c:5:22> #-} pure(
+                i
+              ) in
+            seq_rmw('signed int', a_541, a_542 => let Specified(a_543: integer) =
+              a_542 in
+            Specified(conv_int('signed int',
+            catch_exceptional_condition_add('signed int', a_543, 1))))
+          ) in
+        pure(Unit) ;
+      pure(Unit) ;
+      {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} save continue_511: unit (i: pointer:= i) in
+        {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} pure(
+          Unit
+        ) ;
+      pure(Unit) ;
+      run while_513(i)
+    else
+      pure(Unit) ;
+  {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} save break_512: unit (i: pointer:= i) in
+    {-# <./perf/perf_trivial_10000.c:5:2, ./perf/perf_trivial_10000.c:6:14> #-} pure(
+      Unit
+    ) ;
+  pure(Unit) ;
+  kill('signed int', i) ;
+  pure(Unit) ;
+  {-# <./perf/perf_trivial_10000.c:2:0, ./perf/perf_trivial_10000.c:7:1> ./perf/perf_trivial_10000.c:2:4 - ./perf/perf_trivial_10000.c:2:8 #-} save ret_510: loaded integer (a_544: loaded integer:= Specified(0)) in
+    pure(a_544)
+

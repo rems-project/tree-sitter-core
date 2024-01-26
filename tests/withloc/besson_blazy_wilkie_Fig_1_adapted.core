@@ -1,0 +1,565 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_671: pointer [ail_ctype = 'char[13]'] :=
+  create_readonly(Ivalignof('char[13]'), 'char[13]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 116)), Specified(conv_int('char', 97)),
+  Specified(conv_int('char', 116)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 48)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+glob a_722: pointer [ail_ctype = 'char[19]'] :=
+  create_readonly(Ivalignof('char[19]'), 'char[19]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 116)), Specified(conv_int('char', 97)),
+  Specified(conv_int('char', 116)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 48)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 98)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+glob a_736: pointer [ail_ctype = 'char[5]'] :=
+  create_readonly(Ivalignof('char[5]'), 'char[5]', Specified(Array(Specified(conv_int('char',
+  116)), Specified(conv_int('char', 114)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 101)), Specified(0))))
+
+glob a_739: pointer [ail_ctype = 'char[6]'] :=
+  create_readonly(Ivalignof('char[6]'), 'char[6]', Specified(Array(Specified(conv_int('char',
+  102)), Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 101)),
+  Specified(0))))
+
+-- Fun map
+proc set (p: pointer, flag: pointer): eff loaded integer :=
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:2:25, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:27> #-} {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:25> #-} let strong a_802: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.12 #-}
+      {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:24> ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:11 #-} let weak (a_789: loaded integer,
+      a_790: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:10> #-} let weak a_793: pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:10> #-} pure(
+              p
+            ) in
+          load('signed int', a_793)
+        ,
+          {-# §6.5.7 #-}
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:13, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:24> #-} let weak (a_794: loaded integer,
+          a_795: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:14, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:15> #-} pure(
+                Specified(1)
+              )
+            ,
+              {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:19, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:23> #-} let weak a_801: pointer =
+                {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:19, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:23> #-} pure(
+                  flag
+                ) in
+              load('signed int', a_801)
+            ) in
+          pure(
+            let (Specified(a_796: integer), Specified(a_797: integer)) =
+              (a_794, a_795) in
+            let a_798: integer = conv_int('signed int', a_796) in
+            let a_799: integer = conv_int('signed int', a_797) in
+            if a_799 < 0 then
+              undef(<<UB051a_negative_shift>>)
+            else
+              if ctype_width('signed int') < a_799 \/
+              ctype_width('signed int') = a_799 then
+                undef(<<UB51b_shift_too_large>>)
+              else
+                if a_798 < 0 then
+                  undef(<<UB052a_negative_left_shift>>)
+                else
+                  let a_800: integer = a_798 * 2 ^ a_799 in
+                  if is_representable_integer(a_800, 'signed int') then
+                    Specified(a_800)
+                  else
+                    undef(<<UB052b_non_representable_left_shift>>)
+          )
+        ) in
+      pure(
+        let (Specified(a_791: integer), Specified(a_792: integer)) =
+          (a_789, a_790) in
+        Specified(IvOR('signed int', conv_int('signed int', a_791),
+        conv_int('signed int', a_792)))
+      )
+    ) in
+  run ret_788(conv_loaded_int('signed int', a_802)) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:2:0, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:3:27> ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:2:4 - ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:2:7 #-} save ret_788: loaded integer (a_803: loaded integer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_803)
+
+proc isset (p: pointer, flag: pointer): eff loaded integer :=
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:4:27, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:34> #-} {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:32> #-} let strong a_784: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:31> ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:27 #-} let weak (a_766: loaded integer,
+      a_767: loaded integer) =
+        unseq(
+          {-# §6.5.10 #-}
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:26> #-} let weak (a_771: loaded integer,
+          a_772: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:10, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:11> #-} let weak a_775: pointer =
+                {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:10, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:11> #-} pure(
+                  p
+                ) in
+              load('signed int', a_775)
+            ,
+              {-# §6.5.7 #-}
+              {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:14, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:25> #-} let weak (a_776: loaded integer,
+              a_777: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:15, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:16> #-} pure(
+                    Specified(1)
+                  )
+                ,
+                  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:20, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:24> #-} let weak a_783: pointer =
+                    {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:20, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:24> #-} pure(
+                      flag
+                    ) in
+                  load('signed int', a_783)
+                ) in
+              pure(
+                let (Specified(a_778: integer), Specified(a_779: integer)) =
+                  (a_776, a_777) in
+                let a_780: integer = conv_int('signed int', a_778) in
+                let a_781: integer = conv_int('signed int', a_779) in
+                if a_781 < 0 then
+                  undef(<<UB051a_negative_shift>>)
+                else
+                  if ctype_width('signed int') < a_781 \/
+                  ctype_width('signed int') = a_781 then
+                    undef(<<UB51b_shift_too_large>>)
+                  else
+                    if a_780 < 0 then
+                      undef(<<UB052a_negative_left_shift>>)
+                    else
+                      let a_782: integer = a_780 * 2 ^ a_781 in
+                      if is_representable_integer(a_782, 'signed int') then
+                        Specified(a_782)
+                      else
+                        undef(<<UB052b_non_representable_left_shift>>)
+              )
+            ) in
+          pure(
+            let (Specified(a_773: integer), Specified(a_774: integer)) =
+              (a_771, a_772) in
+            Specified(IvAND('signed int', conv_int('signed int', a_773),
+            conv_int('signed int', a_774)))
+          )
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:30, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:31> #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        let (Specified(a_768: integer), Specified(a_769: integer)) =
+          (a_766, a_767) in
+        if not(conv_int('signed int', a_768) = conv_int('signed int', a_769)) then
+          Specified(1)
+        else
+          Specified(0)
+      )
+    ) in
+  run ret_765(conv_loaded_int('signed int', a_784)) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:4:0, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:5:34> ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:4:4 - ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:4:9 #-} save ret_765: loaded integer (a_785: loaded integer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_785)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:6:11, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:27> #-} let strong status: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong b: pointer = create(Ivalignof('_Bool'), '_Bool') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:7:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:7:13> #-} store('signed int',
+  status, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:33> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:32> #-} let strong ((a_663: loaded pointer,
+      (a_664: ctype, a_665: [ctype], a_666: boolean, a_667: boolean)),
+      a_670: loaded pointer, a_674: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_662: loaded pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_662, cfunction(a_662)))
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:24> #-} let weak a_672: pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:24> #-} pure(
+              a_671
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_673: pointer = memop(PtrArrayShift, a_672, 'char', 0) in
+          pure(Specified(a_673))
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:25, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:31> #-} let weak a_675: pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:25, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:8:31> #-} pure(
+              status
+            ) in
+          load('signed int', a_675)
+        ) in
+      if not(params_length(a_665) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_666) \/ not(are_compatible ('signed int', a_664)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_669: pointer =
+            let a_676: ctype = params_nth(a_665, 0) in
+            if not(are_compatible ('const char*', a_676)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_677: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_677, a_670) in
+              pure(a_677) in
+          let strong a_668: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_674)) in
+          let strong a_678: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_663, a_669,
+            [('signed int', a_668)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_669), kill('signed int', a_668)) in
+          pure(a_678)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:25> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:24> ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:9 #-} let weak (a_661: pointer,
+      a_695: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:8> #-} pure(
+            status
+          )
+        ,
+          {-# §6.5.2.2#10, sentence 1 #-}
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:11, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:24> #-} let strong ((a_680: loaded pointer,
+          (a_681: ctype, a_682: [ctype], a_683: boolean, a_684: boolean)),
+          a_687: loaded integer, a_689: loaded integer) =
+            {-# §6.5.2.2#4, sentence 2 #-}
+            unseq(
+              let strong a_679: loaded pointer =
+                {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:11, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:14> #-} pure(
+                  Specified(Cfunction(set))
+                ) in
+              pure((a_679, cfunction(a_679)))
+            ,
+              {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:15, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:21> #-} let weak a_688: pointer =
+                {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:15, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:21> #-} pure(
+                  status
+                ) in
+              load('signed int', a_688)
+            ,
+              {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:22, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:9:23> #-} pure(
+                Specified(0)
+              )
+            ) in
+          if not(params_length(a_682) = 2) then
+            pure(undef(<<UB038_number_of_args>>))
+          else
+            if a_683 \/ not(are_compatible ('signed int', a_681)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let strong a_686: pointer =
+                let a_690: ctype = params_nth(a_682, 0) in
+                if not(are_compatible ('signed int', a_690)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  {-# §6.5.2.2#7, sentence 1 #-}
+                  let weak a_691: pointer =
+                    create(Ivalignof('signed int'), 'signed int') in
+                  let weak _: unit =
+                    store('signed int', a_691,
+                    conv_loaded_int('signed int', a_687)) in
+                  pure(a_691) in
+              let strong a_685: pointer =
+                let a_692: ctype = params_nth(a_682, 1) in
+                if not(are_compatible ('signed int', a_692)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  {-# §6.5.2.2#7, sentence 1 #-}
+                  let weak a_693: pointer =
+                    create(Ivalignof('signed int'), 'signed int') in
+                  let weak _: unit =
+                    store('signed int', a_693,
+                    conv_loaded_int('signed int', a_689)) in
+                  pure(a_693) in
+              let strong a_694: loaded integer =
+                ccall('signed int (*) (signed int, signed int)', a_680, a_686,
+                a_685) in
+              let strong _: (unit,unit) =
+                unseq(kill('signed int', a_686), kill('signed int', a_685)) in
+              pure(a_694)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_661, conv_loaded_int('signed int', a_695))) in
+      pure(conv_loaded_int('signed int', a_695))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:28> #-} let strong a_696: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:12, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:27> #-} let strong ((a_698: loaded pointer,
+      (a_699: ctype, a_700: [ctype], a_701: boolean, a_702: boolean)),
+      a_705: loaded integer, a_707: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_697: loaded pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:12, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:17> #-} pure(
+              Specified(Cfunction(isset))
+            ) in
+          pure((a_697, cfunction(a_697)))
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:18, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:24> #-} let weak a_706: pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:18, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:24> #-} pure(
+              status
+            ) in
+          load('signed int', a_706)
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:25, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:10:26> #-} pure(
+            Specified(0)
+          )
+        ) in
+      if not(params_length(a_700) = 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_701 \/ not(are_compatible ('signed int', a_699)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_704: pointer =
+            let a_708: ctype = params_nth(a_700, 0) in
+            if not(are_compatible ('signed int', a_708)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_709: pointer =
+                create(Ivalignof('signed int'), 'signed int') in
+              let weak _: unit =
+                store('signed int', a_709,
+                conv_loaded_int('signed int', a_705)) in
+              pure(a_709) in
+          let strong a_703: pointer =
+            let a_710: ctype = params_nth(a_700, 1) in
+            if not(are_compatible ('signed int', a_710)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_711: pointer =
+                create(Ivalignof('signed int'), 'signed int') in
+              let weak _: unit =
+                store('signed int', a_711,
+                conv_loaded_int('signed int', a_707)) in
+              pure(a_711) in
+          let strong a_712: loaded integer =
+            ccall('signed int (*) (signed int, signed int)', a_698, a_704,
+            a_703) in
+          let strong _: (unit,unit) =
+            unseq(kill('signed int', a_704), kill('signed int', a_703)) in
+          pure(a_712)
+    ) in
+  store('_Bool', b, conv_loaded_int('_Bool', a_696)) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:56> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:55> #-} let strong ((a_713: loaded pointer,
+      (a_714: ctype, a_715: [ctype], a_716: boolean, a_717: boolean)),
+      a_721: loaded pointer, a_725: loaded integer, a_727: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_660: loaded pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_660, cfunction(a_660)))
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:30> #-} let weak a_723: pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:30> #-} pure(
+              a_722
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_724: pointer = memop(PtrArrayShift, a_723, 'char', 0) in
+          pure(Specified(a_724))
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:31, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:37> #-} let weak a_726: pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:31, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:37> #-} pure(
+              status
+            ) in
+          load('signed int', a_726)
+        ,
+          {-# §6.5.15#4, sentence 1 #-}
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:38, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:54> ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:39 #-} let strong a_734: loaded integer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:38, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:39> #-} let weak (a_728: loaded integer,
+            a_729: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:38, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:39> #-} let weak a_733: pointer =
+                  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:38, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:39> #-} pure(
+                    b
+                  ) in
+                load('_Bool', a_733)
+              ,
+                {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:38, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:39> #-} pure(
+                  Specified(0)
+                )
+              ) in
+            pure(
+              let (Specified(a_730: integer), Specified(a_731: integer)) =
+                (a_728, a_729) in
+              if conv_int('signed int', a_730) = conv_int('signed int', a_731) then
+                Specified(1)
+              else
+                Specified(0)
+            ) in
+          let Specified(a_735: integer) = a_734 in
+          {-# §6.5.15#4, sentence 2 #-}
+          if a_735 = 0 then
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:40, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:46> #-} let weak a_737: pointer =
+              {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:40, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:46> #-} pure(
+                a_736
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_738: pointer =
+              memop(PtrArrayShift, a_737, 'char', 0) in
+            pure(Specified(a_738))
+          else
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:47, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:54> #-} let weak a_740: pointer =
+              {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:47, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:11:54> #-} pure(
+                a_739
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_741: pointer =
+              memop(PtrArrayShift, a_740, 'char', 0) in
+            pure(Specified(a_741))
+        ) in
+      if not(params_length(a_715) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_716) \/ not(are_compatible ('signed int', a_714)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_720: pointer =
+            let a_742: ctype = params_nth(a_715, 0) in
+            if not(are_compatible ('const char*', a_742)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_743: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_743, a_721) in
+              pure(a_743) in
+          let strong a_719: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_725)) in
+          let strong a_718: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'char*', a_727) in
+          let strong a_744: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_713, a_720,
+            [('signed int', a_719), ('char*', a_718)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_720)
+            ,
+              kill('signed int', a_719)
+            ,
+              kill('char*', a_718)
+            ) in
+          pure(a_744)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:2, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:25> #-} let strong a_761: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:24> #-} let strong ((a_746: loaded pointer,
+      (a_747: ctype, a_748: [ctype], a_749: boolean, a_750: boolean)),
+      a_753: loaded integer, a_755: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_745: loaded pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:9, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:14> #-} pure(
+              Specified(Cfunction(isset))
+            ) in
+          pure((a_745, cfunction(a_745)))
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:15, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:21> #-} let weak a_754: pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:15, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:21> #-} pure(
+              status
+            ) in
+          load('signed int', a_754)
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:22, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:23> #-} pure(
+            Specified(0)
+          )
+        ) in
+      if not(params_length(a_748) = 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_749 \/ not(are_compatible ('signed int', a_747)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_752: pointer =
+            let a_756: ctype = params_nth(a_748, 0) in
+            if not(are_compatible ('signed int', a_756)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_757: pointer =
+                create(Ivalignof('signed int'), 'signed int') in
+              let weak _: unit =
+                store('signed int', a_757,
+                conv_loaded_int('signed int', a_753)) in
+              pure(a_757) in
+          let strong a_751: pointer =
+            let a_758: ctype = params_nth(a_748, 1) in
+            if not(are_compatible ('signed int', a_758)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_759: pointer =
+                create(Ivalignof('signed int'), 'signed int') in
+              let weak _: unit =
+                store('signed int', a_759,
+                conv_loaded_int('signed int', a_755)) in
+              pure(a_759) in
+          let strong a_760: loaded integer =
+            ccall('signed int (*) (signed int, signed int)', a_746, a_752,
+            a_751) in
+          let strong _: (unit,unit) =
+            unseq(kill('signed int', a_752), kill('signed int', a_751)) in
+          pure(a_760)
+    ) in
+  kill('signed int', status) ;
+  kill('_Bool', b) ;
+  run ret_659(conv_loaded_int('signed int', a_761)) ;
+  kill('signed int', status) ;
+  kill('_Bool', b) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:6:0, ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:12:27> ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:6:4 - ./de_facto_memory_model/besson_blazy_wilkie_Fig_1_adapted.c:6:8 #-} save ret_659: loaded integer (a_762: loaded integer:= Specified(0)) in
+    pure(a_762)
+

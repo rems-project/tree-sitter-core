@@ -1,0 +1,113 @@
+-- Globals
+glob port: pointer [ail_ctype = 'unsigned int*'] :=
+  {-# <unknown location> #-} let strong a_524: pointer =
+    create(Ivalignof('volatile unsigned int*'), 'volatile unsigned int*') in
+  let strong a_528: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:3:2, ./de_facto_memory_model/pointer_from_concrete_address_2.c:3:29> ./de_facto_memory_model/pointer_from_concrete_address_2.c:3:2 #-} let weak a_525: loaded integer =
+        {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:3:19, ./de_facto_memory_model/pointer_from_concrete_address_2.c:3:29> #-} pure(
+          Specified(1073741824)
+        ) in
+      let Specified(a_526: integer) = a_525 in
+      let weak a_527: pointer =
+        memop(PtrFromInt, 'signed int', 'unsigned int', a_526) in
+      pure(Specified(a_527))
+    ) in
+  store_lock('volatile unsigned int*', a_524, a_528) ;
+  pure(a_524)
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:4:11, ./de_facto_memory_model/pointer_from_concrete_address_2.c:10:1> #-} let strong value: pointer =
+    create(Ivalignof('unsigned int'), 'unsigned int') in
+  {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:5:2, ./de_facto_memory_model/pointer_from_concrete_address_2.c:5:25> #-} let strong a_510: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:5:23, ./de_facto_memory_model/pointer_from_concrete_address_2.c:5:24> #-} pure(
+        Specified(0)
+      )
+    ) in
+  store('unsigned int', value, conv_loaded_int('unsigned int', a_510)) ;
+  {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:8:2, ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:16> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:8:2, ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:15> ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:8 #-} let weak (a_509: pointer,
+      a_516: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:8:2, ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:7> ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:2 #-} let weak a_511: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:8:3, ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:7> #-} let weak a_514: pointer =
+              {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:8:3, ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:7> #-} pure(
+                port
+              ) in
+            load('volatile unsigned int*', a_514) in
+          let Specified(a_512: pointer) = a_511 in
+          let weak a_513: boolean =
+            memop(PtrValidForDeref, 'unsigned int', a_512) in
+          pure(
+            if a_513 then
+              a_512
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:8:10, ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:15> #-} let weak a_515: pointer =
+            {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:8:10, ./de_facto_memory_model/pointer_from_concrete_address_2.c:8:15> #-} pure(
+              value
+            ) in
+          load('unsigned int', a_515)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned int', a_509,
+        conv_loaded_int('unsigned int', a_516))) in
+      pure(conv_loaded_int('unsigned int', a_516))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:9:2, ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:16> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:9:2, ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:15> ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:8 #-} let weak (a_508: pointer,
+      a_522: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:9:2, ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:7> #-} pure(
+            value
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:9:10, ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:15> ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:10 #-} let weak a_521: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:9:10, ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:15> ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:10 #-} let weak a_517: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:9:11, ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:15> #-} let weak a_520: pointer =
+                {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:9:11, ./de_facto_memory_model/pointer_from_concrete_address_2.c:9:15> #-} pure(
+                  port
+                ) in
+              load('volatile unsigned int*', a_520) in
+            let Specified(a_518: pointer) = a_517 in
+            let weak a_519: boolean =
+              memop(PtrValidForDeref, 'unsigned int', a_518) in
+            pure(
+              if a_519 then
+                a_518
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned int', a_521)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned int', a_508,
+        conv_loaded_int('unsigned int', a_522))) in
+      pure(conv_loaded_int('unsigned int', a_522))
+    ) in
+  pure(Unit) ;
+  kill('unsigned int', value) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_from_concrete_address_2.c:4:0, ./de_facto_memory_model/pointer_from_concrete_address_2.c:10:1> ./de_facto_memory_model/pointer_from_concrete_address_2.c:4:4 - ./de_facto_memory_model/pointer_from_concrete_address_2.c:4:8 #-} save ret_507: loaded integer (a_523: loaded integer:= Specified(0)) in
+    pure(a_523)
+

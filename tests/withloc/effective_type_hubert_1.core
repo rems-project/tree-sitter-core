@@ -1,0 +1,450 @@
+-- Aggregates
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+def struct A :=
+  x: 'signed int'
+  y: 'signed int'
+
+def struct B :=
+  x: 'signed int'
+  y: 'signed int'
+
+-- Globals
+glob b: pointer [ail_ctype = 'struct B'] :=
+  {-# <unknown location> #-} let strong a_770: pointer =
+    create(Ivalignof('struct B'), 'struct B') in
+  let strong a_773: loaded struct B_682 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_772: loaded integer,
+      a_771: loaded integer) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# <unknown location> #-} pure(Specified(0))
+        ,
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:9:25, ./de_facto_memory_model/effective_type_hubert_1.c:9:26> #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        Specified((struct B){.x= conv_loaded_int('signed int', a_771),
+        .y= conv_loaded_int('signed int', a_772)})
+      )
+    ) in
+  store_lock('struct B', a_770, a_773) ;
+  pure(a_770)
+
+glob a: pointer [ail_ctype = 'struct A'] :=
+  {-# <unknown location> #-} let strong a_694: pointer =
+    create(Ivalignof('struct A'), 'struct A') in
+  let strong a_697: loaded struct A_680 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_696: loaded integer,
+      a_695: loaded integer) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# <unknown location> #-} pure(Specified(0))
+        ,
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:14:23, ./de_facto_memory_model/effective_type_hubert_1.c:14:24> #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        Specified((struct A){.x= conv_loaded_int('signed int', a_695),
+        .y= conv_loaded_int('signed int', a_696)})
+      )
+    ) in
+  store_lock('struct A', a_694, a_697) ;
+  pure(a_694)
+
+-- Fun map
+proc newB (p: pointer): eff loaded pointer :=
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:8:17, ./de_facto_memory_model/effective_type_hubert_1.c:11:1> #-} {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:4, ./de_facto_memory_model/effective_type_hubert_1.c:10:40> #-} let strong a_800: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:11, ./de_facto_memory_model/effective_type_hubert_1.c:10:39> ./de_facto_memory_model/effective_type_hubert_1.c:10:11 #-} let weak a_776: loaded pointer =
+        {-# §6.5.2.2#10, sentence 1 #-}
+        {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:16, ./de_facto_memory_model/effective_type_hubert_1.c:10:39> #-} let strong ((a_779: loaded pointer,
+        (a_780: ctype, a_781: [ctype], a_782: boolean, a_783: boolean)),
+        a_787: loaded pointer, a_789: loaded pointer, a_791: loaded integer) =
+          {-# §6.5.2.2#4, sentence 2 #-}
+          unseq(
+            let strong a_778: loaded pointer =
+              {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:16, ./de_facto_memory_model/effective_type_hubert_1.c:10:22> #-} pure(
+                Specified(Cfunction(memcpy_proxy))
+              ) in
+            pure((a_778, cfunction(a_778)))
+          ,
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:23, ./de_facto_memory_model/effective_type_hubert_1.c:10:24> #-} let weak a_788: pointer =
+              {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:23, ./de_facto_memory_model/effective_type_hubert_1.c:10:24> #-} pure(
+                p
+              ) in
+            load('void*', a_788)
+          ,
+            {-# §6.5.3.2#3, sentence 5 #-}
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:26, ./de_facto_memory_model/effective_type_hubert_1.c:10:28> ./de_facto_memory_model/effective_type_hubert_1.c:10:26 #-} let weak a_790: pointer =
+              {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:27, ./de_facto_memory_model/effective_type_hubert_1.c:10:28> #-} pure(
+                b
+              ) in
+            pure(Specified(a_790))
+          ,
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:10:30, ./de_facto_memory_model/effective_type_hubert_1.c:10:38> ./de_facto_memory_model/effective_type_hubert_1.c:10:30 #-} pure(
+              Specified(Ivsizeof('struct B'))
+            )
+          ) in
+        if not(params_length(a_781) = 3) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if a_782 \/ not(are_compatible ('void*', a_780)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_786: pointer =
+              let a_792: ctype = params_nth(a_781, 0) in
+              if not(are_compatible ('void*', a_792)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_793: pointer =
+                  create(Ivalignof('void*'), 'void*') in
+                let weak _: unit = store('void*', a_793, a_787) in
+                pure(a_793) in
+            let strong a_785: pointer =
+              let a_794: ctype = params_nth(a_781, 1) in
+              if not(are_compatible ('const void*', a_794)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_795: pointer =
+                  create(Ivalignof('const void*'), 'const void*') in
+                let weak _: unit = store('const void*', a_795, a_789) in
+                pure(a_795) in
+            let strong a_784: pointer =
+              let a_796: ctype = params_nth(a_781, 2) in
+              if not(are_compatible ('size_t', a_796)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_797: pointer =
+                  create(Ivalignof('size_t'), 'size_t') in
+                let weak _: unit =
+                  store('size_t', a_797, conv_loaded_int('size_t', a_791)) in
+                pure(a_797) in
+            let strong a_798: loaded pointer =
+              ccall('void* (*) (void*restrict , const void*restrict , size_t)',
+              a_779, a_786, a_785, a_784) in
+            let strong _: (unit,unit,unit) =
+              unseq(
+                kill('void*', a_786)
+              ,
+                kill('void*', a_785)
+              ,
+                kill('size_t', a_784)
+              ) in
+            pure(a_798) in
+      let Specified(a_777: pointer) = a_776 in
+      let weak a_799: boolean = memop(PtrWellAligned, 'struct B', a_777) in
+      pure(
+        Specified(if a_799 then
+          a_777
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  run ret_775(a_800) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:8:0, ./de_facto_memory_model/effective_type_hubert_1.c:11:1> ./de_facto_memory_model/effective_type_hubert_1.c:8:3 - ./de_facto_memory_model/effective_type_hubert_1.c:8:7 #-} save ret_775: loaded pointer (a_801: loaded pointer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_801)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:13:15, ./de_facto_memory_model/effective_type_hubert_1.c:25:1> #-} let strong ap: pointer =
+    create(Ivalignof('struct A*'), 'struct A*') in
+  let strong bp: pointer = create(Ivalignof('struct B*'), 'struct B*') in
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:16:2, ./de_facto_memory_model/effective_type_hubert_1.c:16:38> #-} let strong a_702: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/effective_type_hubert_1.c:16:16, ./de_facto_memory_model/effective_type_hubert_1.c:16:37> ./de_facto_memory_model/effective_type_hubert_1.c:16:16 #-} let weak a_703: loaded pointer =
+        {-# §6.5.2.2#10, sentence 1 #-}
+        {-# <./de_facto_memory_model/effective_type_hubert_1.c:16:21, ./de_facto_memory_model/effective_type_hubert_1.c:16:37> #-} let strong ((a_706: loaded pointer,
+        (a_707: ctype, a_708: [ctype], a_709: boolean, a_710: boolean)),
+        a_712: loaded integer) =
+          {-# §6.5.2.2#4, sentence 2 #-}
+          unseq(
+            let strong a_705: loaded pointer =
+              {-# <./de_facto_memory_model/effective_type_hubert_1.c:16:21, ./de_facto_memory_model/effective_type_hubert_1.c:16:27> #-} pure(
+                Specified(Cfunction(malloc_proxy))
+              ) in
+            pure((a_705, cfunction(a_705)))
+          ,
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:16:28, ./de_facto_memory_model/effective_type_hubert_1.c:16:36> ./de_facto_memory_model/effective_type_hubert_1.c:16:28 #-} pure(
+              Specified(Ivsizeof('struct A'))
+            )
+          ) in
+        if not(params_length(a_708) = 1) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if a_709 \/ not(are_compatible ('void*', a_707)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_711: pointer =
+              let a_713: ctype = params_nth(a_708, 0) in
+              if not(are_compatible ('size_t', a_713)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_714: pointer =
+                  create(Ivalignof('size_t'), 'size_t') in
+                let weak _: unit =
+                  store('size_t', a_714, conv_loaded_int('size_t', a_712)) in
+                pure(a_714) in
+            let strong a_715: loaded pointer =
+              ccall('void* (*) (size_t)', a_706, a_711) in
+            kill('size_t', a_711) ;
+            pure(a_715) in
+      let Specified(a_704: pointer) = a_703 in
+      let weak a_716: boolean = memop(PtrWellAligned, 'struct A', a_704) in
+      pure(
+        Specified(if a_716 then
+          a_704
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store_lock('struct A*', ap, a_702) ;
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:17:2, ./de_facto_memory_model/effective_type_hubert_1.c:17:27> #-} let strong _: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/effective_type_hubert_1.c:17:2, ./de_facto_memory_model/effective_type_hubert_1.c:17:26> #-} let strong ((a_717: loaded pointer,
+      (a_718: ctype, a_719: [ctype], a_720: boolean, a_721: boolean)),
+      a_725: loaded pointer, a_727: loaded pointer, a_729: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_701: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:17:2, ./de_facto_memory_model/effective_type_hubert_1.c:17:8> #-} pure(
+              Specified(Cfunction(memcpy_proxy))
+            ) in
+          pure((a_701, cfunction(a_701)))
+        ,
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:17:9, ./de_facto_memory_model/effective_type_hubert_1.c:17:11> #-} let weak a_726: pointer =
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:17:9, ./de_facto_memory_model/effective_type_hubert_1.c:17:11> #-} pure(
+              ap
+            ) in
+          load('struct A*', a_726)
+        ,
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:17:13, ./de_facto_memory_model/effective_type_hubert_1.c:17:15> ./de_facto_memory_model/effective_type_hubert_1.c:17:13 #-} let weak a_728: pointer =
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:17:14, ./de_facto_memory_model/effective_type_hubert_1.c:17:15> #-} pure(
+              a
+            ) in
+          pure(Specified(a_728))
+        ,
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:17:17, ./de_facto_memory_model/effective_type_hubert_1.c:17:25> ./de_facto_memory_model/effective_type_hubert_1.c:17:17 #-} pure(
+            Specified(Ivsizeof('struct A'))
+          )
+        ) in
+      if not(params_length(a_719) = 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_720 \/ not(are_compatible ('void*', a_718)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_724: pointer =
+            let a_730: ctype = params_nth(a_719, 0) in
+            if not(are_compatible ('void*', a_730)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_731: pointer = create(Ivalignof('void*'), 'void*') in
+              let weak _: unit = store('void*', a_731, a_725) in
+              pure(a_731) in
+          let strong a_723: pointer =
+            let a_732: ctype = params_nth(a_719, 1) in
+            if not(are_compatible ('const void*', a_732)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_733: pointer =
+                create(Ivalignof('const void*'), 'const void*') in
+              let weak _: unit = store('const void*', a_733, a_727) in
+              pure(a_733) in
+          let strong a_722: pointer =
+            let a_734: ctype = params_nth(a_719, 2) in
+            if not(are_compatible ('size_t', a_734)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_735: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_735, conv_loaded_int('size_t', a_729)) in
+              pure(a_735) in
+          let strong a_736: loaded pointer =
+            ccall('void* (*) (void*restrict , const void*restrict , size_t)',
+            a_717, a_724, a_723, a_722) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('void*', a_724)
+            ,
+              kill('void*', a_723)
+            ,
+              kill('size_t', a_722)
+            ) in
+          pure(a_736)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:19:2, ./de_facto_memory_model/effective_type_hubert_1.c:19:25> #-} let strong a_737: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/effective_type_hubert_1.c:19:16, ./de_facto_memory_model/effective_type_hubert_1.c:19:24> #-} let strong ((a_739: loaded pointer,
+      (a_740: ctype, a_741: [ctype], a_742: boolean, a_743: boolean)),
+      a_745: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_738: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:19:16, ./de_facto_memory_model/effective_type_hubert_1.c:19:20> #-} pure(
+              Specified(Cfunction(newB))
+            ) in
+          pure((a_738, cfunction(a_738)))
+        ,
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:19:21, ./de_facto_memory_model/effective_type_hubert_1.c:19:23> #-} let weak a_746: pointer =
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:19:21, ./de_facto_memory_model/effective_type_hubert_1.c:19:23> #-} pure(
+              ap
+            ) in
+          load('struct A*', a_746)
+        ) in
+      if not(params_length(a_741) = 1) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_742 \/ not(are_compatible ('struct B*', a_740)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_744: pointer =
+            let a_747: ctype = params_nth(a_741, 0) in
+            if not(are_compatible ('void*', a_747)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_748: pointer = create(Ivalignof('void*'), 'void*') in
+              let weak _: unit = store('void*', a_748, a_745) in
+              pure(a_748) in
+          let strong a_749: loaded pointer =
+            ccall('struct B* (*) (void*)', a_739, a_744) in
+          kill('void*', a_744) ;
+          pure(a_749)
+    ) in
+  store_lock('struct B*', bp, a_737) ;
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:20:2, ./de_facto_memory_model/effective_type_hubert_1.c:20:13> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/effective_type_hubert_1.c:20:2, ./de_facto_memory_model/effective_type_hubert_1.c:20:12> ./de_facto_memory_model/effective_type_hubert_1.c:20:8 #-} let weak (a_700: pointer,
+      a_755: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#4, sentence 2 #-}
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:20:2, ./de_facto_memory_model/effective_type_hubert_1.c:20:7> ./de_facto_memory_model/effective_type_hubert_1.c:20:4 #-} let strong a_750: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:20:2, ./de_facto_memory_model/effective_type_hubert_1.c:20:4> #-} let weak a_754: pointer =
+              {-# <./de_facto_memory_model/effective_type_hubert_1.c:20:2, ./de_facto_memory_model/effective_type_hubert_1.c:20:4> #-} pure(
+                bp
+              ) in
+            load('struct B*', a_754) in
+          let Specified(a_751: pointer) = a_750 in
+          let weak a_752: boolean =
+            memop(PtrValidForDeref, 'struct B', a_751) in
+          pure(
+            if a_752 then
+              member_shift(a_751, B, .y)
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:20:10, ./de_facto_memory_model/effective_type_hubert_1.c:20:12> #-} pure(
+            Specified(42)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_700, conv_loaded_int('signed int', a_755))) in
+      pure(conv_loaded_int('signed int', a_755))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:21:2, ./de_facto_memory_model/effective_type_hubert_1.c:21:12> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/effective_type_hubert_1.c:21:2, ./de_facto_memory_model/effective_type_hubert_1.c:21:11> ./de_facto_memory_model/effective_type_hubert_1.c:21:8 #-} let weak (a_699: pointer,
+      a_761: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#4, sentence 2 #-}
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:21:2, ./de_facto_memory_model/effective_type_hubert_1.c:21:7> ./de_facto_memory_model/effective_type_hubert_1.c:21:4 #-} let strong a_756: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:21:2, ./de_facto_memory_model/effective_type_hubert_1.c:21:4> #-} let weak a_760: pointer =
+              {-# <./de_facto_memory_model/effective_type_hubert_1.c:21:2, ./de_facto_memory_model/effective_type_hubert_1.c:21:4> #-} pure(
+                ap
+              ) in
+            load('struct A*', a_760) in
+          let Specified(a_757: pointer) = a_756 in
+          let weak a_758: boolean =
+            memop(PtrValidForDeref, 'struct A', a_757) in
+          pure(
+            if a_758 then
+              member_shift(a_757, A, .y)
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:21:10, ./de_facto_memory_model/effective_type_hubert_1.c:21:11> #-} pure(
+            Specified(0)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_699, conv_loaded_int('signed int', a_761))) in
+      pure(conv_loaded_int('signed int', a_761))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:24:2, ./de_facto_memory_model/effective_type_hubert_1.c:24:15> #-} let strong a_768: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/effective_type_hubert_1.c:24:9, ./de_facto_memory_model/effective_type_hubert_1.c:24:14> ./de_facto_memory_model/effective_type_hubert_1.c:24:11 #-} let weak a_767: pointer =
+        {-# §6.5.2.3#4, sentence 2 #-}
+        {-# <./de_facto_memory_model/effective_type_hubert_1.c:24:9, ./de_facto_memory_model/effective_type_hubert_1.c:24:14> ./de_facto_memory_model/effective_type_hubert_1.c:24:11 #-} let strong a_762: loaded pointer =
+          {-# <./de_facto_memory_model/effective_type_hubert_1.c:24:9, ./de_facto_memory_model/effective_type_hubert_1.c:24:11> #-} let weak a_766: pointer =
+            {-# <./de_facto_memory_model/effective_type_hubert_1.c:24:9, ./de_facto_memory_model/effective_type_hubert_1.c:24:11> #-} pure(
+              bp
+            ) in
+          load('struct B*', a_766) in
+        let Specified(a_763: pointer) = a_762 in
+        let weak a_764: boolean =
+          memop(PtrValidForDeref, 'struct B', a_763) in
+        pure(
+          if a_764 then
+            member_shift(a_763, B, .y)
+          else
+            undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('signed int', a_767)
+    ) in
+  kill('struct A*', ap) ;
+  kill('struct B*', bp) ;
+  run ret_698(conv_loaded_int('signed int', a_768)) ;
+  kill('struct A*', ap) ;
+  kill('struct B*', bp) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_hubert_1.c:13:0, ./de_facto_memory_model/effective_type_hubert_1.c:25:1> ./de_facto_memory_model/effective_type_hubert_1.c:13:4 - ./de_facto_memory_model/effective_type_hubert_1.c:13:8 #-} save ret_698: loaded integer (a_769: loaded integer:= Specified(0)) in
+    pure(a_769)
+

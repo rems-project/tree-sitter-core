@@ -1,0 +1,163 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def union __cerbty_unnamed_tag_646 :=
+  i: 'signed int'
+  f: 'float'
+
+-- Globals
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:3:11, ./de_facto_memory_model/unspecified_value_union_1.c:13:1> #-} let strong u: pointer =
+    create(Ivalignof('union __cerbty_unnamed_tag_646'), 'union __cerbty_unnamed_tag_646') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong k: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong g: pointer = create(Ivalignof('float'), 'float') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:4:2, ./de_facto_memory_model/unspecified_value_union_1.c:4:7> #-} store('union __cerbty_unnamed_tag_646',
+  u, Unspecified('union __cerbty_unnamed_tag_646')) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:5:2, ./de_facto_memory_model/unspecified_value_union_1.c:5:8> #-} store('signed int',
+  j, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:6:2, ./de_facto_memory_model/unspecified_value_union_1.c:6:10> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/unspecified_value_union_1.c:6:2, ./de_facto_memory_model/unspecified_value_union_1.c:6:9> ./de_facto_memory_model/unspecified_value_union_1.c:6:6 #-} let weak (a_658: pointer,
+      a_661: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#3, sentence 2 #-}
+          {-# <./de_facto_memory_model/unspecified_value_union_1.c:6:2, ./de_facto_memory_model/unspecified_value_union_1.c:6:5> ./de_facto_memory_model/unspecified_value_union_1.c:6:3 #-} let strong a_659: pointer =
+            {-# <./de_facto_memory_model/unspecified_value_union_1.c:6:2, ./de_facto_memory_model/unspecified_value_union_1.c:6:3> #-} pure(
+              u
+            ) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_646, i], a_659)
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_union_1.c:6:8, ./de_facto_memory_model/unspecified_value_union_1.c:6:9> #-} let weak a_660: pointer =
+            {-# <./de_facto_memory_model/unspecified_value_union_1.c:6:8, ./de_facto_memory_model/unspecified_value_union_1.c:6:9> #-} pure(
+              j
+            ) in
+          load('signed int', a_660)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_658, conv_loaded_int('signed int', a_661))) in
+      pure(conv_loaded_int('signed int', a_661))
+    ) in
+  pure(Unit) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:9:2, ./de_facto_memory_model/unspecified_value_union_1.c:9:8> #-} store('signed int',
+  k, Unspecified('signed int')) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:10:2, ./de_facto_memory_model/unspecified_value_union_1.c:10:10> #-} store('float',
+  g, Unspecified('float')) ;
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:11:2, ./de_facto_memory_model/unspecified_value_union_1.c:11:18> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/unspecified_value_union_1.c:11:2, ./de_facto_memory_model/unspecified_value_union_1.c:11:17> ./de_facto_memory_model/unspecified_value_union_1.c:11:4 #-} let weak (a_657: pointer,
+      a_670: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/unspecified_value_union_1.c:11:2, ./de_facto_memory_model/unspecified_value_union_1.c:11:3> #-} pure(
+            k
+          )
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_union_1.c:11:6, ./de_facto_memory_model/unspecified_value_union_1.c:11:17> ./de_facto_memory_model/unspecified_value_union_1.c:11:6 #-} let weak a_669: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/unspecified_value_union_1.c:11:6, ./de_facto_memory_model/unspecified_value_union_1.c:11:17> ./de_facto_memory_model/unspecified_value_union_1.c:11:6 #-} let weak a_662: loaded pointer =
+              {-# §6.5.4 #-}
+              {-# <./de_facto_memory_model/unspecified_value_union_1.c:11:7, ./de_facto_memory_model/unspecified_value_union_1.c:11:17> #-} let weak a_665: loaded pointer =
+                {-# §6.5.3.2#3, sentence 5 #-}
+                {-# <./de_facto_memory_model/unspecified_value_union_1.c:11:14, ./de_facto_memory_model/unspecified_value_union_1.c:11:16> ./de_facto_memory_model/unspecified_value_union_1.c:11:14 #-} let weak a_667: pointer =
+                  {-# <./de_facto_memory_model/unspecified_value_union_1.c:11:15, ./de_facto_memory_model/unspecified_value_union_1.c:11:16> #-} pure(
+                    u
+                  ) in
+                pure(Specified(a_667)) in
+              let Specified(a_666: pointer) = a_665 in
+              let weak a_668: boolean =
+                memop(PtrWellAligned, 'signed int', a_666) in
+              pure(
+                Specified(if a_668 then
+                  a_666
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              ) in
+            let Specified(a_663: pointer) = a_662 in
+            let weak a_664: boolean =
+              memop(PtrValidForDeref, 'signed int', a_663) in
+            pure(
+              if a_664 then
+                a_663
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_669)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_657, conv_loaded_int('signed int', a_670))) in
+      pure(conv_loaded_int('signed int', a_670))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:12:2, ./de_facto_memory_model/unspecified_value_union_1.c:12:20> #-} let strong _: loaded floating =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/unspecified_value_union_1.c:12:2, ./de_facto_memory_model/unspecified_value_union_1.c:12:19> ./de_facto_memory_model/unspecified_value_union_1.c:12:4 #-} let weak (a_656: pointer,
+      a_679: loaded floating) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/unspecified_value_union_1.c:12:2, ./de_facto_memory_model/unspecified_value_union_1.c:12:3> #-} pure(
+            g
+          )
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_union_1.c:12:6, ./de_facto_memory_model/unspecified_value_union_1.c:12:19> ./de_facto_memory_model/unspecified_value_union_1.c:12:6 #-} let weak a_678: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/unspecified_value_union_1.c:12:6, ./de_facto_memory_model/unspecified_value_union_1.c:12:19> ./de_facto_memory_model/unspecified_value_union_1.c:12:6 #-} let weak a_671: loaded pointer =
+              {-# §6.5.4 #-}
+              {-# <./de_facto_memory_model/unspecified_value_union_1.c:12:7, ./de_facto_memory_model/unspecified_value_union_1.c:12:19> #-} let weak a_674: loaded pointer =
+                {-# §6.5.3.2#3, sentence 5 #-}
+                {-# <./de_facto_memory_model/unspecified_value_union_1.c:12:16, ./de_facto_memory_model/unspecified_value_union_1.c:12:18> ./de_facto_memory_model/unspecified_value_union_1.c:12:16 #-} let weak a_676: pointer =
+                  {-# <./de_facto_memory_model/unspecified_value_union_1.c:12:17, ./de_facto_memory_model/unspecified_value_union_1.c:12:18> #-} pure(
+                    u
+                  ) in
+                pure(Specified(a_676)) in
+              let Specified(a_675: pointer) = a_674 in
+              let weak a_677: boolean =
+                memop(PtrWellAligned, 'float', a_675) in
+              pure(
+                Specified(if a_677 then
+                  a_675
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              ) in
+            let Specified(a_672: pointer) = a_671 in
+            let weak a_673: boolean =
+              memop(PtrValidForDeref, 'float', a_672) in
+            pure(
+              if a_673 then
+                a_672
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('float', a_678)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('float', a_656, a_679)) in
+      pure(a_679)
+    ) in
+  pure(Unit) ;
+  kill('union __cerbty_unnamed_tag_646', u) ;
+  kill('signed int', j) ;
+  kill('signed int', k) ;
+  kill('float', g) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/unspecified_value_union_1.c:3:0, ./de_facto_memory_model/unspecified_value_union_1.c:13:1> ./de_facto_memory_model/unspecified_value_union_1.c:3:4 - ./de_facto_memory_model/unspecified_value_union_1.c:3:8 #-} save ret_655: loaded integer (a_680: loaded integer:= Specified(0)) in
+    pure(a_680)
+

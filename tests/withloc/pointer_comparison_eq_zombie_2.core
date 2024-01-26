@@ -1,0 +1,346 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+-- Globals
+glob a_767: pointer [ail_ctype = 'char[13]'] :=
+  create_readonly(Ivalignof('char[13]'), 'char[13]', Specified(Array(Specified(conv_int('char',
+  40)), Specified(conv_int('char', 38)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 106)),
+  Specified(conv_int('char', 41)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+glob a_785: pointer [ail_ctype = 'char[5]'] :=
+  create_readonly(Ivalignof('char[5]'), 'char[5]', Specified(Array(Specified(conv_int('char',
+  116)), Specified(conv_int('char', 114)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 101)), Specified(0))))
+
+glob a_788: pointer [ail_ctype = 'char[6]'] :=
+  create_readonly(Ivalignof('char[6]'), 'char[6]', Specified(Array(Specified(conv_int('char',
+  102)), Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 101)),
+  Specified(0))))
+
+glob a_802: pointer [ail_ctype = 'char[13]'] :=
+  create_readonly(Ivalignof('char[13]'), 'char[13]', Specified(Array(Specified(conv_int('char',
+  40)), Specified(conv_int('char', 38)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 106)),
+  Specified(conv_int('char', 41)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+glob a_820: pointer [ail_ctype = 'char[5]'] :=
+  create_readonly(Ivalignof('char[5]'), 'char[5]', Specified(Array(Specified(conv_int('char',
+  116)), Specified(conv_int('char', 114)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 101)), Specified(0))))
+
+glob a_823: pointer [ail_ctype = 'char[6]'] :=
+  create_readonly(Ivalignof('char[6]'), 'char[6]', Specified(Array(Specified(conv_int('char',
+  102)), Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 101)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:3:11, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:14:1> #-} let strong i: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong pj: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:4:2, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:4:10> #-} let strong a_755: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:4:8, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:4:9> #-} pure(
+        Specified(0)
+      )
+    ) in
+  store('signed int', i, conv_loaded_int('signed int', a_755)) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:5:2, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:5:10> #-} store('signed int*',
+  pj, Unspecified('signed int*')) ;
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:6:2, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:10:3> #-} let strong j: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:7:4, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:7:12> #-} let strong a_756: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:7:10, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:7:11> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', j, conv_loaded_int('signed int', a_756)) ;
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:4, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:12> #-} let strong _: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:4, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:11> ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:7 #-} let weak (a_754: pointer,
+      a_758: loaded pointer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:4, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:6> #-} pure(
+            pj
+          )
+        ,
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:9, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:11> ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:9 #-} let weak a_757: pointer =
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:10, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:8:11> #-} pure(
+              j
+            ) in
+          pure(Specified(a_757))
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int*', a_754, a_758)) in
+      pure(a_758)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:4, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:52> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:4, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:51> #-} let strong ((a_759: loaded pointer,
+      (a_760: ctype, a_761: [ctype], a_762: boolean, a_763: boolean)),
+      a_766: loaded pointer, a_770: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_753: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:4, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:10> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_753, cfunction(a_753)))
+        ,
+          {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:11, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:26> #-} let weak a_768: pointer =
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:11, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:26> #-} pure(
+              a_767
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_769: pointer = memop(PtrArrayShift, a_768, 'char', 0) in
+          pure(Specified(a_769))
+        ,
+          {-# §6.5.15#4, sentence 1 #-}
+          {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:27, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:50> ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:35 #-} let strong a_783: loaded integer =
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:27, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:35> #-} let weak (a_771: loaded integer,
+            a_772: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:27, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:35> #-} let weak (a_776: loaded pointer,
+                a_777: loaded pointer) =
+                  unseq(
+                    {-# §6.5.3.2#3, sentence 5 #-}
+                    {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:28, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:30> ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:28 #-} let weak a_781: pointer =
+                      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:29, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:30> #-} pure(
+                        i
+                      ) in
+                    pure(Specified(a_781))
+                  ,
+                    {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:32, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:34> #-} let weak a_782: pointer =
+                      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:32, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:34> #-} pure(
+                        pj
+                      ) in
+                    load('signed int*', a_782)
+                  ) in
+                let (Specified(a_778: pointer), Specified(a_779: pointer)) =
+                  (a_776, a_777) in
+                let weak a_780: boolean = memop(PtrEq, a_778, a_779) in
+                pure(if a_780 then Specified(1) else Specified(0))
+              ,
+                {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:27, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:35> #-} pure(
+                  Specified(0)
+                )
+              ) in
+            pure(
+              let (Specified(a_773: integer), Specified(a_774: integer)) =
+                (a_771, a_772) in
+              if conv_int('signed int', a_773) = conv_int('signed int', a_774) then
+                Specified(1)
+              else
+                Specified(0)
+            ) in
+          let Specified(a_784: integer) = a_783 in
+          {-# §6.5.15#4, sentence 2 #-}
+          if a_784 = 0 then
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:36, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:42> #-} let weak a_786: pointer =
+              {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:36, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:42> #-} pure(
+                a_785
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_787: pointer =
+              memop(PtrArrayShift, a_786, 'char', 0) in
+            pure(Specified(a_787))
+          else
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:43, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:50> #-} let weak a_789: pointer =
+              {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:43, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:9:50> #-} pure(
+                a_788
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_790: pointer =
+              memop(PtrArrayShift, a_789, 'char', 0) in
+            pure(Specified(a_790))
+        ) in
+      if not(params_length(a_761) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_762) \/ not(are_compatible ('signed int', a_760)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_765: pointer =
+            let a_791: ctype = params_nth(a_761, 0) in
+            if not(are_compatible ('const char*', a_791)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_792: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_792, a_766) in
+              pure(a_792) in
+          let strong a_764: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'char*', a_770) in
+          let strong a_793: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_759, a_765,
+            [('char*', a_764)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_765), kill('char*', a_764)) in
+          pure(a_793)
+    ) in
+  pure(Unit) ;
+  kill('signed int', j) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:2, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:50> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:2, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:49> #-} let strong ((a_794: loaded pointer,
+      (a_795: ctype, a_796: [ctype], a_797: boolean, a_798: boolean)),
+      a_801: loaded pointer, a_805: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_752: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:2, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_752, cfunction(a_752)))
+        ,
+          {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:9, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:24> #-} let weak a_803: pointer =
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:9, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:24> #-} pure(
+              a_802
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_804: pointer = memop(PtrArrayShift, a_803, 'char', 0) in
+          pure(Specified(a_804))
+        ,
+          {-# §6.5.15#4, sentence 1 #-}
+          {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:25, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:48> ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:33 #-} let strong a_818: loaded integer =
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:25, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:33> #-} let weak (a_806: loaded integer,
+            a_807: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:25, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:33> #-} let weak (a_811: loaded pointer,
+                a_812: loaded pointer) =
+                  unseq(
+                    {-# §6.5.3.2#3, sentence 5 #-}
+                    {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:26, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:28> ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:26 #-} let weak a_816: pointer =
+                      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:27, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:28> #-} pure(
+                        i
+                      ) in
+                    pure(Specified(a_816))
+                  ,
+                    {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:30, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:32> #-} let weak a_817: pointer =
+                      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:30, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:32> #-} pure(
+                        pj
+                      ) in
+                    load('signed int*', a_817)
+                  ) in
+                let (Specified(a_813: pointer), Specified(a_814: pointer)) =
+                  (a_811, a_812) in
+                let weak a_815: boolean = memop(PtrEq, a_813, a_814) in
+                pure(if a_815 then Specified(1) else Specified(0))
+              ,
+                {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:25, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:33> #-} pure(
+                  Specified(0)
+                )
+              ) in
+            pure(
+              let (Specified(a_808: integer), Specified(a_809: integer)) =
+                (a_806, a_807) in
+              if conv_int('signed int', a_808) = conv_int('signed int', a_809) then
+                Specified(1)
+              else
+                Specified(0)
+            ) in
+          let Specified(a_819: integer) = a_818 in
+          {-# §6.5.15#4, sentence 2 #-}
+          if a_819 = 0 then
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:34, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:40> #-} let weak a_821: pointer =
+              {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:34, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:40> #-} pure(
+                a_820
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_822: pointer =
+              memop(PtrArrayShift, a_821, 'char', 0) in
+            pure(Specified(a_822))
+          else
+            {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:41, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:48> #-} let weak a_824: pointer =
+              {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:41, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:11:48> #-} pure(
+                a_823
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_825: pointer =
+              memop(PtrArrayShift, a_824, 'char', 0) in
+            pure(Specified(a_825))
+        ) in
+      if not(params_length(a_796) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_797) \/ not(are_compatible ('signed int', a_795)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_800: pointer =
+            let a_826: ctype = params_nth(a_796, 0) in
+            if not(are_compatible ('const char*', a_826)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_827: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_827, a_801) in
+              pure(a_827) in
+          let strong a_799: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'char*', a_805) in
+          let strong a_828: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_794, a_800,
+            [('char*', a_799)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_800), kill('char*', a_799)) in
+          pure(a_828)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:13:2, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:13:11> #-} let strong a_829: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:13:9, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:13:10> #-} pure(
+        Specified(0)
+      )
+    ) in
+  kill('signed int', i) ;
+  kill('signed int*', pj) ;
+  run ret_751(conv_loaded_int('signed int', a_829)) ;
+  kill('signed int', i) ;
+  kill('signed int*', pj) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:3:0, ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:14:1> ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:3:4 - ./de_facto_memory_model/pointer_comparison_eq_zombie_2.c:3:8 #-} save ret_751: loaded integer (a_830: loaded integer:= Specified(0)) in
+    pure(a_830)
+

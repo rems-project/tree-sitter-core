@@ -1,0 +1,38 @@
+proc main (): eff loaded integer :=
+  {-# <./cheri/regression2.c:2:0, ./cheri/regression2.c:5:1> #-} let strong x: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  {-# <./cheri/regression2.c:3:2, ./cheri/regression2.c:3:13> #-} let strong a_507: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.3#3 #-}
+      {-# <./cheri/regression2.c:3:10, ./cheri/regression2.c:3:12> ./cheri/regression2.c:3:10 #-} let weak a_509: loaded integer =
+        {-# <./cheri/regression2.c:3:11, ./cheri/regression2.c:3:12> #-} pure(
+          Specified(1)
+        ) in
+      pure(
+        case a_509 of
+          | Specified(a_508: integer) =>
+              Specified(catch_exceptional_condition_sub('signed int', 0, conv_int('signed int',
+              a_508)))
+          | Unspecified(_: ctype) =>
+              Unspecified('signed int')
+        end
+      )
+    ) in
+  store('signed int', x, conv_loaded_int('signed int', a_507)) ;
+  {-# <./cheri/regression2.c:4:2, ./cheri/regression2.c:4:12> #-} let strong a_511: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./cheri/regression2.c:4:8, ./cheri/regression2.c:4:11> #-} let weak a_510: pointer =
+        {-# <./cheri/regression2.c:4:8, ./cheri/regression2.c:4:11> #-} pure(
+          x
+        ) in
+      load('signed int', a_510)
+    ) in
+  kill('signed int', x) ;
+  run ret_506(conv_loaded_int('signed int', a_511)) ;
+  kill('signed int', x) ;
+  pure(Unit) ;
+  {-# <./cheri/regression2.c:1:0, ./cheri/regression2.c:5:1> ./cheri/regression2.c:1:4 - ./cheri/regression2.c:1:8 #-} save ret_506: loaded integer (a_512: loaded integer:= Specified(0)) in
+    pure(a_512)
+

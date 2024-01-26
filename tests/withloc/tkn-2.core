@@ -1,0 +1,888 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_735: pointer [ail_ctype = 'char[28]'] :=
+  create_readonly(Ivalignof('char[28]'), 'char[28]', Specified(Array(Specified(conv_int('char',
+  97)), Specified(conv_int('char', 91)), Specified(conv_int('char', 48)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 97)), Specified(conv_int('char', 91)),
+  Specified(conv_int('char', 49)), Specified(conv_int('char', 93)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 108)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 97)),
+  Specified(conv_int('char', 91)), Specified(conv_int('char', 50)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+glob a_802: pointer [ail_ctype = 'char[34]'] :=
+  create_readonly(Ivalignof('char[34]'), 'char[34]', Specified(Array(Specified(conv_int('char',
+  97)), Specified(conv_int('char', 91)), Specified(conv_int('char', 48)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 97)), Specified(conv_int('char', 91)),
+  Specified(conv_int('char', 49)), Specified(conv_int('char', 93)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 108)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 97)),
+  Specified(conv_int('char', 91)), Specified(conv_int('char', 50)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 98)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc reverse (i: pointer): eff loaded integer :=
+  {-# <./de_facto_memory_model/tkn-2.c:4:26, ./de_facto_memory_model/tkn-2.c:13:1> #-} let strong j: pointer =
+    create(Ivalignof('unsigned long'), 'unsigned long') in
+  {-# <./de_facto_memory_model/tkn-2.c:5:2, ./de_facto_memory_model/tkn-2.c:5:15> #-} let strong a_853: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/tkn-2.c:5:13, ./de_facto_memory_model/tkn-2.c:5:14> #-} pure(
+        Specified(0)
+      )
+    ) in
+  store('unsigned long', j, conv_loaded_int('unsigned long', a_853)) ;
+  {-# <./de_facto_memory_model/tkn-2.c:6:2, ./de_facto_memory_model/tkn-2.c:11:3> #-} {-# <./de_facto_memory_model/tkn-2.c:6:2, ./de_facto_memory_model/tkn-2.c:11:3> #-} save while_851: unit (j: pointer:= j) in
+    let strong a_854: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# <./de_facto_memory_model/tkn-2.c:6:9, ./de_facto_memory_model/tkn-2.c:6:10> #-} let weak a_857: loaded pointer =
+          {-# <./de_facto_memory_model/tkn-2.c:6:9, ./de_facto_memory_model/tkn-2.c:6:10> #-} let weak a_856: pointer =
+            {-# <./de_facto_memory_model/tkn-2.c:6:9, ./de_facto_memory_model/tkn-2.c:6:10> #-} pure(
+              i
+            ) in
+          load('unsigned long*', a_856) in
+        let Specified(a_858: pointer) = a_857 in
+        let weak a_859: boolean = memop(PtrEq, a_858, NULL(unsigned long*)) in
+        {-# §6.5.9#3 #-}
+        pure(if a_859 then Specified(1) else Specified(0))
+      ) in
+    let strong a_852: boolean =
+      let Specified(a_855: integer) = a_854 in
+      pure(if not(a_855 = 1) then True else False) in
+    if a_852 then
+      {-# <./de_facto_memory_model/tkn-2.c:6:2, ./de_facto_memory_model/tkn-2.c:11:3> #-} {-# <./de_facto_memory_model/tkn-2.c:6:12, ./de_facto_memory_model/tkn-2.c:11:3> #-} let strong k: pointer =
+        create(Ivalignof('unsigned long*'), 'unsigned long*') in
+      {-# <./de_facto_memory_model/tkn-2.c:7:4, ./de_facto_memory_model/tkn-2.c:7:28> #-} let strong a_863: loaded pointer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:7:16, ./de_facto_memory_model/tkn-2.c:7:27> ./de_facto_memory_model/tkn-2.c:7:16 #-} let weak a_864: loaded integer =
+            {-# <./de_facto_memory_model/tkn-2.c:7:25, ./de_facto_memory_model/tkn-2.c:7:27> ./de_facto_memory_model/tkn-2.c:7:25 #-} let weak a_870: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:7:25, ./de_facto_memory_model/tkn-2.c:7:27> ./de_facto_memory_model/tkn-2.c:7:25 #-} let weak a_866: loaded pointer =
+                {-# <./de_facto_memory_model/tkn-2.c:7:26, ./de_facto_memory_model/tkn-2.c:7:27> #-} let weak a_869: pointer =
+                  {-# <./de_facto_memory_model/tkn-2.c:7:26, ./de_facto_memory_model/tkn-2.c:7:27> #-} pure(
+                    i
+                  ) in
+                load('unsigned long*', a_869) in
+              let Specified(a_867: pointer) = a_866 in
+              let weak a_868: boolean =
+                memop(PtrValidForDeref, 'unsigned long', a_867) in
+              pure(
+                if a_868 then
+                  a_867
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('unsigned long', a_870) in
+          let Specified(a_865: integer) = a_864 in
+          let weak a_871: pointer =
+            memop(PtrFromInt, 'unsigned long', 'unsigned long', a_865) in
+          pure(Specified(a_871))
+        ) in
+      store('unsigned long*', k, a_863) ;
+      {-# <./de_facto_memory_model/tkn-2.c:8:4, ./de_facto_memory_model/tkn-2.c:8:11> #-} let strong _: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:8:4, ./de_facto_memory_model/tkn-2.c:8:10> ./de_facto_memory_model/tkn-2.c:8:7 #-} let weak (a_862: pointer,
+          a_877: loaded integer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:8:4, ./de_facto_memory_model/tkn-2.c:8:6> ./de_facto_memory_model/tkn-2.c:8:4 #-} let weak a_872: loaded pointer =
+                {-# <./de_facto_memory_model/tkn-2.c:8:5, ./de_facto_memory_model/tkn-2.c:8:6> #-} let weak a_875: pointer =
+                  {-# <./de_facto_memory_model/tkn-2.c:8:5, ./de_facto_memory_model/tkn-2.c:8:6> #-} pure(
+                    i
+                  ) in
+                load('unsigned long*', a_875) in
+              let Specified(a_873: pointer) = a_872 in
+              let weak a_874: boolean =
+                memop(PtrValidForDeref, 'unsigned long', a_873) in
+              pure(
+                if a_874 then
+                  a_873
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              )
+            ,
+              {-# <./de_facto_memory_model/tkn-2.c:8:9, ./de_facto_memory_model/tkn-2.c:8:10> #-} let weak a_876: pointer =
+                {-# <./de_facto_memory_model/tkn-2.c:8:9, ./de_facto_memory_model/tkn-2.c:8:10> #-} pure(
+                  j
+                ) in
+              load('unsigned long', a_876)
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('unsigned long', a_862,
+            conv_loaded_int('unsigned long', a_877))) in
+          pure(conv_loaded_int('unsigned long', a_877))
+        ) in
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/tkn-2.c:9:4, ./de_facto_memory_model/tkn-2.c:9:18> #-} let strong _: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:9:4, ./de_facto_memory_model/tkn-2.c:9:17> ./de_facto_memory_model/tkn-2.c:9:6 #-} let weak (a_861: pointer,
+          a_882: loaded integer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# <./de_facto_memory_model/tkn-2.c:9:4, ./de_facto_memory_model/tkn-2.c:9:5> #-} pure(
+                j
+              )
+            ,
+              {-# §6.5.4 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:9:8, ./de_facto_memory_model/tkn-2.c:9:17> ./de_facto_memory_model/tkn-2.c:9:8 #-} let weak a_878: loaded pointer =
+                {-# <./de_facto_memory_model/tkn-2.c:9:16, ./de_facto_memory_model/tkn-2.c:9:17> #-} let weak a_880: pointer =
+                  {-# <./de_facto_memory_model/tkn-2.c:9:16, ./de_facto_memory_model/tkn-2.c:9:17> #-} pure(
+                    i
+                  ) in
+                load('unsigned long*', a_880) in
+              let Specified(a_879: pointer) = a_878 in
+              let weak a_881: integer =
+                memop(IntFromPtr, 'unsigned long', 'unsigned long', a_879) in
+              pure(Specified(a_881))
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('unsigned long', a_861,
+            conv_loaded_int('unsigned long', a_882))) in
+          pure(conv_loaded_int('unsigned long', a_882))
+        ) in
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/tkn-2.c:10:4, ./de_facto_memory_model/tkn-2.c:10:10> #-} let strong _: loaded pointer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:10:4, ./de_facto_memory_model/tkn-2.c:10:9> ./de_facto_memory_model/tkn-2.c:10:6 #-} let weak (a_860: pointer,
+          a_884: loaded pointer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# <./de_facto_memory_model/tkn-2.c:10:4, ./de_facto_memory_model/tkn-2.c:10:5> #-} pure(
+                i
+              )
+            ,
+              {-# <./de_facto_memory_model/tkn-2.c:10:8, ./de_facto_memory_model/tkn-2.c:10:9> #-} let weak a_883: pointer =
+                {-# <./de_facto_memory_model/tkn-2.c:10:8, ./de_facto_memory_model/tkn-2.c:10:9> #-} pure(
+                  k
+                ) in
+              load('unsigned long*', a_883)
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('unsigned long*', a_860, a_884)) in
+          pure(a_884)
+        ) in
+      pure(Unit) ;
+      kill('unsigned long*', k) ;
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/tkn-2.c:6:2, ./de_facto_memory_model/tkn-2.c:11:3> #-} save continue_849: unit (j: pointer:= j) in
+        {-# <./de_facto_memory_model/tkn-2.c:6:2, ./de_facto_memory_model/tkn-2.c:11:3> #-} pure(
+          Unit
+        ) ;
+      pure(Unit) ;
+      run while_851(j)
+    else
+      pure(Unit) ;
+  {-# <./de_facto_memory_model/tkn-2.c:6:2, ./de_facto_memory_model/tkn-2.c:11:3> #-} save break_850: unit (j: pointer:= j) in
+    {-# <./de_facto_memory_model/tkn-2.c:6:2, ./de_facto_memory_model/tkn-2.c:11:3> #-} pure(
+      Unit
+    ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/tkn-2.c:12:2, ./de_facto_memory_model/tkn-2.c:12:11> #-} let strong a_886: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/tkn-2.c:12:9, ./de_facto_memory_model/tkn-2.c:12:10> #-} let weak a_885: pointer =
+        {-# <./de_facto_memory_model/tkn-2.c:12:9, ./de_facto_memory_model/tkn-2.c:12:10> #-} pure(
+          j
+        ) in
+      load('unsigned long', a_885)
+    ) in
+  kill('unsigned long', j) ;
+  run ret_848(conv_loaded_int('unsigned long', a_886)) ;
+  kill('unsigned long', j) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/tkn-2.c:4:0, ./de_facto_memory_model/tkn-2.c:13:1> ./de_facto_memory_model/tkn-2.c:4:7 - ./de_facto_memory_model/tkn-2.c:4:14 #-} save ret_848: loaded integer (a_887: loaded integer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_887)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/tkn-2.c:15:11, ./de_facto_memory_model/tkn-2.c:26:1> #-} let strong a: pointer =
+    create(Ivalignof('unsigned long[3]'), 'unsigned long[3]') in
+  let strong b: pointer =
+    create(Ivalignof('unsigned long'), 'unsigned long') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/tkn-2.c:16:2, ./de_facto_memory_model/tkn-2.c:16:14> #-} store('unsigned long[3]',
+  a, Unspecified('unsigned long[3]')) ;
+  {-# <./de_facto_memory_model/tkn-2.c:17:2, ./de_facto_memory_model/tkn-2.c:17:24> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/tkn-2.c:17:2, ./de_facto_memory_model/tkn-2.c:17:23> ./de_facto_memory_model/tkn-2.c:17:7 #-} let weak (a_668: pointer,
+      a_689: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:17:2, ./de_facto_memory_model/tkn-2.c:17:6> #-} let weak a_669: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:17:2, ./de_facto_memory_model/tkn-2.c:17:6> #-} let weak (a_672: loaded pointer,
+            a_674: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/tkn-2.c:17:2, ./de_facto_memory_model/tkn-2.c:17:3> #-} let weak a_677: pointer =
+                  {-# <./de_facto_memory_model/tkn-2.c:17:2, ./de_facto_memory_model/tkn-2.c:17:3> #-} pure(
+                    a
+                  ) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_678: pointer =
+                  memop(PtrArrayShift, a_677, 'unsigned long', 0) in
+                pure(Specified(a_678))
+              ,
+                {-# <./de_facto_memory_model/tkn-2.c:17:4, ./de_facto_memory_model/tkn-2.c:17:5> #-} pure(
+                  Specified(0)
+                )
+              ) in
+            let (Specified(a_673: pointer), Specified(a_675: integer)) =
+              (a_672, a_674) in
+            let weak a_676: pointer =
+              memop(PtrArrayShift, a_673, 'unsigned long', a_675) in
+            pure(Specified(a_676)) in
+          let Specified(a_670: pointer) = a_669 in
+          let weak a_671: boolean =
+            memop(PtrValidForDeref, 'unsigned long', a_670) in
+          pure(
+            if a_671 then
+              a_670
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:17:9, ./de_facto_memory_model/tkn-2.c:17:23> ./de_facto_memory_model/tkn-2.c:17:9 #-} let weak a_679: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# §6.5.3.2#3, sentence 3 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:17:18, ./de_facto_memory_model/tkn-2.c:17:23> ./de_facto_memory_model/tkn-2.c:17:18 #-} let weak (a_681: loaded pointer,
+            a_683: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/tkn-2.c:17:19, ./de_facto_memory_model/tkn-2.c:17:20> #-} let weak a_686: pointer =
+                  {-# <./de_facto_memory_model/tkn-2.c:17:19, ./de_facto_memory_model/tkn-2.c:17:20> #-} pure(
+                    a
+                  ) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_687: pointer =
+                  memop(PtrArrayShift, a_686, 'unsigned long', 0) in
+                pure(Specified(a_687))
+              ,
+                {-# <./de_facto_memory_model/tkn-2.c:17:21, ./de_facto_memory_model/tkn-2.c:17:22> #-} pure(
+                  Specified(1)
+                )
+              ) in
+            let (Specified(a_682: pointer), Specified(a_684: integer)) =
+              (a_681, a_683) in
+            let weak a_685: pointer =
+              memop(PtrArrayShift, a_682, 'unsigned long', a_684) in
+            pure(Specified(a_685)) in
+          let Specified(a_680: pointer) = a_679 in
+          let weak a_688: integer =
+            memop(IntFromPtr, 'unsigned long', 'unsigned long', a_680) in
+          pure(Specified(a_688))
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned long', a_668,
+        conv_loaded_int('unsigned long', a_689))) in
+      pure(conv_loaded_int('unsigned long', a_689))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/tkn-2.c:18:2, ./de_facto_memory_model/tkn-2.c:18:24> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/tkn-2.c:18:2, ./de_facto_memory_model/tkn-2.c:18:23> ./de_facto_memory_model/tkn-2.c:18:7 #-} let weak (a_667: pointer,
+      a_710: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:18:2, ./de_facto_memory_model/tkn-2.c:18:6> #-} let weak a_690: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:18:2, ./de_facto_memory_model/tkn-2.c:18:6> #-} let weak (a_693: loaded pointer,
+            a_695: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/tkn-2.c:18:2, ./de_facto_memory_model/tkn-2.c:18:3> #-} let weak a_698: pointer =
+                  {-# <./de_facto_memory_model/tkn-2.c:18:2, ./de_facto_memory_model/tkn-2.c:18:3> #-} pure(
+                    a
+                  ) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_699: pointer =
+                  memop(PtrArrayShift, a_698, 'unsigned long', 0) in
+                pure(Specified(a_699))
+              ,
+                {-# <./de_facto_memory_model/tkn-2.c:18:4, ./de_facto_memory_model/tkn-2.c:18:5> #-} pure(
+                  Specified(1)
+                )
+              ) in
+            let (Specified(a_694: pointer), Specified(a_696: integer)) =
+              (a_693, a_695) in
+            let weak a_697: pointer =
+              memop(PtrArrayShift, a_694, 'unsigned long', a_696) in
+            pure(Specified(a_697)) in
+          let Specified(a_691: pointer) = a_690 in
+          let weak a_692: boolean =
+            memop(PtrValidForDeref, 'unsigned long', a_691) in
+          pure(
+            if a_692 then
+              a_691
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:18:9, ./de_facto_memory_model/tkn-2.c:18:23> ./de_facto_memory_model/tkn-2.c:18:9 #-} let weak a_700: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# §6.5.3.2#3, sentence 3 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:18:18, ./de_facto_memory_model/tkn-2.c:18:23> ./de_facto_memory_model/tkn-2.c:18:18 #-} let weak (a_702: loaded pointer,
+            a_704: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/tkn-2.c:18:19, ./de_facto_memory_model/tkn-2.c:18:20> #-} let weak a_707: pointer =
+                  {-# <./de_facto_memory_model/tkn-2.c:18:19, ./de_facto_memory_model/tkn-2.c:18:20> #-} pure(
+                    a
+                  ) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_708: pointer =
+                  memop(PtrArrayShift, a_707, 'unsigned long', 0) in
+                pure(Specified(a_708))
+              ,
+                {-# <./de_facto_memory_model/tkn-2.c:18:21, ./de_facto_memory_model/tkn-2.c:18:22> #-} pure(
+                  Specified(2)
+                )
+              ) in
+            let (Specified(a_703: pointer), Specified(a_705: integer)) =
+              (a_702, a_704) in
+            let weak a_706: pointer =
+              memop(PtrArrayShift, a_703, 'unsigned long', a_705) in
+            pure(Specified(a_706)) in
+          let Specified(a_701: pointer) = a_700 in
+          let weak a_709: integer =
+            memop(IntFromPtr, 'unsigned long', 'unsigned long', a_701) in
+          pure(Specified(a_709))
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned long', a_667,
+        conv_loaded_int('unsigned long', a_710))) in
+      pure(conv_loaded_int('unsigned long', a_710))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/tkn-2.c:19:2, ./de_facto_memory_model/tkn-2.c:19:20> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/tkn-2.c:19:2, ./de_facto_memory_model/tkn-2.c:19:19> ./de_facto_memory_model/tkn-2.c:19:7 #-} let weak (a_666: pointer,
+      a_724: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:19:2, ./de_facto_memory_model/tkn-2.c:19:6> #-} let weak a_711: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:19:2, ./de_facto_memory_model/tkn-2.c:19:6> #-} let weak (a_714: loaded pointer,
+            a_716: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/tkn-2.c:19:2, ./de_facto_memory_model/tkn-2.c:19:3> #-} let weak a_719: pointer =
+                  {-# <./de_facto_memory_model/tkn-2.c:19:2, ./de_facto_memory_model/tkn-2.c:19:3> #-} pure(
+                    a
+                  ) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_720: pointer =
+                  memop(PtrArrayShift, a_719, 'unsigned long', 0) in
+                pure(Specified(a_720))
+              ,
+                {-# <./de_facto_memory_model/tkn-2.c:19:4, ./de_facto_memory_model/tkn-2.c:19:5> #-} pure(
+                  Specified(2)
+                )
+              ) in
+            let (Specified(a_715: pointer), Specified(a_717: integer)) =
+              (a_714, a_716) in
+            let weak a_718: pointer =
+              memop(PtrArrayShift, a_715, 'unsigned long', a_717) in
+            pure(Specified(a_718)) in
+          let Specified(a_712: pointer) = a_711 in
+          let weak a_713: boolean =
+            memop(PtrValidForDeref, 'unsigned long', a_712) in
+          pure(
+            if a_713 then
+              a_712
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:19:9, ./de_facto_memory_model/tkn-2.c:19:19> ./de_facto_memory_model/tkn-2.c:19:9 #-} let weak a_721: loaded integer =
+            {-# <./de_facto_memory_model/tkn-2.c:19:18, ./de_facto_memory_model/tkn-2.c:19:19> #-} pure(
+              Specified(0)
+            ) in
+          pure(conv_loaded_int('unsigned long', a_721))
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned long', a_666,
+        conv_loaded_int('unsigned long', a_724))) in
+      pure(conv_loaded_int('unsigned long', a_724))
+    ) in
+  pure(Unit) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/tkn-2.c:20:2, ./de_facto_memory_model/tkn-2.c:20:11> #-} store('unsigned long',
+  b, Unspecified('unsigned long')) ;
+  {-# <./de_facto_memory_model/tkn-2.c:21:2, ./de_facto_memory_model/tkn-2.c:22:25> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/tkn-2.c:21:2, ./de_facto_memory_model/tkn-2.c:22:24> #-} let strong ((a_725: loaded pointer,
+      (a_726: ctype, a_727: [ctype], a_728: boolean, a_729: boolean)),
+      a_734: loaded pointer, a_738: loaded integer, a_750: loaded integer,
+      a_762: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_665: loaded pointer =
+            {-# <./de_facto_memory_model/tkn-2.c:21:2, ./de_facto_memory_model/tkn-2.c:21:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_665, cfunction(a_665)))
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:21:9, ./de_facto_memory_model/tkn-2.c:21:39> #-} let weak a_736: pointer =
+            {-# <./de_facto_memory_model/tkn-2.c:21:9, ./de_facto_memory_model/tkn-2.c:21:39> #-} pure(
+              a_735
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_737: pointer = memop(PtrArrayShift, a_736, 'char', 0) in
+          pure(Specified(a_737))
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:22:9, ./de_facto_memory_model/tkn-2.c:22:13> #-} let weak a_749: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:22:9, ./de_facto_memory_model/tkn-2.c:22:13> #-} let weak a_739: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:22:9, ./de_facto_memory_model/tkn-2.c:22:13> #-} let weak (a_742: loaded pointer,
+              a_744: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/tkn-2.c:22:9, ./de_facto_memory_model/tkn-2.c:22:10> #-} let weak a_747: pointer =
+                    {-# <./de_facto_memory_model/tkn-2.c:22:9, ./de_facto_memory_model/tkn-2.c:22:10> #-} pure(
+                      a
+                    ) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_748: pointer =
+                    memop(PtrArrayShift, a_747, 'unsigned long', 0) in
+                  pure(Specified(a_748))
+                ,
+                  {-# <./de_facto_memory_model/tkn-2.c:22:11, ./de_facto_memory_model/tkn-2.c:22:12> #-} pure(
+                    Specified(0)
+                  )
+                ) in
+              let (Specified(a_743: pointer), Specified(a_745: integer)) =
+                (a_742, a_744) in
+              let weak a_746: pointer =
+                memop(PtrArrayShift, a_743, 'unsigned long', a_745) in
+              pure(Specified(a_746)) in
+            let Specified(a_740: pointer) = a_739 in
+            let weak a_741: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_740) in
+            pure(
+              if a_741 then
+                a_740
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_749)
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:22:14, ./de_facto_memory_model/tkn-2.c:22:18> #-} let weak a_761: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:22:14, ./de_facto_memory_model/tkn-2.c:22:18> #-} let weak a_751: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:22:14, ./de_facto_memory_model/tkn-2.c:22:18> #-} let weak (a_754: loaded pointer,
+              a_756: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/tkn-2.c:22:14, ./de_facto_memory_model/tkn-2.c:22:15> #-} let weak a_759: pointer =
+                    {-# <./de_facto_memory_model/tkn-2.c:22:14, ./de_facto_memory_model/tkn-2.c:22:15> #-} pure(
+                      a
+                    ) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_760: pointer =
+                    memop(PtrArrayShift, a_759, 'unsigned long', 0) in
+                  pure(Specified(a_760))
+                ,
+                  {-# <./de_facto_memory_model/tkn-2.c:22:16, ./de_facto_memory_model/tkn-2.c:22:17> #-} pure(
+                    Specified(1)
+                  )
+                ) in
+              let (Specified(a_755: pointer), Specified(a_757: integer)) =
+                (a_754, a_756) in
+              let weak a_758: pointer =
+                memop(PtrArrayShift, a_755, 'unsigned long', a_757) in
+              pure(Specified(a_758)) in
+            let Specified(a_752: pointer) = a_751 in
+            let weak a_753: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_752) in
+            pure(
+              if a_753 then
+                a_752
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_761)
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:22:19, ./de_facto_memory_model/tkn-2.c:22:23> #-} let weak a_773: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:22:19, ./de_facto_memory_model/tkn-2.c:22:23> #-} let weak a_763: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:22:19, ./de_facto_memory_model/tkn-2.c:22:23> #-} let weak (a_766: loaded pointer,
+              a_768: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/tkn-2.c:22:19, ./de_facto_memory_model/tkn-2.c:22:20> #-} let weak a_771: pointer =
+                    {-# <./de_facto_memory_model/tkn-2.c:22:19, ./de_facto_memory_model/tkn-2.c:22:20> #-} pure(
+                      a
+                    ) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_772: pointer =
+                    memop(PtrArrayShift, a_771, 'unsigned long', 0) in
+                  pure(Specified(a_772))
+                ,
+                  {-# <./de_facto_memory_model/tkn-2.c:22:21, ./de_facto_memory_model/tkn-2.c:22:22> #-} pure(
+                    Specified(2)
+                  )
+                ) in
+              let (Specified(a_767: pointer), Specified(a_769: integer)) =
+                (a_766, a_768) in
+              let weak a_770: pointer =
+                memop(PtrArrayShift, a_767, 'unsigned long', a_769) in
+              pure(Specified(a_770)) in
+            let Specified(a_764: pointer) = a_763 in
+            let weak a_765: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_764) in
+            pure(
+              if a_765 then
+                a_764
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_773)
+        ) in
+      if not(params_length(a_727) <= 4) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_728) \/ not(are_compatible ('signed int', a_726)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_733: pointer =
+            let a_774: ctype = params_nth(a_727, 0) in
+            if not(are_compatible ('const char*', a_774)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_775: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_775, a_734) in
+              pure(a_775) in
+          let strong a_732: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_738)) in
+          let strong a_731: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_750)) in
+          let strong a_730: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_762)) in
+          let strong a_776: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_725, a_733,
+            [('unsigned long', a_732), ('unsigned long', a_731),
+            ('unsigned long', a_730)]) in
+          let strong _: (unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_733)
+            ,
+              kill('unsigned long', a_732)
+            ,
+              kill('unsigned long', a_731)
+            ,
+              kill('unsigned long', a_730)
+            ) in
+          pure(a_776)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/tkn-2.c:23:2, ./de_facto_memory_model/tkn-2.c:23:17> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/tkn-2.c:23:2, ./de_facto_memory_model/tkn-2.c:23:16> ./de_facto_memory_model/tkn-2.c:23:4 #-} let weak (a_664: pointer,
+      a_790: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/tkn-2.c:23:2, ./de_facto_memory_model/tkn-2.c:23:3> #-} pure(
+            b
+          )
+        ,
+          {-# §6.5.2.2#10, sentence 1 #-}
+          {-# <./de_facto_memory_model/tkn-2.c:23:6, ./de_facto_memory_model/tkn-2.c:23:16> #-} let strong ((a_778: loaded pointer,
+          (a_779: ctype, a_780: [ctype], a_781: boolean, a_782: boolean)),
+          a_784: loaded pointer) =
+            {-# §6.5.2.2#4, sentence 2 #-}
+            unseq(
+              let strong a_777: loaded pointer =
+                {-# <./de_facto_memory_model/tkn-2.c:23:6, ./de_facto_memory_model/tkn-2.c:23:13> #-} pure(
+                  Specified(Cfunction(reverse))
+                ) in
+              pure((a_777, cfunction(a_777)))
+            ,
+              {-# <./de_facto_memory_model/tkn-2.c:23:14, ./de_facto_memory_model/tkn-2.c:23:15> #-} let weak a_785: pointer =
+                {-# <./de_facto_memory_model/tkn-2.c:23:14, ./de_facto_memory_model/tkn-2.c:23:15> #-} pure(
+                  a
+                ) in
+              {-# §6.3.2.1#3 #-}
+              let weak a_786: pointer =
+                memop(PtrArrayShift, a_785, 'unsigned long', 0) in
+              pure(Specified(a_786))
+            ) in
+          if not(params_length(a_780) = 1) then
+            pure(undef(<<UB038_number_of_args>>))
+          else
+            if a_781 \/ not(are_compatible ('unsigned long', a_779)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let strong a_783: pointer =
+                let a_787: ctype = params_nth(a_780, 0) in
+                if not(are_compatible ('unsigned long*', a_787)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  {-# §6.5.2.2#7, sentence 1 #-}
+                  let weak a_788: pointer =
+                    create(Ivalignof('unsigned long*'), 'unsigned long*') in
+                  let weak _: unit = store('unsigned long*', a_788, a_784) in
+                  pure(a_788) in
+              let strong a_789: loaded integer =
+                ccall('unsigned long (*) (unsigned long*)', a_778, a_783) in
+              kill('unsigned long*', a_783) ;
+              pure(a_789)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned long', a_664,
+        conv_loaded_int('unsigned long', a_790))) in
+      pure(conv_loaded_int('unsigned long', a_790))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/tkn-2.c:24:2, ./de_facto_memory_model/tkn-2.c:25:27> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/tkn-2.c:24:2, ./de_facto_memory_model/tkn-2.c:25:26> #-} let strong ((a_791: loaded pointer,
+      (a_792: ctype, a_793: [ctype], a_794: boolean, a_795: boolean)),
+      a_801: loaded pointer, a_805: loaded integer, a_817: loaded integer,
+      a_829: loaded integer, a_841: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_663: loaded pointer =
+            {-# <./de_facto_memory_model/tkn-2.c:24:2, ./de_facto_memory_model/tkn-2.c:24:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_663, cfunction(a_663)))
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:24:9, ./de_facto_memory_model/tkn-2.c:24:45> #-} let weak a_803: pointer =
+            {-# <./de_facto_memory_model/tkn-2.c:24:9, ./de_facto_memory_model/tkn-2.c:24:45> #-} pure(
+              a_802
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_804: pointer = memop(PtrArrayShift, a_803, 'char', 0) in
+          pure(Specified(a_804))
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:25:9, ./de_facto_memory_model/tkn-2.c:25:13> #-} let weak a_816: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:25:9, ./de_facto_memory_model/tkn-2.c:25:13> #-} let weak a_806: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:25:9, ./de_facto_memory_model/tkn-2.c:25:13> #-} let weak (a_809: loaded pointer,
+              a_811: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/tkn-2.c:25:9, ./de_facto_memory_model/tkn-2.c:25:10> #-} let weak a_814: pointer =
+                    {-# <./de_facto_memory_model/tkn-2.c:25:9, ./de_facto_memory_model/tkn-2.c:25:10> #-} pure(
+                      a
+                    ) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_815: pointer =
+                    memop(PtrArrayShift, a_814, 'unsigned long', 0) in
+                  pure(Specified(a_815))
+                ,
+                  {-# <./de_facto_memory_model/tkn-2.c:25:11, ./de_facto_memory_model/tkn-2.c:25:12> #-} pure(
+                    Specified(0)
+                  )
+                ) in
+              let (Specified(a_810: pointer), Specified(a_812: integer)) =
+                (a_809, a_811) in
+              let weak a_813: pointer =
+                memop(PtrArrayShift, a_810, 'unsigned long', a_812) in
+              pure(Specified(a_813)) in
+            let Specified(a_807: pointer) = a_806 in
+            let weak a_808: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_807) in
+            pure(
+              if a_808 then
+                a_807
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_816)
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:25:14, ./de_facto_memory_model/tkn-2.c:25:18> #-} let weak a_828: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:25:14, ./de_facto_memory_model/tkn-2.c:25:18> #-} let weak a_818: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:25:14, ./de_facto_memory_model/tkn-2.c:25:18> #-} let weak (a_821: loaded pointer,
+              a_823: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/tkn-2.c:25:14, ./de_facto_memory_model/tkn-2.c:25:15> #-} let weak a_826: pointer =
+                    {-# <./de_facto_memory_model/tkn-2.c:25:14, ./de_facto_memory_model/tkn-2.c:25:15> #-} pure(
+                      a
+                    ) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_827: pointer =
+                    memop(PtrArrayShift, a_826, 'unsigned long', 0) in
+                  pure(Specified(a_827))
+                ,
+                  {-# <./de_facto_memory_model/tkn-2.c:25:16, ./de_facto_memory_model/tkn-2.c:25:17> #-} pure(
+                    Specified(1)
+                  )
+                ) in
+              let (Specified(a_822: pointer), Specified(a_824: integer)) =
+                (a_821, a_823) in
+              let weak a_825: pointer =
+                memop(PtrArrayShift, a_822, 'unsigned long', a_824) in
+              pure(Specified(a_825)) in
+            let Specified(a_819: pointer) = a_818 in
+            let weak a_820: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_819) in
+            pure(
+              if a_820 then
+                a_819
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_828)
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:25:19, ./de_facto_memory_model/tkn-2.c:25:23> #-} let weak a_840: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/tkn-2.c:25:19, ./de_facto_memory_model/tkn-2.c:25:23> #-} let weak a_830: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/tkn-2.c:25:19, ./de_facto_memory_model/tkn-2.c:25:23> #-} let weak (a_833: loaded pointer,
+              a_835: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/tkn-2.c:25:19, ./de_facto_memory_model/tkn-2.c:25:20> #-} let weak a_838: pointer =
+                    {-# <./de_facto_memory_model/tkn-2.c:25:19, ./de_facto_memory_model/tkn-2.c:25:20> #-} pure(
+                      a
+                    ) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_839: pointer =
+                    memop(PtrArrayShift, a_838, 'unsigned long', 0) in
+                  pure(Specified(a_839))
+                ,
+                  {-# <./de_facto_memory_model/tkn-2.c:25:21, ./de_facto_memory_model/tkn-2.c:25:22> #-} pure(
+                    Specified(2)
+                  )
+                ) in
+              let (Specified(a_834: pointer), Specified(a_836: integer)) =
+                (a_833, a_835) in
+              let weak a_837: pointer =
+                memop(PtrArrayShift, a_834, 'unsigned long', a_836) in
+              pure(Specified(a_837)) in
+            let Specified(a_831: pointer) = a_830 in
+            let weak a_832: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_831) in
+            pure(
+              if a_832 then
+                a_831
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_840)
+        ,
+          {-# <./de_facto_memory_model/tkn-2.c:25:24, ./de_facto_memory_model/tkn-2.c:25:25> #-} let weak a_842: pointer =
+            {-# <./de_facto_memory_model/tkn-2.c:25:24, ./de_facto_memory_model/tkn-2.c:25:25> #-} pure(
+              b
+            ) in
+          load('unsigned long', a_842)
+        ) in
+      if not(params_length(a_793) <= 5) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_794) \/ not(are_compatible ('signed int', a_792)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_800: pointer =
+            let a_843: ctype = params_nth(a_793, 0) in
+            if not(are_compatible ('const char*', a_843)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_844: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_844, a_801) in
+              pure(a_844) in
+          let strong a_799: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_805)) in
+          let strong a_798: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_817)) in
+          let strong a_797: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_829)) in
+          let strong a_796: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_841)) in
+          let strong a_845: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_791, a_800,
+            [('unsigned long', a_799), ('unsigned long', a_798),
+            ('unsigned long', a_797), ('unsigned long', a_796)]) in
+          let strong _: (unit,unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_800)
+            ,
+              kill('unsigned long', a_799)
+            ,
+              kill('unsigned long', a_798)
+            ,
+              kill('unsigned long', a_797)
+            ,
+              kill('unsigned long', a_796)
+            ) in
+          pure(a_845)
+    ) in
+  pure(Unit) ;
+  kill('unsigned long[3]', a) ;
+  kill('unsigned long', b) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/tkn-2.c:15:0, ./de_facto_memory_model/tkn-2.c:26:1> ./de_facto_memory_model/tkn-2.c:15:4 - ./de_facto_memory_model/tkn-2.c:15:8 #-} save ret_662: loaded integer (a_846: loaded integer:= Specified(0)) in
+    pure(a_846)
+

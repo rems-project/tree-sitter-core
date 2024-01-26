@@ -1,0 +1,489 @@
+-- Aggregates
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_843: pointer [ail_ctype = 'char[14]'] :=
+  create_readonly(Ivalignof('char[14]'), 'char[14]', Specified(Array(Specified(conv_int('char',
+  37)), Specified(conv_int('char', 122)), Specified(conv_int('char', 120)),
+  Specified(conv_int('char', 58)), Specified(conv_int('char', 9)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 122)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 44)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 122)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./cheri/align2.c:7:0, ./cheri/align2.c:16:1> #-} let strong sizes: pointer =
+    create(Ivalignof('size_t[5]'), 'size_t[5]') in
+  {-# <./cheri/align2.c:8:4, ./cheri/align2.c:8:53> #-} let strong a_760: loaded array(integer) =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_770: loaded integer,
+      a_764: loaded integer, a_763: loaded integer, a_762: loaded integer,
+      a_761: loaded integer) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# §6.5.4 #-}
+          {-# <./cheri/align2.c:8:41, ./cheri/align2.c:8:51> ./cheri/align2.c:8:41 #-} let weak a_765: loaded integer =
+            {-# §6.5.3.3#3 #-}
+            {-# <./cheri/align2.c:8:49, ./cheri/align2.c:8:51> ./cheri/align2.c:8:49 #-} let weak a_768: loaded integer =
+              {-# <./cheri/align2.c:8:50, ./cheri/align2.c:8:51> #-} pure(
+                Specified(1)
+              ) in
+            pure(
+              case a_768 of
+                | Specified(a_767: integer) =>
+                    Specified(catch_exceptional_condition_sub('signed int', 0, conv_int('signed int',
+                    a_767)))
+                | Unspecified(_: ctype) =>
+                    Unspecified('signed int')
+              end
+            ) in
+          pure(conv_loaded_int('size_t', a_765))
+        ,
+          {-# <./cheri/align2.c:8:31, ./cheri/align2.c:8:39> #-} pure(
+            Specified(16777215)
+          )
+        ,
+          {-# <./cheri/align2.c:8:26, ./cheri/align2.c:8:30> #-} pure(
+            Specified(1000)
+          )
+        ,
+          {-# <./cheri/align2.c:8:24, ./cheri/align2.c:8:25> #-} pure(
+            Specified(1)
+          )
+        ,
+          {-# <./cheri/align2.c:8:22, ./cheri/align2.c:8:23> #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        Specified(Array(conv_loaded_int('size_t', a_761),
+        conv_loaded_int('size_t', a_762), conv_loaded_int('size_t', a_763),
+        conv_loaded_int('size_t', a_764), conv_loaded_int('size_t', a_770)))
+      )
+    ) in
+  store('size_t[5]', sizes, a_760) ;
+  {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} let strong i: pointer =
+    create(Ivalignof('unsigned int'), 'unsigned int') in
+  {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} let strong a_771: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./cheri/align2.c:10:23, ./cheri/align2.c:10:24> #-} pure(
+        Specified(0)
+      )
+    ) in
+  store('unsigned int', i, conv_loaded_int('unsigned int', a_771)) ;
+  {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} save while_758: unit (i: pointer:= i,
+  sizes: pointer:= sizes) in
+    let strong a_772: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# <./cheri/align2.c:10:25, ./cheri/align2.c:10:55> ./cheri/align2.c:10:26 #-} let weak (a_774: loaded integer,
+        a_775: loaded integer) =
+          unseq(
+            {-# §6.5.8 #-}
+            {-# <./cheri/align2.c:10:25, ./cheri/align2.c:10:55> ./cheri/align2.c:10:26 #-} let weak (a_786: loaded integer,
+            a_787: loaded integer) =
+              unseq(
+                {-# <./cheri/align2.c:10:25, ./cheri/align2.c:10:26> #-} let weak a_779: pointer =
+                  {-# <./cheri/align2.c:10:25, ./cheri/align2.c:10:26> #-} pure(
+                    i
+                  ) in
+                load('unsigned int', a_779)
+              ,
+                {-# §6.5.5 #-}
+                {-# <./cheri/align2.c:10:27, ./cheri/align2.c:10:55> ./cheri/align2.c:10:40 #-} let weak (a_780: loaded integer,
+                a_781: loaded integer) =
+                  unseq(
+                    {-# <./cheri/align2.c:10:27, ./cheri/align2.c:10:40> ./cheri/align2.c:10:27 #-} pure(
+                      Specified(Ivsizeof('size_t[5]'))
+                    )
+                  ,
+                    {-# <./cheri/align2.c:10:41, ./cheri/align2.c:10:55> ./cheri/align2.c:10:41 #-} pure(
+                      Specified(Ivsizeof('size_t'))
+                    )
+                  ) in
+                pure(
+                  case (a_780, a_781) of
+                    | (Unspecified(_: ctype), _: loaded integer) =>
+                        Unspecified('size_t')
+                    | (_: loaded integer, Unspecified(_: ctype)) =>
+                        undef(<<UB045a_division_by_zero>>)
+                    | (Specified(a_782: integer), Specified(a_783: integer)) =>
+                        let a_784: integer = conv_int('size_t', a_782) in
+                        let a_785: integer = conv_int('size_t', a_783) in
+                        if a_785 = 0 then
+                          undef(<<UB045a_division_by_zero>>)
+                        else
+                          if is_representable_integer(conv_int('size_t', a_782) /
+                          a_785, 'size_t') then
+                            Specified(wrapI('size_t',
+                            conv_int('size_t', a_782) / a_785))
+                          else
+                            undef(<<UB045c_quotient_not_representable>>)
+                  end
+                )
+              ) in
+            case (a_786, a_787) of
+              | (Specified(a_788: integer), Specified(a_789: integer)) =>
+                  {-# §6.5.8#6 #-}
+                  pure(
+                    if conv_int('unsigned int', a_788) <
+                    conv_int('unsigned int', a_789) then
+                      Specified(1)
+                    else
+                      Specified(0)
+                  )
+              | _: (loaded integer,loaded integer) =>
+                  pure(Unspecified('signed int'))
+            end
+          ,
+            {-# <./cheri/align2.c:10:25, ./cheri/align2.c:10:55> ./cheri/align2.c:10:26 #-} pure(
+              Specified(0)
+            )
+          ) in
+        pure(
+          case (a_774, a_775) of
+            | (Specified(a_776: integer), Specified(a_777: integer)) =>
+                if conv_int('signed int', a_776) =
+                conv_int('signed int', a_777) then
+                  Specified(1)
+                else
+                  Specified(0)
+            | _: (loaded integer,loaded integer) =>
+                Unspecified('signed int')
+          end
+        )
+      ) in
+    let strong a_759: boolean =
+      case a_772 of
+        | Specified(a_773: integer) =>
+            pure(if not(a_773 = 1) then True else False)
+        | Unspecified(_: ctype) =>
+            nd(pure(True), pure(False))
+      end in
+    if a_759 then
+      {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} {-# <./cheri/align2.c:11:4, ./cheri/align2.c:15:5> #-} let strong m: pointer =
+        create(Ivalignof('size_t'), 'size_t') in
+      let strong l: pointer = create(Ivalignof('size_t'), 'size_t') in
+      {-# <./cheri/align2.c:12:8, ./cheri/align2.c:12:74> #-} let strong a_792: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# <./cheri/align2.c:12:19, ./cheri/align2.c:12:73> #-} let strong a_809: loaded integer =
+            {-# §6.5.4 #-}
+            {-# <./cheri/align2.c:12:64, ./cheri/align2.c:12:72> #-} let weak a_793: loaded integer =
+              {-# <./cheri/align2.c:12:64, ./cheri/align2.c:12:72> #-} let weak a_806: pointer =
+                {-# §6.5.3.2 #-}
+                {-# <./cheri/align2.c:12:64, ./cheri/align2.c:12:72> #-} let weak a_795: loaded pointer =
+                  {-# §6.5.6 #-}
+                  {-# <./cheri/align2.c:12:64, ./cheri/align2.c:12:72> #-} let weak (a_798: loaded pointer,
+                  a_800: loaded integer) =
+                    unseq(
+                      {-# <./cheri/align2.c:12:64, ./cheri/align2.c:12:69> #-} let weak a_803: pointer =
+                        {-# <./cheri/align2.c:12:64, ./cheri/align2.c:12:69> #-} pure(
+                          sizes
+                        ) in
+                      {-# §6.3.2.1#3 #-}
+                      let weak a_804: pointer =
+                        memop(PtrArrayShift, a_803, 'size_t', 0) in
+                      pure(Specified(a_804))
+                    ,
+                      {-# <./cheri/align2.c:12:70, ./cheri/align2.c:12:71> #-} let weak a_805: pointer =
+                        {-# <./cheri/align2.c:12:70, ./cheri/align2.c:12:71> #-} pure(
+                          i
+                        ) in
+                      load('unsigned int', a_805)
+                    ) in
+                  case (a_798, a_800) of
+                    | (Specified(a_799: pointer), Specified(a_801: integer)) =>
+                        let weak a_802: pointer =
+                          memop(PtrArrayShift, a_799, 'size_t', a_801) in
+                        pure(Specified(a_802))
+                    | _: (loaded pointer,loaded integer) =>
+                        pure(undef(<<UB_CERB004_unspecified__pointer_add>>))
+                  end in
+                case a_795 of
+                  | Specified(a_796: pointer) =>
+                      let weak a_797: boolean =
+                        memop(PtrValidForDeref, 'size_t', a_796) in
+                      pure(
+                        if a_797 then
+                          a_796
+                        else
+                          undef(<<UB043_indirection_invalid_value>>)
+                      )
+                  | Unspecified(_: ctype) =>
+                      pure(undef(<<UB043_indirection_invalid_value>>))
+                end in
+              load('size_t', a_806) in
+            pure(conv_loaded_int('size_t', a_793)) in
+          case a_809 of
+            | Specified(a_810: integer) =>
+                memop(cheri_cheri_representable_alignment_mask['size_t (size_t)'], a_810)
+            | _: loaded integer =>
+                pure(undef(<<DUMMY(Elab, CHERI intrinsics (unspec))>>))
+          end
+        ) in
+      store('size_t', m, conv_loaded_int('size_t', a_792)) ;
+      {-# <./cheri/align2.c:13:8, ./cheri/align2.c:13:66> #-} let strong a_811: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# <./cheri/align2.c:13:19, ./cheri/align2.c:13:65> #-} let strong a_828: loaded integer =
+            {-# §6.5.4 #-}
+            {-# <./cheri/align2.c:13:56, ./cheri/align2.c:13:64> #-} let weak a_812: loaded integer =
+              {-# <./cheri/align2.c:13:56, ./cheri/align2.c:13:64> #-} let weak a_825: pointer =
+                {-# §6.5.3.2 #-}
+                {-# <./cheri/align2.c:13:56, ./cheri/align2.c:13:64> #-} let weak a_814: loaded pointer =
+                  {-# §6.5.6 #-}
+                  {-# <./cheri/align2.c:13:56, ./cheri/align2.c:13:64> #-} let weak (a_817: loaded pointer,
+                  a_819: loaded integer) =
+                    unseq(
+                      {-# <./cheri/align2.c:13:56, ./cheri/align2.c:13:61> #-} let weak a_822: pointer =
+                        {-# <./cheri/align2.c:13:56, ./cheri/align2.c:13:61> #-} pure(
+                          sizes
+                        ) in
+                      {-# §6.3.2.1#3 #-}
+                      let weak a_823: pointer =
+                        memop(PtrArrayShift, a_822, 'size_t', 0) in
+                      pure(Specified(a_823))
+                    ,
+                      {-# <./cheri/align2.c:13:62, ./cheri/align2.c:13:63> #-} let weak a_824: pointer =
+                        {-# <./cheri/align2.c:13:62, ./cheri/align2.c:13:63> #-} pure(
+                          i
+                        ) in
+                      load('unsigned int', a_824)
+                    ) in
+                  case (a_817, a_819) of
+                    | (Specified(a_818: pointer), Specified(a_820: integer)) =>
+                        let weak a_821: pointer =
+                          memop(PtrArrayShift, a_818, 'size_t', a_820) in
+                        pure(Specified(a_821))
+                    | _: (loaded pointer,loaded integer) =>
+                        pure(undef(<<UB_CERB004_unspecified__pointer_add>>))
+                  end in
+                case a_814 of
+                  | Specified(a_815: pointer) =>
+                      let weak a_816: boolean =
+                        memop(PtrValidForDeref, 'size_t', a_815) in
+                      pure(
+                        if a_816 then
+                          a_815
+                        else
+                          undef(<<UB043_indirection_invalid_value>>)
+                      )
+                  | Unspecified(_: ctype) =>
+                      pure(undef(<<UB043_indirection_invalid_value>>))
+                end in
+              load('size_t', a_825) in
+            pure(conv_loaded_int('size_t', a_812)) in
+          case a_828 of
+            | Specified(a_829: integer) =>
+                memop(cheri_cheri_representable_length['size_t (size_t)'], a_829)
+            | _: loaded integer =>
+                pure(undef(<<DUMMY(Elab, CHERI intrinsics (unspec))>>))
+          end
+        ) in
+      store('size_t', l, conv_loaded_int('size_t', a_811)) ;
+      {-# <./cheri/align2.c:14:8, ./cheri/align2.c:14:57> #-} let strong _: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.2.2#10, sentence 1 #-}
+          {-# <./cheri/align2.c:14:8, ./cheri/align2.c:14:56> #-} let strong ((a_830: loaded pointer,
+          (a_831: ctype, a_832: [ctype], a_833: boolean, a_834: boolean)),
+          a_840: loaded pointer, a_842: loaded pointer, a_846: loaded integer,
+          a_859: loaded integer, a_861: loaded integer) =
+            {-# §6.5.2.2#4, sentence 2 #-}
+            unseq(
+              let strong a_791: loaded pointer =
+                {-# <./cheri/align2.c:14:8, ./cheri/align2.c:14:15> #-} pure(
+                  Specified(Cfunction(fprintf))
+                ) in
+              pure((a_791, cfunction(a_791)))
+            ,
+              {-# <./cheri/align2.c:14:16, ./cheri/align2.c:14:24> #-} let weak a_841: pointer =
+                {-# <./cheri/align2.c:14:16, ./cheri/align2.c:14:24> #-} pure(
+                  __stderr
+                ) in
+              load('struct _IO_FILE*', a_841)
+            ,
+              {-# <./cheri/align2.c:14:25, ./cheri/align2.c:14:42> #-} let weak a_844: pointer =
+                {-# <./cheri/align2.c:14:25, ./cheri/align2.c:14:42> #-} pure(
+                  a_843
+                ) in
+              {-# §6.3.2.1#3 #-}
+              let weak a_845: pointer =
+                memop(PtrArrayShift, a_844, 'char', 0) in
+              pure(Specified(a_845))
+            ,
+              {-# <./cheri/align2.c:14:43, ./cheri/align2.c:14:51> #-} let weak a_858: pointer =
+                {-# §6.5.3.2 #-}
+                {-# <./cheri/align2.c:14:43, ./cheri/align2.c:14:51> #-} let weak a_847: loaded pointer =
+                  {-# §6.5.6 #-}
+                  {-# <./cheri/align2.c:14:43, ./cheri/align2.c:14:51> #-} let weak (a_850: loaded pointer,
+                  a_852: loaded integer) =
+                    unseq(
+                      {-# <./cheri/align2.c:14:43, ./cheri/align2.c:14:48> #-} let weak a_855: pointer =
+                        {-# <./cheri/align2.c:14:43, ./cheri/align2.c:14:48> #-} pure(
+                          sizes
+                        ) in
+                      {-# §6.3.2.1#3 #-}
+                      let weak a_856: pointer =
+                        memop(PtrArrayShift, a_855, 'size_t', 0) in
+                      pure(Specified(a_856))
+                    ,
+                      {-# <./cheri/align2.c:14:49, ./cheri/align2.c:14:50> #-} let weak a_857: pointer =
+                        {-# <./cheri/align2.c:14:49, ./cheri/align2.c:14:50> #-} pure(
+                          i
+                        ) in
+                      load('unsigned int', a_857)
+                    ) in
+                  case (a_850, a_852) of
+                    | (Specified(a_851: pointer), Specified(a_853: integer)) =>
+                        let weak a_854: pointer =
+                          memop(PtrArrayShift, a_851, 'size_t', a_853) in
+                        pure(Specified(a_854))
+                    | _: (loaded pointer,loaded integer) =>
+                        pure(undef(<<UB_CERB004_unspecified__pointer_add>>))
+                  end in
+                case a_847 of
+                  | Specified(a_848: pointer) =>
+                      let weak a_849: boolean =
+                        memop(PtrValidForDeref, 'size_t', a_848) in
+                      pure(
+                        if a_849 then
+                          a_848
+                        else
+                          undef(<<UB043_indirection_invalid_value>>)
+                      )
+                  | Unspecified(_: ctype) =>
+                      pure(undef(<<UB043_indirection_invalid_value>>))
+                end in
+              load('size_t', a_858)
+            ,
+              {-# <./cheri/align2.c:14:52, ./cheri/align2.c:14:53> #-} let weak a_860: pointer =
+                {-# <./cheri/align2.c:14:52, ./cheri/align2.c:14:53> #-} pure(
+                  m
+                ) in
+              load('size_t', a_860)
+            ,
+              {-# <./cheri/align2.c:14:54, ./cheri/align2.c:14:55> #-} let weak a_862: pointer =
+                {-# <./cheri/align2.c:14:54, ./cheri/align2.c:14:55> #-} pure(
+                  l
+                ) in
+              load('size_t', a_862)
+            ) in
+          if not(params_length(a_832) <= 5) then
+            pure(undef(<<UB038_number_of_args>>))
+          else
+            if not(a_833) \/ not(are_compatible ('signed int', a_831)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let strong a_839: pointer =
+                let a_863: ctype = params_nth(a_832, 0) in
+                if not(are_compatible ('struct _IO_FILE*', a_863)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  {-# §6.5.2.2#7, sentence 1 #-}
+                  let weak a_864: pointer =
+                    create(Ivalignof('struct _IO_FILE*'), 'struct _IO_FILE*') in
+                  let weak _: unit =
+                    store('struct _IO_FILE*', a_864, a_840) in
+                  pure(a_864) in
+              let strong a_838: pointer =
+                let a_865: ctype = params_nth(a_832, 1) in
+                if not(are_compatible ('const char*', a_865)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  {-# §6.5.2.2#7, sentence 1 #-}
+                  let weak a_866: pointer =
+                    create(Ivalignof('const char*'), 'const char*') in
+                  let weak _: unit = store('const char*', a_866, a_842) in
+                  pure(a_866) in
+              let strong a_837: pointer =
+                {-# §6.5.2.2#7, sentences 2 and 3 #-}
+                pcall(create_and_store, 'size_t',
+                conv_loaded_int('size_t', a_846)) in
+              let strong a_836: pointer =
+                {-# §6.5.2.2#7, sentences 2 and 3 #-}
+                pcall(create_and_store, 'size_t',
+                conv_loaded_int('size_t', a_859)) in
+              let strong a_835: pointer =
+                {-# §6.5.2.2#7, sentences 2 and 3 #-}
+                pcall(create_and_store, 'size_t',
+                conv_loaded_int('size_t', a_861)) in
+              let strong a_867: loaded integer =
+                ccall('signed int (*) (struct _IO_FILE*restrict , const char*restrict , ...)',
+                a_830, a_839, a_838,
+                [('size_t', a_837), ('size_t', a_836), ('size_t', a_835)]) in
+              let strong _: (unit,unit,unit,unit,unit) =
+                unseq(
+                  kill('struct _IO_FILE*', a_839)
+                ,
+                  kill('char*', a_838)
+                ,
+                  kill('size_t', a_837)
+                ,
+                  kill('size_t', a_836)
+                ,
+                  kill('size_t', a_835)
+                ) in
+              pure(a_867)
+        ) in
+      pure(Unit) ;
+      {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} save __cerb_continue0: unit (m: pointer:= m,
+      l: pointer:= l, i: pointer:= i, sizes: pointer:= sizes) in
+        {-# <unknown location> #-} let strong _: loaded integer =
+          {-# §6.5#2 #-}
+          bound(
+            {-# §6.5.2.4#2, sentence 3 #-}
+            {-# §6.5.2.4#2, sentence 1 #-}
+            {-# §6.5.2.4 #-}
+            {-# <./cheri/align2.c:10:56, ./cheri/align2.c:10:59> ./cheri/align2.c:10:57 #-} let weak a_868: pointer =
+              {-# <./cheri/align2.c:10:56, ./cheri/align2.c:10:57> #-} pure(i) in
+            seq_rmw('unsigned int', a_868, a_869 => case a_869 of
+              | Specified(a_870: integer) =>
+                  Specified(conv_int('unsigned int',
+                  wrapI_add('unsigned int', a_870, 1)))
+              | Unspecified(_: ctype) =>
+                  Unspecified('unsigned int')
+            end)
+          ) in
+        pure(Unit) ;
+      kill('size_t', m) ;
+      kill('size_t', l) ;
+      pure(Unit) ;
+      {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} save continue_756: unit (i: pointer:= i,
+      sizes: pointer:= sizes) in
+        {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} pure(Unit) ;
+      pure(Unit) ;
+      run while_758(i, sizes)
+    else
+      pure(Unit) ;
+  {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} save break_757: unit (i: pointer:= i,
+  sizes: pointer:= sizes) in
+    {-# <./cheri/align2.c:10:4, ./cheri/align2.c:15:5> #-} pure(Unit) ;
+  pure(Unit) ;
+  kill('unsigned int', i) ;
+  pure(Unit) ;
+  kill('size_t[5]', sizes) ;
+  pure(Unit) ;
+  {-# <./cheri/align2.c:6:0, ./cheri/align2.c:16:1> ./cheri/align2.c:6:4 - ./cheri/align2.c:6:8 #-} save ret_755: loaded integer (a_871: loaded integer:= Specified(0)) in
+    pure(a_871)
+

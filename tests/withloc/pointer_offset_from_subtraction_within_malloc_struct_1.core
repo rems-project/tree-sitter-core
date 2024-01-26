@@ -1,0 +1,974 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+def struct __cerbty_unnamed_tag_824 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_828 :=
+  c: 'char'
+  i: 'signed int'
+
+-- Globals
+glob a_997: pointer [ail_ctype = 'char[29]'] :=
+  create_readonly(Ivalignof('char[29]'), 'char[29]', Specified(Array(Specified(conv_int('char',
+  65)), Specified(conv_int('char', 100)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 114)), Specified(conv_int('char', 101)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 101)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 58)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 97)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 51)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 114)),
+  Specified(conv_int('char', 51)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+glob a_1064: pointer [ail_ctype = 'char[16]'] :=
+  create_readonly(Ivalignof('char[16]'), 'char[16]', Specified(Array(Specified(conv_int('char',
+  42)), Specified(conv_int('char', 112)), Specified(conv_int('char', 51)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 114)),
+  Specified(conv_int('char', 51)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:6:11, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:31:1> #-} let strong a: pointer =
+    create(Ivalignof('void*'), 'void*') in
+  let strong p1: pointer = create(Ivalignof('char*'), 'char*') in
+  let strong p3: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong offset: pointer = create(Ivalignof('ptrdiff_t'), 'ptrdiff_t') in
+  let strong q1: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong q3: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong q3i: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong r1: pointer = create(Ivalignof('char*'), 'char*') in
+  let strong r3: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:33> #-} let strong a_847: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:12, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:32> #-} let strong ((a_849: loaded pointer,
+      (a_850: ctype, a_851: [ctype], a_852: boolean, a_853: boolean)),
+      a_855: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_848: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:12, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:18> #-} pure(
+              Specified(Cfunction(malloc_proxy))
+            ) in
+          pure((a_848, cfunction(a_848)))
+        ,
+          {-# §6.5.5 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:19, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:31> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:20 #-} let weak (a_856: loaded integer,
+          a_857: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:19, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:20> #-} pure(
+                Specified(4)
+              )
+            ,
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:21, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:31> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:7:21 #-} pure(
+                Specified(Ivsizeof('struct __cerbty_unnamed_tag_828'))
+              )
+            ) in
+          pure(
+            let (Specified(a_858: integer), Specified(a_859: integer)) =
+              (a_856, a_857) in
+            Specified(wrapI_mul('size_t', if all_values_representable_in('size_t',
+            'signed int') then
+              conv_int('signed int', a_858)
+            else
+              conv_int('unsigned int', a_858), if all_values_representable_in('size_t',
+            'signed int') then
+              conv_int('signed int', a_859)
+            else
+              conv_int('unsigned int', a_859)))
+          )
+        ) in
+      if not(params_length(a_851) = 1) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_852 \/ not(are_compatible ('void*', a_850)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_854: pointer =
+            let a_861: ctype = params_nth(a_851, 0) in
+            if not(are_compatible ('size_t', a_861)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_862: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_862, conv_loaded_int('size_t', a_855)) in
+              pure(a_862) in
+          let strong a_863: loaded pointer =
+            ccall('void* (*) (size_t)', a_849, a_854) in
+          kill('size_t', a_854) ;
+          pure(a_863)
+    ) in
+  store('void*', a, a_847) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:69> #-} let strong a_864: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:13, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:68> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:13 #-} let weak a_865: loaded pointer =
+        {-# §6.5.6 #-}
+        {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:20, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:68> #-} let weak (a_867: loaded pointer,
+        a_869: loaded integer) =
+          unseq(
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:21, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:52> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:38 #-} let weak (a_872: loaded pointer,
+            a_874: loaded integer) =
+              unseq(
+                {-# §6.5.4 #-}
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:21, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:38> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:21 #-} let weak a_877: loaded pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:37, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:38> #-} let weak a_879: pointer =
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:37, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:38> #-} pure(
+                      a
+                    ) in
+                  load('void*', a_879) in
+                let Specified(a_878: pointer) = a_877 in
+                let weak a_880: boolean =
+                  memop(PtrWellAligned, 'unsigned char', a_878) in
+                pure(
+                  Specified(if a_880 then
+                    a_878
+                  else
+                    undef(<<UB025_misaligned_pointer_conversion>>))
+                )
+              ,
+                {-# §6.5.5 #-}
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:39, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:52> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:40 #-} let weak (a_881: loaded integer,
+                a_882: loaded integer) =
+                  unseq(
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:39, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:40> #-} pure(
+                      Specified(1)
+                    )
+                  ,
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:41, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:52> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:41 #-} pure(
+                      Specified(Ivsizeof('signed int'))
+                    )
+                  ) in
+                pure(
+                  let (Specified(a_883: integer), Specified(a_884: integer)) =
+                    (a_881, a_882) in
+                  Specified(wrapI_mul('size_t', if all_values_representable_in('size_t',
+                  'signed int') then
+                    conv_int('signed int', a_883)
+                  else
+                    conv_int('unsigned int', a_883), if all_values_representable_in('size_t',
+                  'signed int') then
+                    conv_int('signed int', a_884)
+                  else
+                    conv_int('unsigned int', a_884)))
+                )
+              ) in
+            let (Specified(a_873: pointer), Specified(a_875: integer)) =
+              (a_872, a_874) in
+            let weak a_876: pointer =
+              memop(PtrArrayShift, a_873, 'unsigned char', a_875) in
+            pure(Specified(a_876))
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:53, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:9:67> #-} pure(
+              Specified(0)
+            )
+          ) in
+        let (Specified(a_868: pointer), Specified(a_870: integer)) =
+          (a_867, a_869) in
+        let weak a_871: pointer =
+          memop(PtrArrayShift, a_868, 'unsigned char', a_870) in
+        pure(Specified(a_871)) in
+      let Specified(a_866: pointer) = a_865 in
+      let weak a_886: boolean = memop(PtrWellAligned, 'char', a_866) in
+      pure(
+        Specified(if a_886 then
+          a_866
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('char*', p1, a_864) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:68> #-} let strong a_887: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:12, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:67> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:12 #-} let weak a_888: loaded pointer =
+        {-# §6.5.6 #-}
+        {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:19, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:67> #-} let weak (a_890: loaded pointer,
+        a_892: loaded integer) =
+          unseq(
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:20, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:51> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:37 #-} let weak (a_895: loaded pointer,
+            a_897: loaded integer) =
+              unseq(
+                {-# §6.5.4 #-}
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:20, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:37> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:20 #-} let weak a_900: loaded pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:36, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:37> #-} let weak a_902: pointer =
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:36, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:37> #-} pure(
+                      a
+                    ) in
+                  load('void*', a_902) in
+                let Specified(a_901: pointer) = a_900 in
+                let weak a_903: boolean =
+                  memop(PtrWellAligned, 'unsigned char', a_901) in
+                pure(
+                  Specified(if a_903 then
+                    a_901
+                  else
+                    undef(<<UB025_misaligned_pointer_conversion>>))
+                )
+              ,
+                {-# §6.5.5 #-}
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:38, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:51> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:39 #-} let weak (a_904: loaded integer,
+                a_905: loaded integer) =
+                  unseq(
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:38, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:39> #-} pure(
+                      Specified(3)
+                    )
+                  ,
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:40, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:51> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:40 #-} pure(
+                      Specified(Ivsizeof('signed int'))
+                    )
+                  ) in
+                pure(
+                  let (Specified(a_906: integer), Specified(a_907: integer)) =
+                    (a_904, a_905) in
+                  Specified(wrapI_mul('size_t', if all_values_representable_in('size_t',
+                  'signed int') then
+                    conv_int('signed int', a_906)
+                  else
+                    conv_int('unsigned int', a_906), if all_values_representable_in('size_t',
+                  'signed int') then
+                    conv_int('signed int', a_907)
+                  else
+                    conv_int('unsigned int', a_907)))
+                )
+              ) in
+            let (Specified(a_896: pointer), Specified(a_898: integer)) =
+              (a_895, a_897) in
+            let weak a_899: pointer =
+              memop(PtrArrayShift, a_896, 'unsigned char', a_898) in
+            pure(Specified(a_899))
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:52, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:10:66> #-} pure(
+              Specified(4)
+            )
+          ) in
+        let (Specified(a_891: pointer), Specified(a_893: integer)) =
+          (a_890, a_892) in
+        let weak a_894: pointer =
+          memop(PtrArrayShift, a_891, 'unsigned char', a_893) in
+        pure(Specified(a_894)) in
+      let Specified(a_889: pointer) = a_888 in
+      let weak a_909: boolean = memop(PtrWellAligned, 'signed int', a_889) in
+      pure(
+        Specified(if a_909 then
+          a_889
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('signed int*', p3, a_887) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:12> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:11> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:6 #-} let weak (a_846: pointer,
+      a_914: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:5> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:2 #-} let weak a_910: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:3, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:5> #-} let weak a_913: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:3, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:5> #-} pure(
+                p1
+              ) in
+            load('char*', a_913) in
+          let Specified(a_911: pointer) = a_910 in
+          let weak a_912: boolean = memop(PtrValidForDeref, 'char', a_911) in
+          pure(
+            if a_912 then
+              a_911
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:8, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:11:11> #-} pure(
+            Specified(97)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('char', a_846, conv_loaded_int('char', a_914))) in
+      pure(conv_loaded_int('char', a_914))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:10> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:9> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:6 #-} let weak (a_845: pointer,
+      a_919: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:5> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:2 #-} let weak a_915: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:3, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:5> #-} let weak a_918: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:3, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:5> #-} pure(
+                p3
+              ) in
+            load('signed int*', a_918) in
+          let Specified(a_916: pointer) = a_915 in
+          let weak a_917: boolean =
+            memop(PtrValidForDeref, 'signed int', a_916) in
+          pure(
+            if a_917 then
+              a_916
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:8, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:12:9> #-} pure(
+            Specified(3)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_845, conv_loaded_int('signed int', a_919))) in
+      pure(conv_loaded_int('signed int', a_919))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:55> #-} let strong a_920: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:19, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:54> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:55 #-} let weak (a_939: loaded pointer,
+      a_940: loaded pointer) =
+        unseq(
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:19, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:54> #-} let weak (a_925: loaded pointer,
+          a_926: loaded integer) =
+            unseq(
+              {-# §6.5.4 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:20, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:38> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:20 #-} let weak a_921: loaded pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:36, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:38> #-} let weak a_923: pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:36, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:38> #-} pure(
+                    p3
+                  ) in
+                load('signed int*', a_923) in
+              let Specified(a_922: pointer) = a_921 in
+              let weak a_924: boolean =
+                memop(PtrWellAligned, 'unsigned char', a_922) in
+              pure(
+                Specified(if a_924 then
+                  a_922
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              )
+            ,
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:39, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:14:53> #-} pure(
+                Specified(4)
+              )
+            ) in
+          let (Specified(a_927: pointer), Specified(a_928: integer)) =
+            (a_925, a_926) in
+          let weak a_929: pointer =
+            memop(PtrArrayShift, a_927, 'unsigned char', 0 - a_928) in
+          pure(Specified(a_929))
+        ,
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:19, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:54> #-} let weak (a_934: loaded pointer,
+          a_935: loaded integer) =
+            unseq(
+              {-# §6.5.4 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:20, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:38> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:20 #-} let weak a_930: loaded pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:36, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:38> #-} let weak a_932: pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:36, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:38> #-} pure(
+                    p1
+                  ) in
+                load('char*', a_932) in
+              let Specified(a_931: pointer) = a_930 in
+              let weak a_933: boolean =
+                memop(PtrWellAligned, 'unsigned char', a_931) in
+              pure(
+                Specified(if a_933 then
+                  a_931
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              )
+            ,
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:39, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:15:53> #-} pure(
+                Specified(0)
+              )
+            ) in
+          let (Specified(a_936: pointer), Specified(a_937: integer)) =
+            (a_934, a_935) in
+          let weak a_938: pointer =
+            memop(PtrArrayShift, a_936, 'unsigned char', 0 - a_937) in
+          pure(Specified(a_938))
+        ) in
+      let (Specified(a_941: pointer), Specified(a_942: pointer)) =
+        (a_939, a_940) in
+      let weak a_943: integer =
+        memop(Ptrdiff, 'unsigned char', a_941, a_942) in
+      pure(
+        if is_representable_integer(a_943, 'ptrdiff_t') then
+          Specified(a_943)
+        else
+          undef(<<UB050_pointers_subtraction_not_representable>>)
+      )
+    ) in
+  store('ptrdiff_t', offset, conv_loaded_int('ptrdiff_t', a_920)) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:58> #-} let strong a_944: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:22, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:57> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:41 #-} let weak (a_949: loaded pointer,
+      a_950: loaded integer) =
+        unseq(
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:22, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:40> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:22 #-} let weak a_945: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:38, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:40> #-} let weak a_947: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:38, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:40> #-} pure(
+                p1
+              ) in
+            load('char*', a_947) in
+          let Specified(a_946: pointer) = a_945 in
+          let weak a_948: boolean =
+            memop(PtrWellAligned, 'unsigned char', a_946) in
+          pure(
+            Specified(if a_948 then
+              a_946
+            else
+              undef(<<UB025_misaligned_pointer_conversion>>))
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:43, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:17:57> #-} pure(
+            Specified(0)
+          )
+        ) in
+      let (Specified(a_951: pointer), Specified(a_952: integer)) =
+        (a_949, a_950) in
+      let weak a_953: pointer =
+        memop(PtrArrayShift, a_951, 'unsigned char', 0 - a_952) in
+      pure(Specified(a_953))
+    ) in
+  store('unsigned char*', q1, a_944) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:69> #-} let strong a_954: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:22, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:68> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:60 #-} let weak (a_955: loaded pointer,
+      a_957: loaded integer) =
+        unseq(
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:22, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:59> #-} let weak (a_964: loaded pointer,
+          a_965: loaded integer) =
+            unseq(
+              {-# §6.5.4 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:23, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:41> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:23 #-} let weak a_960: loaded pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:39, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:41> #-} let weak a_962: pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:39, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:41> #-} pure(
+                    p1
+                  ) in
+                load('char*', a_962) in
+              let Specified(a_961: pointer) = a_960 in
+              let weak a_963: boolean =
+                memop(PtrWellAligned, 'unsigned char', a_961) in
+              pure(
+                Specified(if a_963 then
+                  a_961
+                else
+                  undef(<<UB025_misaligned_pointer_conversion>>))
+              )
+            ,
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:44, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:58> #-} pure(
+                Specified(0)
+              )
+            ) in
+          let (Specified(a_966: pointer), Specified(a_967: integer)) =
+            (a_964, a_965) in
+          let weak a_968: pointer =
+            memop(PtrArrayShift, a_966, 'unsigned char', 0 - a_967) in
+          pure(Specified(a_968))
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:62, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:68> #-} let weak a_969: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:62, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:18:68> #-} pure(
+              offset
+            ) in
+          load('ptrdiff_t', a_969)
+        ) in
+      let (Specified(a_956: pointer), Specified(a_958: integer)) =
+        (a_955, a_957) in
+      let weak a_959: pointer =
+        memop(PtrArrayShift, a_956, 'unsigned char', a_958) in
+      pure(Specified(a_959))
+    ) in
+  store('unsigned char*', q3, a_954) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:43> #-} let strong a_970: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:23, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:42> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:26 #-} let weak (a_971: loaded pointer,
+      a_973: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:23, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:25> #-} let weak a_976: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:23, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:25> #-} pure(
+              q3
+            ) in
+          load('unsigned char*', a_976)
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:28, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:20:42> #-} pure(
+            Specified(4)
+          )
+        ) in
+      let (Specified(a_972: pointer), Specified(a_974: integer)) =
+        (a_971, a_973) in
+      let weak a_975: pointer =
+        memop(PtrArrayShift, a_972, 'unsigned char', a_974) in
+      pure(Specified(a_975))
+    ) in
+  store('unsigned char*', q3i, a_970) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:23> #-} let strong a_977: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:13, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:22> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:13 #-} let weak a_978: loaded pointer =
+        {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:20, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:22> #-} let weak a_980: pointer =
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:20, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:21:22> #-} pure(
+            q1
+          ) in
+        load('unsigned char*', a_980) in
+      let Specified(a_979: pointer) = a_978 in
+      let weak a_981: boolean = memop(PtrWellAligned, 'char', a_979) in
+      pure(
+        Specified(if a_981 then
+          a_979
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('char*', r1, a_977) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:22> #-} let strong a_982: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:12, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:21> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:12 #-} let weak a_983: loaded pointer =
+        {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:18, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:21> #-} let weak a_985: pointer =
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:18, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:22:21> #-} pure(
+            q3i
+          ) in
+        load('unsigned char*', a_985) in
+      let Specified(a_984: pointer) = a_983 in
+      let weak a_986: boolean = memop(PtrWellAligned, 'signed int', a_984) in
+      pure(
+        Specified(if a_986 then
+          a_984
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('signed int*', r3, a_982) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:64> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:63> #-} let strong ((a_987: loaded pointer,
+      (a_988: ctype, a_989: [ctype], a_990: boolean, a_991: boolean)),
+      a_996: loaded pointer, a_1000: loaded pointer, a_1002: loaded pointer,
+      a_1007: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_844: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_844, cfunction(a_844)))
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:9, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:40> #-} let weak a_998: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:9, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:40> #-} pure(
+              a_997
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_999: pointer = memop(PtrArrayShift, a_998, 'char', 0) in
+          pure(Specified(a_999))
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:41, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:42> #-} let weak a_1001: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:41, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:42> #-} pure(
+              a
+            ) in
+          load('void*', a_1001)
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:43, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:52> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:43 #-} let weak a_1005: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:50, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:52> #-} pure(
+              p3
+            ) in
+          load('signed int*', a_1005)
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:53, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:62> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:53 #-} let weak a_1010: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:60, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:23:62> #-} pure(
+              r3
+            ) in
+          load('signed int*', a_1010)
+        ) in
+      if not(params_length(a_989) <= 4) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_990) \/ not(are_compatible ('signed int', a_988)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_995: pointer =
+            let a_1012: ctype = params_nth(a_989, 0) in
+            if not(are_compatible ('const char*', a_1012)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_1013: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_1013, a_996) in
+              pure(a_1013) in
+          let strong a_994: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_1000) in
+          let strong a_993: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_1002) in
+          let strong a_992: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_1007) in
+          let strong a_1014: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_987, a_995,
+            [('void*', a_994), ('void*', a_993), ('void*', a_992)]) in
+          let strong _: (unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_995)
+            ,
+              kill('void*', a_994)
+            ,
+              kill('void*', a_993)
+            ,
+              kill('void*', a_992)
+            ) in
+          pure(a_1014)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:29:3> #-} let strong a_1015: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:6, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:39> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:35 #-} let weak (a_1017: loaded integer,
+      a_1018: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:6, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:39> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:35 #-} let weak (a_1022: loaded integer,
+          a_1023: loaded integer) =
+            unseq(
+              {-# §6.5.2.2#10, sentence 1 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:6, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:34> #-} let strong ((a_1028: loaded pointer,
+              (a_1029: ctype, a_1030: [ctype], a_1031: boolean,
+              a_1032: boolean)), a_1036: loaded pointer,
+              a_1038: loaded pointer, a_1040: loaded integer) =
+                {-# §6.5.2.2#4, sentence 2 #-}
+                unseq(
+                  let strong a_1027: loaded pointer =
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:6, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:12> #-} pure(
+                      Specified(Cfunction(memcmp_proxy))
+                    ) in
+                  pure((a_1027, cfunction(a_1027)))
+                ,
+                  {-# §6.5.3.2#3, sentence 5 #-}
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:13, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:16> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:13 #-} let weak a_1037: pointer =
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:14, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:16> #-} pure(
+                      p3
+                    ) in
+                  pure(Specified(a_1037))
+                ,
+                  {-# §6.5.3.2#3, sentence 5 #-}
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:18, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:21> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:18 #-} let weak a_1039: pointer =
+                    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:19, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:21> #-} pure(
+                      r3
+                    ) in
+                  pure(Specified(a_1039))
+                ,
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:23, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:33> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:23 #-} pure(
+                    Specified(Ivsizeof('signed int*'))
+                  )
+                ) in
+              if not(params_length(a_1030) = 3) then
+                pure(undef(<<UB038_number_of_args>>))
+              else
+                if a_1031 \/ not(are_compatible ('signed int', a_1029)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  let strong a_1035: pointer =
+                    let a_1041: ctype = params_nth(a_1030, 0) in
+                    if not(are_compatible ('const void*', a_1041)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_1042: pointer =
+                        create(Ivalignof('const void*'), 'const void*') in
+                      let weak _: unit =
+                        store('const void*', a_1042, a_1036) in
+                      pure(a_1042) in
+                  let strong a_1034: pointer =
+                    let a_1043: ctype = params_nth(a_1030, 1) in
+                    if not(are_compatible ('const void*', a_1043)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_1044: pointer =
+                        create(Ivalignof('const void*'), 'const void*') in
+                      let weak _: unit =
+                        store('const void*', a_1044, a_1038) in
+                      pure(a_1044) in
+                  let strong a_1033: pointer =
+                    let a_1045: ctype = params_nth(a_1030, 2) in
+                    if not(are_compatible ('size_t', a_1045)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_1046: pointer =
+                        create(Ivalignof('size_t'), 'size_t') in
+                      let weak _: unit =
+                        store('size_t', a_1046,
+                        conv_loaded_int('size_t', a_1040)) in
+                      pure(a_1046) in
+                  let strong a_1047: loaded integer =
+                    ccall('signed int (*) (const void*, const void*, size_t)',
+                    a_1028, a_1035, a_1034, a_1033) in
+                  let strong _: (unit,unit,unit) =
+                    unseq(
+                      kill('void*', a_1035)
+                    ,
+                      kill('void*', a_1034)
+                    ,
+                      kill('size_t', a_1033)
+                    ) in
+                  pure(a_1047)
+            ,
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:38, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:39> #-} pure(
+                Specified(0)
+              )
+            ) in
+          pure(
+            let (Specified(a_1024: integer), Specified(a_1025: integer)) =
+              (a_1022, a_1023) in
+            if conv_int('signed int', a_1024) = conv_int('signed int', a_1025) then
+              Specified(1)
+            else
+              Specified(0)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:6, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:39> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:35 #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        let (Specified(a_1019: integer), Specified(a_1020: integer)) =
+          (a_1017, a_1018) in
+        if conv_int('signed int', a_1019) = conv_int('signed int', a_1020) then
+          Specified(1)
+        else
+          Specified(0)
+      )
+    ) in
+  let strong a_843: boolean =
+    let Specified(a_1016: integer) = a_1015 in
+    pure(if not(a_1016 = 1) then True else False) in
+  if a_843 then
+    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:41, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:29:3> #-} {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:4, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:13> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.16#3, sentence 4 #-}
+        {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:4, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:12> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:8 #-} let weak (a_1049: pointer,
+        a_1054: loaded integer) =
+          {-# §6.5.16#3, sentence 5 #-}
+          unseq(
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:4, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:7> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:4 #-} let weak a_1050: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:5, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:7> #-} let weak a_1053: pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:5, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:7> #-} pure(
+                  r3
+                ) in
+              load('signed int*', a_1053) in
+            let Specified(a_1051: pointer) = a_1050 in
+            let weak a_1052: boolean =
+              memop(PtrValidForDeref, 'signed int', a_1051) in
+            pure(
+              if a_1052 then
+                a_1051
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            )
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:10, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:27:12> #-} pure(
+              Specified(33)
+            )
+          ) in
+        let weak _: unit =
+          {-# §6.5.16.1#2, store #-}
+          neg(store('signed int', a_1049,
+          conv_loaded_int('signed int', a_1054))) in
+        pure(conv_loaded_int('signed int', a_1054))
+      ) in
+    pure(Unit) ;
+    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:4, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:41> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.2.2#10, sentence 1 #-}
+        {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:4, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:40> #-} let strong ((a_1055: loaded pointer,
+        (a_1056: ctype, a_1057: [ctype], a_1058: boolean, a_1059: boolean)),
+        a_1063: loaded pointer, a_1067: loaded integer, a_1073: loaded integer) =
+          {-# §6.5.2.2#4, sentence 2 #-}
+          unseq(
+            let strong a_1048: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:4, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:10> #-} pure(
+                Specified(Cfunction(printf_proxy))
+              ) in
+            pure((a_1048, cfunction(a_1048)))
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:11, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:29> #-} let weak a_1065: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:11, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:29> #-} pure(
+                a_1064
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_1066: pointer =
+              memop(PtrArrayShift, a_1065, 'char', 0) in
+            pure(Specified(a_1066))
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:31, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:34> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:31 #-} let weak a_1072: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:31, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:34> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:31 #-} let weak a_1068: loaded pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:32, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:34> #-} let weak a_1071: pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:32, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:34> #-} pure(
+                    p3
+                  ) in
+                load('signed int*', a_1071) in
+              let Specified(a_1069: pointer) = a_1068 in
+              let weak a_1070: boolean =
+                memop(PtrValidForDeref, 'signed int', a_1069) in
+              pure(
+                if a_1070 then
+                  a_1069
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('signed int', a_1072)
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:36, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:39> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:36 #-} let weak a_1078: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:36, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:39> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:36 #-} let weak a_1074: loaded pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:37, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:39> #-} let weak a_1077: pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:37, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:28:39> #-} pure(
+                    r3
+                  ) in
+                load('signed int*', a_1077) in
+              let Specified(a_1075: pointer) = a_1074 in
+              let weak a_1076: boolean =
+                memop(PtrValidForDeref, 'signed int', a_1075) in
+              pure(
+                if a_1076 then
+                  a_1075
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('signed int', a_1078)
+          ) in
+        if not(params_length(a_1057) <= 3) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if not(a_1058) \/ not(are_compatible ('signed int', a_1056)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_1062: pointer =
+              let a_1079: ctype = params_nth(a_1057, 0) in
+              if not(are_compatible ('const char*', a_1079)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_1080: pointer =
+                  create(Ivalignof('const char*'), 'const char*') in
+                let weak _: unit = store('const char*', a_1080, a_1063) in
+                pure(a_1080) in
+            let strong a_1061: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_1067)) in
+            let strong a_1060: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_1073)) in
+            let strong a_1081: loaded integer =
+              ccall('signed int (*) (const char*restrict , ...)', a_1055,
+              a_1062, [('signed int', a_1061), ('signed int', a_1060)]) in
+            let strong _: (unit,unit,unit) =
+              unseq(
+                kill('char*', a_1062)
+              ,
+                kill('signed int', a_1061)
+              ,
+                kill('signed int', a_1060)
+              ) in
+            pure(a_1081)
+      ) in
+    pure(Unit) ;
+    pure(Unit)
+  else
+    {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:25:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:29:3> #-} pure(
+      Unit
+    ) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:30:2, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:30:11> #-} let strong a_1082: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:30:9, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:30:10> #-} pure(
+        Specified(0)
+      )
+    ) in
+  kill('void*', a) ;
+  kill('char*', p1) ;
+  kill('signed int*', p3) ;
+  kill('ptrdiff_t', offset) ;
+  kill('unsigned ichar*', q1) ;
+  kill('unsigned ichar*', q3) ;
+  kill('unsigned ichar*', q3i) ;
+  kill('char*', r1) ;
+  kill('signed int*', r3) ;
+  run ret_842(conv_loaded_int('signed int', a_1082)) ;
+  kill('void*', a) ;
+  kill('char*', p1) ;
+  kill('signed int*', p3) ;
+  kill('ptrdiff_t', offset) ;
+  kill('unsigned ichar*', q1) ;
+  kill('unsigned ichar*', q3) ;
+  kill('unsigned ichar*', q3i) ;
+  kill('char*', r1) ;
+  kill('signed int*', r3) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:6:0, ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:31:1> ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:6:4 - ./de_facto_memory_model/pointer_offset_from_subtraction_within_malloc_struct_1.c:6:8 #-} save ret_842: loaded integer (a_1083: loaded integer:= Specified(0)) in
+    pure(a_1083)
+

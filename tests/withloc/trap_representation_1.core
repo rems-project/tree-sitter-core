@@ -1,0 +1,36 @@
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/trap_representation_1.c:1:11, ./de_facto_memory_model/trap_representation_1.c:6:1> #-} let strong i: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/trap_representation_1.c:2:2, ./de_facto_memory_model/trap_representation_1.c:2:8> #-} store('signed int',
+  i, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/trap_representation_1.c:3:2, ./de_facto_memory_model/trap_representation_1.c:3:14> #-} let strong a_509: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/trap_representation_1.c:3:11, ./de_facto_memory_model/trap_representation_1.c:3:13> ./de_facto_memory_model/trap_representation_1.c:3:11 #-} let weak a_510: pointer =
+        {-# <./de_facto_memory_model/trap_representation_1.c:3:12, ./de_facto_memory_model/trap_representation_1.c:3:13> #-} pure(
+          i
+        ) in
+      pure(Specified(a_510))
+    ) in
+  store('signed int*', p, a_509) ;
+  {-# <./de_facto_memory_model/trap_representation_1.c:4:2, ./de_facto_memory_model/trap_representation_1.c:4:10> #-} let strong a_511: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/trap_representation_1.c:4:8, ./de_facto_memory_model/trap_representation_1.c:4:9> #-} let weak a_512: pointer =
+        {-# <./de_facto_memory_model/trap_representation_1.c:4:8, ./de_facto_memory_model/trap_representation_1.c:4:9> #-} pure(
+          i
+        ) in
+      load('signed int', a_512)
+    ) in
+  store('signed int', j, conv_loaded_int('signed int', a_511)) ;
+  kill('signed int', i) ;
+  kill('signed int*', p) ;
+  kill('signed int', j) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/trap_representation_1.c:1:0, ./de_facto_memory_model/trap_representation_1.c:6:1> ./de_facto_memory_model/trap_representation_1.c:1:4 - ./de_facto_memory_model/trap_representation_1.c:1:8 #-} save ret_508: loaded integer (a_513: loaded integer:= Specified(0)) in
+    pure(a_513)
+

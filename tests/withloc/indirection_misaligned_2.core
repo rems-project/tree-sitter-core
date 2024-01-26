@@ -1,0 +1,69 @@
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/indirection_misaligned_2.c:8:0, ./de_facto_memory_model/indirection_misaligned_2.c:12:1> #-} let strong x: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('char*'), 'char*') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/indirection_misaligned_2.c:9:2, ./de_facto_memory_model/indirection_misaligned_2.c:9:8> #-} store('signed int',
+  x, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/indirection_misaligned_2.c:10:2, ./de_facto_memory_model/indirection_misaligned_2.c:10:41> #-} let strong a_537: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/indirection_misaligned_2.c:10:12, ./de_facto_memory_model/indirection_misaligned_2.c:10:40> ./de_facto_memory_model/indirection_misaligned_2.c:10:12 #-} let weak a_538: loaded integer =
+        {-# §6.5.6 #-}
+        {-# <./de_facto_memory_model/indirection_misaligned_2.c:10:19, ./de_facto_memory_model/indirection_misaligned_2.c:10:40> #-} let weak (a_540: loaded integer,
+        a_541: loaded integer) =
+          unseq(
+            {-# §6.5.4 #-}
+            {-# <./de_facto_memory_model/indirection_misaligned_2.c:10:20, ./de_facto_memory_model/indirection_misaligned_2.c:10:35> #-} let weak a_545: loaded pointer =
+              {-# §6.5.3.2#3, sentence 5 #-}
+              {-# <./de_facto_memory_model/indirection_misaligned_2.c:10:32, ./de_facto_memory_model/indirection_misaligned_2.c:10:34> ./de_facto_memory_model/indirection_misaligned_2.c:10:32 #-} let weak a_547: pointer =
+                {-# <./de_facto_memory_model/indirection_misaligned_2.c:10:33, ./de_facto_memory_model/indirection_misaligned_2.c:10:34> #-} pure(
+                  x
+                ) in
+              pure(Specified(a_547)) in
+            let Specified(a_546: pointer) = a_545 in
+            let weak a_548: integer =
+              memop(IntFromPtr, 'signed int', 'uintptr_t', a_546) in
+            pure(Specified(a_548))
+          ,
+            {-# <./de_facto_memory_model/indirection_misaligned_2.c:10:38, ./de_facto_memory_model/indirection_misaligned_2.c:10:39> #-} pure(
+              Specified(1)
+            )
+          ) in
+        pure(
+          let (Specified(a_542: integer), Specified(a_543: integer)) =
+            (a_540, a_541) in
+          Specified(wrapI_add('uintptr_t', __conv_int__('uintptr_t', a_542), __conv_int__('uintptr_t', a_543)))
+        ) in
+      let Specified(a_539: integer) = a_538 in
+      let weak a_549: pointer =
+        memop(PtrFromInt, 'uintptr_t', 'char', a_539) in
+      pure(Specified(a_549))
+    ) in
+  store('char*', p, a_537) ;
+  {-# <./de_facto_memory_model/indirection_misaligned_2.c:11:2, ./de_facto_memory_model/indirection_misaligned_2.c:11:5> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/indirection_misaligned_2.c:11:2, ./de_facto_memory_model/indirection_misaligned_2.c:11:4> ./de_facto_memory_model/indirection_misaligned_2.c:11:2 #-} let weak a_553: pointer =
+        {-# §6.5.3.2 #-}
+        {-# <./de_facto_memory_model/indirection_misaligned_2.c:11:2, ./de_facto_memory_model/indirection_misaligned_2.c:11:4> ./de_facto_memory_model/indirection_misaligned_2.c:11:2 #-} let weak a_536: loaded pointer =
+          {-# <./de_facto_memory_model/indirection_misaligned_2.c:11:3, ./de_facto_memory_model/indirection_misaligned_2.c:11:4> #-} let weak a_552: pointer =
+            {-# <./de_facto_memory_model/indirection_misaligned_2.c:11:3, ./de_facto_memory_model/indirection_misaligned_2.c:11:4> #-} pure(
+              p
+            ) in
+          load('char*', a_552) in
+        let Specified(a_550: pointer) = a_536 in
+        let weak a_551: boolean = memop(PtrValidForDeref, 'char', a_550) in
+        pure(
+          if a_551 then a_550 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('char', a_553)
+    ) in
+  pure(Unit) ;
+  kill('signed int', x) ;
+  kill('char*', p) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/indirection_misaligned_2.c:7:0, ./de_facto_memory_model/indirection_misaligned_2.c:12:1> ./de_facto_memory_model/indirection_misaligned_2.c:7:4 - ./de_facto_memory_model/indirection_misaligned_2.c:7:8 #-} save ret_535: loaded integer (a_554: loaded integer:= Specified(0)) in
+    pure(a_554)
+

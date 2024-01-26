@@ -1,0 +1,402 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+def struct __cerbty_unnamed_tag_746 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_750 :=
+  c1: 'char'
+  f1: 'float'
+
+-- Globals
+glob a_834: pointer [ail_ctype = 'char[20]'] :=
+  create_readonly(Ivalignof('char[20]'), 'char[20]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 49)), Specified(conv_int('char', 46)),
+  Specified(conv_int('char', 99)), Specified(conv_int('char', 49)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 99)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 49)), Specified(conv_int('char', 46)),
+  Specified(conv_int('char', 102)), Specified(conv_int('char', 49)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 102)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/effective_type_5c.c:6:11, ./de_facto_memory_model/effective_type_5c.c:16:1> #-} let strong p: pointer =
+    create(Ivalignof('void*'), 'void*') in
+  let strong pc: pointer = create(Ivalignof('char*'), 'char*') in
+  let strong pf: pointer = create(Ivalignof('float*'), 'float*') in
+  let strong pst1: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_750*'), 'struct __cerbty_unnamed_tag_750*') in
+  let strong s1: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_750'), 'struct __cerbty_unnamed_tag_750') in
+  {-# <./de_facto_memory_model/effective_type_5c.c:7:2, ./de_facto_memory_model/effective_type_5c.c:7:32> #-} let strong a_766: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/effective_type_5c.c:7:12, ./de_facto_memory_model/effective_type_5c.c:7:31> #-} let strong ((a_768: loaded pointer,
+      (a_769: ctype, a_770: [ctype], a_771: boolean, a_772: boolean)),
+      a_774: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_767: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_5c.c:7:12, ./de_facto_memory_model/effective_type_5c.c:7:18> #-} pure(
+              Specified(Cfunction(malloc_proxy))
+            ) in
+          pure((a_767, cfunction(a_767)))
+        ,
+          {-# <./de_facto_memory_model/effective_type_5c.c:7:19, ./de_facto_memory_model/effective_type_5c.c:7:30> ./de_facto_memory_model/effective_type_5c.c:7:19 #-} pure(
+            Specified(Ivsizeof('struct __cerbty_unnamed_tag_750'))
+          )
+        ) in
+      if not(params_length(a_770) = 1) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_771 \/ not(are_compatible ('void*', a_769)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_773: pointer =
+            let a_775: ctype = params_nth(a_770, 0) in
+            if not(are_compatible ('size_t', a_775)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_776: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_776, conv_loaded_int('size_t', a_774)) in
+              pure(a_776) in
+          let strong a_777: loaded pointer =
+            ccall('void* (*) (size_t)', a_768, a_773) in
+          kill('size_t', a_773) ;
+          pure(a_777)
+    ) in
+  store('void*', p, a_766) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:7:33, ./de_facto_memory_model/effective_type_5c.c:7:62> #-} {-# §6.5#2 #-}
+  bound(
+    {-# <./de_facto_memory_model/effective_type_5c.c:7:33, ./de_facto_memory_model/effective_type_5c.c:7:61> #-} let strong a_765: loaded integer =
+      {-# <./de_facto_memory_model/effective_type_5c.c:7:41, ./de_facto_memory_model/effective_type_5c.c:7:60> ./de_facto_memory_model/effective_type_5c.c:7:43 #-} let weak a_781: loaded pointer =
+        {-# <./de_facto_memory_model/effective_type_5c.c:7:41, ./de_facto_memory_model/effective_type_5c.c:7:42> #-} let weak a_780: pointer =
+          {-# <./de_facto_memory_model/effective_type_5c.c:7:41, ./de_facto_memory_model/effective_type_5c.c:7:42> #-} pure(
+            p
+          ) in
+        load('void*', a_780) in
+      let Specified(a_782: pointer) = a_781 in
+      let weak a_783: boolean = memop(PtrNe, a_782, NULL(void*)) in
+      {-# §6.5.9#3 #-}
+      pure(if a_783 then Specified(1) else Specified(0)) in
+    pure(
+      let Specified(a_778: integer) = a_765 in
+      if a_778 = 0 then error("assert() failure", Unit) else Unit
+    )
+  ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:8:2, ./de_facto_memory_model/effective_type_5c.c:8:32> #-} let strong a_784: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/effective_type_5c.c:8:13, ./de_facto_memory_model/effective_type_5c.c:8:31> ./de_facto_memory_model/effective_type_5c.c:8:13 #-} let weak a_785: pointer =
+        {-# §6.5.2.3#3, sentence 2 #-}
+        {-# <./de_facto_memory_model/effective_type_5c.c:8:14, ./de_facto_memory_model/effective_type_5c.c:8:31> #-} let strong a_786: pointer =
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/effective_type_5c.c:8:15, ./de_facto_memory_model/effective_type_5c.c:8:27> #-} let weak a_787: loaded pointer =
+            {-# §6.5.4 #-}
+            {-# <./de_facto_memory_model/effective_type_5c.c:8:17, ./de_facto_memory_model/effective_type_5c.c:8:26> #-} let weak a_790: loaded pointer =
+              {-# <./de_facto_memory_model/effective_type_5c.c:8:24, ./de_facto_memory_model/effective_type_5c.c:8:25> #-} let weak a_792: pointer =
+                {-# <./de_facto_memory_model/effective_type_5c.c:8:24, ./de_facto_memory_model/effective_type_5c.c:8:25> #-} pure(
+                  p
+                ) in
+              load('void*', a_792) in
+            let Specified(a_791: pointer) = a_790 in
+            let weak a_793: boolean =
+              memop(PtrWellAligned, 'struct __cerbty_unnamed_tag_750', a_791) in
+            pure(
+              Specified(if a_793 then
+                a_791
+              else
+                undef(<<UB025_misaligned_pointer_conversion>>))
+            ) in
+          let Specified(a_788: pointer) = a_787 in
+          let weak a_789: boolean =
+            memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_750', a_788) in
+          pure(
+            if a_789 then
+              a_788
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          ) in
+        memop(PtrArrayShift[__cerbty_unnamed_tag_750, c1], a_786) in
+      pure(Specified(a_785))
+    ) in
+  store('char*', pc, a_784) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:9:2, ./de_facto_memory_model/effective_type_5c.c:9:12> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/effective_type_5c.c:9:2, ./de_facto_memory_model/effective_type_5c.c:9:11> ./de_facto_memory_model/effective_type_5c.c:9:6 #-} let weak (a_764: pointer,
+      a_798: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/effective_type_5c.c:9:2, ./de_facto_memory_model/effective_type_5c.c:9:5> ./de_facto_memory_model/effective_type_5c.c:9:2 #-} let weak a_794: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_5c.c:9:3, ./de_facto_memory_model/effective_type_5c.c:9:5> #-} let weak a_797: pointer =
+              {-# <./de_facto_memory_model/effective_type_5c.c:9:3, ./de_facto_memory_model/effective_type_5c.c:9:5> #-} pure(
+                pc
+              ) in
+            load('char*', a_797) in
+          let Specified(a_795: pointer) = a_794 in
+          let weak a_796: boolean = memop(PtrValidForDeref, 'char', a_795) in
+          pure(
+            if a_796 then
+              a_795
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/effective_type_5c.c:9:8, ./de_facto_memory_model/effective_type_5c.c:9:11> #-} pure(
+            Specified(65)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('char', a_764, conv_loaded_int('char', a_798))) in
+      pure(conv_loaded_int('char', a_798))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:10:2, ./de_facto_memory_model/effective_type_5c.c:10:33> #-} let strong a_799: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/effective_type_5c.c:10:14, ./de_facto_memory_model/effective_type_5c.c:10:32> ./de_facto_memory_model/effective_type_5c.c:10:14 #-} let weak a_800: pointer =
+        {-# §6.5.2.3#3, sentence 2 #-}
+        {-# <./de_facto_memory_model/effective_type_5c.c:10:15, ./de_facto_memory_model/effective_type_5c.c:10:32> #-} let strong a_801: pointer =
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/effective_type_5c.c:10:16, ./de_facto_memory_model/effective_type_5c.c:10:28> #-} let weak a_802: loaded pointer =
+            {-# §6.5.4 #-}
+            {-# <./de_facto_memory_model/effective_type_5c.c:10:18, ./de_facto_memory_model/effective_type_5c.c:10:27> #-} let weak a_805: loaded pointer =
+              {-# <./de_facto_memory_model/effective_type_5c.c:10:25, ./de_facto_memory_model/effective_type_5c.c:10:26> #-} let weak a_807: pointer =
+                {-# <./de_facto_memory_model/effective_type_5c.c:10:25, ./de_facto_memory_model/effective_type_5c.c:10:26> #-} pure(
+                  p
+                ) in
+              load('void*', a_807) in
+            let Specified(a_806: pointer) = a_805 in
+            let weak a_808: boolean =
+              memop(PtrWellAligned, 'struct __cerbty_unnamed_tag_750', a_806) in
+            pure(
+              Specified(if a_808 then
+                a_806
+              else
+                undef(<<UB025_misaligned_pointer_conversion>>))
+            ) in
+          let Specified(a_803: pointer) = a_802 in
+          let weak a_804: boolean =
+            memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_750', a_803) in
+          pure(
+            if a_804 then
+              a_803
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          ) in
+        memop(PtrArrayShift[__cerbty_unnamed_tag_750, f1], a_801) in
+      pure(Specified(a_800))
+    ) in
+  store('float*', pf, a_799) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:11:2, ./de_facto_memory_model/effective_type_5c.c:11:12> #-} let strong _: loaded floating =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/effective_type_5c.c:11:2, ./de_facto_memory_model/effective_type_5c.c:11:11> ./de_facto_memory_model/effective_type_5c.c:11:6 #-} let weak (a_763: pointer,
+      a_813: loaded floating) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/effective_type_5c.c:11:2, ./de_facto_memory_model/effective_type_5c.c:11:5> ./de_facto_memory_model/effective_type_5c.c:11:2 #-} let weak a_809: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_5c.c:11:3, ./de_facto_memory_model/effective_type_5c.c:11:5> #-} let weak a_812: pointer =
+              {-# <./de_facto_memory_model/effective_type_5c.c:11:3, ./de_facto_memory_model/effective_type_5c.c:11:5> #-} pure(
+                pf
+              ) in
+            load('float*', a_812) in
+          let Specified(a_810: pointer) = a_809 in
+          let weak a_811: boolean = memop(PtrValidForDeref, 'float', a_810) in
+          pure(
+            if a_811 then
+              a_810
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/effective_type_5c.c:11:8, ./de_facto_memory_model/effective_type_5c.c:11:11> #-} pure(
+            Specified(1.)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('float', a_763, a_813)) in
+      pure(a_813)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:12:2, ./de_facto_memory_model/effective_type_5c.c:12:23> #-} let strong a_814: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/effective_type_5c.c:12:14, ./de_facto_memory_model/effective_type_5c.c:12:22> ./de_facto_memory_model/effective_type_5c.c:12:14 #-} let weak a_815: loaded pointer =
+        {-# <./de_facto_memory_model/effective_type_5c.c:12:21, ./de_facto_memory_model/effective_type_5c.c:12:22> #-} let weak a_817: pointer =
+          {-# <./de_facto_memory_model/effective_type_5c.c:12:21, ./de_facto_memory_model/effective_type_5c.c:12:22> #-} pure(
+            p
+          ) in
+        load('void*', a_817) in
+      let Specified(a_816: pointer) = a_815 in
+      let weak a_818: boolean =
+        memop(PtrWellAligned, 'struct __cerbty_unnamed_tag_750', a_816) in
+      pure(
+        Specified(if a_818 then
+          a_816
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_750*', pst1, a_814) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/effective_type_5c.c:13:2, ./de_facto_memory_model/effective_type_5c.c:13:9> #-} store('struct __cerbty_unnamed_tag_750',
+  s1, Unspecified('struct __cerbty_unnamed_tag_750')) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:14:2, ./de_facto_memory_model/effective_type_5c.c:14:13> #-} let strong _: loaded struct a_750 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/effective_type_5c.c:14:2, ./de_facto_memory_model/effective_type_5c.c:14:12> ./de_facto_memory_model/effective_type_5c.c:14:5 #-} let weak (a_762: pointer,
+      a_824: loaded struct a_750) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/effective_type_5c.c:14:2, ./de_facto_memory_model/effective_type_5c.c:14:4> #-} pure(
+            s1
+          )
+        ,
+          {-# <./de_facto_memory_model/effective_type_5c.c:14:7, ./de_facto_memory_model/effective_type_5c.c:14:12> ./de_facto_memory_model/effective_type_5c.c:14:7 #-} let weak a_823: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/effective_type_5c.c:14:7, ./de_facto_memory_model/effective_type_5c.c:14:12> ./de_facto_memory_model/effective_type_5c.c:14:7 #-} let weak a_819: loaded pointer =
+              {-# <./de_facto_memory_model/effective_type_5c.c:14:8, ./de_facto_memory_model/effective_type_5c.c:14:12> #-} let weak a_822: pointer =
+                {-# <./de_facto_memory_model/effective_type_5c.c:14:8, ./de_facto_memory_model/effective_type_5c.c:14:12> #-} pure(
+                  pst1
+                ) in
+              load('struct __cerbty_unnamed_tag_750*', a_822) in
+            let Specified(a_820: pointer) = a_819 in
+            let weak a_821: boolean =
+              memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_750', a_820) in
+            pure(
+              if a_821 then
+                a_820
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('struct __cerbty_unnamed_tag_750', a_823)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('struct __cerbty_unnamed_tag_750', a_762, a_824)) in
+      pure(a_824)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:15:2, ./de_facto_memory_model/effective_type_5c.c:15:47> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/effective_type_5c.c:15:2, ./de_facto_memory_model/effective_type_5c.c:15:46> #-} let strong ((a_825: loaded pointer,
+      (a_826: ctype, a_827: [ctype], a_828: boolean, a_829: boolean)),
+      a_833: loaded pointer, a_837: loaded integer, a_840: loaded floating) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_761: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_5c.c:15:2, ./de_facto_memory_model/effective_type_5c.c:15:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_761, cfunction(a_761)))
+        ,
+          {-# <./de_facto_memory_model/effective_type_5c.c:15:9, ./de_facto_memory_model/effective_type_5c.c:15:31> #-} let weak a_835: pointer =
+            {-# <./de_facto_memory_model/effective_type_5c.c:15:9, ./de_facto_memory_model/effective_type_5c.c:15:31> #-} pure(
+              a_834
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_836: pointer = memop(PtrArrayShift, a_835, 'char', 0) in
+          pure(Specified(a_836))
+        ,
+          {-# <./de_facto_memory_model/effective_type_5c.c:15:33, ./de_facto_memory_model/effective_type_5c.c:15:38> ./de_facto_memory_model/effective_type_5c.c:15:35 #-} let weak a_839: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/effective_type_5c.c:15:33, ./de_facto_memory_model/effective_type_5c.c:15:38> ./de_facto_memory_model/effective_type_5c.c:15:35 #-} let strong a_838: pointer =
+              {-# <./de_facto_memory_model/effective_type_5c.c:15:33, ./de_facto_memory_model/effective_type_5c.c:15:35> #-} pure(
+                s1
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_750, c1], a_838) in
+          load('char', a_839)
+        ,
+          {-# <./de_facto_memory_model/effective_type_5c.c:15:40, ./de_facto_memory_model/effective_type_5c.c:15:45> ./de_facto_memory_model/effective_type_5c.c:15:42 #-} let weak a_842: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/effective_type_5c.c:15:40, ./de_facto_memory_model/effective_type_5c.c:15:45> ./de_facto_memory_model/effective_type_5c.c:15:42 #-} let strong a_841: pointer =
+              {-# <./de_facto_memory_model/effective_type_5c.c:15:40, ./de_facto_memory_model/effective_type_5c.c:15:42> #-} pure(
+                s1
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_750, f1], a_841) in
+          load('float', a_842)
+        ) in
+      if not(params_length(a_827) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_828) \/ not(are_compatible ('signed int', a_826)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_832: pointer =
+            let a_843: ctype = params_nth(a_827, 0) in
+            if not(are_compatible ('const char*', a_843)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_844: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_844, a_833) in
+              pure(a_844) in
+          let strong a_831: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_837)) in
+          let strong a_830: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'double', a_840) in
+          let strong a_845: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_825, a_832,
+            [('signed int', a_831), ('double', a_830)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_832)
+            ,
+              kill('signed int', a_831)
+            ,
+              kill('double', a_830)
+            ) in
+          pure(a_845)
+    ) in
+  pure(Unit) ;
+  kill('void*', p) ;
+  kill('char*', pc) ;
+  kill('float*', pf) ;
+  kill('struct __cerbty_unnamed_tag_750*', pst1) ;
+  kill('struct __cerbty_unnamed_tag_750', s1) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_5c.c:6:0, ./de_facto_memory_model/effective_type_5c.c:16:1> ./de_facto_memory_model/effective_type_5c.c:6:4 - ./de_facto_memory_model/effective_type_5c.c:6:8 #-} save ret_760: loaded integer (a_846: loaded integer:= Specified(0)) in
+    pure(a_846)
+

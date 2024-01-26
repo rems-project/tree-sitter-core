@@ -1,0 +1,238 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob y: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_791: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_792: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:3:6, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:3:7> #-} pure(
+        Specified(2)
+      )
+    ) in
+  store('signed int', a_791, conv_loaded_int('signed int', a_792)) ;
+  pure(a_791)
+
+glob x: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_789: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_790: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:3:11, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:3:12> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', a_789, conv_loaded_int('signed int', a_790)) ;
+  pure(a_789)
+
+glob a_755: pointer [ail_ctype = 'char[22]'] :=
+  create_readonly(Ivalignof('char[22]'), 'char[22]', Specified(Array(Specified(conv_int('char',
+  65)), Specified(conv_int('char', 100)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 114)), Specified(conv_int('char', 101)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 101)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 58)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 113)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc f (pointer, pointer)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:5:11, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:11:1> #-} let strong p: pointer =
+    create(Ivalignof('signed int*'), 'signed int*') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:18> #-} let strong a_737: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:11, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:17> ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:14 #-} let weak (a_738: loaded pointer,
+      a_740: loaded integer) =
+        unseq(
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:11, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:13> ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:11 #-} let weak a_743: pointer =
+            {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:12, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:13> #-} pure(
+              x
+            ) in
+          pure(Specified(a_743))
+        ,
+          {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:16, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:6:17> #-} pure(
+            Specified(1)
+          )
+        ) in
+      let (Specified(a_739: pointer), Specified(a_741: integer)) =
+        (a_738, a_740) in
+      let weak a_742: pointer =
+        memop(PtrArrayShift, a_739, 'signed int', a_741) in
+      pure(Specified(a_742))
+    ) in
+  store('signed int*', p, a_737) ;
+  {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:7:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:7:14> #-} let strong a_744: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:7:11, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:7:13> ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:7:11 #-} let weak a_745: pointer =
+        {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:7:12, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:7:13> #-} pure(
+          y
+        ) in
+      pure(Specified(a_745))
+    ) in
+  store('signed int*', q, a_744) ;
+  {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:53> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:52> #-} let strong ((a_746: loaded pointer,
+      (a_747: ctype, a_748: [ctype], a_749: boolean, a_750: boolean)),
+      a_754: loaded pointer, a_758: loaded pointer, a_763: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_736: loaded pointer =
+            {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_736, cfunction(a_736)))
+        ,
+          {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:9, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:33> #-} let weak a_756: pointer =
+            {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:9, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:33> #-} pure(
+              a_755
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_757: pointer = memop(PtrArrayShift, a_756, 'char', 0) in
+          pure(Specified(a_757))
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:34, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:42> ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:34 #-} let weak a_761: pointer =
+            {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:41, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:42> #-} pure(
+              p
+            ) in
+          load('signed int*', a_761)
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:43, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:51> ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:43 #-} let weak a_766: pointer =
+            {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:50, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:8:51> #-} pure(
+              q
+            ) in
+          load('signed int*', a_766)
+        ) in
+      if not(params_length(a_748) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_749) \/ not(are_compatible ('signed int', a_747)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_753: pointer =
+            let a_768: ctype = params_nth(a_748, 0) in
+            if not(are_compatible ('const char*', a_768)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_769: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_769, a_754) in
+              pure(a_769) in
+          let strong a_752: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_758) in
+          let strong a_751: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_763) in
+          let strong a_770: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_746, a_753,
+            [('void*', a_752), ('void*', a_751)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_753)
+            ,
+              kill('void*', a_752)
+            ,
+              kill('void*', a_751)
+            ) in
+          pure(a_770)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:9> #-} {-# §6.5#2 #-}
+  bound(
+    {-# §6.5.2.2#10, sentence 1 #-}
+    {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:8> #-} let strong ((a_771: loaded pointer,
+    (a_772: ctype, a_773: [ctype], a_774: boolean, a_775: boolean)),
+    a_778: loaded pointer, a_780: loaded pointer) =
+      {-# §6.5.2.2#4, sentence 2 #-}
+      unseq(
+        let strong a_735: loaded pointer =
+          {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:3> #-} pure(
+            Specified(Cfunction(f))
+          ) in
+        pure((a_735, cfunction(a_735)))
+      ,
+        {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:4, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:5> #-} let weak a_779: pointer =
+          {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:4, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:5> #-} pure(
+            p
+          ) in
+        load('signed int*', a_779)
+      ,
+        {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:6, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:7> #-} let weak a_781: pointer =
+          {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:6, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:9:7> #-} pure(
+            q
+          ) in
+        load('signed int*', a_781)
+      ) in
+    if not(params_length(a_773) = 2) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_774 \/ not(are_compatible ('void', a_772)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_777: pointer =
+          let a_782: ctype = params_nth(a_773, 0) in
+          if not(are_compatible ('signed int*', a_782)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_783: pointer =
+              create(Ivalignof('signed int*'), 'signed int*') in
+            let weak _: unit = store('signed int*', a_783, a_778) in
+            pure(a_783) in
+        let strong a_776: pointer =
+          let a_784: ctype = params_nth(a_773, 1) in
+          if not(are_compatible ('signed int*', a_784)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_785: pointer =
+              create(Ivalignof('signed int*'), 'signed int*') in
+            let weak _: unit = store('signed int*', a_785, a_780) in
+            pure(a_785) in
+        let strong a_786: unit =
+          ccall('void (*) (signed int*, signed int*)', a_771, a_777, a_776) in
+        let strong _: (unit,unit) =
+          unseq(kill('signed int*', a_777), kill('signed int*', a_776)) in
+        pure(a_786)
+  ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:10:2, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:10:11> #-} let strong a_787: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:10:9, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:10:10> #-} pure(
+        Specified(0)
+      )
+    ) in
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  run ret_734(conv_loaded_int('signed int', a_787)) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:5:0, ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:11:1> ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:5:4 - ./de_facto_memory_model/provenance_equality_global_cu_yx_a.c:5:8 #-} save ret_734: loaded integer (a_788: loaded integer:= Specified(0)) in
+    pure(a_788)
+

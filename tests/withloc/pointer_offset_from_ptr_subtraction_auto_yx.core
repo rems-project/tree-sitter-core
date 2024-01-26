@@ -1,0 +1,410 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_726 :=
+  __dummy_max_align_t: 'void*'
+
+-- Globals
+glob a_813: pointer [ail_ctype = 'char[18]'] :=
+  create_readonly(Ivalignof('char[18]'), 'char[18]', Specified(Array(Specified(conv_int('char',
+  121)), Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 113)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 114)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:4:11, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:14:1> #-} let strong y: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong x: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong offset: pointer = create(Ivalignof('ptrdiff_t'), 'ptrdiff_t') in
+  let strong r: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:5:2, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:5:15> #-} let strong a_741: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:5:8, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:5:9> #-} pure(
+        Specified(2)
+      )
+    ) in
+  store('signed int', y, conv_loaded_int('signed int', a_741)) ;
+  let strong a_742: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:5:13, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:5:14> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', x, conv_loaded_int('signed int', a_742)) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:6:2, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:6:14> #-} let strong a_743: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:6:11, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:6:13> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:6:11 #-} let weak a_744: pointer =
+        {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:6:12, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:6:13> #-} pure(
+          x
+        ) in
+      pure(Specified(a_744))
+    ) in
+  store('signed int*', p, a_743) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:7:2, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:7:14> #-} let strong a_745: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:7:11, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:7:13> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:7:11 #-} let weak a_746: pointer =
+        {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:7:12, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:7:13> #-} pure(
+          y
+        ) in
+      pure(Specified(a_746))
+    ) in
+  store('signed int*', q, a_745) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:2, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:27> #-} let strong a_747: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:21, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:26> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:23 #-} let weak (a_750: loaded pointer,
+      a_751: loaded pointer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:21, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:22> #-} let weak a_748: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:21, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:22> #-} pure(
+              q
+            ) in
+          load('signed int*', a_748)
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:25, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:26> #-} let weak a_749: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:25, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:8:26> #-} pure(
+              p
+            ) in
+          load('signed int*', a_749)
+        ) in
+      let (Specified(a_752: pointer), Specified(a_753: pointer)) =
+        (a_750, a_751) in
+      let weak a_754: integer = memop(Ptrdiff, 'signed int', a_752, a_753) in
+      pure(
+        if is_representable_integer(a_754, 'ptrdiff_t') then
+          Specified(a_754)
+        else
+          undef(<<UB050_pointers_subtraction_not_representable>>)
+      )
+    ) in
+  store('ptrdiff_t', offset, conv_loaded_int('ptrdiff_t', a_747)) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:2, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:22> #-} let strong a_755: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:11, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:21> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:13 #-} let weak (a_756: loaded pointer,
+      a_758: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:11, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:12> #-} let weak a_761: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:11, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:12> #-} pure(
+              p
+            ) in
+          load('signed int*', a_761)
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:15, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:21> #-} let weak a_762: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:15, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:9:21> #-} pure(
+              offset
+            ) in
+          load('ptrdiff_t', a_762)
+        ) in
+      let (Specified(a_757: pointer), Specified(a_759: integer)) =
+        (a_756, a_758) in
+      let weak a_760: pointer =
+        memop(PtrArrayShift, a_757, 'signed int', a_759) in
+      pure(Specified(a_760))
+    ) in
+  store('signed int*', r, a_755) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:2, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:13:3> #-} let strong a_763: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:6, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:36> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:32 #-} let weak (a_765: loaded integer,
+      a_766: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:6, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:36> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:32 #-} let weak (a_770: loaded integer,
+          a_771: loaded integer) =
+            unseq(
+              {-# §6.5.2.2#10, sentence 1 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:6, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:31> #-} let strong ((a_776: loaded pointer,
+              (a_777: ctype, a_778: [ctype], a_779: boolean, a_780: boolean)),
+              a_784: loaded pointer, a_786: loaded pointer,
+              a_788: loaded integer) =
+                {-# §6.5.2.2#4, sentence 2 #-}
+                unseq(
+                  let strong a_775: loaded pointer =
+                    {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:6, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:12> #-} pure(
+                      Specified(Cfunction(memcmp_proxy))
+                    ) in
+                  pure((a_775, cfunction(a_775)))
+                ,
+                  {-# §6.5.3.2#3, sentence 5 #-}
+                  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:13, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:15> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:13 #-} let weak a_785: pointer =
+                    {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:14, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:15> #-} pure(
+                      r
+                    ) in
+                  pure(Specified(a_785))
+                ,
+                  {-# §6.5.3.2#3, sentence 5 #-}
+                  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:17, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:19> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:17 #-} let weak a_787: pointer =
+                    {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:18, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:19> #-} pure(
+                      q
+                    ) in
+                  pure(Specified(a_787))
+                ,
+                  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:21, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:30> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:21 #-} pure(
+                    Specified(Ivsizeof('signed int*'))
+                  )
+                ) in
+              if not(params_length(a_778) = 3) then
+                pure(undef(<<UB038_number_of_args>>))
+              else
+                if a_779 \/ not(are_compatible ('signed int', a_777)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  let strong a_783: pointer =
+                    let a_789: ctype = params_nth(a_778, 0) in
+                    if not(are_compatible ('const void*', a_789)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_790: pointer =
+                        create(Ivalignof('const void*'), 'const void*') in
+                      let weak _: unit = store('const void*', a_790, a_784) in
+                      pure(a_790) in
+                  let strong a_782: pointer =
+                    let a_791: ctype = params_nth(a_778, 1) in
+                    if not(are_compatible ('const void*', a_791)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_792: pointer =
+                        create(Ivalignof('const void*'), 'const void*') in
+                      let weak _: unit = store('const void*', a_792, a_786) in
+                      pure(a_792) in
+                  let strong a_781: pointer =
+                    let a_793: ctype = params_nth(a_778, 2) in
+                    if not(are_compatible ('size_t', a_793)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_794: pointer =
+                        create(Ivalignof('size_t'), 'size_t') in
+                      let weak _: unit =
+                        store('size_t', a_794,
+                        conv_loaded_int('size_t', a_788)) in
+                      pure(a_794) in
+                  let strong a_795: loaded integer =
+                    ccall('signed int (*) (const void*, const void*, size_t)',
+                    a_776, a_783, a_782, a_781) in
+                  let strong _: (unit,unit,unit) =
+                    unseq(
+                      kill('void*', a_783)
+                    ,
+                      kill('void*', a_782)
+                    ,
+                      kill('size_t', a_781)
+                    ) in
+                  pure(a_795)
+            ,
+              {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:35, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:36> #-} pure(
+                Specified(0)
+              )
+            ) in
+          pure(
+            let (Specified(a_772: integer), Specified(a_773: integer)) =
+              (a_770, a_771) in
+            if conv_int('signed int', a_772) = conv_int('signed int', a_773) then
+              Specified(1)
+            else
+              Specified(0)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:6, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:36> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:32 #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        let (Specified(a_767: integer), Specified(a_768: integer)) =
+          (a_765, a_766) in
+        if conv_int('signed int', a_767) = conv_int('signed int', a_768) then
+          Specified(1)
+        else
+          Specified(0)
+      )
+    ) in
+  let strong a_740: boolean =
+    let Specified(a_764: integer) = a_763 in
+    pure(if not(a_764 = 1) then True else False) in
+  if a_740 then
+    {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:38, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:13:3> #-} {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:4, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:12> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.16#3, sentence 4 #-}
+        {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:4, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:11> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:7 #-} let weak (a_797: pointer,
+        a_802: loaded integer) =
+          {-# §6.5.16#3, sentence 5 #-}
+          unseq(
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:4, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:6> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:4 #-} let weak a_798: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:5, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:6> #-} let weak a_801: pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:5, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:6> #-} pure(
+                  r
+                ) in
+              load('signed int*', a_801) in
+            let Specified(a_799: pointer) = a_798 in
+            let weak a_800: boolean =
+              memop(PtrValidForDeref, 'signed int', a_799) in
+            pure(
+              if a_800 then
+                a_799
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            )
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:9, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:11:11> #-} pure(
+              Specified(11)
+            )
+          ) in
+        let weak _: unit =
+          {-# §6.5.16.1#2, store #-}
+          neg(store('signed int', a_797, conv_loaded_int('signed int', a_802))) in
+        pure(conv_loaded_int('signed int', a_802))
+      ) in
+    pure(Unit) ;
+    {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:4, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:41> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.2.2#10, sentence 1 #-}
+        {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:4, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:40> #-} let strong ((a_803: loaded pointer,
+        (a_804: ctype, a_805: [ctype], a_806: boolean, a_807: boolean)),
+        a_812: loaded pointer, a_816: loaded integer, a_818: loaded integer,
+        a_824: loaded integer) =
+          {-# §6.5.2.2#4, sentence 2 #-}
+          unseq(
+            let strong a_796: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:4, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:10> #-} pure(
+                Specified(Cfunction(printf_proxy))
+              ) in
+            pure((a_796, cfunction(a_796)))
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:11, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:31> #-} let weak a_814: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:11, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:31> #-} pure(
+                a_813
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_815: pointer =
+              memop(PtrArrayShift, a_814, 'char', 0) in
+            pure(Specified(a_815))
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:32, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:33> #-} let weak a_817: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:32, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:33> #-} pure(
+                y
+              ) in
+            load('signed int', a_817)
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:34, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:36> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:34 #-} let weak a_823: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:34, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:36> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:34 #-} let weak a_819: loaded pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:35, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:36> #-} let weak a_822: pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:35, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:36> #-} pure(
+                    q
+                  ) in
+                load('signed int*', a_822) in
+              let Specified(a_820: pointer) = a_819 in
+              let weak a_821: boolean =
+                memop(PtrValidForDeref, 'signed int', a_820) in
+              pure(
+                if a_821 then
+                  a_820
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('signed int', a_823)
+          ,
+            {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:37, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:39> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:37 #-} let weak a_829: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:37, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:39> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:37 #-} let weak a_825: loaded pointer =
+                {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:38, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:39> #-} let weak a_828: pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:38, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:12:39> #-} pure(
+                    r
+                  ) in
+                load('signed int*', a_828) in
+              let Specified(a_826: pointer) = a_825 in
+              let weak a_827: boolean =
+                memop(PtrValidForDeref, 'signed int', a_826) in
+              pure(
+                if a_827 then
+                  a_826
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('signed int', a_829)
+          ) in
+        if not(params_length(a_805) <= 4) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if not(a_806) \/ not(are_compatible ('signed int', a_804)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_811: pointer =
+              let a_830: ctype = params_nth(a_805, 0) in
+              if not(are_compatible ('const char*', a_830)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_831: pointer =
+                  create(Ivalignof('const char*'), 'const char*') in
+                let weak _: unit = store('const char*', a_831, a_812) in
+                pure(a_831) in
+            let strong a_810: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_816)) in
+            let strong a_809: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_818)) in
+            let strong a_808: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_824)) in
+            let strong a_832: loaded integer =
+              ccall('signed int (*) (const char*restrict , ...)', a_803, a_811,
+              [('signed int', a_810), ('signed int', a_809),
+              ('signed int', a_808)]) in
+            let strong _: (unit,unit,unit,unit) =
+              unseq(
+                kill('char*', a_811)
+              ,
+                kill('signed int', a_810)
+              ,
+                kill('signed int', a_809)
+              ,
+                kill('signed int', a_808)
+              ) in
+            pure(a_832)
+      ) in
+    pure(Unit) ;
+    pure(Unit)
+  else
+    {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:10:2, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:13:3> #-} pure(
+      Unit
+    ) ;
+  kill('signed int', y) ;
+  kill('signed int', x) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  kill('ptrdiff_t', offset) ;
+  kill('signed int*', r) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:4:0, ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:14:1> ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:4:4 - ./de_facto_memory_model/pointer_offset_from_ptr_subtraction_auto_yx.c:4:8 #-} save ret_739: loaded integer (a_833: loaded integer:= Specified(0)) in
+    pure(a_833)
+

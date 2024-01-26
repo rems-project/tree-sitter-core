@@ -1,0 +1,182 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_646 :=
+  i1: 'signed int'
+  b2: '_Bool'
+
+-- Globals
+glob a_676: pointer [ail_ctype = 'char[10]'] :=
+  create_readonly(Ivalignof('char[10]'), 'char[10]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 50)), Specified(conv_int('char', 46)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 49)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:3:11, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:10:1> #-} let strong s1: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_646'), 'struct __cerbty_unnamed_tag_646') in
+  let strong s2: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_646'), 'struct __cerbty_unnamed_tag_646') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:4:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:4:8> #-} store('struct __cerbty_unnamed_tag_646',
+  s1, Unspecified('struct __cerbty_unnamed_tag_646')) ;
+  {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:12> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:11> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:8 #-} let weak (a_657: pointer,
+      a_659: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#3, sentence 2 #-}
+          {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:7> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:4 #-} let strong a_658: pointer =
+            {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:4> #-} pure(
+              s1
+            ) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_646, i1], a_658)
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:10, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:5:11> #-} pure(
+            Specified(1)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_657, conv_loaded_int('signed int', a_659))) in
+      pure(conv_loaded_int('signed int', a_659))
+    ) in
+  pure(Unit) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:6:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:6:8> #-} store('struct __cerbty_unnamed_tag_646',
+  s2, Unspecified('struct __cerbty_unnamed_tag_646')) ;
+  {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:16> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:15> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:8 #-} let weak (a_656: pointer,
+      a_663: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#3, sentence 2 #-}
+          {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:7> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:4 #-} let strong a_660: pointer =
+            {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:4> #-} pure(
+              s2
+            ) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_646, i1], a_660)
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:10, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:15> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:12 #-} let weak a_662: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:10, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:15> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:12 #-} let strong a_661: pointer =
+              {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:10, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:7:12> #-} pure(
+                s1
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_646, i1], a_661) in
+          load('signed int', a_662)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_656, conv_loaded_int('signed int', a_663))) in
+      pure(conv_loaded_int('signed int', a_663))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:16> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:15> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:8 #-} let weak (a_655: pointer,
+      a_667: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#3, sentence 2 #-}
+          {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:7> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:4 #-} let strong a_664: pointer =
+            {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:4> #-} pure(
+              s2
+            ) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_646, b2], a_664)
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:10, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:15> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:12 #-} let weak a_666: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:10, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:15> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:12 #-} let strong a_665: pointer =
+              {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:10, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:8:12> #-} pure(
+                s1
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_646, b2], a_665) in
+          load('_Bool', a_666)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('_Bool', a_655, conv_loaded_int('_Bool', a_667))) in
+      pure(conv_loaded_int('_Bool', a_667))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:29> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:28> #-} let strong ((a_668: loaded pointer,
+      (a_669: ctype, a_670: [ctype], a_671: boolean, a_672: boolean)),
+      a_675: loaded pointer, a_679: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_654: loaded pointer =
+            {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:2, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_654, cfunction(a_654)))
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:9, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:21> #-} let weak a_677: pointer =
+            {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:9, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:21> #-} pure(
+              a_676
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_678: pointer = memop(PtrArrayShift, a_677, 'char', 0) in
+          pure(Specified(a_678))
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:22, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:27> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:24 #-} let weak a_681: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:22, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:27> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:24 #-} let strong a_680: pointer =
+              {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:22, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:9:24> #-} pure(
+                s2
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_646, i1], a_680) in
+          load('signed int', a_681)
+        ) in
+      if not(params_length(a_670) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_671) \/ not(are_compatible ('signed int', a_669)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_674: pointer =
+            let a_682: ctype = params_nth(a_670, 0) in
+            if not(are_compatible ('const char*', a_682)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_683: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_683, a_675) in
+              pure(a_683) in
+          let strong a_673: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_679)) in
+          let strong a_684: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_668, a_674,
+            [('signed int', a_673)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_674), kill('signed int', a_673)) in
+          pure(a_684)
+    ) in
+  pure(Unit) ;
+  kill('struct __cerbty_unnamed_tag_646', s1) ;
+  kill('struct __cerbty_unnamed_tag_646', s2) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/unspecified_value_struct_copy_2.c:3:0, ./de_facto_memory_model/unspecified_value_struct_copy_2.c:10:1> ./de_facto_memory_model/unspecified_value_struct_copy_2.c:3:4 - ./de_facto_memory_model/unspecified_value_struct_copy_2.c:3:8 #-} save ret_653: loaded integer (a_685: loaded integer:= Specified(0)) in
+    pure(a_685)
+

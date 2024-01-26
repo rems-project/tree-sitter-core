@@ -1,0 +1,54 @@
+proc main (): eff loaded integer :=
+  let strong a: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong b: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong c: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong a_537: loaded integer = bound(pure(Specified(0))) in
+  case a_537 of
+    | Specified(a_538: integer) =>
+        store('intptr_t', a,
+        Specified(memop(CapAssignValue, CivNULLcap(signed)(),
+        conv_int('intptr_t', a_538))))
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(AilSdeclaration)>>))
+  end ;
+  let strong a_539: loaded integer = bound(pure(Specified(0))) in
+  case a_539 of
+    | Specified(a_540: integer) =>
+        store('intptr_t', b,
+        Specified(memop(CapAssignValue, CivNULLcap(signed)(),
+        conv_int('intptr_t', a_540))))
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(AilSdeclaration)>>))
+  end ;
+  let strong a_541: loaded integer =
+    bound(
+      let weak (a_542: loaded integer, a_543: loaded integer) =
+        unseq(
+          let weak a_547: pointer = pure(a) in
+          load('intptr_t', a_547)
+        ,
+          let weak a_548: pointer = pure(b) in
+          load('intptr_t', a_548)
+        ) in
+      pure(
+        case (a_542, a_543) of
+          | (Specified(a_544: integer), Specified(a_545: integer)) =>
+              Specified(let a_546: integer =
+                memop(DeriveCap[TODO:binary], a_544, a_545) in
+              memop(CapAssignValue, a_546,
+              wrapI('intptr_t',
+              __conv_int__('intptr_t', a_544) +
+              __conv_int__('intptr_t', a_545))))
+          | _: (loaded integer,loaded integer) =>
+              undef(<<UB036_exceptional_condition>>)
+        end
+      )
+    ) in
+  store('intptr_t', c, conv_loaded_int('intptr_t', a_541)) ;
+  kill('intptr_t', a) ;
+  kill('intptr_t', b) ;
+  kill('intptr_t', c) ;
+  pure(Unit) ;
+  save ret_536: loaded integer (a_549: loaded integer:= Specified(0)) in
+    pure(a_549)
+

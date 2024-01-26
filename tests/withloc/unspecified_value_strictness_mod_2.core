@@ -1,0 +1,188 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_684: pointer [ail_ctype = 'char[13]'] :=
+  create_readonly(Ivalignof('char[13]'), 'char[13]', Specified(Array(Specified(conv_int('char',
+  99)), Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 99)),
+  Specified(conv_int('char', 50)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:2:11, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:8:1> #-} let strong c: pointer =
+    create(Ivalignof('unsigned char'), 'unsigned char') in
+  let strong p: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong c2: pointer =
+    create(Ivalignof('unsigned char'), 'unsigned char') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:3:2, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:3:18> #-} store('unsigned char',
+  c, Unspecified('unsigned ichar')) ;
+  {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:4:2, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:4:22> #-} let strong a_654: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:4:19, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:4:21> ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:4:19 #-} let weak a_655: pointer =
+        {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:4:20, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:4:21> #-} pure(
+          c
+        ) in
+      pure(Specified(a_655))
+    ) in
+  store('unsigned char*', p, a_654) ;
+  {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:2, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:39> #-} let strong a_656: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:21, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:38> ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:30 #-} let weak (a_657: loaded integer,
+      a_658: loaded integer) =
+        unseq(
+          {-# §6.5.5 #-}
+          {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:21, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:29> #-} let weak (a_663: loaded integer,
+          a_664: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:22, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:23> #-} let weak a_662: pointer =
+                {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:22, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:23> #-} pure(
+                  c
+                ) in
+              load('unsigned char', a_662)
+            ,
+              {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:26, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:28> #-} pure(
+                Specified(2)
+              )
+            ) in
+          pure(
+            let (Specified(a_665: integer), Specified(a_666: integer)) =
+              (a_663, a_664) in
+            let a_667: integer = conv_int('unsigned int', a_665) in
+            let a_668: integer = conv_int('unsigned int', a_666) in
+            if a_668 = 0 then
+              undef(<<UB045b_modulo_by_zero>>)
+            else
+              if is_representable_integer(conv_int('unsigned int', a_665) /
+              a_668, 'unsigned int') then
+                Specified(wrapI('unsigned int', a_667 rem_t a_668))
+              else
+                undef(<<UB045c_quotient_not_representable>>)
+          )
+        ,
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:32, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:38> #-} let weak (a_670: loaded integer,
+          a_671: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:33, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:35> #-} pure(
+                Specified(1)
+              )
+            ,
+              {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:36, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:37> #-} let weak a_669: pointer =
+                {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:36, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:5:37> #-} pure(
+                  c
+                ) in
+              load('unsigned char', a_669)
+            ) in
+          pure(
+            let (Specified(a_672: integer), Specified(a_673: integer)) =
+              (a_670, a_671) in
+            Specified(wrapI_sub('unsigned int', conv_int('unsigned int', a_672), conv_int('unsigned int',
+            a_673)))
+          )
+        ) in
+      pure(
+        let (Specified(a_659: integer), Specified(a_660: integer)) =
+          (a_657, a_658) in
+        Specified(wrapI_add('unsigned int', __conv_int__('unsigned int', a_659), __conv_int__('unsigned int', a_660)))
+      )
+    ) in
+  store('unsigned char', c2, conv_loaded_int('unsigned char', a_656)) ;
+  {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:2, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:41> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:2, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:40> #-} let strong ((a_675: loaded pointer,
+      (a_676: ctype, a_677: [ctype], a_678: boolean, a_679: boolean)),
+      a_683: loaded pointer, a_687: loaded integer, a_692: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_653: loaded pointer =
+            {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:2, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_653, cfunction(a_653)))
+        ,
+          {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:9, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:24> #-} let weak a_685: pointer =
+            {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:9, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:24> #-} pure(
+              a_684
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_686: pointer = memop(PtrArrayShift, a_685, 'char', 0) in
+          pure(Specified(a_686))
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:25, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:31> ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:25 #-} let weak a_688: loaded integer =
+            {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:30, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:31> #-} let weak a_690: pointer =
+              {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:30, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:31> #-} pure(
+                c
+              ) in
+            load('unsigned char', a_690) in
+          pure(conv_loaded_int('signed int', a_688))
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:32, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:39> ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:32 #-} let weak a_693: loaded integer =
+            {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:37, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:39> #-} let weak a_695: pointer =
+              {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:37, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:7:39> #-} pure(
+                c2
+              ) in
+            load('unsigned char', a_695) in
+          pure(conv_loaded_int('signed int', a_693))
+        ) in
+      if not(params_length(a_677) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_678) \/ not(are_compatible ('signed int', a_676)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_682: pointer =
+            let a_697: ctype = params_nth(a_677, 0) in
+            if not(are_compatible ('const char*', a_697)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_698: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_698, a_683) in
+              pure(a_698) in
+          let strong a_681: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_687)) in
+          let strong a_680: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_692)) in
+          let strong a_699: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_675, a_682,
+            [('signed int', a_681), ('signed int', a_680)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_682)
+            ,
+              kill('signed int', a_681)
+            ,
+              kill('signed int', a_680)
+            ) in
+          pure(a_699)
+    ) in
+  pure(Unit) ;
+  kill('unsigned ichar', c) ;
+  kill('unsigned ichar*', p) ;
+  kill('unsigned ichar', c2) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/unspecified_value_strictness_mod_2.c:2:0, ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:8:1> ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:2:4 - ./de_facto_memory_model/unspecified_value_strictness_mod_2.c:2:8 #-} save ret_652: loaded integer (a_700: loaded integer:= Specified(0)) in
+    pure(a_700)
+

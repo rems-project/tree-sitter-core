@@ -1,0 +1,34 @@
+proc main (): eff loaded integer :=
+  let strong x: pointer = create(Ivalignof('signed int'), 'signed int') in
+  store('signed int', x, Unspecified('signed int')) ;
+  let strong _: loaded pointer =
+    bound(
+      let weak a_535: loaded integer =
+        let weak (a_537: loaded integer, a_538: loaded integer) =
+          unseq(
+            let weak a_542: loaded pointer =
+              let weak a_544: pointer = pure(x) in
+              pure(Specified(a_544)) in
+            let Specified(a_543: pointer) = a_542 in
+            let weak a_545: integer =
+              memop(IntFromPtr, 'signed int', 'uintptr_t', a_543) in
+            pure(Specified(a_545))
+          ,
+            pure(Specified(1))
+          ) in
+        pure(
+          let (Specified(a_539: integer), Specified(a_540: integer)) =
+            (a_537, a_538) in
+          Specified(wrapI_add('uintptr_t', __conv_int__('uintptr_t', a_539), __conv_int__('uintptr_t', a_540)))
+        ) in
+      let Specified(a_536: integer) = a_535 in
+      let weak a_546: pointer =
+        memop(PtrFromInt, 'uintptr_t', 'signed int', a_536) in
+      pure(Specified(a_546))
+    ) in
+  pure(Unit) ;
+  kill('signed int', x) ;
+  pure(Unit) ;
+  save ret_534: loaded integer (a_547: loaded integer:= Specified(0)) in
+    pure(a_547)
+

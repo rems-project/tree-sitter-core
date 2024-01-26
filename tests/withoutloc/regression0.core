@@ -1,0 +1,44 @@
+-- Globals
+glob glob: pointer [ail_ctype = 'char'] :=
+  let strong a_517: pointer = create(Ivalignof('char'), 'char') in
+  let strong a_518: loaded integer = bound(pure(Specified(10))) in
+  store('char', a_517, conv_loaded_int('char', a_518)) ;
+  pure(a_517)
+
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong p: pointer = create(Ivalignof('char*'), 'char*') in
+  let strong a_508: loaded pointer =
+    bound(
+      let weak a_509: pointer = pure(glob) in
+      pure(Specified(a_509))
+    ) in
+  store('char*', p, a_508) ;
+  let strong a_515: loaded integer =
+    bound(
+      let weak a_514: pointer =
+        let weak a_510: loaded pointer =
+          let weak a_513: pointer = pure(p) in
+          load('char*', a_513) in
+        case a_510 of
+          | Specified(a_511: pointer) =>
+              let weak a_512: boolean =
+                memop(PtrValidForDeref, 'char', a_511) in
+              pure(
+                if a_512 then
+                  a_511
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              )
+          | Unspecified(_: ctype) =>
+              pure(undef(<<UB043_indirection_invalid_value>>))
+        end in
+      load('char', a_514)
+    ) in
+  kill('char*', p) ;
+  run ret_507(conv_loaded_int('signed int', a_515)) ;
+  kill('char*', p) ;
+  pure(Unit) ;
+  save ret_507: loaded integer (a_516: loaded integer:= Specified(0)) in
+    pure(a_516)
+

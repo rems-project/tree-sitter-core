@@ -1,0 +1,341 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_648 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_730 :=
+  c: 'char'
+  f: 'float'
+
+-- Globals
+glob a_833: pointer [ail_ctype = 'char[17]'] :=
+  create_readonly(Ivalignof('char[17]'), 'char[17]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 50)), Specified(conv_int('char', 46)),
+  Specified(conv_int('char', 99)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 99)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 50)), Specified(conv_int('char', 46)),
+  Specified(conv_int('char', 102)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 102)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong s1: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_730'), 'struct __cerbty_unnamed_tag_730') in
+  let strong s2: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_730'), 'struct __cerbty_unnamed_tag_730') in
+  let strong a_742: loaded struct a_730 =
+    bound(
+      let weak (a_744: loaded floating, a_743: loaded integer) =
+        unseq(pure(Specified(1.)), pure(Specified(65))) in
+      pure(
+        Specified((struct __cerbty_unnamed_tag_730){.c= conv_loaded_int('char',
+        a_743), .f= a_744})
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_730', s1, a_742) ;
+  store('struct __cerbty_unnamed_tag_730', s2,
+  Unspecified('struct __cerbty_unnamed_tag_730')) ;
+  let strong _: loaded pointer =
+    bound(
+      let strong ((a_745: loaded pointer,
+      (a_746: ctype, a_747: [ctype], a_748: boolean, a_749: boolean)),
+      a_753: loaded pointer, a_756: loaded pointer, a_759: loaded integer) =
+        unseq(
+          let strong a_741: loaded pointer =
+            pure(Specified(Cfunction(memcpy_proxy))) in
+          pure((a_741, cfunction(a_741)))
+        ,
+          let weak a_754: pointer =
+            let strong a_755: pointer = pure(s2) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_730, c], a_755) in
+          pure(Specified(a_754))
+        ,
+          let weak a_757: pointer =
+            let strong a_758: pointer = pure(s1) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_730, c], a_758) in
+          pure(Specified(a_757))
+        ,
+          pure(Specified(1))
+        ) in
+      if not(params_length(a_747) = 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_748 \/ not(are_compatible ('void*', a_746)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_752: pointer =
+            let a_760: ctype = params_nth(a_747, 0) in
+            if not(are_compatible ('void*', a_760)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_761: pointer = create(Ivalignof('void*'), 'void*') in
+              let weak _: unit = store('void*', a_761, a_753) in
+              pure(a_761) in
+          let strong a_751: pointer =
+            let a_762: ctype = params_nth(a_747, 1) in
+            if not(are_compatible ('const void*', a_762)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_763: pointer =
+                create(Ivalignof('const void*'), 'const void*') in
+              let weak _: unit = store('const void*', a_763, a_756) in
+              pure(a_763) in
+          let strong a_750: pointer =
+            let a_764: ctype = params_nth(a_747, 2) in
+            if not(are_compatible ('size_t', a_764)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_765: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_765, conv_loaded_int('size_t', a_759)) in
+              pure(a_765) in
+          let strong a_766: loaded pointer =
+            ccall('void* (*) (void*restrict , const void*restrict , size_t)',
+            a_745, a_752, a_751, a_750) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('void*', a_752)
+            ,
+              kill('void*', a_751)
+            ,
+              kill('size_t', a_750)
+            ) in
+          pure(a_766)
+    ) in
+  pure(Unit) ;
+  let strong _: loaded pointer =
+    bound(
+      let strong ((a_767: loaded pointer,
+      (a_768: ctype, a_769: [ctype], a_770: boolean, a_771: boolean)),
+      a_775: loaded pointer, a_783: loaded integer, a_784: loaded integer) =
+        unseq(
+          let strong a_740: loaded pointer =
+            pure(Specified(Cfunction(memset))) in
+          pure((a_740, cfunction(a_740)))
+        ,
+          let weak (a_776: loaded pointer, a_778: loaded integer) =
+            unseq(
+              let weak a_781: pointer =
+                let strong a_782: pointer = pure(s2) in
+                memop(PtrArrayShift[__cerbty_unnamed_tag_730, c], a_782) in
+              pure(Specified(a_781))
+            ,
+              pure(Specified(1))
+            ) in
+          let (Specified(a_777: pointer), Specified(a_779: integer)) =
+            (a_776, a_778) in
+          let weak a_780: pointer =
+            memop(PtrArrayShift, a_777, 'char', a_779) in
+          pure(Specified(a_780))
+        ,
+          pure(Specified(88))
+        ,
+          let weak (a_790: loaded integer, a_791: loaded integer) =
+            unseq(
+              let weak (a_785: loaded integer, a_786: loaded integer) =
+                unseq(pure(Specified(8)), pure(Specified(0))) in
+              pure(
+                let (Specified(a_787: integer), Specified(a_788: integer)) =
+                  (a_785, a_786) in
+                Specified(wrapI_sub('size_t', conv_int('size_t', a_787), conv_int('size_t',
+                a_788)))
+              )
+            ,
+              pure(Specified(1))
+            ) in
+          pure(
+            let (Specified(a_792: integer), Specified(a_793: integer)) =
+              (a_790, a_791) in
+            Specified(wrapI_sub('size_t', conv_int('size_t', a_792), conv_int('size_t',
+            a_793)))
+          )
+        ) in
+      if not(params_length(a_769) = 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_770 \/ not(are_compatible ('void*', a_768)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_774: pointer =
+            let a_795: ctype = params_nth(a_769, 0) in
+            if not(are_compatible ('void*', a_795)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_796: pointer = create(Ivalignof('void*'), 'void*') in
+              let weak _: unit = store('void*', a_796, a_775) in
+              pure(a_796) in
+          let strong a_773: pointer =
+            let a_797: ctype = params_nth(a_769, 1) in
+            if not(are_compatible ('signed int', a_797)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_798: pointer =
+                create(Ivalignof('signed int'), 'signed int') in
+              let weak _: unit =
+                store('signed int', a_798,
+                conv_loaded_int('signed int', a_783)) in
+              pure(a_798) in
+          let strong a_772: pointer =
+            let a_799: ctype = params_nth(a_769, 2) in
+            if not(are_compatible ('size_t', a_799)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_800: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_800, conv_loaded_int('size_t', a_784)) in
+              pure(a_800) in
+          let strong a_801: loaded pointer =
+            ccall('void* (*) (void*, signed int, size_t)', a_767, a_774, a_773,
+            a_772) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('void*', a_774)
+            ,
+              kill('signed int', a_773)
+            ,
+              kill('size_t', a_772)
+            ) in
+          pure(a_801)
+    ) in
+  pure(Unit) ;
+  let strong _: loaded pointer =
+    bound(
+      let strong ((a_802: loaded pointer,
+      (a_803: ctype, a_804: [ctype], a_805: boolean, a_806: boolean)),
+      a_810: loaded pointer, a_813: loaded pointer, a_816: loaded integer) =
+        unseq(
+          let strong a_739: loaded pointer =
+            pure(Specified(Cfunction(memcpy_proxy))) in
+          pure((a_739, cfunction(a_739)))
+        ,
+          let weak a_811: pointer =
+            let strong a_812: pointer = pure(s2) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_730, f], a_812) in
+          pure(Specified(a_811))
+        ,
+          let weak a_814: pointer =
+            let strong a_815: pointer = pure(s1) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_730, f], a_815) in
+          pure(Specified(a_814))
+        ,
+          pure(Specified(Ivsizeof('float')))
+        ) in
+      if not(params_length(a_804) = 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_805 \/ not(are_compatible ('void*', a_803)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_809: pointer =
+            let a_817: ctype = params_nth(a_804, 0) in
+            if not(are_compatible ('void*', a_817)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_818: pointer = create(Ivalignof('void*'), 'void*') in
+              let weak _: unit = store('void*', a_818, a_810) in
+              pure(a_818) in
+          let strong a_808: pointer =
+            let a_819: ctype = params_nth(a_804, 1) in
+            if not(are_compatible ('const void*', a_819)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_820: pointer =
+                create(Ivalignof('const void*'), 'const void*') in
+              let weak _: unit = store('const void*', a_820, a_813) in
+              pure(a_820) in
+          let strong a_807: pointer =
+            let a_821: ctype = params_nth(a_804, 2) in
+            if not(are_compatible ('size_t', a_821)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_822: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_822, conv_loaded_int('size_t', a_816)) in
+              pure(a_822) in
+          let strong a_823: loaded pointer =
+            ccall('void* (*) (void*restrict , const void*restrict , size_t)',
+            a_802, a_809, a_808, a_807) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('void*', a_809)
+            ,
+              kill('void*', a_808)
+            ,
+              kill('size_t', a_807)
+            ) in
+          pure(a_823)
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let strong ((a_824: loaded pointer,
+      (a_825: ctype, a_826: [ctype], a_827: boolean, a_828: boolean)),
+      a_832: loaded pointer, a_836: loaded integer, a_839: loaded floating) =
+        unseq(
+          let strong a_738: loaded pointer =
+            pure(Specified(Cfunction(printf_proxy))) in
+          pure((a_738, cfunction(a_738)))
+        ,
+          let weak a_834: pointer = pure(a_833) in
+          let weak a_835: pointer = memop(PtrArrayShift, a_834, 'char', 0) in
+          pure(Specified(a_835))
+        ,
+          let weak a_838: pointer =
+            let strong a_837: pointer = pure(s2) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_730, c], a_837) in
+          load('char', a_838)
+        ,
+          let weak a_841: pointer =
+            let strong a_840: pointer = pure(s2) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_730, f], a_840) in
+          load('float', a_841)
+        ) in
+      if not(params_length(a_826) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_827) \/ not(are_compatible ('signed int', a_825)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_831: pointer =
+            let a_842: ctype = params_nth(a_826, 0) in
+            if not(are_compatible ('const char*', a_842)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_843: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_843, a_832) in
+              pure(a_843) in
+          let strong a_830: pointer =
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_836)) in
+          let strong a_829: pointer =
+            pcall(create_and_store, 'double', a_839) in
+          let strong a_844: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_824, a_831,
+            [('signed int', a_830), ('double', a_829)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_831)
+            ,
+              kill('signed int', a_830)
+            ,
+              kill('double', a_829)
+            ) in
+          pure(a_844)
+    ) in
+  pure(Unit) ;
+  kill('struct __cerbty_unnamed_tag_730', s1) ;
+  kill('struct __cerbty_unnamed_tag_730', s2) ;
+  pure(Unit) ;
+  save ret_737: loaded integer (a_845: loaded integer:= Specified(0)) in
+    pure(a_845)
+

@@ -1,0 +1,579 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def union __cerbty_unnamed_tag_649 :=
+  i: 'unsigned int'
+  c: 'char[4]'
+
+-- Globals
+glob a_685: pointer [ail_ctype = 'char[8]'] :=
+  create_readonly(Ivalignof('char[8]'), 'char[8]', Specified(Array(Specified(conv_int('char',
+  121)), Specified(conv_int('char', 61)), Specified(conv_int('char', 48)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc bswap (x: pointer): eff loaded integer :=
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:2:35, ./de_facto_memory_model/compcertMMv2-4.c:9:1> #-} let strong src: pointer =
+    create(Ivalignof('union __cerbty_unnamed_tag_649'), 'union __cerbty_unnamed_tag_649') in
+  let strong dst: pointer =
+    create(Ivalignof('union __cerbty_unnamed_tag_649'), 'union __cerbty_unnamed_tag_649') in
+  let strong n: pointer = create(Ivalignof('signed int'), 'signed int') in
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:3:2, ./de_facto_memory_model/compcertMMv2-4.c:3:47> #-} {-# §6.2.4#6 #-}
+  store('union __cerbty_unnamed_tag_649', src,
+  Unspecified('union __cerbty_unnamed_tag_649')) ;
+  {-# §6.2.4#6 #-}
+  store('union __cerbty_unnamed_tag_649', dst,
+  Unspecified('union __cerbty_unnamed_tag_649')) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:4:2, ./de_facto_memory_model/compcertMMv2-4.c:4:8> #-} store('signed int',
+  n, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:5:2, ./de_facto_memory_model/compcertMMv2-4.c:5:10> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:5:2, ./de_facto_memory_model/compcertMMv2-4.c:5:9> ./de_facto_memory_model/compcertMMv2-4.c:5:7 #-} let weak (a_700: pointer,
+      a_703: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#3, sentence 2 #-}
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:5:2, ./de_facto_memory_model/compcertMMv2-4.c:5:7> ./de_facto_memory_model/compcertMMv2-4.c:5:5 #-} let strong a_701: pointer =
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:5:2, ./de_facto_memory_model/compcertMMv2-4.c:5:5> #-} pure(
+              src
+            ) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_649, i], a_701)
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:5:8, ./de_facto_memory_model/compcertMMv2-4.c:5:9> #-} let weak a_702: pointer =
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:5:8, ./de_facto_memory_model/compcertMMv2-4.c:5:9> #-} pure(
+              x
+            ) in
+          load('unsigned int', a_702)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned int', a_700,
+        conv_loaded_int('unsigned int', a_703))) in
+      pure(conv_loaded_int('unsigned int', a_703))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:6:2, ./de_facto_memory_model/compcertMMv2-4.c:6:20> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:6:2, ./de_facto_memory_model/compcertMMv2-4.c:6:19> ./de_facto_memory_model/compcertMMv2-4.c:6:10 #-} let weak (a_699: pointer,
+      a_727: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:6:2, ./de_facto_memory_model/compcertMMv2-4.c:6:10> #-} let weak a_704: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:6:2, ./de_facto_memory_model/compcertMMv2-4.c:6:10> #-} let weak (a_707: loaded pointer,
+            a_709: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:6:2, ./de_facto_memory_model/compcertMMv2-4.c:6:7> ./de_facto_memory_model/compcertMMv2-4.c:6:5 #-} let weak a_713: pointer =
+                  {-# §6.5.2.3#3, sentence 2 #-}
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:6:2, ./de_facto_memory_model/compcertMMv2-4.c:6:7> ./de_facto_memory_model/compcertMMv2-4.c:6:5 #-} let strong a_712: pointer =
+                    {-# <./de_facto_memory_model/compcertMMv2-4.c:6:2, ./de_facto_memory_model/compcertMMv2-4.c:6:5> #-} pure(
+                      dst
+                    ) in
+                  memop(PtrArrayShift[__cerbty_unnamed_tag_649, c], a_712) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_714: pointer =
+                  memop(PtrArrayShift, a_713, 'char', 0) in
+                pure(Specified(a_714))
+              ,
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:6:8, ./de_facto_memory_model/compcertMMv2-4.c:6:9> #-} pure(
+                  Specified(3)
+                )
+              ) in
+            let (Specified(a_708: pointer), Specified(a_710: integer)) =
+              (a_707, a_709) in
+            let weak a_711: pointer =
+              memop(PtrArrayShift, a_708, 'char', a_710) in
+            pure(Specified(a_711)) in
+          let Specified(a_705: pointer) = a_704 in
+          let weak a_706: boolean = memop(PtrValidForDeref, 'char', a_705) in
+          pure(
+            if a_706 then
+              a_705
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:6:11, ./de_facto_memory_model/compcertMMv2-4.c:6:19> #-} let weak a_726: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:6:11, ./de_facto_memory_model/compcertMMv2-4.c:6:19> #-} let weak a_715: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/compcertMMv2-4.c:6:11, ./de_facto_memory_model/compcertMMv2-4.c:6:19> #-} let weak (a_718: loaded pointer,
+              a_720: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:6:11, ./de_facto_memory_model/compcertMMv2-4.c:6:16> ./de_facto_memory_model/compcertMMv2-4.c:6:14 #-} let weak a_724: pointer =
+                    {-# §6.5.2.3#3, sentence 2 #-}
+                    {-# <./de_facto_memory_model/compcertMMv2-4.c:6:11, ./de_facto_memory_model/compcertMMv2-4.c:6:16> ./de_facto_memory_model/compcertMMv2-4.c:6:14 #-} let strong a_723: pointer =
+                      {-# <./de_facto_memory_model/compcertMMv2-4.c:6:11, ./de_facto_memory_model/compcertMMv2-4.c:6:14> #-} pure(
+                        src
+                      ) in
+                    memop(PtrArrayShift[__cerbty_unnamed_tag_649, c], a_723) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_725: pointer =
+                    memop(PtrArrayShift, a_724, 'char', 0) in
+                  pure(Specified(a_725))
+                ,
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:6:17, ./de_facto_memory_model/compcertMMv2-4.c:6:18> #-} pure(
+                    Specified(0)
+                  )
+                ) in
+              let (Specified(a_719: pointer), Specified(a_721: integer)) =
+                (a_718, a_720) in
+              let weak a_722: pointer =
+                memop(PtrArrayShift, a_719, 'char', a_721) in
+              pure(Specified(a_722)) in
+            let Specified(a_716: pointer) = a_715 in
+            let weak a_717: boolean =
+              memop(PtrValidForDeref, 'char', a_716) in
+            pure(
+              if a_717 then
+                a_716
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('char', a_726)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('char', a_699, conv_loaded_int('char', a_727))) in
+      pure(conv_loaded_int('char', a_727))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:6:21, ./de_facto_memory_model/compcertMMv2-4.c:6:39> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:6:21, ./de_facto_memory_model/compcertMMv2-4.c:6:38> ./de_facto_memory_model/compcertMMv2-4.c:6:29 #-} let weak (a_698: pointer,
+      a_751: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:6:21, ./de_facto_memory_model/compcertMMv2-4.c:6:29> #-} let weak a_728: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:6:21, ./de_facto_memory_model/compcertMMv2-4.c:6:29> #-} let weak (a_731: loaded pointer,
+            a_733: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:6:21, ./de_facto_memory_model/compcertMMv2-4.c:6:26> ./de_facto_memory_model/compcertMMv2-4.c:6:24 #-} let weak a_737: pointer =
+                  {-# §6.5.2.3#3, sentence 2 #-}
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:6:21, ./de_facto_memory_model/compcertMMv2-4.c:6:26> ./de_facto_memory_model/compcertMMv2-4.c:6:24 #-} let strong a_736: pointer =
+                    {-# <./de_facto_memory_model/compcertMMv2-4.c:6:21, ./de_facto_memory_model/compcertMMv2-4.c:6:24> #-} pure(
+                      dst
+                    ) in
+                  memop(PtrArrayShift[__cerbty_unnamed_tag_649, c], a_736) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_738: pointer =
+                  memop(PtrArrayShift, a_737, 'char', 0) in
+                pure(Specified(a_738))
+              ,
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:6:27, ./de_facto_memory_model/compcertMMv2-4.c:6:28> #-} pure(
+                  Specified(2)
+                )
+              ) in
+            let (Specified(a_732: pointer), Specified(a_734: integer)) =
+              (a_731, a_733) in
+            let weak a_735: pointer =
+              memop(PtrArrayShift, a_732, 'char', a_734) in
+            pure(Specified(a_735)) in
+          let Specified(a_729: pointer) = a_728 in
+          let weak a_730: boolean = memop(PtrValidForDeref, 'char', a_729) in
+          pure(
+            if a_730 then
+              a_729
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:6:30, ./de_facto_memory_model/compcertMMv2-4.c:6:38> #-} let weak a_750: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:6:30, ./de_facto_memory_model/compcertMMv2-4.c:6:38> #-} let weak a_739: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/compcertMMv2-4.c:6:30, ./de_facto_memory_model/compcertMMv2-4.c:6:38> #-} let weak (a_742: loaded pointer,
+              a_744: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:6:30, ./de_facto_memory_model/compcertMMv2-4.c:6:35> ./de_facto_memory_model/compcertMMv2-4.c:6:33 #-} let weak a_748: pointer =
+                    {-# §6.5.2.3#3, sentence 2 #-}
+                    {-# <./de_facto_memory_model/compcertMMv2-4.c:6:30, ./de_facto_memory_model/compcertMMv2-4.c:6:35> ./de_facto_memory_model/compcertMMv2-4.c:6:33 #-} let strong a_747: pointer =
+                      {-# <./de_facto_memory_model/compcertMMv2-4.c:6:30, ./de_facto_memory_model/compcertMMv2-4.c:6:33> #-} pure(
+                        src
+                      ) in
+                    memop(PtrArrayShift[__cerbty_unnamed_tag_649, c], a_747) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_749: pointer =
+                    memop(PtrArrayShift, a_748, 'char', 0) in
+                  pure(Specified(a_749))
+                ,
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:6:36, ./de_facto_memory_model/compcertMMv2-4.c:6:37> #-} pure(
+                    Specified(1)
+                  )
+                ) in
+              let (Specified(a_743: pointer), Specified(a_745: integer)) =
+                (a_742, a_744) in
+              let weak a_746: pointer =
+                memop(PtrArrayShift, a_743, 'char', a_745) in
+              pure(Specified(a_746)) in
+            let Specified(a_740: pointer) = a_739 in
+            let weak a_741: boolean =
+              memop(PtrValidForDeref, 'char', a_740) in
+            pure(
+              if a_741 then
+                a_740
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('char', a_750)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('char', a_698, conv_loaded_int('char', a_751))) in
+      pure(conv_loaded_int('char', a_751))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:7:2, ./de_facto_memory_model/compcertMMv2-4.c:7:20> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:7:2, ./de_facto_memory_model/compcertMMv2-4.c:7:19> ./de_facto_memory_model/compcertMMv2-4.c:7:10 #-} let weak (a_697: pointer,
+      a_775: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:7:2, ./de_facto_memory_model/compcertMMv2-4.c:7:10> #-} let weak a_752: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:7:2, ./de_facto_memory_model/compcertMMv2-4.c:7:10> #-} let weak (a_755: loaded pointer,
+            a_757: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:7:2, ./de_facto_memory_model/compcertMMv2-4.c:7:7> ./de_facto_memory_model/compcertMMv2-4.c:7:5 #-} let weak a_761: pointer =
+                  {-# §6.5.2.3#3, sentence 2 #-}
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:7:2, ./de_facto_memory_model/compcertMMv2-4.c:7:7> ./de_facto_memory_model/compcertMMv2-4.c:7:5 #-} let strong a_760: pointer =
+                    {-# <./de_facto_memory_model/compcertMMv2-4.c:7:2, ./de_facto_memory_model/compcertMMv2-4.c:7:5> #-} pure(
+                      dst
+                    ) in
+                  memop(PtrArrayShift[__cerbty_unnamed_tag_649, c], a_760) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_762: pointer =
+                  memop(PtrArrayShift, a_761, 'char', 0) in
+                pure(Specified(a_762))
+              ,
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:7:8, ./de_facto_memory_model/compcertMMv2-4.c:7:9> #-} pure(
+                  Specified(1)
+                )
+              ) in
+            let (Specified(a_756: pointer), Specified(a_758: integer)) =
+              (a_755, a_757) in
+            let weak a_759: pointer =
+              memop(PtrArrayShift, a_756, 'char', a_758) in
+            pure(Specified(a_759)) in
+          let Specified(a_753: pointer) = a_752 in
+          let weak a_754: boolean = memop(PtrValidForDeref, 'char', a_753) in
+          pure(
+            if a_754 then
+              a_753
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:7:11, ./de_facto_memory_model/compcertMMv2-4.c:7:19> #-} let weak a_774: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:7:11, ./de_facto_memory_model/compcertMMv2-4.c:7:19> #-} let weak a_763: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/compcertMMv2-4.c:7:11, ./de_facto_memory_model/compcertMMv2-4.c:7:19> #-} let weak (a_766: loaded pointer,
+              a_768: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:7:11, ./de_facto_memory_model/compcertMMv2-4.c:7:16> ./de_facto_memory_model/compcertMMv2-4.c:7:14 #-} let weak a_772: pointer =
+                    {-# §6.5.2.3#3, sentence 2 #-}
+                    {-# <./de_facto_memory_model/compcertMMv2-4.c:7:11, ./de_facto_memory_model/compcertMMv2-4.c:7:16> ./de_facto_memory_model/compcertMMv2-4.c:7:14 #-} let strong a_771: pointer =
+                      {-# <./de_facto_memory_model/compcertMMv2-4.c:7:11, ./de_facto_memory_model/compcertMMv2-4.c:7:14> #-} pure(
+                        src
+                      ) in
+                    memop(PtrArrayShift[__cerbty_unnamed_tag_649, c], a_771) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_773: pointer =
+                    memop(PtrArrayShift, a_772, 'char', 0) in
+                  pure(Specified(a_773))
+                ,
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:7:17, ./de_facto_memory_model/compcertMMv2-4.c:7:18> #-} pure(
+                    Specified(2)
+                  )
+                ) in
+              let (Specified(a_767: pointer), Specified(a_769: integer)) =
+                (a_766, a_768) in
+              let weak a_770: pointer =
+                memop(PtrArrayShift, a_767, 'char', a_769) in
+              pure(Specified(a_770)) in
+            let Specified(a_764: pointer) = a_763 in
+            let weak a_765: boolean =
+              memop(PtrValidForDeref, 'char', a_764) in
+            pure(
+              if a_765 then
+                a_764
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('char', a_774)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('char', a_697, conv_loaded_int('char', a_775))) in
+      pure(conv_loaded_int('char', a_775))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:7:21, ./de_facto_memory_model/compcertMMv2-4.c:7:39> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:7:21, ./de_facto_memory_model/compcertMMv2-4.c:7:38> ./de_facto_memory_model/compcertMMv2-4.c:7:29 #-} let weak (a_696: pointer,
+      a_799: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:7:21, ./de_facto_memory_model/compcertMMv2-4.c:7:29> #-} let weak a_776: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:7:21, ./de_facto_memory_model/compcertMMv2-4.c:7:29> #-} let weak (a_779: loaded pointer,
+            a_781: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:7:21, ./de_facto_memory_model/compcertMMv2-4.c:7:26> ./de_facto_memory_model/compcertMMv2-4.c:7:24 #-} let weak a_785: pointer =
+                  {-# §6.5.2.3#3, sentence 2 #-}
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:7:21, ./de_facto_memory_model/compcertMMv2-4.c:7:26> ./de_facto_memory_model/compcertMMv2-4.c:7:24 #-} let strong a_784: pointer =
+                    {-# <./de_facto_memory_model/compcertMMv2-4.c:7:21, ./de_facto_memory_model/compcertMMv2-4.c:7:24> #-} pure(
+                      dst
+                    ) in
+                  memop(PtrArrayShift[__cerbty_unnamed_tag_649, c], a_784) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_786: pointer =
+                  memop(PtrArrayShift, a_785, 'char', 0) in
+                pure(Specified(a_786))
+              ,
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:7:27, ./de_facto_memory_model/compcertMMv2-4.c:7:28> #-} pure(
+                  Specified(0)
+                )
+              ) in
+            let (Specified(a_780: pointer), Specified(a_782: integer)) =
+              (a_779, a_781) in
+            let weak a_783: pointer =
+              memop(PtrArrayShift, a_780, 'char', a_782) in
+            pure(Specified(a_783)) in
+          let Specified(a_777: pointer) = a_776 in
+          let weak a_778: boolean = memop(PtrValidForDeref, 'char', a_777) in
+          pure(
+            if a_778 then
+              a_777
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:7:30, ./de_facto_memory_model/compcertMMv2-4.c:7:38> #-} let weak a_798: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:7:30, ./de_facto_memory_model/compcertMMv2-4.c:7:38> #-} let weak a_787: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/compcertMMv2-4.c:7:30, ./de_facto_memory_model/compcertMMv2-4.c:7:38> #-} let weak (a_790: loaded pointer,
+              a_792: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:7:30, ./de_facto_memory_model/compcertMMv2-4.c:7:35> ./de_facto_memory_model/compcertMMv2-4.c:7:33 #-} let weak a_796: pointer =
+                    {-# §6.5.2.3#3, sentence 2 #-}
+                    {-# <./de_facto_memory_model/compcertMMv2-4.c:7:30, ./de_facto_memory_model/compcertMMv2-4.c:7:35> ./de_facto_memory_model/compcertMMv2-4.c:7:33 #-} let strong a_795: pointer =
+                      {-# <./de_facto_memory_model/compcertMMv2-4.c:7:30, ./de_facto_memory_model/compcertMMv2-4.c:7:33> #-} pure(
+                        src
+                      ) in
+                    memop(PtrArrayShift[__cerbty_unnamed_tag_649, c], a_795) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_797: pointer =
+                    memop(PtrArrayShift, a_796, 'char', 0) in
+                  pure(Specified(a_797))
+                ,
+                  {-# <./de_facto_memory_model/compcertMMv2-4.c:7:36, ./de_facto_memory_model/compcertMMv2-4.c:7:37> #-} pure(
+                    Specified(3)
+                  )
+                ) in
+              let (Specified(a_791: pointer), Specified(a_793: integer)) =
+                (a_790, a_792) in
+              let weak a_794: pointer =
+                memop(PtrArrayShift, a_791, 'char', a_793) in
+              pure(Specified(a_794)) in
+            let Specified(a_788: pointer) = a_787 in
+            let weak a_789: boolean =
+              memop(PtrValidForDeref, 'char', a_788) in
+            pure(
+              if a_789 then
+                a_788
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('char', a_798)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('char', a_696, conv_loaded_int('char', a_799))) in
+      pure(conv_loaded_int('char', a_799))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:8:2, ./de_facto_memory_model/compcertMMv2-4.c:8:15> #-} let strong a_802: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:8:9, ./de_facto_memory_model/compcertMMv2-4.c:8:14> ./de_facto_memory_model/compcertMMv2-4.c:8:12 #-} let weak a_801: pointer =
+        {-# §6.5.2.3#3, sentence 2 #-}
+        {-# <./de_facto_memory_model/compcertMMv2-4.c:8:9, ./de_facto_memory_model/compcertMMv2-4.c:8:14> ./de_facto_memory_model/compcertMMv2-4.c:8:12 #-} let strong a_800: pointer =
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:8:9, ./de_facto_memory_model/compcertMMv2-4.c:8:12> #-} pure(
+            dst
+          ) in
+        memop(PtrArrayShift[__cerbty_unnamed_tag_649, i], a_800) in
+      load('unsigned int', a_801)
+    ) in
+  kill('union __cerbty_unnamed_tag_649', src) ;
+  kill('union __cerbty_unnamed_tag_649', dst) ;
+  kill('signed int', n) ;
+  run ret_695(conv_loaded_int('unsigned int', a_802)) ;
+  kill('union __cerbty_unnamed_tag_649', src) ;
+  kill('union __cerbty_unnamed_tag_649', dst) ;
+  kill('signed int', n) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:2:0, ./de_facto_memory_model/compcertMMv2-4.c:9:1> ./de_facto_memory_model/compcertMMv2-4.c:2:13 - ./de_facto_memory_model/compcertMMv2-4.c:2:18 #-} save ret_695: loaded integer (a_803: loaded integer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_803)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:10:11, ./de_facto_memory_model/compcertMMv2-4.c:15:1> #-} let strong x: pointer =
+    create(Ivalignof('unsigned int'), 'unsigned int') in
+  let strong y: pointer = create(Ivalignof('unsigned int'), 'unsigned int') in
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:11:2, ./de_facto_memory_model/compcertMMv2-4.c:11:28> #-} let strong a_663: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:11:17, ./de_facto_memory_model/compcertMMv2-4.c:11:27> #-} pure(
+        Specified(287454020)
+      )
+    ) in
+  store('unsigned int', x, conv_loaded_int('unsigned int', a_663)) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:12:2, ./de_facto_memory_model/compcertMMv2-4.c:12:17> #-} store('unsigned int',
+  y, Unspecified('unsigned int')) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:13:2, ./de_facto_memory_model/compcertMMv2-4.c:13:15> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:13:2, ./de_facto_memory_model/compcertMMv2-4.c:13:14> ./de_facto_memory_model/compcertMMv2-4.c:13:4 #-} let weak (a_662: pointer,
+      a_676: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:13:2, ./de_facto_memory_model/compcertMMv2-4.c:13:3> #-} pure(
+            y
+          )
+        ,
+          {-# §6.5.2.2#10, sentence 1 #-}
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:13:6, ./de_facto_memory_model/compcertMMv2-4.c:13:14> #-} let strong ((a_665: loaded pointer,
+          (a_666: ctype, a_667: [ctype], a_668: boolean, a_669: boolean)),
+          a_671: loaded integer) =
+            {-# §6.5.2.2#4, sentence 2 #-}
+            unseq(
+              let strong a_664: loaded pointer =
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:13:6, ./de_facto_memory_model/compcertMMv2-4.c:13:11> #-} pure(
+                  Specified(Cfunction(bswap))
+                ) in
+              pure((a_664, cfunction(a_664)))
+            ,
+              {-# <./de_facto_memory_model/compcertMMv2-4.c:13:12, ./de_facto_memory_model/compcertMMv2-4.c:13:13> #-} let weak a_672: pointer =
+                {-# <./de_facto_memory_model/compcertMMv2-4.c:13:12, ./de_facto_memory_model/compcertMMv2-4.c:13:13> #-} pure(
+                  x
+                ) in
+              load('unsigned int', a_672)
+            ) in
+          if not(params_length(a_667) = 1) then
+            pure(undef(<<UB038_number_of_args>>))
+          else
+            if a_668 \/ not(are_compatible ('unsigned int', a_666)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let strong a_670: pointer =
+                let a_673: ctype = params_nth(a_667, 0) in
+                if not(are_compatible ('unsigned int', a_673)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  {-# §6.5.2.2#7, sentence 1 #-}
+                  let weak a_674: pointer =
+                    create(Ivalignof('unsigned int'), 'unsigned int') in
+                  let weak _: unit =
+                    store('unsigned int', a_674,
+                    conv_loaded_int('unsigned int', a_671)) in
+                  pure(a_674) in
+              let strong a_675: loaded integer =
+                ccall('unsigned int (*) (unsigned int)', a_665, a_670) in
+              kill('unsigned int', a_670) ;
+              pure(a_675)
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned int', a_662,
+        conv_loaded_int('unsigned int', a_676))) in
+      pure(conv_loaded_int('unsigned int', a_676))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:14:2, ./de_facto_memory_model/compcertMMv2-4.c:14:23> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/compcertMMv2-4.c:14:2, ./de_facto_memory_model/compcertMMv2-4.c:14:22> #-} let strong ((a_677: loaded pointer,
+      (a_678: ctype, a_679: [ctype], a_680: boolean, a_681: boolean)),
+      a_684: loaded pointer, a_688: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_661: loaded pointer =
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:14:2, ./de_facto_memory_model/compcertMMv2-4.c:14:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_661, cfunction(a_661)))
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:14:9, ./de_facto_memory_model/compcertMMv2-4.c:14:19> #-} let weak a_686: pointer =
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:14:9, ./de_facto_memory_model/compcertMMv2-4.c:14:19> #-} pure(
+              a_685
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_687: pointer = memop(PtrArrayShift, a_686, 'char', 0) in
+          pure(Specified(a_687))
+        ,
+          {-# <./de_facto_memory_model/compcertMMv2-4.c:14:20, ./de_facto_memory_model/compcertMMv2-4.c:14:21> #-} let weak a_689: pointer =
+            {-# <./de_facto_memory_model/compcertMMv2-4.c:14:20, ./de_facto_memory_model/compcertMMv2-4.c:14:21> #-} pure(
+              y
+            ) in
+          load('unsigned int', a_689)
+        ) in
+      if not(params_length(a_679) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_680) \/ not(are_compatible ('signed int', a_678)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_683: pointer =
+            let a_690: ctype = params_nth(a_679, 0) in
+            if not(are_compatible ('const char*', a_690)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_691: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_691, a_684) in
+              pure(a_691) in
+          let strong a_682: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'unsigned int',
+            conv_loaded_int('unsigned int', a_688)) in
+          let strong a_692: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_677, a_683,
+            [('unsigned int', a_682)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_683), kill('unsigned int', a_682)) in
+          pure(a_692)
+    ) in
+  pure(Unit) ;
+  kill('unsigned int', x) ;
+  kill('unsigned int', y) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/compcertMMv2-4.c:10:0, ./de_facto_memory_model/compcertMMv2-4.c:15:1> ./de_facto_memory_model/compcertMMv2-4.c:10:4 - ./de_facto_memory_model/compcertMMv2-4.c:10:8 #-} save ret_660: loaded integer (a_693: loaded integer:= Specified(0)) in
+    pure(a_693)
+

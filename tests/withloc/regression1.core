@@ -1,0 +1,82 @@
+-- Aggregates
+def struct T :=
+  x: 'signed int'
+  y: 'char'
+  z: 'char'
+
+-- Globals
+glob st: pointer [ail_ctype = 'struct T'] :=
+  {-# <unknown location> #-} let strong a_516: pointer =
+    create(Ivalignof('struct T'), 'struct T') in
+  let strong a_520: loaded struct T_502 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_519: loaded integer,
+      a_518: loaded integer, a_517: loaded integer) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# <./cheri/regression1.c:5:15, ./cheri/regression1.c:5:16> #-} pure(
+            Specified(3)
+          )
+        ,
+          {-# <./cheri/regression1.c:5:12, ./cheri/regression1.c:5:13> #-} pure(
+            Specified(2)
+          )
+        ,
+          {-# <./cheri/regression1.c:5:9, ./cheri/regression1.c:5:10> #-} pure(
+            Specified(1)
+          )
+        ) in
+      pure(
+        Specified((struct T){.x= conv_loaded_int('signed int', a_517),
+        .y= conv_loaded_int('char', a_518), .z= conv_loaded_int('char', a_519)})
+      )
+    ) in
+  store('struct T', a_516, a_520) ;
+  pure(a_516)
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./cheri/regression1.c:8:0, ./cheri/regression1.c:12:1> #-} {-# <./cheri/regression1.c:9:2, ./cheri/regression1.c:9:7> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./cheri/regression1.c:9:2, ./cheri/regression1.c:9:6> ./cheri/regression1.c:9:4 #-} let weak a_510: pointer =
+        {-# §6.5.2.3#3, sentence 2 #-}
+        {-# <./cheri/regression1.c:9:2, ./cheri/regression1.c:9:6> ./cheri/regression1.c:9:4 #-} let strong a_509: pointer =
+          {-# <./cheri/regression1.c:9:2, ./cheri/regression1.c:9:4> #-} pure(
+            st
+          ) in
+        memop(PtrArrayShift[T, x], a_509) in
+      load('signed int', a_510)
+    ) in
+  pure(Unit) ;
+  {-# <./cheri/regression1.c:10:2, ./cheri/regression1.c:10:7> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./cheri/regression1.c:10:2, ./cheri/regression1.c:10:6> ./cheri/regression1.c:10:4 #-} let weak a_511: pointer =
+        {-# §6.5.2.3#3, sentence 2 #-}
+        {-# <./cheri/regression1.c:10:2, ./cheri/regression1.c:10:6> ./cheri/regression1.c:10:4 #-} let strong a_508: pointer =
+          {-# <./cheri/regression1.c:10:2, ./cheri/regression1.c:10:4> #-} pure(
+            st
+          ) in
+        memop(PtrArrayShift[T, y], a_508) in
+      load('char', a_511)
+    ) in
+  pure(Unit) ;
+  {-# <./cheri/regression1.c:11:2, ./cheri/regression1.c:11:14> #-} let strong a_514: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./cheri/regression1.c:11:9, ./cheri/regression1.c:11:13> ./cheri/regression1.c:11:11 #-} let weak a_513: pointer =
+        {-# §6.5.2.3#3, sentence 2 #-}
+        {-# <./cheri/regression1.c:11:9, ./cheri/regression1.c:11:13> ./cheri/regression1.c:11:11 #-} let strong a_512: pointer =
+          {-# <./cheri/regression1.c:11:9, ./cheri/regression1.c:11:11> #-} pure(
+            st
+          ) in
+        memop(PtrArrayShift[T, z], a_512) in
+      load('char', a_513)
+    ) in
+  run ret_507(conv_loaded_int('signed int', a_514)) ;
+  pure(Unit) ;
+  {-# <./cheri/regression1.c:7:0, ./cheri/regression1.c:12:1> ./cheri/regression1.c:7:4 - ./cheri/regression1.c:7:8 #-} save ret_507: loaded integer (a_515: loaded integer:= Specified(0)) in
+    pure(a_515)
+

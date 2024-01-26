@@ -1,0 +1,145 @@
+-- Aggregates
+def struct T :=
+  x: 'signed int'
+  st: 'struct T2'
+  c: 'char[3]'
+
+def struct T2 :=
+  y: 'signed int[2]'
+  z: 'char'
+
+-- Globals
+glob arr1: pointer [ail_ctype = 'struct T[3]'] :=
+  let strong a_514: pointer =
+    create(Ivalignof('struct T[3]'), 'struct T[3]') in
+  let strong a_548: loaded array(struct T_502) =
+    bound(
+      let weak (a_547: loaded struct T_502, a_536: loaded struct T_502,
+      a_525: loaded struct T_502) =
+        unseq(
+          let weak (a_546: loaded array(integer), a_542: loaded struct T2_503,
+          a_537: loaded integer) =
+            unseq(
+              let weak (a_545: loaded integer, a_544: loaded integer,
+              a_543: loaded integer) =
+                unseq(
+                  pure(Specified(0))
+                ,
+                  pure(Specified(0))
+                ,
+                  pure(Specified(0))
+                ) in
+              pure(
+                Specified(Array(conv_loaded_int('char', a_543),
+                conv_loaded_int('char', a_544), conv_loaded_int('char', a_545)))
+              )
+            ,
+              let weak (a_541: loaded integer, a_540: loaded array(integer)) =
+                unseq(
+                  pure(Specified(7))
+                ,
+                  let weak (a_539: loaded integer, a_538: loaded integer) =
+                    unseq(pure(Specified(0)), pure(Specified(0))) in
+                  pure(
+                    Specified(Array(conv_loaded_int('signed int', a_538),
+                    conv_loaded_int('signed int', a_539)))
+                  )
+                ) in
+              pure(
+                Specified((struct T2){.y= a_540,
+                .z= conv_loaded_int('char', a_541)})
+              )
+            ,
+              pure(Specified(0))
+            ) in
+          pure(
+            Specified((struct T){.x= conv_loaded_int('signed int', a_537),
+            .st= a_542, .c= a_546})
+          )
+        ,
+          let weak (a_535: loaded array(integer), a_531: loaded struct T2_503,
+          a_526: loaded integer) =
+            unseq(
+              let weak (a_534: loaded integer, a_533: loaded integer,
+              a_532: loaded integer) =
+                unseq(
+                  pure(Specified(0))
+                ,
+                  pure(Specified(0))
+                ,
+                  pure(Specified(0))
+                ) in
+              pure(
+                Specified(Array(conv_loaded_int('char', a_532),
+                conv_loaded_int('char', a_533), conv_loaded_int('char', a_534)))
+              )
+            ,
+              let weak (a_530: loaded integer, a_529: loaded array(integer)) =
+                unseq(
+                  pure(Specified(0))
+                ,
+                  let weak (a_528: loaded integer, a_527: loaded integer) =
+                    unseq(pure(Specified(0)), pure(Specified(0))) in
+                  pure(
+                    Specified(Array(conv_loaded_int('signed int', a_527),
+                    conv_loaded_int('signed int', a_528)))
+                  )
+                ) in
+              pure(
+                Specified((struct T2){.y= a_529,
+                .z= conv_loaded_int('char', a_530)})
+              )
+            ,
+              pure(Specified(0))
+            ) in
+          pure(
+            Specified((struct T){.x= conv_loaded_int('signed int', a_526),
+            .st= a_531, .c= a_535})
+          )
+        ,
+          let weak (a_524: loaded array(integer), a_520: loaded struct T2_503,
+          a_515: loaded integer) =
+            unseq(
+              let weak (a_523: loaded integer, a_522: loaded integer,
+              a_521: loaded integer) =
+                unseq(
+                  pure(Specified(0))
+                ,
+                  pure(Specified(0))
+                ,
+                  pure(Specified(0))
+                ) in
+              pure(
+                Specified(Array(conv_loaded_int('char', a_521),
+                conv_loaded_int('char', a_522), conv_loaded_int('char', a_523)))
+              )
+            ,
+              let weak (a_519: loaded integer, a_518: loaded array(integer)) =
+                unseq(
+                  pure(Specified(6))
+                ,
+                  let weak (a_517: loaded integer, a_516: loaded integer) =
+                    unseq(pure(Specified(3)), pure(Specified(2))) in
+                  pure(
+                    Specified(Array(conv_loaded_int('signed int', a_516),
+                    conv_loaded_int('signed int', a_517)))
+                  )
+                ) in
+              pure(
+                Specified((struct T2){.y= a_518,
+                .z= conv_loaded_int('char', a_519)})
+              )
+            ,
+              pure(Specified(1))
+            ) in
+          pure(
+            Specified((struct T){.x= conv_loaded_int('signed int', a_515),
+            .st= a_520, .c= a_524})
+          )
+        ) in
+      pure(Specified(Array(a_525, a_536, a_547)))
+    ) in
+  store('struct T[3]', a_514, a_548) ;
+  pure(a_514)
+
+-- Fun map

@@ -1,0 +1,83 @@
+-- Aggregates
+def struct __cerbty_unnamed_tag_502 :=
+  c: 'char'
+  i: 'signed int'
+
+-- Fun map
+proc f (cp: pointer): eff unit :=
+  let strong _: loaded integer =
+    bound(
+      let weak (a_531: pointer, a_536: loaded integer) =
+        unseq(
+          let weak a_532: loaded pointer =
+            let weak a_535: pointer = pure(cp) in
+            load('char*', a_535) in
+          let Specified(a_533: pointer) = a_532 in
+          let weak a_534: boolean = memop(PtrValidForDeref, 'char', a_533) in
+          pure(
+            if a_534 then
+              a_533
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          pure(Specified(66))
+        ) in
+      let weak _: unit =
+        neg(store('char', a_531, conv_loaded_int('char', a_536))) in
+      pure(conv_loaded_int('char', a_536))
+    ) in
+  pure(Unit) ;
+  pure(Unit) ;
+  save ret_530: unit (a_537: unit:= Unit) in  pure(a_537)
+
+proc main (): eff loaded integer :=
+  let strong s: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_502'), 'struct __cerbty_unnamed_tag_502') in
+  let strong a_513: loaded struct a_502 =
+    bound(
+      let weak (a_515: loaded integer, a_514: loaded integer) =
+        unseq(pure(Specified(1)), pure(Specified(65))) in
+      pure(
+        Specified((struct __cerbty_unnamed_tag_502){.c= conv_loaded_int('char',
+        a_514), .i= conv_loaded_int('signed int', a_515)})
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_502', s, a_513) ;
+  bound(
+    let strong ((a_516: loaded pointer,
+    (a_517: ctype, a_518: [ctype], a_519: boolean, a_520: boolean)),
+    a_522: loaded pointer) =
+      unseq(
+        let strong a_512: loaded pointer = pure(Specified(Cfunction(f))) in
+        pure((a_512, cfunction(a_512)))
+      ,
+        let weak a_523: pointer =
+          let strong a_524: pointer = pure(s) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_502, c], a_524) in
+        pure(Specified(a_523))
+      ) in
+    if not(params_length(a_518) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_519 \/ not(are_compatible ('void', a_517)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_521: pointer =
+          let a_525: ctype = params_nth(a_518, 0) in
+          if not(are_compatible ('char*', a_525)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let weak a_526: pointer = create(Ivalignof('char*'), 'char*') in
+            let weak _: unit = store('char*', a_526, a_522) in
+            pure(a_526) in
+        let strong a_527: unit = ccall('void (*) (char*)', a_516, a_521) in
+        kill('char*', a_521) ;
+        pure(a_527)
+  ) ;
+  pure(Unit) ;
+  kill('struct __cerbty_unnamed_tag_502', s) ;
+  pure(Unit) ;
+  save ret_511: loaded integer (a_528: loaded integer:= Specified(0)) in
+    pure(a_528)
+

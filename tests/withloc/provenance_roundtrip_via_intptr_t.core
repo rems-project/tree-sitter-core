@@ -1,0 +1,227 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_648 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_680 :=
+  quot: 'intmax_t'
+  rem: 'intmax_t'
+
+-- Globals
+glob x: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_753: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_754: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:3:6, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:3:7> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', a_753, conv_loaded_int('signed int', a_754)) ;
+  pure(a_753)
+
+glob a_734: pointer [ail_ctype = 'char[14]'] :=
+  create_readonly(Ivalignof('char[14]'), 'char[14]', Specified(Array(Specified(conv_int('char',
+  42)), Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 113)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:4:11, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:10:1> #-} let strong p: pointer =
+    create(Ivalignof('signed int*'), 'signed int*') in
+  let strong i: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:5:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:5:14> #-} let strong a_708: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:5:11, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:5:13> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:5:11 #-} let weak a_709: pointer =
+        {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:5:12, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:5:13> #-} pure(
+          x
+        ) in
+      pure(Specified(a_709))
+    ) in
+  store('signed int*', p, a_708) ;
+  {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:27> #-} let strong a_710: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:15, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:26> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:15 #-} let weak a_711: loaded pointer =
+        {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:25, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:26> #-} let weak a_713: pointer =
+          {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:25, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:6:26> #-} pure(
+            p
+          ) in
+        load('signed int*', a_713) in
+      let Specified(a_712: pointer) = a_711 in
+      let weak a_714: integer =
+        memop(IntFromPtr, 'signed int', 'intptr_t', a_712) in
+      pure(Specified(a_714))
+    ) in
+  store('intptr_t', i, conv_loaded_int('intptr_t', a_710)) ;
+  {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:20> #-} let strong a_715: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:11, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:19> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:11 #-} let weak a_716: loaded integer =
+        {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:18, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:19> #-} let weak a_718: pointer =
+          {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:18, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:7:19> #-} pure(
+            i
+          ) in
+        load('intptr_t', a_718) in
+      let Specified(a_717: integer) = a_716 in
+      let weak a_719: pointer =
+        memop(PtrFromInt, 'intptr_t', 'signed int', a_717) in
+      pure(Specified(a_719))
+    ) in
+  store('signed int*', q, a_715) ;
+  {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:10> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:9> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:5 #-} let weak (a_707: pointer,
+      a_724: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:4> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:2 #-} let weak a_720: loaded pointer =
+            {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:3, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:4> #-} let weak a_723: pointer =
+              {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:3, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:4> #-} pure(
+                q
+              ) in
+            load('signed int*', a_723) in
+          let Specified(a_721: pointer) = a_720 in
+          let weak a_722: boolean =
+            memop(PtrValidForDeref, 'signed int', a_721) in
+          pure(
+            if a_722 then
+              a_721
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:7, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:8:9> #-} pure(
+            Specified(11)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_707, conv_loaded_int('signed int', a_724))) in
+      pure(conv_loaded_int('signed int', a_724))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:33> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:32> #-} let strong ((a_725: loaded pointer,
+      (a_726: ctype, a_727: [ctype], a_728: boolean, a_729: boolean)),
+      a_733: loaded pointer, a_737: loaded integer, a_743: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_706: loaded pointer =
+            {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:2, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_706, cfunction(a_706)))
+        ,
+          {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:9, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:25> #-} let weak a_735: pointer =
+            {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:9, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:25> #-} pure(
+              a_734
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_736: pointer = memop(PtrArrayShift, a_735, 'char', 0) in
+          pure(Specified(a_736))
+        ,
+          {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:26, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:28> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:26 #-} let weak a_742: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:26, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:28> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:26 #-} let weak a_738: loaded pointer =
+              {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:27, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:28> #-} let weak a_741: pointer =
+                {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:27, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:28> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_741) in
+            let Specified(a_739: pointer) = a_738 in
+            let weak a_740: boolean =
+              memop(PtrValidForDeref, 'signed int', a_739) in
+            pure(
+              if a_740 then
+                a_739
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_742)
+        ,
+          {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:29, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:31> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:29 #-} let weak a_748: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:29, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:31> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:29 #-} let weak a_744: loaded pointer =
+              {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:30, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:31> #-} let weak a_747: pointer =
+                {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:30, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:9:31> #-} pure(
+                  q
+                ) in
+              load('signed int*', a_747) in
+            let Specified(a_745: pointer) = a_744 in
+            let weak a_746: boolean =
+              memop(PtrValidForDeref, 'signed int', a_745) in
+            pure(
+              if a_746 then
+                a_745
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_748)
+        ) in
+      if not(params_length(a_727) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_728) \/ not(are_compatible ('signed int', a_726)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_732: pointer =
+            let a_749: ctype = params_nth(a_727, 0) in
+            if not(are_compatible ('const char*', a_749)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_750: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_750, a_733) in
+              pure(a_750) in
+          let strong a_731: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_737)) in
+          let strong a_730: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_743)) in
+          let strong a_751: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_725, a_732,
+            [('signed int', a_731), ('signed int', a_730)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_732)
+            ,
+              kill('signed int', a_731)
+            ,
+              kill('signed int', a_730)
+            ) in
+          pure(a_751)
+    ) in
+  pure(Unit) ;
+  kill('signed int*', p) ;
+  kill('intptr_t', i) ;
+  kill('signed int*', q) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:4:0, ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:10:1> ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:4:4 - ./de_facto_memory_model/provenance_roundtrip_via_intptr_t.c:4:8 #-} save ret_705: loaded integer (a_752: loaded integer:= Specified(0)) in
+    pure(a_752)
+

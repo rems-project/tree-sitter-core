@@ -1,0 +1,416 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_648 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_680 :=
+  quot: 'intmax_t'
+  rem: 'intmax_t'
+
+-- Globals
+glob a_773: pointer [ail_ctype = 'char[27]'] :=
+  create_readonly(Ivalignof('char[27]'), 'char[27]', Specified(Array(Specified(conv_int('char',
+  120)), Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 121)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 42)),
+  Specified(conv_int('char', 114)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 40)),
+  Specified(conv_int('char', 114)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 41)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+glob a_795: pointer [ail_ctype = 'char[5]'] :=
+  create_readonly(Ivalignof('char[5]'), 'char[5]', Specified(Array(Specified(conv_int('char',
+  116)), Specified(conv_int('char', 114)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 101)), Specified(0))))
+
+glob a_798: pointer [ail_ctype = 'char[6]'] :=
+  create_readonly(Ivalignof('char[6]'), 'char[6]', Specified(Array(Specified(conv_int('char',
+  102)), Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 101)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:3:11, ./de_facto_memory_model/pointer_offset_xor_auto.c:17:1> #-} let strong x: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong y: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong i: pointer = create(Ivalignof('uintptr_t'), 'uintptr_t') in
+  let strong j: pointer = create(Ivalignof('uintptr_t'), 'uintptr_t') in
+  let strong k: pointer = create(Ivalignof('uintptr_t'), 'uintptr_t') in
+  let strong l: pointer = create(Ivalignof('uintptr_t'), 'uintptr_t') in
+  let strong r: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong b: pointer = create(Ivalignof('_Bool'), '_Bool') in
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:4:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:4:15> #-} let strong a_714: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:4:8, ./de_facto_memory_model/pointer_offset_xor_auto.c:4:9> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', x, conv_loaded_int('signed int', a_714)) ;
+  let strong a_715: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:4:13, ./de_facto_memory_model/pointer_offset_xor_auto.c:4:14> #-} pure(
+        Specified(2)
+      )
+    ) in
+  store('signed int', y, conv_loaded_int('signed int', a_715)) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:5:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:5:14> #-} let strong a_716: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:5:11, ./de_facto_memory_model/pointer_offset_xor_auto.c:5:13> ./de_facto_memory_model/pointer_offset_xor_auto.c:5:11 #-} let weak a_717: pointer =
+        {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:5:12, ./de_facto_memory_model/pointer_offset_xor_auto.c:5:13> #-} pure(
+          x
+        ) in
+      pure(Specified(a_717))
+    ) in
+  store('signed int*', p, a_716) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:6:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:6:14> #-} let strong a_718: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:6:11, ./de_facto_memory_model/pointer_offset_xor_auto.c:6:13> ./de_facto_memory_model/pointer_offset_xor_auto.c:6:11 #-} let weak a_719: pointer =
+        {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:6:12, ./de_facto_memory_model/pointer_offset_xor_auto.c:6:13> #-} pure(
+          y
+        ) in
+      pure(Specified(a_719))
+    ) in
+  store('signed int*', q, a_718) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:7:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:7:30> #-} let strong a_720: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:7:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:7:29> ./de_facto_memory_model/pointer_offset_xor_auto.c:7:16 #-} let weak a_721: loaded pointer =
+        {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:7:28, ./de_facto_memory_model/pointer_offset_xor_auto.c:7:29> #-} let weak a_723: pointer =
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:7:28, ./de_facto_memory_model/pointer_offset_xor_auto.c:7:29> #-} pure(
+            p
+          ) in
+        load('signed int*', a_723) in
+      let Specified(a_722: pointer) = a_721 in
+      let weak a_724: integer =
+        memop(IntFromPtr, 'signed int', 'uintptr_t', a_722) in
+      pure(Specified(a_724))
+    ) in
+  store('uintptr_t', i, conv_loaded_int('uintptr_t', a_720)) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:8:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:8:30> #-} let strong a_725: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:8:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:8:29> ./de_facto_memory_model/pointer_offset_xor_auto.c:8:16 #-} let weak a_726: loaded pointer =
+        {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:8:28, ./de_facto_memory_model/pointer_offset_xor_auto.c:8:29> #-} let weak a_728: pointer =
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:8:28, ./de_facto_memory_model/pointer_offset_xor_auto.c:8:29> #-} pure(
+            q
+          ) in
+        load('signed int*', a_728) in
+      let Specified(a_727: pointer) = a_726 in
+      let weak a_729: integer =
+        memop(IntFromPtr, 'signed int', 'uintptr_t', a_727) in
+      pure(Specified(a_729))
+    ) in
+  store('uintptr_t', j, conv_loaded_int('uintptr_t', a_725)) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:9:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:9:22> #-} let strong a_730: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.11 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:9:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:9:21> ./de_facto_memory_model/pointer_offset_xor_auto.c:9:18 #-} let weak (a_731: loaded integer,
+      a_732: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:9:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:9:17> #-} let weak a_735: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:9:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:9:17> #-} pure(
+              i
+            ) in
+          load('uintptr_t', a_735)
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:9:20, ./de_facto_memory_model/pointer_offset_xor_auto.c:9:21> #-} let weak a_736: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:9:20, ./de_facto_memory_model/pointer_offset_xor_auto.c:9:21> #-} pure(
+              j
+            ) in
+          load('uintptr_t', a_736)
+        ) in
+      pure(
+        let (Specified(a_733: integer), Specified(a_734: integer)) =
+          (a_731, a_732) in
+        Specified(IvXOR('uintptr_t', conv_int('uintptr_t', a_733),
+        conv_int('uintptr_t', a_734)))
+      )
+    ) in
+  store('uintptr_t', k, conv_loaded_int('uintptr_t', a_730)) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:10:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:10:22> #-} let strong a_737: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.11 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:10:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:10:21> ./de_facto_memory_model/pointer_offset_xor_auto.c:10:18 #-} let weak (a_738: loaded integer,
+      a_739: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:10:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:10:17> #-} let weak a_742: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:10:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:10:17> #-} pure(
+              k
+            ) in
+          load('uintptr_t', a_742)
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:10:20, ./de_facto_memory_model/pointer_offset_xor_auto.c:10:21> #-} let weak a_743: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:10:20, ./de_facto_memory_model/pointer_offset_xor_auto.c:10:21> #-} pure(
+              i
+            ) in
+          load('uintptr_t', a_743)
+        ) in
+      pure(
+        let (Specified(a_740: integer), Specified(a_741: integer)) =
+          (a_738, a_739) in
+        Specified(IvXOR('uintptr_t', conv_int('uintptr_t', a_740),
+        conv_int('uintptr_t', a_741)))
+      )
+    ) in
+  store('uintptr_t', l, conv_loaded_int('uintptr_t', a_737)) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:11:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:11:20> #-} let strong a_744: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:11:11, ./de_facto_memory_model/pointer_offset_xor_auto.c:11:19> ./de_facto_memory_model/pointer_offset_xor_auto.c:11:11 #-} let weak a_745: loaded integer =
+        {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:11:18, ./de_facto_memory_model/pointer_offset_xor_auto.c:11:19> #-} let weak a_747: pointer =
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:11:18, ./de_facto_memory_model/pointer_offset_xor_auto.c:11:19> #-} pure(
+            l
+          ) in
+        load('uintptr_t', a_747) in
+      let Specified(a_746: integer) = a_745 in
+      let weak a_748: pointer =
+        memop(PtrFromInt, 'uintptr_t', 'signed int', a_746) in
+      pure(Specified(a_748))
+    ) in
+  store('signed int*', r, a_744) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:13:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:13:10> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:13:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:13:9> ./de_facto_memory_model/pointer_offset_xor_auto.c:13:5 #-} let weak (a_713: pointer,
+      a_753: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:13:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:13:4> ./de_facto_memory_model/pointer_offset_xor_auto.c:13:2 #-} let weak a_749: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:13:3, ./de_facto_memory_model/pointer_offset_xor_auto.c:13:4> #-} let weak a_752: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:13:3, ./de_facto_memory_model/pointer_offset_xor_auto.c:13:4> #-} pure(
+                r
+              ) in
+            load('signed int*', a_752) in
+          let Specified(a_750: pointer) = a_749 in
+          let weak a_751: boolean =
+            memop(PtrValidForDeref, 'signed int', a_750) in
+          pure(
+            if a_751 then
+              a_750
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:13:7, ./de_facto_memory_model/pointer_offset_xor_auto.c:13:9> #-} pure(
+            Specified(11)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_713, conv_loaded_int('signed int', a_753))) in
+      pure(conv_loaded_int('signed int', a_753))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:14:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:14:19> #-} let strong a_754: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:14:12, ./de_facto_memory_model/pointer_offset_xor_auto.c:14:18> #-} let weak (a_755: loaded pointer,
+      a_756: loaded pointer) =
+        unseq(
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:14:13, ./de_facto_memory_model/pointer_offset_xor_auto.c:14:14> #-} let weak a_760: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:14:13, ./de_facto_memory_model/pointer_offset_xor_auto.c:14:14> #-} pure(
+              r
+            ) in
+          load('signed int*', a_760)
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:14:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:14:17> #-} let weak a_761: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:14:16, ./de_facto_memory_model/pointer_offset_xor_auto.c:14:17> #-} pure(
+              q
+            ) in
+          load('signed int*', a_761)
+        ) in
+      let (Specified(a_757: pointer), Specified(a_758: pointer)) =
+        (a_755, a_756) in
+      let weak a_759: boolean = memop(PtrEq, a_757, a_758) in
+      pure(if a_759 then Specified(1) else Specified(0))
+    ) in
+  store('_Bool', b, conv_loaded_int('_Bool', a_754)) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:27> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:26> #-} let strong ((a_762: loaded pointer,
+      (a_763: ctype, a_764: [ctype], a_765: boolean, a_766: boolean)),
+      a_772: loaded pointer, a_776: loaded integer, a_778: loaded integer,
+      a_780: loaded integer, a_786: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_712: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:2, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_712, cfunction(a_712)))
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:9, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:38> #-} let weak a_774: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:9, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:38> #-} pure(
+              a_773
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_775: pointer = memop(PtrArrayShift, a_774, 'char', 0) in
+          pure(Specified(a_775))
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:39, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:40> #-} let weak a_777: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:39, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:40> #-} pure(
+              x
+            ) in
+          load('signed int', a_777)
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:41, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:42> #-} let weak a_779: pointer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:41, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:42> #-} pure(
+              y
+            ) in
+          load('signed int', a_779)
+        ,
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:43, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:45> ./de_facto_memory_model/pointer_offset_xor_auto.c:15:43 #-} let weak a_785: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:43, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:45> ./de_facto_memory_model/pointer_offset_xor_auto.c:15:43 #-} let weak a_781: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:44, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:45> #-} let weak a_784: pointer =
+                {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:15:44, ./de_facto_memory_model/pointer_offset_xor_auto.c:15:45> #-} pure(
+                  r
+                ) in
+              load('signed int*', a_784) in
+            let Specified(a_782: pointer) = a_781 in
+            let weak a_783: boolean =
+              memop(PtrValidForDeref, 'signed int', a_782) in
+            pure(
+              if a_783 then
+                a_782
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_785)
+        ,
+          {-# §6.5.15#4, sentence 1 #-}
+          {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:9, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:25> ./de_facto_memory_model/pointer_offset_xor_auto.c:16:10 #-} let strong a_793: loaded integer =
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:9, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:10> #-} let weak (a_787: loaded integer,
+            a_788: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:9, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:10> #-} let weak a_792: pointer =
+                  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:9, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:10> #-} pure(
+                    b
+                  ) in
+                load('_Bool', a_792)
+              ,
+                {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:9, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:10> #-} pure(
+                  Specified(0)
+                )
+              ) in
+            pure(
+              let (Specified(a_789: integer), Specified(a_790: integer)) =
+                (a_787, a_788) in
+              if conv_int('signed int', a_789) = conv_int('signed int', a_790) then
+                Specified(1)
+              else
+                Specified(0)
+            ) in
+          let Specified(a_794: integer) = a_793 in
+          {-# §6.5.15#4, sentence 2 #-}
+          if a_794 = 0 then
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:11, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:17> #-} let weak a_796: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:11, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:17> #-} pure(
+                a_795
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_797: pointer =
+              memop(PtrArrayShift, a_796, 'char', 0) in
+            pure(Specified(a_797))
+          else
+            {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:18, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:25> #-} let weak a_799: pointer =
+              {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:16:18, ./de_facto_memory_model/pointer_offset_xor_auto.c:16:25> #-} pure(
+                a_798
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_800: pointer =
+              memop(PtrArrayShift, a_799, 'char', 0) in
+            pure(Specified(a_800))
+        ) in
+      if not(params_length(a_764) <= 5) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_765) \/ not(are_compatible ('signed int', a_763)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_771: pointer =
+            let a_801: ctype = params_nth(a_764, 0) in
+            if not(are_compatible ('const char*', a_801)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_802: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_802, a_772) in
+              pure(a_802) in
+          let strong a_770: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_776)) in
+          let strong a_769: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_778)) in
+          let strong a_768: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_780)) in
+          let strong a_767: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'char*', a_786) in
+          let strong a_803: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_762, a_771,
+            [('signed int', a_770), ('signed int', a_769),
+            ('signed int', a_768), ('char*', a_767)]) in
+          let strong _: (unit,unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_771)
+            ,
+              kill('signed int', a_770)
+            ,
+              kill('signed int', a_769)
+            ,
+              kill('signed int', a_768)
+            ,
+              kill('char*', a_767)
+            ) in
+          pure(a_803)
+    ) in
+  pure(Unit) ;
+  kill('signed int', x) ;
+  kill('signed int', y) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  kill('uintptr_t', i) ;
+  kill('uintptr_t', j) ;
+  kill('uintptr_t', k) ;
+  kill('uintptr_t', l) ;
+  kill('signed int*', r) ;
+  kill('_Bool', b) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_offset_xor_auto.c:3:0, ./de_facto_memory_model/pointer_offset_xor_auto.c:17:1> ./de_facto_memory_model/pointer_offset_xor_auto.c:3:4 - ./de_facto_memory_model/pointer_offset_xor_auto.c:3:8 #-} save ret_711: loaded integer (a_804: loaded integer:= Specified(0)) in
+    pure(a_804)
+

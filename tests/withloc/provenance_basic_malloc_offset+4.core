@@ -1,0 +1,666 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+-- Globals
+glob a_888: pointer [ail_ctype = 'char[28]'] :=
+  create_readonly(Ivalignof('char[28]'), 'char[28]', Specified(Array(Specified(conv_int('char',
+  65)), Specified(conv_int('char', 100)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 114)), Specified(conv_int('char', 101)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 101)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 58)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 120)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 113)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+glob a_960: pointer [ail_ctype = 'char[27]'] :=
+  create_readonly(Ivalignof('char[27]'), 'char[27]', Specified(Array(Specified(conv_int('char',
+  42)), Specified(conv_int('char', 120)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 121)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 42)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 42)),
+  Specified(conv_int('char', 113)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:4:11, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:18:1> #-} let strong xp: pointer =
+    create(Ivalignof('signed int*'), 'signed int*') in
+  let strong yp: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:30> #-} let strong a_835: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:10, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:29> #-} let strong ((a_837: loaded pointer,
+      (a_838: ctype, a_839: [ctype], a_840: boolean, a_841: boolean)),
+      a_843: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_836: loaded pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:10, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:16> #-} pure(
+              Specified(Cfunction(malloc_proxy))
+            ) in
+          pure((a_836, cfunction(a_836)))
+        ,
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:17, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:28> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:5:17 #-} pure(
+            Specified(Ivsizeof('signed int'))
+          )
+        ) in
+      if not(params_length(a_839) = 1) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_840 \/ not(are_compatible ('void*', a_838)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_842: pointer =
+            let a_844: ctype = params_nth(a_839, 0) in
+            if not(are_compatible ('size_t', a_844)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_845: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_845, conv_loaded_int('size_t', a_843)) in
+              pure(a_845) in
+          let strong a_846: loaded pointer =
+            ccall('void* (*) (size_t)', a_837, a_842) in
+          kill('size_t', a_842) ;
+          pure(a_846)
+    ) in
+  store('signed int*', xp, a_835) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:30> #-} let strong a_847: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:10, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:29> #-} let strong ((a_849: loaded pointer,
+      (a_850: ctype, a_851: [ctype], a_852: boolean, a_853: boolean)),
+      a_855: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_848: loaded pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:10, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:16> #-} pure(
+              Specified(Cfunction(malloc_proxy))
+            ) in
+          pure((a_848, cfunction(a_848)))
+        ,
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:17, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:28> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:6:17 #-} pure(
+            Specified(Ivsizeof('signed int'))
+          )
+        ) in
+      if not(params_length(a_851) = 1) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_852 \/ not(are_compatible ('void*', a_850)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_854: pointer =
+            let a_856: ctype = params_nth(a_851, 0) in
+            if not(are_compatible ('size_t', a_856)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_857: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_857, conv_loaded_int('size_t', a_855)) in
+              pure(a_857) in
+          let strong a_858: loaded pointer =
+            ccall('void* (*) (size_t)', a_849, a_854) in
+          kill('size_t', a_854) ;
+          pure(a_858)
+    ) in
+  store('signed int*', yp, a_847) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:8> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:7> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:5 #-} let weak (a_834: pointer,
+      a_863: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:5> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:2 #-} let weak a_859: loaded pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:3, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:5> #-} let weak a_862: pointer =
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:3, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:5> #-} pure(
+                xp
+              ) in
+            load('signed int*', a_862) in
+          let Specified(a_860: pointer) = a_859 in
+          let weak a_861: boolean =
+            memop(PtrValidForDeref, 'signed int', a_860) in
+          pure(
+            if a_861 then
+              a_860
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:6, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:7:7> #-} pure(
+            Specified(1)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_834, conv_loaded_int('signed int', a_863))) in
+      pure(conv_loaded_int('signed int', a_863))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:8> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:7> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:5 #-} let weak (a_833: pointer,
+      a_868: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:5> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:2 #-} let weak a_864: loaded pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:3, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:5> #-} let weak a_867: pointer =
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:3, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:5> #-} pure(
+                yp
+              ) in
+            load('signed int*', a_867) in
+          let Specified(a_865: pointer) = a_864 in
+          let weak a_866: boolean =
+            memop(PtrValidForDeref, 'signed int', a_865) in
+          pure(
+            if a_866 then
+              a_865
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:6, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:8:7> #-} pure(
+            Specified(2)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_833, conv_loaded_int('signed int', a_868))) in
+      pure(conv_loaded_int('signed int', a_868))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:18> #-} let strong a_869: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:11, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:17> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:14 #-} let weak (a_870: loaded pointer,
+      a_872: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:11, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:13> #-} let weak a_875: pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:11, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:13> #-} pure(
+              xp
+            ) in
+          load('signed int*', a_875)
+        ,
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:16, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:9:17> #-} pure(
+            Specified(4)
+          )
+        ) in
+      let (Specified(a_871: pointer), Specified(a_873: integer)) =
+        (a_870, a_872) in
+      let weak a_874: pointer =
+        memop(PtrArrayShift, a_871, 'signed int', a_873) in
+      pure(Specified(a_874))
+    ) in
+  store('signed int*', p, a_869) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:10:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:10:14> #-} let strong a_876: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:10:11, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:10:13> #-} let weak a_877: pointer =
+        {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:10:11, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:10:13> #-} pure(
+          yp
+        ) in
+      load('signed int*', a_877)
+    ) in
+  store('signed int*', q, a_876) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:11:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:38> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:11:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:37> #-} let strong ((a_878: loaded pointer,
+      (a_879: ctype, a_880: [ctype], a_881: boolean, a_882: boolean)),
+      a_887: loaded pointer, a_891: loaded pointer, a_896: loaded pointer,
+      a_901: loaded pointer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_832: loaded pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:11:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:11:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_832, cfunction(a_832)))
+        ,
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:11:9, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:11:39> #-} let weak a_889: pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:11:9, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:11:39> #-} pure(
+              a_888
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_890: pointer = memop(PtrArrayShift, a_889, 'char', 0) in
+          pure(Specified(a_890))
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:9, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:18> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:9 #-} let weak a_894: pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:16, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:18> #-} pure(
+              xp
+            ) in
+          load('signed int*', a_894)
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:19, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:27> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:19 #-} let weak a_899: pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:26, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:27> #-} pure(
+              p
+            ) in
+          load('signed int*', a_899)
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:28, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:36> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:28 #-} let weak a_904: pointer =
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:35, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:12:36> #-} pure(
+              q
+            ) in
+          load('signed int*', a_904)
+        ) in
+      if not(params_length(a_880) <= 4) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_881) \/ not(are_compatible ('signed int', a_879)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_886: pointer =
+            let a_906: ctype = params_nth(a_880, 0) in
+            if not(are_compatible ('const char*', a_906)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_907: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_907, a_887) in
+              pure(a_907) in
+          let strong a_885: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_891) in
+          let strong a_884: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_896) in
+          let strong a_883: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'void*', a_901) in
+          let strong a_908: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_878, a_886,
+            [('void*', a_885), ('void*', a_884), ('void*', a_883)]) in
+          let strong _: (unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_886)
+            ,
+              kill('void*', a_885)
+            ,
+              kill('void*', a_884)
+            ,
+              kill('void*', a_883)
+            ) in
+          pure(a_908)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:16:3> #-} let strong a_909: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:6, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:36> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:32 #-} let weak (a_911: loaded integer,
+      a_912: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:6, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:36> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:32 #-} let weak (a_916: loaded integer,
+          a_917: loaded integer) =
+            unseq(
+              {-# §6.5.2.2#10, sentence 1 #-}
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:6, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:31> #-} let strong ((a_922: loaded pointer,
+              (a_923: ctype, a_924: [ctype], a_925: boolean, a_926: boolean)),
+              a_930: loaded pointer, a_932: loaded pointer,
+              a_934: loaded integer) =
+                {-# §6.5.2.2#4, sentence 2 #-}
+                unseq(
+                  let strong a_921: loaded pointer =
+                    {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:6, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:12> #-} pure(
+                      Specified(Cfunction(memcmp_proxy))
+                    ) in
+                  pure((a_921, cfunction(a_921)))
+                ,
+                  {-# §6.5.3.2#3, sentence 5 #-}
+                  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:13, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:15> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:13 #-} let weak a_931: pointer =
+                    {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:14, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:15> #-} pure(
+                      p
+                    ) in
+                  pure(Specified(a_931))
+                ,
+                  {-# §6.5.3.2#3, sentence 5 #-}
+                  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:17, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:19> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:17 #-} let weak a_933: pointer =
+                    {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:18, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:19> #-} pure(
+                      q
+                    ) in
+                  pure(Specified(a_933))
+                ,
+                  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:21, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:30> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:21 #-} pure(
+                    Specified(Ivsizeof('signed int*'))
+                  )
+                ) in
+              if not(params_length(a_924) = 3) then
+                pure(undef(<<UB038_number_of_args>>))
+              else
+                if a_925 \/ not(are_compatible ('signed int', a_923)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  let strong a_929: pointer =
+                    let a_935: ctype = params_nth(a_924, 0) in
+                    if not(are_compatible ('const void*', a_935)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_936: pointer =
+                        create(Ivalignof('const void*'), 'const void*') in
+                      let weak _: unit = store('const void*', a_936, a_930) in
+                      pure(a_936) in
+                  let strong a_928: pointer =
+                    let a_937: ctype = params_nth(a_924, 1) in
+                    if not(are_compatible ('const void*', a_937)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_938: pointer =
+                        create(Ivalignof('const void*'), 'const void*') in
+                      let weak _: unit = store('const void*', a_938, a_932) in
+                      pure(a_938) in
+                  let strong a_927: pointer =
+                    let a_939: ctype = params_nth(a_924, 2) in
+                    if not(are_compatible ('size_t', a_939)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_940: pointer =
+                        create(Ivalignof('size_t'), 'size_t') in
+                      let weak _: unit =
+                        store('size_t', a_940,
+                        conv_loaded_int('size_t', a_934)) in
+                      pure(a_940) in
+                  let strong a_941: loaded integer =
+                    ccall('signed int (*) (const void*, const void*, size_t)',
+                    a_922, a_929, a_928, a_927) in
+                  let strong _: (unit,unit,unit) =
+                    unseq(
+                      kill('void*', a_929)
+                    ,
+                      kill('void*', a_928)
+                    ,
+                      kill('size_t', a_927)
+                    ) in
+                  pure(a_941)
+            ,
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:35, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:36> #-} pure(
+                Specified(0)
+              )
+            ) in
+          pure(
+            let (Specified(a_918: integer), Specified(a_919: integer)) =
+              (a_916, a_917) in
+            if conv_int('signed int', a_918) = conv_int('signed int', a_919) then
+              Specified(1)
+            else
+              Specified(0)
+          )
+        ,
+          {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:6, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:36> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:32 #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        let (Specified(a_913: integer), Specified(a_914: integer)) =
+          (a_911, a_912) in
+        if conv_int('signed int', a_913) = conv_int('signed int', a_914) then
+          Specified(1)
+        else
+          Specified(0)
+      )
+    ) in
+  let strong a_831: boolean =
+    let Specified(a_910: integer) = a_909 in
+    pure(if not(a_910 = 1) then True else False) in
+  if a_831 then
+    {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:38, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:16:3> #-} {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:4, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:12> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.16#3, sentence 4 #-}
+        {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:4, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:11> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:7 #-} let weak (a_943: pointer,
+        a_948: loaded integer) =
+          {-# §6.5.16#3, sentence 5 #-}
+          unseq(
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:4, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:6> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:4 #-} let weak a_944: loaded pointer =
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:5, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:6> #-} let weak a_947: pointer =
+                {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:5, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:6> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_947) in
+            let Specified(a_945: pointer) = a_944 in
+            let weak a_946: boolean =
+              memop(PtrValidForDeref, 'signed int', a_945) in
+            pure(
+              if a_946 then
+                a_945
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            )
+          ,
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:9, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:14:11> #-} pure(
+              Specified(11)
+            )
+          ) in
+        let weak _: unit =
+          {-# §6.5.16.1#2, store #-}
+          neg(store('signed int', a_943, conv_loaded_int('signed int', a_948))) in
+        pure(conv_loaded_int('signed int', a_948))
+      ) in
+    pure(Unit) ;
+    {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:4, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:56> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.2.2#10, sentence 1 #-}
+        {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:4, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:55> #-} let strong ((a_949: loaded pointer,
+        (a_950: ctype, a_951: [ctype], a_952: boolean, a_953: boolean)),
+        a_959: loaded pointer, a_963: loaded integer, a_969: loaded integer,
+        a_975: loaded integer, a_981: loaded integer) =
+          {-# §6.5.2.2#4, sentence 2 #-}
+          unseq(
+            let strong a_942: loaded pointer =
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:4, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:10> #-} pure(
+                Specified(Cfunction(printf_proxy))
+              ) in
+            pure((a_942, cfunction(a_942)))
+          ,
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:11, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:40> #-} let weak a_961: pointer =
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:11, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:40> #-} pure(
+                a_960
+              ) in
+            {-# §6.3.2.1#3 #-}
+            let weak a_962: pointer =
+              memop(PtrArrayShift, a_961, 'char', 0) in
+            pure(Specified(a_962))
+          ,
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:41, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:44> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:41 #-} let weak a_968: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:41, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:44> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:41 #-} let weak a_964: loaded pointer =
+                {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:42, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:44> #-} let weak a_967: pointer =
+                  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:42, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:44> #-} pure(
+                    xp
+                  ) in
+                load('signed int*', a_967) in
+              let Specified(a_965: pointer) = a_964 in
+              let weak a_966: boolean =
+                memop(PtrValidForDeref, 'signed int', a_965) in
+              pure(
+                if a_966 then
+                  a_965
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('signed int', a_968)
+          ,
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:45, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:48> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:45 #-} let weak a_974: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:45, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:48> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:45 #-} let weak a_970: loaded pointer =
+                {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:46, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:48> #-} let weak a_973: pointer =
+                  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:46, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:48> #-} pure(
+                    yp
+                  ) in
+                load('signed int*', a_973) in
+              let Specified(a_971: pointer) = a_970 in
+              let weak a_972: boolean =
+                memop(PtrValidForDeref, 'signed int', a_971) in
+              pure(
+                if a_972 then
+                  a_971
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('signed int', a_974)
+          ,
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:49, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:51> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:49 #-} let weak a_980: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:49, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:51> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:49 #-} let weak a_976: loaded pointer =
+                {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:50, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:51> #-} let weak a_979: pointer =
+                  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:50, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:51> #-} pure(
+                    p
+                  ) in
+                load('signed int*', a_979) in
+              let Specified(a_977: pointer) = a_976 in
+              let weak a_978: boolean =
+                memop(PtrValidForDeref, 'signed int', a_977) in
+              pure(
+                if a_978 then
+                  a_977
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('signed int', a_980)
+          ,
+            {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:52, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:54> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:52 #-} let weak a_986: pointer =
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:52, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:54> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:52 #-} let weak a_982: loaded pointer =
+                {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:53, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:54> #-} let weak a_985: pointer =
+                  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:53, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:15:54> #-} pure(
+                    q
+                  ) in
+                load('signed int*', a_985) in
+              let Specified(a_983: pointer) = a_982 in
+              let weak a_984: boolean =
+                memop(PtrValidForDeref, 'signed int', a_983) in
+              pure(
+                if a_984 then
+                  a_983
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              ) in
+            load('signed int', a_986)
+          ) in
+        if not(params_length(a_951) <= 5) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if not(a_952) \/ not(are_compatible ('signed int', a_950)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_958: pointer =
+              let a_987: ctype = params_nth(a_951, 0) in
+              if not(are_compatible ('const char*', a_987)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_988: pointer =
+                  create(Ivalignof('const char*'), 'const char*') in
+                let weak _: unit = store('const char*', a_988, a_959) in
+                pure(a_988) in
+            let strong a_957: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_963)) in
+            let strong a_956: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_969)) in
+            let strong a_955: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_975)) in
+            let strong a_954: pointer =
+              {-# §6.5.2.2#7, sentences 2 and 3 #-}
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_981)) in
+            let strong a_989: loaded integer =
+              ccall('signed int (*) (const char*restrict , ...)', a_949, a_958,
+              [('signed int', a_957), ('signed int', a_956),
+              ('signed int', a_955), ('signed int', a_954)]) in
+            let strong _: (unit,unit,unit,unit,unit) =
+              unseq(
+                kill('char*', a_958)
+              ,
+                kill('signed int', a_957)
+              ,
+                kill('signed int', a_956)
+              ,
+                kill('signed int', a_955)
+              ,
+                kill('signed int', a_954)
+              ) in
+            pure(a_989)
+      ) in
+    pure(Unit) ;
+    pure(Unit)
+  else
+    {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:13:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:16:3> #-} pure(
+      Unit
+    ) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:17:2, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:17:11> #-} let strong a_990: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:17:9, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:17:10> #-} pure(
+        Specified(0)
+      )
+    ) in
+  kill('signed int*', xp) ;
+  kill('signed int*', yp) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  run ret_830(conv_loaded_int('signed int', a_990)) ;
+  kill('signed int*', xp) ;
+  kill('signed int*', yp) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_basic_malloc_offset+4.c:4:0, ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:18:1> ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:4:4 - ./de_facto_memory_model/provenance_basic_malloc_offset+4.c:4:8 #-} save ret_830: loaded integer (a_991: loaded integer:= Specified(0)) in
+    pure(a_991)
+

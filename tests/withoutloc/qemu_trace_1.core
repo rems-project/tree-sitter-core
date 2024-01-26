@@ -1,0 +1,334 @@
+-- Aggregates
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+def struct __cerbty_unnamed_tag_603 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_635 :=
+  quot: 'intmax_t'
+  rem: 'intmax_t'
+
+def struct __cerbty_unnamed_tag_653 :=
+  c: 'char'
+  u: 'unsigned long_long'
+
+-- Globals
+glob xg: pointer [ail_ctype = 'unsigned long_long'] :=
+  let strong a_766: pointer =
+    create(Ivalignof('unsigned long long'), 'unsigned long long') in
+  let strong a_767: loaded integer = bound(pure(Specified(5))) in
+  store('unsigned long long', a_766,
+  conv_loaded_int('unsigned long long', a_767)) ;
+  pure(a_766)
+
+-- Fun map
+proc f (pu: pointer): eff unit :=
+  let strong _: loaded integer =
+    bound(
+      let weak (a_759: pointer, a_764: loaded integer) =
+        unseq(
+          let weak a_760: loaded pointer =
+            let weak a_763: pointer = pure(pu) in
+            load('unsigned long long*', a_763) in
+          let Specified(a_761: pointer) = a_760 in
+          let weak a_762: boolean =
+            memop(PtrValidForDeref, 'unsigned long long', a_761) in
+          pure(
+            if a_762 then
+              a_761
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          pure(Specified(9))
+        ) in
+      let weak _: unit =
+        neg(store('unsigned long long', a_759,
+        conv_loaded_int('unsigned long long', a_764))) in
+      pure(conv_loaded_int('unsigned long long', a_764))
+    ) in
+  pure(Unit) ;
+  pure(Unit) ;
+  save ret_758: unit (a_765: unit:= Unit) in  pure(a_765)
+
+proc main (): eff loaded integer :=
+  let strong xl: pointer =
+    create(Ivalignof('unsigned long long'), 'unsigned long long') in
+  let strong s: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_653'), 'struct __cerbty_unnamed_tag_653') in
+  let strong pxg: pointer =
+    create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+  let strong pxl: pointer =
+    create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+  let strong ps: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_653*'), 'struct __cerbty_unnamed_tag_653*') in
+  let strong psu: pointer =
+    create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+  let strong pm: pointer =
+    create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+  let strong a_675: loaded integer = bound(pure(Specified(6))) in
+  store('unsigned long long', xl, conv_loaded_int('unsigned long long', a_675)) ;
+  let strong a_676: loaded struct a_653 =
+    bound(
+      let weak (a_678: loaded integer, a_677: loaded integer) =
+        unseq(pure(Specified(7)), pure(Specified(65))) in
+      pure(
+        Specified((struct __cerbty_unnamed_tag_653){.c= conv_loaded_int('char',
+        a_677), .u= conv_loaded_int('unsigned long long', a_678)})
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_653', s, a_676) ;
+  let strong a_679: loaded pointer =
+    bound(
+      let weak a_680: pointer = pure(xg) in
+      pure(Specified(a_680))
+    ) in
+  store('unsigned long long*', pxg, a_679) ;
+  bound(
+    let strong ((a_681: loaded pointer,
+    (a_682: ctype, a_683: [ctype], a_684: boolean, a_685: boolean)),
+    a_687: loaded pointer) =
+      unseq(
+        let strong a_674: loaded pointer = pure(Specified(Cfunction(f))) in
+        pure((a_674, cfunction(a_674)))
+      ,
+        let weak a_688: pointer = pure(pxg) in
+        load('unsigned long long*', a_688)
+      ) in
+    if not(params_length(a_683) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_684 \/ not(are_compatible ('void', a_682)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_686: pointer =
+          let a_689: ctype = params_nth(a_683, 0) in
+          if not(are_compatible ('unsigned long long*', a_689)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let weak a_690: pointer =
+              create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+            let weak _: unit = store('unsigned long long*', a_690, a_687) in
+            pure(a_690) in
+        let strong a_691: unit =
+          ccall('void (*) (unsigned long long*)', a_681, a_686) in
+        kill('unsigned long_long*', a_686) ;
+        pure(a_691)
+  ) ;
+  pure(Unit) ;
+  let strong a_692: loaded pointer =
+    bound(
+      let weak a_693: pointer = pure(xl) in
+      pure(Specified(a_693))
+    ) in
+  store('unsigned long long*', pxl, a_692) ;
+  bound(
+    let strong ((a_694: loaded pointer,
+    (a_695: ctype, a_696: [ctype], a_697: boolean, a_698: boolean)),
+    a_700: loaded pointer) =
+      unseq(
+        let strong a_673: loaded pointer = pure(Specified(Cfunction(f))) in
+        pure((a_673, cfunction(a_673)))
+      ,
+        let weak a_701: pointer = pure(pxl) in
+        load('unsigned long long*', a_701)
+      ) in
+    if not(params_length(a_696) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_697 \/ not(are_compatible ('void', a_695)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_699: pointer =
+          let a_702: ctype = params_nth(a_696, 0) in
+          if not(are_compatible ('unsigned long long*', a_702)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let weak a_703: pointer =
+              create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+            let weak _: unit = store('unsigned long long*', a_703, a_700) in
+            pure(a_703) in
+        let strong a_704: unit =
+          ccall('void (*) (unsigned long long*)', a_694, a_699) in
+        kill('unsigned long_long*', a_699) ;
+        pure(a_704)
+  ) ;
+  pure(Unit) ;
+  let strong a_705: loaded pointer =
+    bound(
+      let weak a_706: pointer = pure(s) in
+      pure(Specified(a_706))
+    ) in
+  store('struct __cerbty_unnamed_tag_653*', ps, a_705) ;
+  let strong a_707: loaded pointer =
+    bound(
+      let weak a_708: pointer =
+        let strong a_709: loaded pointer =
+          let weak a_713: pointer = pure(ps) in
+          load('struct __cerbty_unnamed_tag_653*', a_713) in
+        let Specified(a_710: pointer) = a_709 in
+        let weak a_711: boolean =
+          memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_653', a_710) in
+        pure(
+          if a_711 then
+            member_shift(a_710, __cerbty_unnamed_tag_653, .u)
+          else
+            undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      pure(Specified(a_708))
+    ) in
+  store('unsigned long long*', psu, a_707) ;
+  bound(
+    let strong ((a_714: loaded pointer,
+    (a_715: ctype, a_716: [ctype], a_717: boolean, a_718: boolean)),
+    a_720: loaded pointer) =
+      unseq(
+        let strong a_672: loaded pointer = pure(Specified(Cfunction(f))) in
+        pure((a_672, cfunction(a_672)))
+      ,
+        let weak a_721: pointer = pure(psu) in
+        load('unsigned long long*', a_721)
+      ) in
+    if not(params_length(a_716) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_717 \/ not(are_compatible ('void', a_715)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_719: pointer =
+          let a_722: ctype = params_nth(a_716, 0) in
+          if not(are_compatible ('unsigned long long*', a_722)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let weak a_723: pointer =
+              create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+            let weak _: unit = store('unsigned long long*', a_723, a_720) in
+            pure(a_723) in
+        let strong a_724: unit =
+          ccall('void (*) (unsigned long long*)', a_714, a_719) in
+        kill('unsigned long_long*', a_719) ;
+        pure(a_724)
+  ) ;
+  pure(Unit) ;
+  let strong a_725: loaded pointer =
+    bound(
+      let weak a_726: loaded pointer =
+        let strong ((a_729: loaded pointer,
+        (a_730: ctype, a_731: [ctype], a_732: boolean, a_733: boolean)),
+        a_735: loaded integer) =
+          unseq(
+            let strong a_728: loaded pointer =
+              pure(Specified(Cfunction(malloc_proxy))) in
+            pure((a_728, cfunction(a_728)))
+          ,
+            pure(Specified(Ivsizeof('unsigned long long')))
+          ) in
+        if not(params_length(a_731) = 1) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if a_732 \/ not(are_compatible ('void*', a_730)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_734: pointer =
+              let a_736: ctype = params_nth(a_731, 0) in
+              if not(are_compatible ('size_t', a_736)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                let weak a_737: pointer =
+                  create(Ivalignof('size_t'), 'size_t') in
+                let weak _: unit =
+                  store('size_t', a_737, conv_loaded_int('size_t', a_735)) in
+                pure(a_737) in
+            let strong a_738: loaded pointer =
+              ccall('void* (*) (size_t)', a_729, a_734) in
+            kill('size_t', a_734) ;
+            pure(a_738) in
+      let Specified(a_727: pointer) = a_726 in
+      let weak a_739: boolean =
+        memop(PtrWellAligned, 'unsigned long long', a_727) in
+      pure(
+        Specified(if a_739 then
+          a_727
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('unsigned long long*', pm, a_725) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_671: pointer, a_744: loaded integer) =
+        unseq(
+          let weak a_740: loaded pointer =
+            let weak a_743: pointer = pure(pm) in
+            load('unsigned long long*', a_743) in
+          let Specified(a_741: pointer) = a_740 in
+          let weak a_742: boolean =
+            memop(PtrValidForDeref, 'unsigned long long', a_741) in
+          pure(
+            if a_742 then
+              a_741
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          pure(Specified(8))
+        ) in
+      let weak _: unit =
+        neg(store('unsigned long long', a_671,
+        conv_loaded_int('unsigned long long', a_744))) in
+      pure(conv_loaded_int('unsigned long long', a_744))
+    ) in
+  pure(Unit) ;
+  bound(
+    let strong ((a_745: loaded pointer,
+    (a_746: ctype, a_747: [ctype], a_748: boolean, a_749: boolean)),
+    a_751: loaded pointer) =
+      unseq(
+        let strong a_670: loaded pointer = pure(Specified(Cfunction(f))) in
+        pure((a_670, cfunction(a_670)))
+      ,
+        let weak a_752: pointer = pure(pm) in
+        load('unsigned long long*', a_752)
+      ) in
+    if not(params_length(a_747) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_748 \/ not(are_compatible ('void', a_746)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_750: pointer =
+          let a_753: ctype = params_nth(a_747, 0) in
+          if not(are_compatible ('unsigned long long*', a_753)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let weak a_754: pointer =
+              create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+            let weak _: unit = store('unsigned long long*', a_754, a_751) in
+            pure(a_754) in
+        let strong a_755: unit =
+          ccall('void (*) (unsigned long long*)', a_745, a_750) in
+        kill('unsigned long_long*', a_750) ;
+        pure(a_755)
+  ) ;
+  pure(Unit) ;
+  kill('unsigned long_long', xl) ;
+  kill('struct __cerbty_unnamed_tag_653', s) ;
+  kill('unsigned long_long*', pxg) ;
+  kill('unsigned long_long*', pxl) ;
+  kill('struct __cerbty_unnamed_tag_653*', ps) ;
+  kill('unsigned long_long*', psu) ;
+  kill('unsigned long_long*', pm) ;
+  pure(Unit) ;
+  save ret_669: loaded integer (a_756: loaded integer:= Specified(0)) in
+    pure(a_756)
+

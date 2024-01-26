@@ -1,0 +1,348 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_646 :=
+  i: 'signed int'
+
+-- Globals
+glob a_694: pointer [ail_ctype = 'char[25]'] :=
+  create_readonly(Ivalignof('char[25]'), 'char[25]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 46)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 45)),
+  Specified(conv_int('char', 62)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 42)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+glob a_743: pointer [ail_ctype = 'char[20]'] :=
+  create_readonly(Ivalignof('char[20]'), 'char[20]', Specified(Array(Specified(conv_int('char',
+  102)), Specified(conv_int('char', 58)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 45)), Specified(conv_int('char', 62)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc f (sp: pointer, p: pointer): eff unit :=
+  let strong _: loaded integer =
+    bound(
+      let weak (a_722: pointer, a_728: loaded integer) =
+        unseq(
+          let strong a_723: loaded pointer =
+            let weak a_727: pointer = pure(sp) in
+            load('struct __cerbty_unnamed_tag_646*', a_727) in
+          let Specified(a_724: pointer) = a_723 in
+          let weak a_725: boolean =
+            memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_646', a_724) in
+          pure(
+            if a_725 then
+              member_shift(a_724, __cerbty_unnamed_tag_646, .i)
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          pure(Specified(2))
+        ) in
+      let weak _: unit =
+        neg(store('signed int', a_722, conv_loaded_int('signed int', a_728))) in
+      pure(conv_loaded_int('signed int', a_728))
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_721: pointer, a_733: loaded integer) =
+        unseq(
+          let weak a_729: loaded pointer =
+            let weak a_732: pointer = pure(p) in
+            load('signed int*', a_732) in
+          let Specified(a_730: pointer) = a_729 in
+          let weak a_731: boolean =
+            memop(PtrValidForDeref, 'signed int', a_730) in
+          pure(
+            if a_731 then
+              a_730
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          pure(Specified(3))
+        ) in
+      let weak _: unit =
+        neg(store('signed int', a_721, conv_loaded_int('signed int', a_733))) in
+      pure(conv_loaded_int('signed int', a_733))
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let strong ((a_734: loaded pointer,
+      (a_735: ctype, a_736: [ctype], a_737: boolean, a_738: boolean)),
+      a_742: loaded pointer, a_746: loaded integer, a_753: loaded integer) =
+        unseq(
+          let strong a_720: loaded pointer =
+            pure(Specified(Cfunction(printf_proxy))) in
+          pure((a_720, cfunction(a_720)))
+        ,
+          let weak a_744: pointer = pure(a_743) in
+          let weak a_745: pointer = memop(PtrArrayShift, a_744, 'char', 0) in
+          pure(Specified(a_745))
+        ,
+          let weak a_752: pointer =
+            let strong a_747: loaded pointer =
+              let weak a_751: pointer = pure(sp) in
+              load('struct __cerbty_unnamed_tag_646*', a_751) in
+            let Specified(a_748: pointer) = a_747 in
+            let weak a_749: boolean =
+              memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_646', a_748) in
+            pure(
+              if a_749 then
+                member_shift(a_748, __cerbty_unnamed_tag_646, .i)
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_752)
+        ,
+          let weak a_758: pointer =
+            let weak a_754: loaded pointer =
+              let weak a_757: pointer = pure(p) in
+              load('signed int*', a_757) in
+            let Specified(a_755: pointer) = a_754 in
+            let weak a_756: boolean =
+              memop(PtrValidForDeref, 'signed int', a_755) in
+            pure(
+              if a_756 then
+                a_755
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_758)
+        ) in
+      if not(params_length(a_736) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_737) \/ not(are_compatible ('signed int', a_735)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_741: pointer =
+            let a_759: ctype = params_nth(a_736, 0) in
+            if not(are_compatible ('const char*', a_759)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_760: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_760, a_742) in
+              pure(a_760) in
+          let strong a_740: pointer =
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_746)) in
+          let strong a_739: pointer =
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_753)) in
+          let strong a_761: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_734, a_741,
+            [('signed int', a_740), ('signed int', a_739)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_741)
+            ,
+              kill('signed int', a_740)
+            ,
+              kill('signed int', a_739)
+            ) in
+          pure(a_761)
+    ) in
+  pure(Unit) ;
+  pure(Unit) ;
+  save ret_719: unit (a_762: unit:= Unit) in  pure(a_762)
+
+proc main (): eff loaded integer :=
+  let strong s: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_646'), 'struct __cerbty_unnamed_tag_646') in
+  let strong sp: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_646*'), 'struct __cerbty_unnamed_tag_646*') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong a_661: loaded struct a_646 =
+    bound(
+      let weak a_662: loaded integer = pure(Specified(1)) in
+      pure(
+        Specified((struct __cerbty_unnamed_tag_646){.i= conv_loaded_int('signed int',
+        a_662)})
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_646', s, a_661) ;
+  let strong a_663: loaded pointer =
+    bound(
+      let weak a_664: pointer = pure(s) in
+      pure(Specified(a_664))
+    ) in
+  store('struct __cerbty_unnamed_tag_646*', sp, a_663) ;
+  let strong a_665: loaded pointer =
+    bound(
+      let weak a_666: pointer =
+        let strong a_667: pointer = pure(s) in
+        memop(PtrArrayShift[__cerbty_unnamed_tag_646, i], a_667) in
+      pure(Specified(a_666))
+    ) in
+  store('signed int*', p, a_665) ;
+  bound(
+    let strong ((a_668: loaded pointer,
+    (a_669: ctype, a_670: [ctype], a_671: boolean, a_672: boolean)),
+    a_675: loaded pointer, a_677: loaded pointer) =
+      unseq(
+        let strong a_660: loaded pointer = pure(Specified(Cfunction(f))) in
+        pure((a_660, cfunction(a_660)))
+      ,
+        let weak a_676: pointer = pure(sp) in
+        load('struct __cerbty_unnamed_tag_646*', a_676)
+      ,
+        let weak a_678: pointer = pure(p) in
+        load('signed int*', a_678)
+      ) in
+    if not(params_length(a_670) = 2) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_671 \/ not(are_compatible ('void', a_669)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_674: pointer =
+          let a_679: ctype = params_nth(a_670, 0) in
+          if not(are_compatible ('struct __cerbty_unnamed_tag_646*', a_679)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let weak a_680: pointer =
+              create(Ivalignof('struct __cerbty_unnamed_tag_646*'), 'struct __cerbty_unnamed_tag_646*') in
+            let weak _: unit =
+              store('struct __cerbty_unnamed_tag_646*', a_680, a_675) in
+            pure(a_680) in
+        let strong a_673: pointer =
+          let a_681: ctype = params_nth(a_670, 1) in
+          if not(are_compatible ('signed int*', a_681)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let weak a_682: pointer =
+              create(Ivalignof('signed int*'), 'signed int*') in
+            let weak _: unit = store('signed int*', a_682, a_677) in
+            pure(a_682) in
+        let strong a_683: unit =
+          ccall('void (*) (struct __cerbty_unnamed_tag_646*, signed int*)',
+          a_668, a_674, a_673) in
+        let strong _: (unit,unit) =
+          unseq(
+            kill('struct __cerbty_unnamed_tag_646*', a_674)
+          ,
+            kill('signed int*', a_673)
+          ) in
+        pure(a_683)
+  ) ;
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let strong ((a_684: loaded pointer,
+      (a_685: ctype, a_686: [ctype], a_687: boolean, a_688: boolean)),
+      a_693: loaded pointer, a_697: loaded integer, a_700: loaded integer,
+      a_707: loaded integer) =
+        unseq(
+          let strong a_659: loaded pointer =
+            pure(Specified(Cfunction(printf_proxy))) in
+          pure((a_659, cfunction(a_659)))
+        ,
+          let weak a_695: pointer = pure(a_694) in
+          let weak a_696: pointer = memop(PtrArrayShift, a_695, 'char', 0) in
+          pure(Specified(a_696))
+        ,
+          let weak a_699: pointer =
+            let strong a_698: pointer = pure(s) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_646, i], a_698) in
+          load('signed int', a_699)
+        ,
+          let weak a_706: pointer =
+            let strong a_701: loaded pointer =
+              let weak a_705: pointer = pure(sp) in
+              load('struct __cerbty_unnamed_tag_646*', a_705) in
+            let Specified(a_702: pointer) = a_701 in
+            let weak a_703: boolean =
+              memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_646', a_702) in
+            pure(
+              if a_703 then
+                member_shift(a_702, __cerbty_unnamed_tag_646, .i)
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_706)
+        ,
+          let weak a_712: pointer =
+            let weak a_708: loaded pointer =
+              let weak a_711: pointer = pure(p) in
+              load('signed int*', a_711) in
+            let Specified(a_709: pointer) = a_708 in
+            let weak a_710: boolean =
+              memop(PtrValidForDeref, 'signed int', a_709) in
+            pure(
+              if a_710 then
+                a_709
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_712)
+        ) in
+      if not(params_length(a_686) <= 4) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_687) \/ not(are_compatible ('signed int', a_685)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_692: pointer =
+            let a_713: ctype = params_nth(a_686, 0) in
+            if not(are_compatible ('const char*', a_713)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_714: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_714, a_693) in
+              pure(a_714) in
+          let strong a_691: pointer =
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_697)) in
+          let strong a_690: pointer =
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_700)) in
+          let strong a_689: pointer =
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_707)) in
+          let strong a_715: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_684, a_692,
+            [('signed int', a_691), ('signed int', a_690),
+            ('signed int', a_689)]) in
+          let strong _: (unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_692)
+            ,
+              kill('signed int', a_691)
+            ,
+              kill('signed int', a_690)
+            ,
+              kill('signed int', a_689)
+            ) in
+          pure(a_715)
+    ) in
+  pure(Unit) ;
+  kill('struct __cerbty_unnamed_tag_646', s) ;
+  kill('struct __cerbty_unnamed_tag_646*', sp) ;
+  kill('signed int*', p) ;
+  pure(Unit) ;
+  save ret_658: loaded integer (a_716: loaded integer:= Specified(0)) in
+    pure(a_716)
+

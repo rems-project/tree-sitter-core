@@ -1,0 +1,323 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_648 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_652 :=
+  f: 'float'
+  i: 'signed int'
+
+-- Globals
+glob a_715: pointer [ail_ctype = 'char[23]'] :=
+  create_readonly(Ivalignof('char[23]'), 'char[23]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 46)), Specified(conv_int('char', 102)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 102)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 112)),
+  Specified(conv_int('char', 102)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 102)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 46)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:4:11, ./de_facto_memory_model/cast_struct_inter_member_2.c:14:1> #-} let strong s: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_652'), 'struct __cerbty_unnamed_tag_652') in
+  let strong ps: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_652*'), 'struct __cerbty_unnamed_tag_652*') in
+  let strong pcs: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong pci: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong pcf: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong pf: pointer = create(Ivalignof('float*'), 'float*') in
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:5:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:5:24> #-} let strong a_666: loaded struct a_652 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_668: loaded integer,
+      a_667: loaded floating) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:5:21, ./de_facto_memory_model/cast_struct_inter_member_2.c:5:22> #-} pure(
+            Specified(1)
+          )
+        ,
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:5:13, ./de_facto_memory_model/cast_struct_inter_member_2.c:5:16> #-} pure(
+            Specified(1.)
+          )
+        ) in
+      pure(
+        Specified((struct __cerbty_unnamed_tag_652){.f= a_667,
+        .i= conv_loaded_int('signed int', a_668)})
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_652', s, a_666) ;
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:6:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:6:14> #-} let strong a_669: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:6:11, ./de_facto_memory_model/cast_struct_inter_member_2.c:6:13> ./de_facto_memory_model/cast_struct_inter_member_2.c:6:11 #-} let weak a_670: pointer =
+        {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:6:12, ./de_facto_memory_model/cast_struct_inter_member_2.c:6:13> #-} pure(
+          s
+        ) in
+      pure(Specified(a_670))
+    ) in
+  store('struct __cerbty_unnamed_tag_652*', ps, a_669) ;
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:7:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:7:44> #-} let strong a_671: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:7:23, ./de_facto_memory_model/cast_struct_inter_member_2.c:7:43> #-} let weak a_672: loaded pointer =
+        {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:7:40, ./de_facto_memory_model/cast_struct_inter_member_2.c:7:42> #-} let weak a_674: pointer =
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:7:40, ./de_facto_memory_model/cast_struct_inter_member_2.c:7:42> #-} pure(
+            ps
+          ) in
+        load('struct __cerbty_unnamed_tag_652*', a_674) in
+      let Specified(a_673: pointer) = a_672 in
+      let weak a_675: boolean =
+        memop(PtrWellAligned, 'unsigned char', a_673) in
+      pure(
+        Specified(if a_675 then
+          a_673
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('unsigned char*', pcs, a_671) ;
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:8:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:8:46> #-} let strong a_676: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:8:23, ./de_facto_memory_model/cast_struct_inter_member_2.c:8:45> #-} let weak (a_677: loaded pointer,
+      a_679: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:8:24, ./de_facto_memory_model/cast_struct_inter_member_2.c:8:27> #-} let weak a_682: pointer =
+            {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:8:24, ./de_facto_memory_model/cast_struct_inter_member_2.c:8:27> #-} pure(
+              pcs
+            ) in
+          load('unsigned char*', a_682)
+        ,
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:8:30, ./de_facto_memory_model/cast_struct_inter_member_2.c:8:44> #-} pure(
+            Specified(8)
+          )
+        ) in
+      let (Specified(a_678: pointer), Specified(a_680: integer)) =
+        (a_677, a_679) in
+      let weak a_681: pointer =
+        memop(PtrArrayShift, a_678, 'unsigned char', a_680) in
+      pure(Specified(a_681))
+    ) in
+  store('unsigned char*', pci, a_676) ;
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:9:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:10:21> #-} let strong a_683: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:9:23, ./de_facto_memory_model/cast_struct_inter_member_2.c:10:20> ./de_facto_memory_model/cast_struct_inter_member_2.c:10:4 #-} let weak (a_684: loaded pointer,
+      a_686: loaded integer) =
+        unseq(
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:9:23, ./de_facto_memory_model/cast_struct_inter_member_2.c:9:45> #-} let weak (a_690: loaded pointer,
+          a_691: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:9:24, ./de_facto_memory_model/cast_struct_inter_member_2.c:9:27> #-} let weak a_689: pointer =
+                {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:9:24, ./de_facto_memory_model/cast_struct_inter_member_2.c:9:27> #-} pure(
+                  pci
+                ) in
+              load('unsigned char*', a_689)
+            ,
+              {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:9:30, ./de_facto_memory_model/cast_struct_inter_member_2.c:9:44> #-} pure(
+                Specified(8)
+              )
+            ) in
+          let (Specified(a_692: pointer), Specified(a_693: integer)) =
+            (a_690, a_691) in
+          let weak a_694: pointer =
+            memop(PtrArrayShift, a_692, 'unsigned char', 0 - a_693) in
+          pure(Specified(a_694))
+        ,
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:10:6, ./de_facto_memory_model/cast_struct_inter_member_2.c:10:20> #-} pure(
+            Specified(0)
+          )
+        ) in
+      let (Specified(a_685: pointer), Specified(a_687: integer)) =
+        (a_684, a_686) in
+      let weak a_688: pointer =
+        memop(PtrArrayShift, a_685, 'unsigned char', a_687) in
+      pure(Specified(a_688))
+    ) in
+  store('unsigned char*', pcf, a_683) ;
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:11:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:11:27> #-} let strong a_695: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:11:14, ./de_facto_memory_model/cast_struct_inter_member_2.c:11:26> ./de_facto_memory_model/cast_struct_inter_member_2.c:11:14 #-} let weak a_696: loaded pointer =
+        {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:11:23, ./de_facto_memory_model/cast_struct_inter_member_2.c:11:26> #-} let weak a_698: pointer =
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:11:23, ./de_facto_memory_model/cast_struct_inter_member_2.c:11:26> #-} pure(
+            pcf
+          ) in
+        load('unsigned char*', a_698) in
+      let Specified(a_697: pointer) = a_696 in
+      let weak a_699: boolean = memop(PtrWellAligned, 'float', a_697) in
+      pure(
+        Specified(if a_699 then
+          a_697
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('float*', pf, a_695) ;
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:12:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:12:12> #-} let strong _: loaded floating =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:12:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:12:11> ./de_facto_memory_model/cast_struct_inter_member_2.c:12:6 #-} let weak (a_665: pointer,
+      a_704: loaded floating) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:12:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:12:5> ./de_facto_memory_model/cast_struct_inter_member_2.c:12:2 #-} let weak a_700: loaded pointer =
+            {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:12:3, ./de_facto_memory_model/cast_struct_inter_member_2.c:12:5> #-} let weak a_703: pointer =
+              {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:12:3, ./de_facto_memory_model/cast_struct_inter_member_2.c:12:5> #-} pure(
+                pf
+              ) in
+            load('float*', a_703) in
+          let Specified(a_701: pointer) = a_700 in
+          let weak a_702: boolean = memop(PtrValidForDeref, 'float', a_701) in
+          pure(
+            if a_702 then
+              a_701
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:12:8, ./de_facto_memory_model/cast_struct_inter_member_2.c:12:11> #-} pure(
+            Specified(2.)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('float', a_665, a_704)) in
+      pure(a_704)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:48> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:47> #-} let strong ((a_705: loaded pointer,
+      (a_706: ctype, a_707: [ctype], a_708: boolean, a_709: boolean)),
+      a_714: loaded pointer, a_718: loaded floating, a_721: loaded floating,
+      a_727: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_664: loaded pointer =
+            {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:2, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_664, cfunction(a_664)))
+        ,
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:9, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:34> #-} let weak a_716: pointer =
+            {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:9, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:34> #-} pure(
+              a_715
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_717: pointer = memop(PtrArrayShift, a_716, 'char', 0) in
+          pure(Specified(a_717))
+        ,
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:35, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:38> ./de_facto_memory_model/cast_struct_inter_member_2.c:13:36 #-} let weak a_720: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:35, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:38> ./de_facto_memory_model/cast_struct_inter_member_2.c:13:36 #-} let strong a_719: pointer =
+              {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:35, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:36> #-} pure(
+                s
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_652, f], a_719) in
+          load('float', a_720)
+        ,
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:39, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:42> ./de_facto_memory_model/cast_struct_inter_member_2.c:13:39 #-} let weak a_726: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:39, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:42> ./de_facto_memory_model/cast_struct_inter_member_2.c:13:39 #-} let weak a_722: loaded pointer =
+              {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:40, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:42> #-} let weak a_725: pointer =
+                {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:40, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:42> #-} pure(
+                  pf
+                ) in
+              load('float*', a_725) in
+            let Specified(a_723: pointer) = a_722 in
+            let weak a_724: boolean =
+              memop(PtrValidForDeref, 'float', a_723) in
+            pure(
+              if a_724 then
+                a_723
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('float', a_726)
+        ,
+          {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:43, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:46> ./de_facto_memory_model/cast_struct_inter_member_2.c:13:44 #-} let weak a_729: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:43, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:46> ./de_facto_memory_model/cast_struct_inter_member_2.c:13:44 #-} let strong a_728: pointer =
+              {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:13:43, ./de_facto_memory_model/cast_struct_inter_member_2.c:13:44> #-} pure(
+                s
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_652, i], a_728) in
+          load('signed int', a_729)
+        ) in
+      if not(params_length(a_707) <= 4) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_708) \/ not(are_compatible ('signed int', a_706)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_713: pointer =
+            let a_730: ctype = params_nth(a_707, 0) in
+            if not(are_compatible ('const char*', a_730)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_731: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_731, a_714) in
+              pure(a_731) in
+          let strong a_712: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'double', a_718) in
+          let strong a_711: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'double', a_721) in
+          let strong a_710: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_727)) in
+          let strong a_732: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_705, a_713,
+            [('double', a_712), ('double', a_711), ('signed int', a_710)]) in
+          let strong _: (unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_713)
+            ,
+              kill('double', a_712)
+            ,
+              kill('double', a_711)
+            ,
+              kill('signed int', a_710)
+            ) in
+          pure(a_732)
+    ) in
+  pure(Unit) ;
+  kill('struct __cerbty_unnamed_tag_652', s) ;
+  kill('struct __cerbty_unnamed_tag_652*', ps) ;
+  kill('unsigned ichar*', pcs) ;
+  kill('unsigned ichar*', pci) ;
+  kill('unsigned ichar*', pcf) ;
+  kill('float*', pf) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/cast_struct_inter_member_2.c:4:0, ./de_facto_memory_model/cast_struct_inter_member_2.c:14:1> ./de_facto_memory_model/cast_struct_inter_member_2.c:4:4 - ./de_facto_memory_model/cast_struct_inter_member_2.c:4:8 #-} save ret_663: loaded integer (a_733: loaded integer:= Specified(0)) in
+    pure(a_733)
+

@@ -1,0 +1,324 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_648 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_652 :=
+  i: 'signed int'
+  f: 'float'
+  j: 'signed int'
+
+-- Globals
+glob a_711: pointer [ail_ctype = 'char[31]'] :=
+  create_readonly(Ivalignof('char[31]'), 'char[31]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 46)), Specified(conv_int('char', 105)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 46)),
+  Specified(conv_int('char', 102)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 102)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 46)), Specified(conv_int('char', 106)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 45)), Specified(conv_int('char', 62)),
+  Specified(conv_int('char', 102)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 102)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/cheri_02_container.c:4:11, ./de_facto_memory_model/cheri_02_container.c:14:1> #-} let strong s: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_652'), 'struct __cerbty_unnamed_tag_652') in
+  let strong pj: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong pcj: pointer = create(Ivalignof('char*'), 'char*') in
+  let strong pcst: pointer = create(Ivalignof('char*'), 'char*') in
+  let strong ps: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_652*'), 'struct __cerbty_unnamed_tag_652*') in
+  {-# <./de_facto_memory_model/cheri_02_container.c:5:2, ./de_facto_memory_model/cheri_02_container.c:5:30> #-} let strong a_665: loaded struct a_652 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_668: loaded integer,
+      a_667: loaded floating, a_666: loaded integer) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# <./de_facto_memory_model/cheri_02_container.c:5:27, ./de_facto_memory_model/cheri_02_container.c:5:28> #-} pure(
+            Specified(3)
+          )
+        ,
+          {-# <./de_facto_memory_model/cheri_02_container.c:5:19, ./de_facto_memory_model/cheri_02_container.c:5:22> #-} pure(
+            Specified(2.)
+          )
+        ,
+          {-# <./de_facto_memory_model/cheri_02_container.c:5:13, ./de_facto_memory_model/cheri_02_container.c:5:14> #-} pure(
+            Specified(1)
+          )
+        ) in
+      pure(
+        Specified((struct __cerbty_unnamed_tag_652){.i= conv_loaded_int('signed int',
+        a_666), .f= a_667, .j= conv_loaded_int('signed int', a_668)})
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_652', s, a_665) ;
+  {-# <./de_facto_memory_model/cheri_02_container.c:6:2, ./de_facto_memory_model/cheri_02_container.c:6:19> #-} let strong a_669: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/cheri_02_container.c:6:12, ./de_facto_memory_model/cheri_02_container.c:6:18> ./de_facto_memory_model/cheri_02_container.c:6:12 #-} let weak a_670: pointer =
+        {-# §6.5.2.3#3, sentence 2 #-}
+        {-# <./de_facto_memory_model/cheri_02_container.c:6:13, ./de_facto_memory_model/cheri_02_container.c:6:18> #-} let strong a_671: pointer =
+          {-# <./de_facto_memory_model/cheri_02_container.c:6:14, ./de_facto_memory_model/cheri_02_container.c:6:15> #-} pure(
+            s
+          ) in
+        memop(PtrArrayShift[__cerbty_unnamed_tag_652, j], a_671) in
+      pure(Specified(a_670))
+    ) in
+  store('signed int*', pj, a_669) ;
+  {-# <./de_facto_memory_model/cheri_02_container.c:7:2, ./de_facto_memory_model/cheri_02_container.c:7:27> #-} let strong a_672: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/cheri_02_container.c:7:14, ./de_facto_memory_model/cheri_02_container.c:7:26> #-} let weak a_673: loaded pointer =
+        {-# <./de_facto_memory_model/cheri_02_container.c:7:23, ./de_facto_memory_model/cheri_02_container.c:7:25> #-} let weak a_675: pointer =
+          {-# <./de_facto_memory_model/cheri_02_container.c:7:23, ./de_facto_memory_model/cheri_02_container.c:7:25> #-} pure(
+            pj
+          ) in
+        load('signed int*', a_675) in
+      let Specified(a_674: pointer) = a_673 in
+      let weak a_676: boolean = memop(PtrWellAligned, 'char', a_674) in
+      pure(
+        Specified(if a_676 then
+          a_674
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('char*', pcj, a_672) ;
+  {-# <./de_facto_memory_model/cheri_02_container.c:8:2, ./de_facto_memory_model/cheri_02_container.c:8:55> #-} let strong a_677: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/cheri_02_container.c:8:15, ./de_facto_memory_model/cheri_02_container.c:8:54> #-} let weak (a_684: loaded pointer,
+      a_685: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/cheri_02_container.c:8:16, ./de_facto_memory_model/cheri_02_container.c:8:19> #-} let weak a_678: pointer =
+            {-# <./de_facto_memory_model/cheri_02_container.c:8:16, ./de_facto_memory_model/cheri_02_container.c:8:19> #-} pure(
+              pcj
+            ) in
+          load('char*', a_678)
+        ,
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/cheri_02_container.c:8:22, ./de_facto_memory_model/cheri_02_container.c:8:53> #-} let weak (a_679: loaded integer,
+          a_680: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/cheri_02_container.c:8:23, ./de_facto_memory_model/cheri_02_container.c:8:37> #-} pure(
+                Specified(16)
+              )
+            ,
+              {-# <./de_facto_memory_model/cheri_02_container.c:8:38, ./de_facto_memory_model/cheri_02_container.c:8:52> #-} pure(
+                Specified(0)
+              )
+            ) in
+          pure(
+            let (Specified(a_681: integer), Specified(a_682: integer)) =
+              (a_679, a_680) in
+            Specified(wrapI_sub('size_t', conv_int('size_t', a_681), conv_int('size_t',
+            a_682)))
+          )
+        ) in
+      let (Specified(a_686: pointer), Specified(a_687: integer)) =
+        (a_684, a_685) in
+      let weak a_688: pointer =
+        memop(PtrArrayShift, a_686, 'char', 0 - a_687) in
+      pure(Specified(a_688))
+    ) in
+  store('char*', pcst, a_677) ;
+  {-# <./de_facto_memory_model/cheri_02_container.c:10:2, ./de_facto_memory_model/cheri_02_container.c:10:22> #-} let strong a_689: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/cheri_02_container.c:10:11, ./de_facto_memory_model/cheri_02_container.c:10:21> ./de_facto_memory_model/cheri_02_container.c:10:11 #-} let weak a_690: loaded pointer =
+        {-# <./de_facto_memory_model/cheri_02_container.c:10:17, ./de_facto_memory_model/cheri_02_container.c:10:21> #-} let weak a_692: pointer =
+          {-# <./de_facto_memory_model/cheri_02_container.c:10:17, ./de_facto_memory_model/cheri_02_container.c:10:21> #-} pure(
+            pcst
+          ) in
+        load('char*', a_692) in
+      let Specified(a_691: pointer) = a_690 in
+      let weak a_693: boolean =
+        memop(PtrWellAligned, 'struct __cerbty_unnamed_tag_652', a_691) in
+      pure(
+        Specified(if a_693 then
+          a_691
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_652*', ps, a_689) ;
+  {-# <./de_facto_memory_model/cheri_02_container.c:11:2, ./de_facto_memory_model/cheri_02_container.c:11:15> #-} let strong _: loaded floating =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/cheri_02_container.c:11:2, ./de_facto_memory_model/cheri_02_container.c:11:14> ./de_facto_memory_model/cheri_02_container.c:11:8 #-} let weak (a_664: pointer,
+      a_699: loaded floating) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#4, sentence 2 #-}
+          {-# <./de_facto_memory_model/cheri_02_container.c:11:2, ./de_facto_memory_model/cheri_02_container.c:11:7> ./de_facto_memory_model/cheri_02_container.c:11:4 #-} let strong a_694: loaded pointer =
+            {-# <./de_facto_memory_model/cheri_02_container.c:11:2, ./de_facto_memory_model/cheri_02_container.c:11:4> #-} let weak a_698: pointer =
+              {-# <./de_facto_memory_model/cheri_02_container.c:11:2, ./de_facto_memory_model/cheri_02_container.c:11:4> #-} pure(
+                ps
+              ) in
+            load('struct __cerbty_unnamed_tag_652*', a_698) in
+          let Specified(a_695: pointer) = a_694 in
+          let weak a_696: boolean =
+            memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_652', a_695) in
+          pure(
+            if a_696 then
+              member_shift(a_695, __cerbty_unnamed_tag_652, .f)
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/cheri_02_container.c:11:10, ./de_facto_memory_model/cheri_02_container.c:11:14> #-} pure(
+            Specified(22.)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('float', a_664, a_699)) in
+      pure(a_699)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/cheri_02_container.c:12:2, ./de_facto_memory_model/cheri_02_container.c:13:16> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/cheri_02_container.c:12:2, ./de_facto_memory_model/cheri_02_container.c:13:15> #-} let strong ((a_700: loaded pointer,
+      (a_701: ctype, a_702: [ctype], a_703: boolean, a_704: boolean)),
+      a_710: loaded pointer, a_714: loaded integer, a_717: loaded floating,
+      a_720: loaded integer, a_723: loaded floating) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_663: loaded pointer =
+            {-# <./de_facto_memory_model/cheri_02_container.c:12:2, ./de_facto_memory_model/cheri_02_container.c:12:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_663, cfunction(a_663)))
+        ,
+          {-# <./de_facto_memory_model/cheri_02_container.c:12:9, ./de_facto_memory_model/cheri_02_container.c:12:42> #-} let weak a_712: pointer =
+            {-# <./de_facto_memory_model/cheri_02_container.c:12:9, ./de_facto_memory_model/cheri_02_container.c:12:42> #-} pure(
+              a_711
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_713: pointer = memop(PtrArrayShift, a_712, 'char', 0) in
+          pure(Specified(a_713))
+        ,
+          {-# <./de_facto_memory_model/cheri_02_container.c:12:43, ./de_facto_memory_model/cheri_02_container.c:12:46> ./de_facto_memory_model/cheri_02_container.c:12:44 #-} let weak a_716: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/cheri_02_container.c:12:43, ./de_facto_memory_model/cheri_02_container.c:12:46> ./de_facto_memory_model/cheri_02_container.c:12:44 #-} let strong a_715: pointer =
+              {-# <./de_facto_memory_model/cheri_02_container.c:12:43, ./de_facto_memory_model/cheri_02_container.c:12:44> #-} pure(
+                s
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_652, i], a_715) in
+          load('signed int', a_716)
+        ,
+          {-# <./de_facto_memory_model/cheri_02_container.c:12:47, ./de_facto_memory_model/cheri_02_container.c:12:50> ./de_facto_memory_model/cheri_02_container.c:12:48 #-} let weak a_719: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/cheri_02_container.c:12:47, ./de_facto_memory_model/cheri_02_container.c:12:50> ./de_facto_memory_model/cheri_02_container.c:12:48 #-} let strong a_718: pointer =
+              {-# <./de_facto_memory_model/cheri_02_container.c:12:47, ./de_facto_memory_model/cheri_02_container.c:12:48> #-} pure(
+                s
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_652, f], a_718) in
+          load('float', a_719)
+        ,
+          {-# <./de_facto_memory_model/cheri_02_container.c:12:51, ./de_facto_memory_model/cheri_02_container.c:12:54> ./de_facto_memory_model/cheri_02_container.c:12:52 #-} let weak a_722: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/cheri_02_container.c:12:51, ./de_facto_memory_model/cheri_02_container.c:12:54> ./de_facto_memory_model/cheri_02_container.c:12:52 #-} let strong a_721: pointer =
+              {-# <./de_facto_memory_model/cheri_02_container.c:12:51, ./de_facto_memory_model/cheri_02_container.c:12:52> #-} pure(
+                s
+              ) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_652, j], a_721) in
+          load('signed int', a_722)
+        ,
+          {-# <./de_facto_memory_model/cheri_02_container.c:13:9, ./de_facto_memory_model/cheri_02_container.c:13:14> ./de_facto_memory_model/cheri_02_container.c:13:11 #-} let weak a_729: pointer =
+            {-# §6.5.2.3#4, sentence 2 #-}
+            {-# <./de_facto_memory_model/cheri_02_container.c:13:9, ./de_facto_memory_model/cheri_02_container.c:13:14> ./de_facto_memory_model/cheri_02_container.c:13:11 #-} let strong a_724: loaded pointer =
+              {-# <./de_facto_memory_model/cheri_02_container.c:13:9, ./de_facto_memory_model/cheri_02_container.c:13:11> #-} let weak a_728: pointer =
+                {-# <./de_facto_memory_model/cheri_02_container.c:13:9, ./de_facto_memory_model/cheri_02_container.c:13:11> #-} pure(
+                  ps
+                ) in
+              load('struct __cerbty_unnamed_tag_652*', a_728) in
+            let Specified(a_725: pointer) = a_724 in
+            let weak a_726: boolean =
+              memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_652', a_725) in
+            pure(
+              if a_726 then
+                member_shift(a_725, __cerbty_unnamed_tag_652, .f)
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('float', a_729)
+        ) in
+      if not(params_length(a_702) <= 5) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_703) \/ not(are_compatible ('signed int', a_701)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_709: pointer =
+            let a_730: ctype = params_nth(a_702, 0) in
+            if not(are_compatible ('const char*', a_730)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_731: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_731, a_710) in
+              pure(a_731) in
+          let strong a_708: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_714)) in
+          let strong a_707: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'double', a_717) in
+          let strong a_706: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_720)) in
+          let strong a_705: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'double', a_723) in
+          let strong a_732: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_700, a_709,
+            [('signed int', a_708), ('double', a_707), ('signed int', a_706),
+            ('double', a_705)]) in
+          let strong _: (unit,unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_709)
+            ,
+              kill('signed int', a_708)
+            ,
+              kill('double', a_707)
+            ,
+              kill('signed int', a_706)
+            ,
+              kill('double', a_705)
+            ) in
+          pure(a_732)
+    ) in
+  pure(Unit) ;
+  kill('struct __cerbty_unnamed_tag_652', s) ;
+  kill('signed int*', pj) ;
+  kill('char*', pcj) ;
+  kill('char*', pcst) ;
+  kill('struct __cerbty_unnamed_tag_652*', ps) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/cheri_02_container.c:4:0, ./de_facto_memory_model/cheri_02_container.c:14:1> ./de_facto_memory_model/cheri_02_container.c:4:4 - ./de_facto_memory_model/cheri_02_container.c:4:8 #-} save ret_662: loaded integer (a_733: loaded integer:= Specified(0)) in
+    pure(a_733)
+

@@ -1,0 +1,269 @@
+-- Globals
+glob x: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_645: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_646: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:2:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:2:7> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', a_645, conv_loaded_int('signed int', a_646)) ;
+  pure(a_645)
+
+glob y: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_643: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_644: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:2:11, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:2:12> #-} pure(
+        Specified(2)
+      )
+    ) in
+  store('signed int', a_643, conv_loaded_int('signed int', a_644)) ;
+  pure(a_643)
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:3:11, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:11:1> #-} let strong p: pointer =
+    create(Ivalignof('signed int*'), 'signed int*') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:4:2, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:4:14> #-} let strong a_591: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:4:11, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:4:13> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:4:11 #-} let weak a_592: pointer =
+        {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:4:12, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:4:13> #-} pure(
+          x
+        ) in
+      pure(Specified(a_592))
+    ) in
+  store('signed int*', p, a_591) ;
+  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:5:2, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:5:14> #-} let strong a_593: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:5:11, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:5:13> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:5:11 #-} let weak a_594: pointer =
+        {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:5:12, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:5:13> #-} pure(
+          y
+        ) in
+      pure(Specified(a_594))
+    ) in
+  store('signed int*', q, a_593) ;
+  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:2, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:12> #-} let strong _: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:2, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:11> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:4 #-} let weak (a_590: pointer,
+      a_601: loaded pointer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:2, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:3> #-} pure(
+            p
+          )
+        ,
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:11> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:8 #-} let weak (a_595: loaded pointer,
+          a_597: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:7> #-} let weak a_600: pointer =
+                {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:7> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_600)
+            ,
+              {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:10, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:6:11> #-} pure(
+                Specified(1)
+              )
+            ) in
+          let (Specified(a_596: pointer), Specified(a_598: integer)) =
+            (a_595, a_597) in
+          let weak a_599: pointer =
+            memop(PtrArrayShift, a_596, 'signed int', a_598) in
+          pure(Specified(a_599))
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int*', a_590, a_601)) in
+      pure(a_601)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:2, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:9:3> #-} let strong a_602: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:36> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:32 #-} let weak (a_604: loaded integer,
+      a_605: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:36> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:32 #-} let weak (a_609: loaded integer,
+          a_610: loaded integer) =
+            unseq(
+              {-# §6.5.2.2#10, sentence 1 #-}
+              {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:31> #-} let strong ((a_615: loaded pointer,
+              (a_616: ctype, a_617: [ctype], a_618: boolean, a_619: boolean)),
+              a_623: loaded pointer, a_625: loaded pointer,
+              a_627: loaded integer) =
+                {-# §6.5.2.2#4, sentence 2 #-}
+                unseq(
+                  let strong a_614: loaded pointer =
+                    {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:12> #-} pure(
+                      Specified(Cfunction(memcmp_proxy))
+                    ) in
+                  pure((a_614, cfunction(a_614)))
+                ,
+                  {-# §6.5.3.2#3, sentence 5 #-}
+                  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:13, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:15> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:13 #-} let weak a_624: pointer =
+                    {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:14, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:15> #-} pure(
+                      p
+                    ) in
+                  pure(Specified(a_624))
+                ,
+                  {-# §6.5.3.2#3, sentence 5 #-}
+                  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:17, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:19> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:17 #-} let weak a_626: pointer =
+                    {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:18, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:19> #-} pure(
+                      q
+                    ) in
+                  pure(Specified(a_626))
+                ,
+                  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:21, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:30> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:21 #-} pure(
+                    Specified(Ivsizeof('signed int*'))
+                  )
+                ) in
+              if not(params_length(a_617) = 3) then
+                pure(undef(<<UB038_number_of_args>>))
+              else
+                if a_618 \/ not(are_compatible ('signed int', a_616)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  let strong a_622: pointer =
+                    let a_628: ctype = params_nth(a_617, 0) in
+                    if not(are_compatible ('const void*', a_628)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_629: pointer =
+                        create(Ivalignof('const void*'), 'const void*') in
+                      let weak _: unit = store('const void*', a_629, a_623) in
+                      pure(a_629) in
+                  let strong a_621: pointer =
+                    let a_630: ctype = params_nth(a_617, 1) in
+                    if not(are_compatible ('const void*', a_630)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_631: pointer =
+                        create(Ivalignof('const void*'), 'const void*') in
+                      let weak _: unit = store('const void*', a_631, a_625) in
+                      pure(a_631) in
+                  let strong a_620: pointer =
+                    let a_632: ctype = params_nth(a_617, 2) in
+                    if not(are_compatible ('size_t', a_632)) then
+                      pure(undef(<<UB041_function_not_compatible>>))
+                    else
+                      {-# §6.5.2.2#7, sentence 1 #-}
+                      let weak a_633: pointer =
+                        create(Ivalignof('size_t'), 'size_t') in
+                      let weak _: unit =
+                        store('size_t', a_633,
+                        conv_loaded_int('size_t', a_627)) in
+                      pure(a_633) in
+                  let strong a_634: loaded integer =
+                    ccall('signed int (*) (const void*, const void*, size_t)',
+                    a_615, a_622, a_621, a_620) in
+                  let strong _: (unit,unit,unit) =
+                    unseq(
+                      kill('void*', a_622)
+                    ,
+                      kill('void*', a_621)
+                    ,
+                      kill('size_t', a_620)
+                    ) in
+                  pure(a_634)
+            ,
+              {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:35, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:36> #-} pure(
+                Specified(0)
+              )
+            ) in
+          pure(
+            let (Specified(a_611: integer), Specified(a_612: integer)) =
+              (a_609, a_610) in
+            if conv_int('signed int', a_611) = conv_int('signed int', a_612) then
+              Specified(1)
+            else
+              Specified(0)
+          )
+        ,
+          {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:6, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:36> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:32 #-} pure(
+            Specified(0)
+          )
+        ) in
+      pure(
+        let (Specified(a_606: integer), Specified(a_607: integer)) =
+          (a_604, a_605) in
+        if conv_int('signed int', a_606) = conv_int('signed int', a_607) then
+          Specified(1)
+        else
+          Specified(0)
+      )
+    ) in
+  let strong a_589: boolean =
+    let Specified(a_603: integer) = a_602 in
+    pure(if not(a_603 = 1) then True else False) in
+  if a_589 then
+    {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:38, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:9:3> #-} {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:4, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:12> #-} let strong _: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# §6.5.16#3, sentence 4 #-}
+        {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:4, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:11> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:7 #-} let weak (a_635: pointer,
+        a_640: loaded integer) =
+          {-# §6.5.16#3, sentence 5 #-}
+          unseq(
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:4, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:6> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:4 #-} let weak a_636: loaded pointer =
+              {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:5, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:6> #-} let weak a_639: pointer =
+                {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:5, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:6> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_639) in
+            let Specified(a_637: pointer) = a_636 in
+            let weak a_638: boolean =
+              memop(PtrValidForDeref, 'signed int', a_637) in
+            pure(
+              if a_638 then
+                a_637
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            )
+          ,
+            {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:9, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:8:11> #-} pure(
+              Specified(11)
+            )
+          ) in
+        let weak _: unit =
+          {-# §6.5.16.1#2, store #-}
+          neg(store('signed int', a_635, conv_loaded_int('signed int', a_640))) in
+        pure(conv_loaded_int('signed int', a_640))
+      ) in
+    pure(Unit) ;
+    pure(Unit)
+  else
+    {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:7:2, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:9:3> #-} pure(
+      Unit
+    ) ;
+  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:10:2, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:10:11> #-} let strong a_641: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:10:9, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:10:10> #-} pure(
+        Specified(0)
+      )
+    ) in
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  run ret_588(conv_loaded_int('signed int', a_641)) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:3:0, ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:11:1> ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:3:4 - ./de_facto_memory_model/provenance_basic_global_xy_noprintf.c:3:8 #-} save ret_588: loaded integer (a_642: loaded integer:= Specified(0)) in
+    pure(a_642)
+

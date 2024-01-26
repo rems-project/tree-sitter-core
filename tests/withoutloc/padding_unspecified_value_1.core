@@ -1,0 +1,207 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_648 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_652 :=
+  c: 'char'
+  f: 'float'
+  i: 'signed int'
+
+-- Globals
+glob a_714: pointer [ail_ctype = 'char[7]'] :=
+  create_readonly(Ivalignof('char[7]'), 'char[7]', Specified(Array(Specified(conv_int('char',
+  99)), Specified(conv_int('char', 49)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 99)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong offset_padding: pointer =
+    create(Ivalignof('size_t'), 'size_t') in
+  let strong a_663: loaded integer =
+    bound(
+      let weak (a_664: loaded integer, a_665: loaded integer) =
+        unseq(pure(Specified(0)), pure(Specified(1))) in
+      pure(
+        let (Specified(a_666: integer), Specified(a_667: integer)) =
+          (a_664, a_665) in
+        Specified(wrapI_add('size_t', __conv_int__('size_t', a_666), __conv_int__('size_t', a_667)))
+      )
+    ) in
+  store('size_t', offset_padding, conv_loaded_int('size_t', a_663)) ;
+  let strong a_669: loaded integer =
+    bound(
+      let weak (a_671: loaded integer, a_672: loaded integer) =
+        unseq(
+          let weak (a_677: loaded integer, a_678: loaded integer) =
+            unseq(
+              pure(Specified(8))
+            ,
+              let weak a_676: pointer = pure(offset_padding) in
+              load('size_t', a_676)
+            ) in
+          let (Specified(a_679: integer), Specified(a_680: integer)) =
+            (a_677, a_678) in
+          pure(
+            if conv_int('size_t', a_679) > conv_int('size_t', a_680) then
+              Specified(1)
+            else
+              Specified(0)
+          )
+        ,
+          pure(Specified(0))
+        ) in
+      pure(
+        let (Specified(a_673: integer), Specified(a_674: integer)) =
+          (a_671, a_672) in
+        if conv_int('signed int', a_673) = conv_int('signed int', a_674) then
+          Specified(1)
+        else
+          Specified(0)
+      )
+    ) in
+  let strong a_662: boolean =
+    let Specified(a_670: integer) = a_669 in
+    pure(if not(a_670 = 1) then True else False) in
+  if a_662 then
+    let strong s: pointer =
+      create(Ivalignof('struct __cerbty_unnamed_tag_652'), 'struct __cerbty_unnamed_tag_652') in
+    let strong p: pointer =
+      create(Ivalignof('unsigned char*'), 'unsigned char*') in
+    let strong c1: pointer =
+      create(Ivalignof('unsigned char'), 'unsigned char') in
+    store('struct __cerbty_unnamed_tag_652', s,
+    Unspecified('struct __cerbty_unnamed_tag_652')) ;
+    let strong a_684: loaded pointer =
+      bound(
+        let weak (a_685: loaded pointer, a_687: loaded integer) =
+          unseq(
+            let weak a_690: loaded pointer =
+              let weak a_692: pointer = pure(s) in
+              pure(Specified(a_692)) in
+            let Specified(a_691: pointer) = a_690 in
+            let weak a_693: boolean =
+              memop(PtrWellAligned, 'unsigned char', a_691) in
+            pure(
+              Specified(if a_693 then
+                a_691
+              else
+                undef(<<UB025_misaligned_pointer_conversion>>))
+            )
+          ,
+            let weak a_694: pointer = pure(offset_padding) in
+            load('size_t', a_694)
+          ) in
+        let (Specified(a_686: pointer), Specified(a_688: integer)) =
+          (a_685, a_687) in
+        let weak a_689: pointer =
+          memop(PtrArrayShift, a_686, 'unsigned char', a_688) in
+        pure(Specified(a_689))
+      ) in
+    store('unsigned char*', p, a_684) ;
+    let strong _: loaded integer =
+      bound(
+        let weak (a_683: pointer, a_699: loaded integer) =
+          unseq(
+            let weak a_695: loaded pointer =
+              let weak a_698: pointer = pure(p) in
+              load('unsigned char*', a_698) in
+            let Specified(a_696: pointer) = a_695 in
+            let weak a_697: boolean =
+              memop(PtrValidForDeref, 'unsigned char', a_696) in
+            pure(
+              if a_697 then
+                a_696
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            )
+          ,
+            pure(Specified(65))
+          ) in
+        let weak _: unit =
+          neg(store('unsigned char', a_683,
+          conv_loaded_int('unsigned char', a_699))) in
+        pure(conv_loaded_int('unsigned char', a_699))
+      ) in
+    pure(Unit) ;
+    let strong a_700: loaded integer =
+      bound(
+        let weak a_705: pointer =
+          let weak a_701: loaded pointer =
+            let weak a_704: pointer = pure(p) in
+            load('unsigned char*', a_704) in
+          let Specified(a_702: pointer) = a_701 in
+          let weak a_703: boolean =
+            memop(PtrValidForDeref, 'unsigned char', a_702) in
+          pure(
+            if a_703 then
+              a_702
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          ) in
+        load('unsigned char', a_705)
+      ) in
+    store('unsigned char', c1, conv_loaded_int('unsigned char', a_700)) ;
+    let strong _: loaded integer =
+      bound(
+        let strong ((a_706: loaded pointer,
+        (a_707: ctype, a_708: [ctype], a_709: boolean, a_710: boolean)),
+        a_713: loaded pointer, a_717: loaded integer) =
+          unseq(
+            let strong a_682: loaded pointer =
+              pure(Specified(Cfunction(printf_proxy))) in
+            pure((a_682, cfunction(a_682)))
+          ,
+            let weak a_715: pointer = pure(a_714) in
+            let weak a_716: pointer =
+              memop(PtrArrayShift, a_715, 'char', 0) in
+            pure(Specified(a_716))
+          ,
+            let weak a_718: pointer = pure(c1) in
+            load('unsigned char', a_718)
+          ) in
+        if not(params_length(a_708) <= 2) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if not(a_709) \/ not(are_compatible ('signed int', a_707)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_712: pointer =
+              let a_719: ctype = params_nth(a_708, 0) in
+              if not(are_compatible ('const char*', a_719)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                let weak a_720: pointer =
+                  create(Ivalignof('const char*'), 'const char*') in
+                let weak _: unit = store('const char*', a_720, a_713) in
+                pure(a_720) in
+            let strong a_711: pointer =
+              pcall(create_and_store, 'signed int',
+              conv_loaded_int('signed int', a_717)) in
+            let strong a_721: loaded integer =
+              ccall('signed int (*) (const char*restrict , ...)', a_706, a_712,
+              [('signed int', a_711)]) in
+            let strong _: (unit,unit) =
+              unseq(kill('char*', a_712), kill('signed int', a_711)) in
+            pure(a_721)
+      ) in
+    pure(Unit) ;
+    kill('struct __cerbty_unnamed_tag_652', s) ;
+    kill('unsigned ichar*', p) ;
+    kill('unsigned ichar', c1) ;
+    pure(Unit)
+  else
+    pure(Unit) ;
+  let strong a_722: loaded integer = bound(pure(Specified(0))) in
+  kill('size_t', offset_padding) ;
+  run ret_661(conv_loaded_int('signed int', a_722)) ;
+  kill('size_t', offset_padding) ;
+  pure(Unit) ;
+  save ret_661: loaded integer (a_723: loaded integer:= Specified(0)) in
+    pure(a_723)
+

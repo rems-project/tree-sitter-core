@@ -1,0 +1,571 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob x: pointer [ail_ctype = 'signed int'] :=
+  {-# <unknown location> #-} let strong a_868: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong a_869: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:3:6, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:3:7> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', a_868, conv_loaded_int('signed int', a_869)) ;
+  pure(a_868)
+
+glob a_784: pointer [ail_ctype = 'char[14]'] :=
+  create_readonly(Ivalignof('char[14]'), 'char[14]', Specified(Array(Specified(conv_int('char',
+  42)), Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 42)), Specified(conv_int('char', 113)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc user_memcpy2 (dest: pointer, src: pointer, n: pointer): eff unit :=
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:5:48, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:12:1> #-} {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:11:3> #-} {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:11:3> #-} save while_809: unit () in
+    let strong a_811: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:9, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:14> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:11 #-} let weak (a_813: loaded integer,
+        a_814: loaded integer) =
+          unseq(
+            {-# §6.5.8 #-}
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:9, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:14> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:11 #-} let weak (a_819: loaded integer,
+            a_820: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:9, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:10> #-} let weak a_818: pointer =
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:9, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:10> #-} pure(
+                    n
+                  ) in
+                load('size_t', a_818)
+              ,
+                {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:13, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:14> #-} pure(
+                  Specified(0)
+                )
+              ) in
+            let (Specified(a_821: integer), Specified(a_822: integer)) =
+              (a_819, a_820) in
+            {-# §6.5.8#6 #-}
+            pure(
+              if if all_values_representable_in('size_t', 'signed int') then
+                conv_int('signed int', a_821)
+              else
+                conv_int('unsigned int', a_821) >
+              if all_values_representable_in('size_t', 'signed int') then
+                conv_int('signed int', a_822)
+              else
+                conv_int('unsigned int', a_822) then
+                Specified(1)
+              else
+                Specified(0)
+            )
+          ,
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:9, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:14> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:11 #-} pure(
+              Specified(0)
+            )
+          ) in
+        pure(
+          let (Specified(a_815: integer), Specified(a_816: integer)) =
+            (a_813, a_814) in
+          if conv_int('signed int', a_815) = conv_int('signed int', a_816) then
+            Specified(1)
+          else
+            Specified(0)
+        )
+      ) in
+    let strong a_810: boolean =
+      let Specified(a_812: integer) = a_811 in
+      pure(if not(a_812 = 1) then True else False) in
+    if a_810 then
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:11:3> #-} {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:16, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:11:3> #-} {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:29> #-} let strong _: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:28> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:10 #-} let weak (a_827: pointer,
+          a_845: loaded integer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:9> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:4 #-} let weak a_828: loaded pointer =
+                {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:5, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:9> #-} let weak a_831: pointer =
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:5, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:9> #-} pure(
+                    dest
+                  ) in
+                load('unsigned char*', a_831) in
+              let Specified(a_829: pointer) = a_828 in
+              let weak a_830: boolean =
+                memop(PtrValidForDeref, 'unsigned char', a_829) in
+              pure(
+                if a_830 then
+                  a_829
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              )
+            ,
+              {-# §6.5.11 #-}
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:12, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:28> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:25 #-} let weak (a_832: loaded integer,
+              a_833: loaded integer) =
+                unseq(
+                  {-# §6.5.11 #-}
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:12, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:24> #-} let weak (a_836: loaded integer,
+                  a_837: loaded integer) =
+                    unseq(
+                      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:13, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:19> #-} let weak a_844: pointer =
+                        {-# §6.5.3.2 #-}
+                        {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:13, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:19> #-} let weak a_840: loaded pointer =
+                          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:15, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:18> #-} let weak a_843: pointer =
+                            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:15, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:18> #-} pure(
+                              src
+                            ) in
+                          load('unsigned char*', a_843) in
+                        let Specified(a_841: pointer) = a_840 in
+                        let weak a_842: boolean =
+                          memop(PtrValidForDeref, 'unsigned char', a_841) in
+                        pure(
+                          if a_842 then
+                            a_841
+                          else
+                            undef(<<UB043_indirection_invalid_value>>)
+                        ) in
+                      load('unsigned char', a_844)
+                    ,
+                      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:22, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:23> #-} pure(
+                        Specified(1)
+                      )
+                    ) in
+                  pure(
+                    let (Specified(a_838: integer), Specified(a_839: integer)) =
+                      (a_836, a_837) in
+                    Specified(IvXOR('signed int',
+                    conv_int('signed int', a_838),
+                    conv_int('signed int', a_839)))
+                  )
+                ,
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:27, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:7:28> #-} pure(
+                    Specified(1)
+                  )
+                ) in
+              pure(
+                let (Specified(a_834: integer), Specified(a_835: integer)) =
+                  (a_832, a_833) in
+                Specified(IvXOR('signed int', conv_int('signed int', a_834),
+                conv_int('signed int', a_835)))
+              )
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('unsigned char', a_827,
+            conv_loaded_int('unsigned char', a_845))) in
+          pure(conv_loaded_int('unsigned char', a_845))
+        ) in
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:13> #-} let strong _: loaded pointer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:12> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:8 #-} let weak (a_826: pointer,
+          a_852: loaded pointer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:7> #-} pure(
+                src
+              )
+            ,
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:12> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:8 #-} let weak (a_846: loaded pointer,
+              a_848: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:7> #-} let weak a_851: pointer =
+                    {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:7> #-} pure(
+                      src
+                    ) in
+                  load('unsigned char*', a_851)
+                ,
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:11, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:8:12> #-} pure(
+                    Specified(1)
+                  )
+                ) in
+              let (Specified(a_847: pointer), Specified(a_849: integer)) =
+                (a_846, a_848) in
+              let weak a_850: pointer =
+                memop(PtrArrayShift, a_847, 'unsigned char', a_849) in
+              pure(Specified(a_850))
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('unsigned char*', a_826, a_852)) in
+          pure(a_852)
+        ) in
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:14> #-} let strong _: loaded pointer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:13> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:9 #-} let weak (a_825: pointer,
+          a_859: loaded pointer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:8> #-} pure(
+                dest
+              )
+            ,
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:13> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:9 #-} let weak (a_853: loaded pointer,
+              a_855: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:8> #-} let weak a_858: pointer =
+                    {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:8> #-} pure(
+                      dest
+                    ) in
+                  load('unsigned char*', a_858)
+                ,
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:12, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:9:13> #-} pure(
+                    Specified(1)
+                  )
+                ) in
+              let (Specified(a_854: pointer), Specified(a_856: integer)) =
+                (a_853, a_855) in
+              let weak a_857: pointer =
+                memop(PtrArrayShift, a_854, 'unsigned char', a_856) in
+              pure(Specified(a_857))
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('unsigned char*', a_825, a_859)) in
+          pure(a_859)
+        ) in
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:11> #-} let strong _: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:10> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:6 #-} let weak (a_824: pointer,
+          a_866: loaded integer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:5> #-} pure(
+                n
+              )
+            ,
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:10> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:6 #-} let weak (a_861: loaded integer,
+              a_862: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:5> #-} let weak a_860: pointer =
+                    {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:4, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:5> #-} pure(
+                      n
+                    ) in
+                  load('size_t', a_860)
+                ,
+                  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:9, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:10:10> #-} pure(
+                    Specified(1)
+                  )
+                ) in
+              pure(
+                let (Specified(a_863: integer), Specified(a_864: integer)) =
+                  (a_861, a_862) in
+                Specified(wrapI_sub('size_t', if all_values_representable_in('size_t',
+                'signed int') then
+                  conv_int('signed int', a_863)
+                else
+                  conv_int('unsigned int', a_863), if all_values_representable_in('size_t',
+                'signed int') then
+                  conv_int('signed int', a_864)
+                else
+                  conv_int('unsigned int', a_864)))
+              )
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('size_t', a_824, conv_loaded_int('size_t', a_866))) in
+          pure(conv_loaded_int('size_t', a_866))
+        ) in
+      pure(Unit) ;
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:11:3> #-} save continue_807: unit () in
+        {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:11:3> #-} pure(
+          Unit
+        ) ;
+      pure(Unit) ;
+      run while_809()
+    else
+      pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:11:3> #-} save break_808: unit () in
+    {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:6:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:11:3> #-} pure(
+      Unit
+    ) ;
+  pure(Unit) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:4:0, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:12:1> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:4:5 - ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:4:17 #-} save ret_806: unit (a_867: unit:= Unit) in
+    pure(a_867)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:13:11, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:20:1> #-} let strong p: pointer =
+    create(Ivalignof('signed int*'), 'signed int*') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:14:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:14:14> #-} let strong a_742: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:14:11, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:14:13> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:14:11 #-} let weak a_743: pointer =
+        {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:14:12, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:14:13> #-} pure(
+          x
+        ) in
+      pure(Specified(a_743))
+    ) in
+  store('signed int*', p, a_742) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:15:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:15:9> #-} store('signed int*',
+  q, Unspecified('signed int*')) ;
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:17:25> #-} {-# §6.5#2 #-}
+  bound(
+    {-# §6.5.2.2#10, sentence 1 #-}
+    {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:17:24> #-} let strong ((a_744: loaded pointer,
+    (a_745: ctype, a_746: [ctype], a_747: boolean, a_748: boolean)),
+    a_752: loaded pointer, a_757: loaded pointer, a_762: loaded integer) =
+      {-# §6.5.2.2#4, sentence 2 #-}
+      unseq(
+        let strong a_741: loaded pointer =
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:14> #-} pure(
+            Specified(Cfunction(user_memcpy2))
+          ) in
+        pure((a_741, cfunction(a_741)))
+      ,
+        {-# §6.5.4 #-}
+        {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:15, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:33> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:15 #-} let weak a_753: loaded pointer =
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:31, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:33> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:31 #-} let weak a_755: pointer =
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:32, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:33> #-} pure(
+              q
+            ) in
+          pure(Specified(a_755)) in
+        let Specified(a_754: pointer) = a_753 in
+        let weak a_756: boolean =
+          memop(PtrWellAligned, 'unsigned char', a_754) in
+        pure(
+          Specified(if a_756 then
+            a_754
+          else
+            undef(<<UB025_misaligned_pointer_conversion>>))
+        )
+      ,
+        {-# §6.5.4 #-}
+        {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:35, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:53> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:35 #-} let weak a_758: loaded pointer =
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:51, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:53> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:51 #-} let weak a_760: pointer =
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:52, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:16:53> #-} pure(
+              p
+            ) in
+          pure(Specified(a_760)) in
+        let Specified(a_759: pointer) = a_758 in
+        let weak a_761: boolean =
+          memop(PtrWellAligned, 'unsigned char', a_759) in
+        pure(
+          Specified(if a_761 then
+            a_759
+          else
+            undef(<<UB025_misaligned_pointer_conversion>>))
+        )
+      ,
+        {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:17:14, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:17:23> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:17:14 #-} pure(
+          Specified(Ivsizeof('signed int*'))
+        )
+      ) in
+    if not(params_length(a_746) = 3) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_747 \/ not(are_compatible ('void', a_745)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_751: pointer =
+          let a_763: ctype = params_nth(a_746, 0) in
+          if not(are_compatible ('unsigned char*', a_763)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_764: pointer =
+              create(Ivalignof('unsigned char*'), 'unsigned char*') in
+            let weak _: unit = store('unsigned char*', a_764, a_752) in
+            pure(a_764) in
+        let strong a_750: pointer =
+          let a_765: ctype = params_nth(a_746, 1) in
+          if not(are_compatible ('unsigned char*', a_765)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_766: pointer =
+              create(Ivalignof('unsigned char*'), 'unsigned char*') in
+            let weak _: unit = store('unsigned char*', a_766, a_757) in
+            pure(a_766) in
+        let strong a_749: pointer =
+          let a_767: ctype = params_nth(a_746, 2) in
+          if not(are_compatible ('size_t', a_767)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_768: pointer = create(Ivalignof('size_t'), 'size_t') in
+            let weak _: unit =
+              store('size_t', a_768, conv_loaded_int('size_t', a_762)) in
+            pure(a_768) in
+        let strong a_769: unit =
+          ccall('void (*) (unsigned char*, unsigned char*, size_t)', a_744,
+          a_751, a_750, a_749) in
+        let strong _: (unit,unit,unit) =
+          unseq(
+            kill('unsigned ichar*', a_751)
+          ,
+            kill('unsigned ichar*', a_750)
+          ,
+            kill('size_t', a_749)
+          ) in
+        pure(a_769)
+  ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:10> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:9> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:5 #-} let weak (a_740: pointer,
+      a_774: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:4> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:2 #-} let weak a_770: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:3, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:4> #-} let weak a_773: pointer =
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:3, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:4> #-} pure(
+                q
+              ) in
+            load('signed int*', a_773) in
+          let Specified(a_771: pointer) = a_770 in
+          let weak a_772: boolean =
+            memop(PtrValidForDeref, 'signed int', a_771) in
+          pure(
+            if a_772 then
+              a_771
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:7, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:18:9> #-} pure(
+            Specified(11)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_740, conv_loaded_int('signed int', a_774))) in
+      pure(conv_loaded_int('signed int', a_774))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:33> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:32> #-} let strong ((a_775: loaded pointer,
+      (a_776: ctype, a_777: [ctype], a_778: boolean, a_779: boolean)),
+      a_783: loaded pointer, a_787: loaded integer, a_793: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_739: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:2, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_739, cfunction(a_739)))
+        ,
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:9, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:25> #-} let weak a_785: pointer =
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:9, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:25> #-} pure(
+              a_784
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_786: pointer = memop(PtrArrayShift, a_785, 'char', 0) in
+          pure(Specified(a_786))
+        ,
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:26, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:28> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:26 #-} let weak a_792: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:26, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:28> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:26 #-} let weak a_788: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:27, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:28> #-} let weak a_791: pointer =
+                {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:27, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:28> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_791) in
+            let Specified(a_789: pointer) = a_788 in
+            let weak a_790: boolean =
+              memop(PtrValidForDeref, 'signed int', a_789) in
+            pure(
+              if a_790 then
+                a_789
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_792)
+        ,
+          {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:29, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:31> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:29 #-} let weak a_798: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:29, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:31> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:29 #-} let weak a_794: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:30, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:31> #-} let weak a_797: pointer =
+                {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:30, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:19:31> #-} pure(
+                  q
+                ) in
+              load('signed int*', a_797) in
+            let Specified(a_795: pointer) = a_794 in
+            let weak a_796: boolean =
+              memop(PtrValidForDeref, 'signed int', a_795) in
+            pure(
+              if a_796 then
+                a_795
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_798)
+        ) in
+      if not(params_length(a_777) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_778) \/ not(are_compatible ('signed int', a_776)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_782: pointer =
+            let a_799: ctype = params_nth(a_777, 0) in
+            if not(are_compatible ('const char*', a_799)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_800: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_800, a_783) in
+              pure(a_800) in
+          let strong a_781: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_787)) in
+          let strong a_780: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_793)) in
+          let strong a_801: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_775, a_782,
+            [('signed int', a_781), ('signed int', a_780)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_782)
+            ,
+              kill('signed int', a_781)
+            ,
+              kill('signed int', a_780)
+            ) in
+          pure(a_801)
+    ) in
+  pure(Unit) ;
+  kill('signed int*', p) ;
+  kill('signed int*', q) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:13:0, ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:20:1> ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:13:4 - ./de_facto_memory_model/pointer_copy_user_dataflow_indirect_bytewise.c:13:8 #-} save ret_738: loaded integer (a_802: loaded integer:= Specified(0)) in
+    pure(a_802)
+

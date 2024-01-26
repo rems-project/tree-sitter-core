@@ -1,0 +1,44 @@
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_from_concrete_address_1.c:1:11, ./de_facto_memory_model/pointer_from_concrete_address_1.c:5:1> #-} {-# <./de_facto_memory_model/pointer_from_concrete_address_1.c:4:2, ./de_facto_memory_model/pointer_from_concrete_address_1.c:4:24> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_from_concrete_address_1.c:4:2, ./de_facto_memory_model/pointer_from_concrete_address_1.c:4:23> ./de_facto_memory_model/pointer_from_concrete_address_1.c:4:18 #-} let weak (a_506: pointer,
+      a_513: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/pointer_from_concrete_address_1.c:4:2, ./de_facto_memory_model/pointer_from_concrete_address_1.c:4:17> ./de_facto_memory_model/pointer_from_concrete_address_1.c:4:2 #-} let weak a_507: loaded pointer =
+            {-# §6.5.4 #-}
+            {-# <./de_facto_memory_model/pointer_from_concrete_address_1.c:4:3, ./de_facto_memory_model/pointer_from_concrete_address_1.c:4:17> #-} let weak a_510: loaded integer =
+              {-# <./de_facto_memory_model/pointer_from_concrete_address_1.c:4:11, ./de_facto_memory_model/pointer_from_concrete_address_1.c:4:16> #-} pure(
+                Specified(2748)
+              ) in
+            let Specified(a_511: integer) = a_510 in
+            let weak a_512: pointer =
+              memop(PtrFromInt, 'signed int', 'signed int', a_511) in
+            pure(Specified(a_512)) in
+          let Specified(a_508: pointer) = a_507 in
+          let weak a_509: boolean =
+            memop(PtrValidForDeref, 'signed int', a_508) in
+          pure(
+            if a_509 then
+              a_508
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_from_concrete_address_1.c:4:20, ./de_facto_memory_model/pointer_from_concrete_address_1.c:4:23> #-} pure(
+            Specified(123)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_506, conv_loaded_int('signed int', a_513))) in
+      pure(conv_loaded_int('signed int', a_513))
+    ) in
+  pure(Unit) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_from_concrete_address_1.c:1:0, ./de_facto_memory_model/pointer_from_concrete_address_1.c:5:1> ./de_facto_memory_model/pointer_from_concrete_address_1.c:1:4 - ./de_facto_memory_model/pointer_from_concrete_address_1.c:1:8 #-} save ret_505: loaded integer (a_514: loaded integer:= Specified(0)) in
+    pure(a_514)
+

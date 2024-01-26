@@ -1,0 +1,451 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+-- Globals
+glob a_932: pointer [ail_ctype = 'char[6]'] :=
+  create_readonly(Ivalignof('char[6]'), 'char[6]', Specified(Array(Specified(conv_int('char',
+  106)), Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/effective_type_4e.c:4:11, ./de_facto_memory_model/effective_type_4e.c:14:1> #-} let strong i: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('void*'), 'void*') in
+  let strong k: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong q: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  {-# <./de_facto_memory_model/effective_type_4e.c:5:2, ./de_facto_memory_model/effective_type_4e.c:5:10> #-} let strong a_842: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/effective_type_4e.c:5:8, ./de_facto_memory_model/effective_type_4e.c:5:9> #-} pure(
+        Specified(1)
+      )
+    ) in
+  store('signed int', i, conv_loaded_int('signed int', a_842)) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:6:2, ./de_facto_memory_model/effective_type_4e.c:6:32> #-} let strong a_843: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/effective_type_4e.c:6:12, ./de_facto_memory_model/effective_type_4e.c:6:31> #-} let strong ((a_845: loaded pointer,
+      (a_846: ctype, a_847: [ctype], a_848: boolean, a_849: boolean)),
+      a_851: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_844: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_4e.c:6:12, ./de_facto_memory_model/effective_type_4e.c:6:18> #-} pure(
+              Specified(Cfunction(malloc_proxy))
+            ) in
+          pure((a_844, cfunction(a_844)))
+        ,
+          {-# <./de_facto_memory_model/effective_type_4e.c:6:19, ./de_facto_memory_model/effective_type_4e.c:6:30> ./de_facto_memory_model/effective_type_4e.c:6:19 #-} pure(
+            Specified(Ivsizeof('signed int'))
+          )
+        ) in
+      if not(params_length(a_847) = 1) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_848 \/ not(are_compatible ('void*', a_846)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_850: pointer =
+            let a_852: ctype = params_nth(a_847, 0) in
+            if not(are_compatible ('size_t', a_852)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_853: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_853, conv_loaded_int('size_t', a_851)) in
+              pure(a_853) in
+          let strong a_854: loaded pointer =
+            ccall('void* (*) (size_t)', a_845, a_850) in
+          kill('size_t', a_850) ;
+          pure(a_854)
+    ) in
+  store('void*', p, a_843) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:7:2, ./de_facto_memory_model/effective_type_4e.c:7:51> #-} let strong _: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/effective_type_4e.c:7:2, ./de_facto_memory_model/effective_type_4e.c:7:50> #-} let strong ((a_855: loaded pointer,
+      (a_856: ctype, a_857: [ctype], a_858: boolean, a_859: boolean)),
+      a_863: loaded pointer, a_868: loaded pointer, a_873: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_841: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_4e.c:7:2, ./de_facto_memory_model/effective_type_4e.c:7:8> #-} pure(
+              Specified(Cfunction(memcpy_proxy))
+            ) in
+          pure((a_841, cfunction(a_841)))
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/effective_type_4e.c:7:9, ./de_facto_memory_model/effective_type_4e.c:7:17> ./de_facto_memory_model/effective_type_4e.c:7:9 #-} let weak a_866: pointer =
+            {-# <./de_facto_memory_model/effective_type_4e.c:7:16, ./de_facto_memory_model/effective_type_4e.c:7:17> #-} pure(
+              p
+            ) in
+          load('void*', a_866)
+        ,
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/effective_type_4e.c:7:19, ./de_facto_memory_model/effective_type_4e.c:7:36> ./de_facto_memory_model/effective_type_4e.c:7:19 #-} let weak a_871: pointer =
+            {-# <./de_facto_memory_model/effective_type_4e.c:7:34, ./de_facto_memory_model/effective_type_4e.c:7:35> #-} pure(
+              i
+            ) in
+          pure(Specified(a_871))
+        ,
+          {-# <./de_facto_memory_model/effective_type_4e.c:7:38, ./de_facto_memory_model/effective_type_4e.c:7:49> ./de_facto_memory_model/effective_type_4e.c:7:38 #-} pure(
+            Specified(Ivsizeof('signed int'))
+          )
+        ) in
+      if not(params_length(a_857) = 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_858 \/ not(are_compatible ('void*', a_856)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_862: pointer =
+            let a_874: ctype = params_nth(a_857, 0) in
+            if not(are_compatible ('void*', a_874)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_875: pointer = create(Ivalignof('void*'), 'void*') in
+              let weak _: unit = store('void*', a_875, a_863) in
+              pure(a_875) in
+          let strong a_861: pointer =
+            let a_876: ctype = params_nth(a_857, 1) in
+            if not(are_compatible ('const void*', a_876)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_877: pointer =
+                create(Ivalignof('const void*'), 'const void*') in
+              let weak _: unit = store('const void*', a_877, a_868) in
+              pure(a_877) in
+          let strong a_860: pointer =
+            let a_878: ctype = params_nth(a_857, 2) in
+            if not(are_compatible ('size_t', a_878)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_879: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_879, conv_loaded_int('size_t', a_873)) in
+              pure(a_879) in
+          let strong a_880: loaded pointer =
+            ccall('void* (*) (void*restrict , const void*restrict , size_t)',
+            a_855, a_862, a_861, a_860) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('void*', a_862)
+            ,
+              kill('void*', a_861)
+            ,
+              kill('size_t', a_860)
+            ) in
+          pure(a_880)
+    ) in
+  pure(Unit) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/effective_type_4e.c:8:2, ./de_facto_memory_model/effective_type_4e.c:8:8> #-} store('signed int',
+  k, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:9:7, ./de_facto_memory_model/effective_type_4e.c:9:10> ./de_facto_memory_model/effective_type_4e.c:9:8 #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/effective_type_4e.c:9:7, ./de_facto_memory_model/effective_type_4e.c:9:10> ./de_facto_memory_model/effective_type_4e.c:9:8 #-} let weak (a_840: pointer,
+      a_881: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/effective_type_4e.c:9:7, ./de_facto_memory_model/effective_type_4e.c:9:8> #-} pure(
+            k
+          )
+        ,
+          {-# <./de_facto_memory_model/effective_type_4e.c:9:9, ./de_facto_memory_model/effective_type_4e.c:9:10> #-} pure(
+            Specified(0)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_840, conv_loaded_int('signed int', a_881))) in
+      pure(conv_loaded_int('signed int', a_881))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} save while_838: unit (i: pointer:= i,
+  p: pointer:= p, k: pointer:= k, q: pointer:= q, j: pointer:= j) in
+    let strong a_882: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# <./de_facto_memory_model/effective_type_4e.c:9:11, ./de_facto_memory_model/effective_type_4e.c:9:24> ./de_facto_memory_model/effective_type_4e.c:9:12 #-} let weak (a_884: loaded integer,
+        a_885: loaded integer) =
+          unseq(
+            {-# §6.5.8 #-}
+            {-# <./de_facto_memory_model/effective_type_4e.c:9:11, ./de_facto_memory_model/effective_type_4e.c:9:24> ./de_facto_memory_model/effective_type_4e.c:9:12 #-} let weak (a_890: loaded integer,
+            a_891: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/effective_type_4e.c:9:11, ./de_facto_memory_model/effective_type_4e.c:9:12> #-} let weak a_889: pointer =
+                  {-# <./de_facto_memory_model/effective_type_4e.c:9:11, ./de_facto_memory_model/effective_type_4e.c:9:12> #-} pure(
+                    k
+                  ) in
+                load('signed int', a_889)
+              ,
+                {-# <./de_facto_memory_model/effective_type_4e.c:9:13, ./de_facto_memory_model/effective_type_4e.c:9:24> ./de_facto_memory_model/effective_type_4e.c:9:13 #-} pure(
+                  Specified(Ivsizeof('signed int'))
+                )
+              ) in
+            let (Specified(a_892: integer), Specified(a_893: integer)) =
+              (a_890, a_891) in
+            {-# §6.5.8#6 #-}
+            pure(
+              if if all_values_representable_in('size_t', 'signed int') then
+                conv_int('signed int', a_892)
+              else
+                conv_int('unsigned int', a_892) <
+              if all_values_representable_in('size_t', 'signed int') then
+                conv_int('signed int', a_893)
+              else
+                conv_int('unsigned int', a_893) then
+                Specified(1)
+              else
+                Specified(0)
+            )
+          ,
+            {-# <./de_facto_memory_model/effective_type_4e.c:9:11, ./de_facto_memory_model/effective_type_4e.c:9:24> ./de_facto_memory_model/effective_type_4e.c:9:12 #-} pure(
+              Specified(0)
+            )
+          ) in
+        pure(
+          let (Specified(a_886: integer), Specified(a_887: integer)) =
+            (a_884, a_885) in
+          if conv_int('signed int', a_886) = conv_int('signed int', a_887) then
+            Specified(1)
+          else
+            Specified(0)
+        )
+      ) in
+    let strong a_839: boolean =
+      let Specified(a_883: integer) = a_882 in
+      pure(if not(a_883 = 1) then True else False) in
+    if a_839 then
+      {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} {-# <./de_facto_memory_model/effective_type_4e.c:10:4, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} let strong _: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/effective_type_4e.c:10:4, ./de_facto_memory_model/effective_type_4e.c:10:30> ./de_facto_memory_model/effective_type_4e.c:10:28 #-} let weak (a_895: pointer,
+          a_909: loaded integer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/effective_type_4e.c:10:4, ./de_facto_memory_model/effective_type_4e.c:10:28> ./de_facto_memory_model/effective_type_4e.c:10:4 #-} let weak a_896: loaded pointer =
+                {-# §6.5.6 #-}
+                {-# <./de_facto_memory_model/effective_type_4e.c:10:5, ./de_facto_memory_model/effective_type_4e.c:10:28> #-} let weak (a_899: loaded pointer,
+                a_901: loaded integer) =
+                  unseq(
+                    {-# §6.5.4 #-}
+                    {-# <./de_facto_memory_model/effective_type_4e.c:10:6, ./de_facto_memory_model/effective_type_4e.c:10:25> #-} let weak a_904: loaded pointer =
+                      {-# <./de_facto_memory_model/effective_type_4e.c:10:23, ./de_facto_memory_model/effective_type_4e.c:10:24> #-} let weak a_906: pointer =
+                        {-# <./de_facto_memory_model/effective_type_4e.c:10:23, ./de_facto_memory_model/effective_type_4e.c:10:24> #-} pure(
+                          p
+                        ) in
+                      load('void*', a_906) in
+                    let Specified(a_905: pointer) = a_904 in
+                    let weak a_907: boolean =
+                      memop(PtrWellAligned, 'unsigned char', a_905) in
+                    pure(
+                      Specified(if a_907 then
+                        a_905
+                      else
+                        undef(<<UB025_misaligned_pointer_conversion>>))
+                    )
+                  ,
+                    {-# <./de_facto_memory_model/effective_type_4e.c:10:26, ./de_facto_memory_model/effective_type_4e.c:10:27> #-} let weak a_908: pointer =
+                      {-# <./de_facto_memory_model/effective_type_4e.c:10:26, ./de_facto_memory_model/effective_type_4e.c:10:27> #-} pure(
+                        k
+                      ) in
+                    load('signed int', a_908)
+                  ) in
+                let (Specified(a_900: pointer), Specified(a_902: integer)) =
+                  (a_899, a_901) in
+                let weak a_903: pointer =
+                  memop(PtrArrayShift, a_900, 'unsigned char', a_902) in
+                pure(Specified(a_903)) in
+              let Specified(a_897: pointer) = a_896 in
+              let weak a_898: boolean =
+                memop(PtrValidForDeref, 'unsigned char', a_897) in
+              pure(
+                if a_898 then
+                  a_897
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              )
+            ,
+              {-# <./de_facto_memory_model/effective_type_4e.c:10:29, ./de_facto_memory_model/effective_type_4e.c:10:30> #-} pure(
+                Specified(0)
+              )
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('unsigned char', a_895,
+            conv_loaded_int('unsigned char', a_909))) in
+          pure(conv_loaded_int('unsigned char', a_909))
+        ) in
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} save __cerb_continue0: unit (i: pointer:= i,
+      p: pointer:= p, k: pointer:= k, q: pointer:= q, j: pointer:= j) in
+        {-# <./de_facto_memory_model/effective_type_4e.c:9:25, ./de_facto_memory_model/effective_type_4e.c:9:28> ./de_facto_memory_model/effective_type_4e.c:9:26 #-} let strong _: loaded integer =
+          {-# §6.5#2 #-}
+          bound(
+            {-# §6.5.2.4#2, sentence 3 #-}
+            {-# §6.5.2.4#2, sentence 1 #-}
+            {-# §6.5.2.4 #-}
+            {-# <./de_facto_memory_model/effective_type_4e.c:9:25, ./de_facto_memory_model/effective_type_4e.c:9:28> ./de_facto_memory_model/effective_type_4e.c:9:26 #-} let weak a_910: pointer =
+              {-# <./de_facto_memory_model/effective_type_4e.c:9:25, ./de_facto_memory_model/effective_type_4e.c:9:26> #-} pure(
+                k
+              ) in
+            seq_rmw('signed int', a_910, a_911 => let Specified(a_912: integer) =
+              a_911 in
+            Specified(conv_int('signed int',
+            catch_exceptional_condition_add('signed int', a_912, 1))))
+          ) in
+        pure(Unit) ;
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} save continue_835: unit (i: pointer:= i,
+      p: pointer:= p, k: pointer:= k, q: pointer:= q, j: pointer:= j) in
+        {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} pure(
+          Unit
+        ) ;
+      pure(Unit) ;
+      run while_838(i, p, k, q, j)
+    else
+      pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} save break_836: unit (i: pointer:= i,
+  p: pointer:= p, k: pointer:= k, q: pointer:= q, j: pointer:= j) in
+    {-# <./de_facto_memory_model/effective_type_4e.c:9:2, ./de_facto_memory_model/effective_type_4e.c:10:31> #-} pure(
+      Unit
+    ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:11:2, ./de_facto_memory_model/effective_type_4e.c:11:19> #-} let strong a_913: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/effective_type_4e.c:11:11, ./de_facto_memory_model/effective_type_4e.c:11:18> ./de_facto_memory_model/effective_type_4e.c:11:11 #-} let weak a_914: loaded pointer =
+        {-# <./de_facto_memory_model/effective_type_4e.c:11:17, ./de_facto_memory_model/effective_type_4e.c:11:18> #-} let weak a_916: pointer =
+          {-# <./de_facto_memory_model/effective_type_4e.c:11:17, ./de_facto_memory_model/effective_type_4e.c:11:18> #-} pure(
+            p
+          ) in
+        load('void*', a_916) in
+      let Specified(a_915: pointer) = a_914 in
+      let weak a_917: boolean = memop(PtrWellAligned, 'signed int', a_915) in
+      pure(
+        Specified(if a_917 then
+          a_915
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('signed int*', q, a_913) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:12:2, ./de_facto_memory_model/effective_type_4e.c:12:11> #-} let strong a_918: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/effective_type_4e.c:12:8, ./de_facto_memory_model/effective_type_4e.c:12:10> ./de_facto_memory_model/effective_type_4e.c:12:8 #-} let weak a_923: pointer =
+        {-# §6.5.3.2 #-}
+        {-# <./de_facto_memory_model/effective_type_4e.c:12:8, ./de_facto_memory_model/effective_type_4e.c:12:10> ./de_facto_memory_model/effective_type_4e.c:12:8 #-} let weak a_919: loaded pointer =
+          {-# <./de_facto_memory_model/effective_type_4e.c:12:9, ./de_facto_memory_model/effective_type_4e.c:12:10> #-} let weak a_922: pointer =
+            {-# <./de_facto_memory_model/effective_type_4e.c:12:9, ./de_facto_memory_model/effective_type_4e.c:12:10> #-} pure(
+              q
+            ) in
+          load('signed int*', a_922) in
+        let Specified(a_920: pointer) = a_919 in
+        let weak a_921: boolean =
+          memop(PtrValidForDeref, 'signed int', a_920) in
+        pure(
+          if a_921 then a_920 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('signed int', a_923)
+    ) in
+  store('signed int', j, conv_loaded_int('signed int', a_918)) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:13:2, ./de_facto_memory_model/effective_type_4e.c:13:21> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/effective_type_4e.c:13:2, ./de_facto_memory_model/effective_type_4e.c:13:20> #-} let strong ((a_924: loaded pointer,
+      (a_925: ctype, a_926: [ctype], a_927: boolean, a_928: boolean)),
+      a_931: loaded pointer, a_935: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_837: loaded pointer =
+            {-# <./de_facto_memory_model/effective_type_4e.c:13:2, ./de_facto_memory_model/effective_type_4e.c:13:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_837, cfunction(a_837)))
+        ,
+          {-# <./de_facto_memory_model/effective_type_4e.c:13:9, ./de_facto_memory_model/effective_type_4e.c:13:17> #-} let weak a_933: pointer =
+            {-# <./de_facto_memory_model/effective_type_4e.c:13:9, ./de_facto_memory_model/effective_type_4e.c:13:17> #-} pure(
+              a_932
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_934: pointer = memop(PtrArrayShift, a_933, 'char', 0) in
+          pure(Specified(a_934))
+        ,
+          {-# <./de_facto_memory_model/effective_type_4e.c:13:18, ./de_facto_memory_model/effective_type_4e.c:13:19> #-} let weak a_936: pointer =
+            {-# <./de_facto_memory_model/effective_type_4e.c:13:18, ./de_facto_memory_model/effective_type_4e.c:13:19> #-} pure(
+              j
+            ) in
+          load('signed int', a_936)
+        ) in
+      if not(params_length(a_926) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_927) \/ not(are_compatible ('signed int', a_925)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_930: pointer =
+            let a_937: ctype = params_nth(a_926, 0) in
+            if not(are_compatible ('const char*', a_937)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_938: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_938, a_931) in
+              pure(a_938) in
+          let strong a_929: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_935)) in
+          let strong a_939: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_924, a_930,
+            [('signed int', a_929)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_930), kill('signed int', a_929)) in
+          pure(a_939)
+    ) in
+  pure(Unit) ;
+  kill('signed int', i) ;
+  kill('void*', p) ;
+  kill('signed int', k) ;
+  kill('signed int*', q) ;
+  kill('signed int', j) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/effective_type_4e.c:4:0, ./de_facto_memory_model/effective_type_4e.c:14:1> ./de_facto_memory_model/effective_type_4e.c:4:4 - ./de_facto_memory_model/effective_type_4e.c:4:8 #-} save ret_834: loaded integer (a_940: loaded integer:= Specified(0)) in
+    pure(a_940)
+

@@ -1,0 +1,101 @@
+-- Aggregates
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:2:11, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:5:1> #-} let strong p: pointer =
+    create(Ivalignof('void*'), 'void*') in
+  let strong b: pointer = create(Ivalignof('_Bool'), '_Bool') in
+  {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:2, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:32> #-} let strong a_608: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:12, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:31> #-} let strong ((a_610: loaded pointer,
+      (a_611: ctype, a_612: [ctype], a_613: boolean, a_614: boolean)),
+      a_616: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_609: loaded pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:12, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:18> #-} pure(
+              Specified(Cfunction(malloc_proxy))
+            ) in
+          pure((a_609, cfunction(a_609)))
+        ,
+          {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:19, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:30> ./de_facto_memory_model/besson_blazy_wilke_6.2.c:3:19 #-} pure(
+            Specified(Ivsizeof('signed int'))
+          )
+        ) in
+      if not(params_length(a_612) = 1) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_613 \/ not(are_compatible ('void*', a_611)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_615: pointer =
+            let a_617: ctype = params_nth(a_612, 0) in
+            if not(are_compatible ('size_t', a_617)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_618: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_618, conv_loaded_int('size_t', a_616)) in
+              pure(a_618) in
+          let strong a_619: loaded pointer =
+            ccall('void* (*) (size_t)', a_610, a_615) in
+          kill('size_t', a_615) ;
+          pure(a_619)
+    ) in
+  store('void*', p, a_608) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:2, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:29> #-} let strong a_620: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:12, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:28> #-} let weak (a_621: loaded pointer,
+      a_622: loaded pointer) =
+        unseq(
+          {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:13, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:14> #-} let weak a_626: pointer =
+            {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:13, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:14> #-} pure(
+              p
+            ) in
+          load('void*', a_626)
+        ,
+          {-# §6.5.4 #-}
+          {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:18, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:27> ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:18 #-} let weak a_627: loaded integer =
+            {-# §6.5.3.3#3 #-}
+            {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:25, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:27> ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:25 #-} let weak a_630: loaded integer =
+              {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:26, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:4:27> #-} pure(
+                Specified(1)
+              ) in
+            pure(
+              let Specified(a_629: integer) = a_630 in
+              Specified(catch_exceptional_condition_sub('signed int', 0, conv_int('signed int',
+              a_629)))
+            ) in
+          let Specified(a_628: integer) = a_627 in
+          let weak a_631: pointer =
+            memop(PtrFromInt, 'signed int', 'void', a_628) in
+          pure(Specified(a_631))
+        ) in
+      let (Specified(a_623: pointer), Specified(a_624: pointer)) =
+        (a_621, a_622) in
+      let weak a_625: boolean = memop(PtrEq, a_623, a_624) in
+      pure(if a_625 then Specified(1) else Specified(0))
+    ) in
+  store('_Bool', b, conv_loaded_int('_Bool', a_620)) ;
+  kill('void*', p) ;
+  kill('_Bool', b) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/besson_blazy_wilke_6.2.c:2:0, ./de_facto_memory_model/besson_blazy_wilke_6.2.c:5:1> ./de_facto_memory_model/besson_blazy_wilke_6.2.c:2:4 - ./de_facto_memory_model/besson_blazy_wilke_6.2.c:2:8 #-} save ret_607: loaded integer (a_632: loaded integer:= Specified(0)) in
+    pure(a_632)
+

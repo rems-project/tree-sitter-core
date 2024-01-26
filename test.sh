@@ -15,7 +15,7 @@ else
 fi
 
 for file in $(find tests/ -name '*.core' -type f -print0 | xargs -0 du -b | sort -nr | cut -f2-); do
-    file_name=$(basename "$file")
+    file_name=$file
     echo -n "$file_name: "
     if tree-sitter parse "$file" 2>/dev/null | grep -q 'ERROR'; then
         echo -e "${red}ERROR${no_color}"

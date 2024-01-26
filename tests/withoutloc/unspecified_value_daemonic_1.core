@@ -1,0 +1,52 @@
+proc main (): eff loaded integer :=
+  let strong i: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong k: pointer = create(Ivalignof('signed int'), 'signed int') in
+  store('signed int', i, Unspecified('signed int')) ;
+  let strong a_510: loaded pointer =
+    bound(
+      let weak a_511: pointer = pure(i) in
+      pure(Specified(a_511))
+    ) in
+  store('signed int*', p, a_510) ;
+  let strong a_512: loaded integer =
+    bound(
+      let weak a_513: pointer = pure(i) in
+      load('signed int', a_513)
+    ) in
+  store('signed int', j, conv_loaded_int('signed int', a_512)) ;
+  let strong a_514: loaded integer =
+    bound(
+      let weak (a_516: loaded integer, a_517: loaded integer) =
+        unseq(
+          pure(Specified(1))
+        ,
+          let weak a_515: pointer = pure(j) in
+          load('signed int', a_515)
+        ) in
+      pure(
+        let (Specified(a_518: integer), Specified(a_519: integer)) =
+          (a_516, a_517) in
+        let a_520: integer = conv_int('signed int', a_518) in
+        let a_521: integer = conv_int('signed int', a_519) in
+        if a_521 = 0 then
+          undef(<<UB045a_division_by_zero>>)
+        else
+          if is_representable_integer(conv_int('signed int', a_518) / a_521,
+          'signed int') then
+            Specified(catch_exceptional_condition('signed int',
+            conv_int('signed int', a_518) / a_521))
+          else
+            undef(<<UB045c_quotient_not_representable>>)
+      )
+    ) in
+  store('signed int', k, conv_loaded_int('signed int', a_514)) ;
+  kill('signed int', i) ;
+  kill('signed int*', p) ;
+  kill('signed int', j) ;
+  kill('signed int', k) ;
+  pure(Unit) ;
+  save ret_509: loaded integer (a_522: loaded integer:= Specified(0)) in
+    pure(a_522)
+

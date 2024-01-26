@@ -1,0 +1,72 @@
+proc main (): eff loaded integer :=
+  {-# <./cheri/intptr4.c:2:11, ./cheri/intptr4.c:5:1> #-} let strong a: pointer =
+    create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong b: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  let strong c: pointer = create(Ivalignof('intptr_t'), 'intptr_t') in
+  {-# <./cheri/intptr4.c:3:4, ./cheri/intptr4.c:3:21> #-} let strong a_537: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./cheri/intptr4.c:3:15, ./cheri/intptr4.c:3:16> #-} pure(
+        Specified(0)
+      )
+    ) in
+  case a_537 of
+    | Specified(a_538: integer) =>
+        store('intptr_t', a,
+        Specified(memop(CapAssignValue, CivNULLcap(signed)(),
+        conv_int('intptr_t', a_538))))
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(AilSdeclaration)>>))
+  end ;
+  let strong a_539: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./cheri/intptr4.c:3:19, ./cheri/intptr4.c:3:20> #-} pure(
+        Specified(0)
+      )
+    ) in
+  case a_539 of
+    | Specified(a_540: integer) =>
+        store('intptr_t', b,
+        Specified(memop(CapAssignValue, CivNULLcap(signed)(),
+        conv_int('intptr_t', a_540))))
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(AilSdeclaration)>>))
+  end ;
+  {-# <./cheri/intptr4.c:4:4, ./cheri/intptr4.c:4:23> #-} let strong a_541: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./cheri/intptr4.c:4:17, ./cheri/intptr4.c:4:22> ./cheri/intptr4.c:4:19 #-} let weak (a_542: loaded integer,
+      a_543: loaded integer) =
+        unseq(
+          {-# <./cheri/intptr4.c:4:17, ./cheri/intptr4.c:4:18> #-} let weak a_547: pointer =
+            {-# <./cheri/intptr4.c:4:17, ./cheri/intptr4.c:4:18> #-} pure(a) in
+          load('intptr_t', a_547)
+        ,
+          {-# <./cheri/intptr4.c:4:21, ./cheri/intptr4.c:4:22> #-} let weak a_548: pointer =
+            {-# <./cheri/intptr4.c:4:21, ./cheri/intptr4.c:4:22> #-} pure(b) in
+          load('intptr_t', a_548)
+        ) in
+      pure(
+        case (a_542, a_543) of
+          | (Specified(a_544: integer), Specified(a_545: integer)) =>
+              Specified(let a_546: integer =
+                memop(DeriveCap[TODO:binary], a_544, a_545) in
+              memop(CapAssignValue, a_546,
+              wrapI('intptr_t',
+              __conv_int__('intptr_t', a_544) +
+              __conv_int__('intptr_t', a_545))))
+          | _: (loaded integer,loaded integer) =>
+              undef(<<UB036_exceptional_condition>>)
+        end
+      )
+    ) in
+  store('intptr_t', c, conv_loaded_int('intptr_t', a_541)) ;
+  kill('intptr_t', a) ;
+  kill('intptr_t', b) ;
+  kill('intptr_t', c) ;
+  pure(Unit) ;
+  {-# <./cheri/intptr4.c:2:0, ./cheri/intptr4.c:5:1> ./cheri/intptr4.c:2:4 - ./cheri/intptr4.c:2:8 #-} save ret_536: loaded integer (a_549: loaded integer:= Specified(0)) in
+    pure(a_549)
+

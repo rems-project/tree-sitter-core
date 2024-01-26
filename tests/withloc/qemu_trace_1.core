@@ -1,0 +1,450 @@
+-- Aggregates
+def struct div :=
+  quot: 'signed int'
+  rem: 'signed int'
+
+def struct ldiv :=
+  quot: 'signed long'
+  rem: 'signed long'
+
+def struct lldiv :=
+  quot: 'signed long_long'
+  rem: 'signed long_long'
+
+def struct __cerbty_unnamed_tag_603 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_635 :=
+  quot: 'intmax_t'
+  rem: 'intmax_t'
+
+def struct __cerbty_unnamed_tag_653 :=
+  c: 'char'
+  u: 'unsigned long_long'
+
+-- Globals
+glob xg: pointer [ail_ctype = 'unsigned long_long'] :=
+  {-# <unknown location> #-} let strong a_766: pointer =
+    create(Ivalignof('unsigned long long'), 'unsigned long long') in
+  let strong a_767: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/qemu_trace_1.c:7:12, ./de_facto_memory_model/qemu_trace_1.c:7:13> #-} pure(
+        Specified(5)
+      )
+    ) in
+  store('unsigned long long', a_766,
+  conv_loaded_int('unsigned long long', a_767)) ;
+  pure(a_766)
+
+-- Fun map
+proc f (pu: pointer): eff unit :=
+  {-# <./de_facto_memory_model/qemu_trace_1.c:9:21, ./de_facto_memory_model/qemu_trace_1.c:11:1> #-} {-# <./de_facto_memory_model/qemu_trace_1.c:10:2, ./de_facto_memory_model/qemu_trace_1.c:10:8> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/qemu_trace_1.c:10:2, ./de_facto_memory_model/qemu_trace_1.c:10:7> ./de_facto_memory_model/qemu_trace_1.c:10:5 #-} let weak (a_759: pointer,
+      a_764: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/qemu_trace_1.c:10:2, ./de_facto_memory_model/qemu_trace_1.c:10:5> ./de_facto_memory_model/qemu_trace_1.c:10:2 #-} let weak a_760: loaded pointer =
+            {-# <./de_facto_memory_model/qemu_trace_1.c:10:3, ./de_facto_memory_model/qemu_trace_1.c:10:5> #-} let weak a_763: pointer =
+              {-# <./de_facto_memory_model/qemu_trace_1.c:10:3, ./de_facto_memory_model/qemu_trace_1.c:10:5> #-} pure(
+                pu
+              ) in
+            load('unsigned long long*', a_763) in
+          let Specified(a_761: pointer) = a_760 in
+          let weak a_762: boolean =
+            memop(PtrValidForDeref, 'unsigned long long', a_761) in
+          pure(
+            if a_762 then
+              a_761
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/qemu_trace_1.c:10:6, ./de_facto_memory_model/qemu_trace_1.c:10:7> #-} pure(
+            Specified(9)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned long long', a_759,
+        conv_loaded_int('unsigned long long', a_764))) in
+      pure(conv_loaded_int('unsigned long long', a_764))
+    ) in
+  pure(Unit) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:9:0, ./de_facto_memory_model/qemu_trace_1.c:11:1> ./de_facto_memory_model/qemu_trace_1.c:9:5 - ./de_facto_memory_model/qemu_trace_1.c:9:6 #-} save ret_758: unit (a_765: unit:= Unit) in
+    pure(a_765)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/qemu_trace_1.c:12:11, ./de_facto_memory_model/qemu_trace_1.c:25:1> #-} let strong xl: pointer =
+    create(Ivalignof('unsigned long long'), 'unsigned long long') in
+  let strong s: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_653'), 'struct __cerbty_unnamed_tag_653') in
+  let strong pxg: pointer =
+    create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+  let strong pxl: pointer =
+    create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+  let strong ps: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_653*'), 'struct __cerbty_unnamed_tag_653*') in
+  let strong psu: pointer =
+    create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+  let strong pm: pointer =
+    create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+  {-# <./de_facto_memory_model/qemu_trace_1.c:13:2, ./de_facto_memory_model/qemu_trace_1.c:13:16> #-} let strong a_675: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/qemu_trace_1.c:13:14, ./de_facto_memory_model/qemu_trace_1.c:13:15> #-} pure(
+        Specified(6)
+      )
+    ) in
+  store('unsigned long long', xl, conv_loaded_int('unsigned long long', a_675)) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:14:2, ./de_facto_memory_model/qemu_trace_1.c:14:25> #-} let strong a_676: loaded struct a_653 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_678: loaded integer,
+      a_677: loaded integer) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# <./de_facto_memory_model/qemu_trace_1.c:14:21, ./de_facto_memory_model/qemu_trace_1.c:14:22> #-} pure(
+            Specified(7)
+          )
+        ,
+          {-# <./de_facto_memory_model/qemu_trace_1.c:14:13, ./de_facto_memory_model/qemu_trace_1.c:14:16> #-} pure(
+            Specified(65)
+          )
+        ) in
+      pure(
+        Specified((struct __cerbty_unnamed_tag_653){.c= conv_loaded_int('char',
+        a_677), .u= conv_loaded_int('unsigned long long', a_678)})
+      )
+    ) in
+  store('struct __cerbty_unnamed_tag_653', s, a_676) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:15:2, ./de_facto_memory_model/qemu_trace_1.c:15:20> #-} let strong a_679: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/qemu_trace_1.c:15:16, ./de_facto_memory_model/qemu_trace_1.c:15:19> ./de_facto_memory_model/qemu_trace_1.c:15:16 #-} let weak a_680: pointer =
+        {-# <./de_facto_memory_model/qemu_trace_1.c:15:17, ./de_facto_memory_model/qemu_trace_1.c:15:19> #-} pure(
+          xg
+        ) in
+      pure(Specified(a_680))
+    ) in
+  store('unsigned long long*', pxg, a_679) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:16:2, ./de_facto_memory_model/qemu_trace_1.c:16:9> #-} {-# §6.5#2 #-}
+  bound(
+    {-# §6.5.2.2#10, sentence 1 #-}
+    {-# <./de_facto_memory_model/qemu_trace_1.c:16:2, ./de_facto_memory_model/qemu_trace_1.c:16:8> #-} let strong ((a_681: loaded pointer,
+    (a_682: ctype, a_683: [ctype], a_684: boolean, a_685: boolean)),
+    a_687: loaded pointer) =
+      {-# §6.5.2.2#4, sentence 2 #-}
+      unseq(
+        let strong a_674: loaded pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:16:2, ./de_facto_memory_model/qemu_trace_1.c:16:3> #-} pure(
+            Specified(Cfunction(f))
+          ) in
+        pure((a_674, cfunction(a_674)))
+      ,
+        {-# <./de_facto_memory_model/qemu_trace_1.c:16:4, ./de_facto_memory_model/qemu_trace_1.c:16:7> #-} let weak a_688: pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:16:4, ./de_facto_memory_model/qemu_trace_1.c:16:7> #-} pure(
+            pxg
+          ) in
+        load('unsigned long long*', a_688)
+      ) in
+    if not(params_length(a_683) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_684 \/ not(are_compatible ('void', a_682)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_686: pointer =
+          let a_689: ctype = params_nth(a_683, 0) in
+          if not(are_compatible ('unsigned long long*', a_689)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_690: pointer =
+              create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+            let weak _: unit = store('unsigned long long*', a_690, a_687) in
+            pure(a_690) in
+        let strong a_691: unit =
+          ccall('void (*) (unsigned long long*)', a_681, a_686) in
+        kill('unsigned long_long*', a_686) ;
+        pure(a_691)
+  ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:17:2, ./de_facto_memory_model/qemu_trace_1.c:17:20> #-} let strong a_692: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/qemu_trace_1.c:17:16, ./de_facto_memory_model/qemu_trace_1.c:17:19> ./de_facto_memory_model/qemu_trace_1.c:17:16 #-} let weak a_693: pointer =
+        {-# <./de_facto_memory_model/qemu_trace_1.c:17:17, ./de_facto_memory_model/qemu_trace_1.c:17:19> #-} pure(
+          xl
+        ) in
+      pure(Specified(a_693))
+    ) in
+  store('unsigned long long*', pxl, a_692) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:18:2, ./de_facto_memory_model/qemu_trace_1.c:18:9> #-} {-# §6.5#2 #-}
+  bound(
+    {-# §6.5.2.2#10, sentence 1 #-}
+    {-# <./de_facto_memory_model/qemu_trace_1.c:18:2, ./de_facto_memory_model/qemu_trace_1.c:18:8> #-} let strong ((a_694: loaded pointer,
+    (a_695: ctype, a_696: [ctype], a_697: boolean, a_698: boolean)),
+    a_700: loaded pointer) =
+      {-# §6.5.2.2#4, sentence 2 #-}
+      unseq(
+        let strong a_673: loaded pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:18:2, ./de_facto_memory_model/qemu_trace_1.c:18:3> #-} pure(
+            Specified(Cfunction(f))
+          ) in
+        pure((a_673, cfunction(a_673)))
+      ,
+        {-# <./de_facto_memory_model/qemu_trace_1.c:18:4, ./de_facto_memory_model/qemu_trace_1.c:18:7> #-} let weak a_701: pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:18:4, ./de_facto_memory_model/qemu_trace_1.c:18:7> #-} pure(
+            pxl
+          ) in
+        load('unsigned long long*', a_701)
+      ) in
+    if not(params_length(a_696) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_697 \/ not(are_compatible ('void', a_695)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_699: pointer =
+          let a_702: ctype = params_nth(a_696, 0) in
+          if not(are_compatible ('unsigned long long*', a_702)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_703: pointer =
+              create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+            let weak _: unit = store('unsigned long long*', a_703, a_700) in
+            pure(a_703) in
+        let strong a_704: unit =
+          ccall('void (*) (unsigned long long*)', a_694, a_699) in
+        kill('unsigned long_long*', a_699) ;
+        pure(a_704)
+  ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:19:2, ./de_facto_memory_model/qemu_trace_1.c:19:14> #-} let strong a_705: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/qemu_trace_1.c:19:11, ./de_facto_memory_model/qemu_trace_1.c:19:13> ./de_facto_memory_model/qemu_trace_1.c:19:11 #-} let weak a_706: pointer =
+        {-# <./de_facto_memory_model/qemu_trace_1.c:19:12, ./de_facto_memory_model/qemu_trace_1.c:19:13> #-} pure(
+          s
+        ) in
+      pure(Specified(a_706))
+    ) in
+  store('struct __cerbty_unnamed_tag_653*', ps, a_705) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:20:2, ./de_facto_memory_model/qemu_trace_1.c:20:25> #-} let strong a_707: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.3.2#3, sentence 5 #-}
+      {-# <./de_facto_memory_model/qemu_trace_1.c:20:16, ./de_facto_memory_model/qemu_trace_1.c:20:24> ./de_facto_memory_model/qemu_trace_1.c:20:16 #-} let weak a_708: pointer =
+        {-# §6.5.2.3#4, sentence 2 #-}
+        {-# <./de_facto_memory_model/qemu_trace_1.c:20:17, ./de_facto_memory_model/qemu_trace_1.c:20:24> #-} let strong a_709: loaded pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:20:18, ./de_facto_memory_model/qemu_trace_1.c:20:20> #-} let weak a_713: pointer =
+            {-# <./de_facto_memory_model/qemu_trace_1.c:20:18, ./de_facto_memory_model/qemu_trace_1.c:20:20> #-} pure(
+              ps
+            ) in
+          load('struct __cerbty_unnamed_tag_653*', a_713) in
+        let Specified(a_710: pointer) = a_709 in
+        let weak a_711: boolean =
+          memop(PtrValidForDeref, 'struct __cerbty_unnamed_tag_653', a_710) in
+        pure(
+          if a_711 then
+            member_shift(a_710, __cerbty_unnamed_tag_653, .u)
+          else
+            undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      pure(Specified(a_708))
+    ) in
+  store('unsigned long long*', psu, a_707) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:21:2, ./de_facto_memory_model/qemu_trace_1.c:21:9> #-} {-# §6.5#2 #-}
+  bound(
+    {-# §6.5.2.2#10, sentence 1 #-}
+    {-# <./de_facto_memory_model/qemu_trace_1.c:21:2, ./de_facto_memory_model/qemu_trace_1.c:21:8> #-} let strong ((a_714: loaded pointer,
+    (a_715: ctype, a_716: [ctype], a_717: boolean, a_718: boolean)),
+    a_720: loaded pointer) =
+      {-# §6.5.2.2#4, sentence 2 #-}
+      unseq(
+        let strong a_672: loaded pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:21:2, ./de_facto_memory_model/qemu_trace_1.c:21:3> #-} pure(
+            Specified(Cfunction(f))
+          ) in
+        pure((a_672, cfunction(a_672)))
+      ,
+        {-# <./de_facto_memory_model/qemu_trace_1.c:21:4, ./de_facto_memory_model/qemu_trace_1.c:21:7> #-} let weak a_721: pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:21:4, ./de_facto_memory_model/qemu_trace_1.c:21:7> #-} pure(
+            psu
+          ) in
+        load('unsigned long long*', a_721)
+      ) in
+    if not(params_length(a_716) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_717 \/ not(are_compatible ('void', a_715)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_719: pointer =
+          let a_722: ctype = params_nth(a_716, 0) in
+          if not(are_compatible ('unsigned long long*', a_722)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_723: pointer =
+              create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+            let weak _: unit = store('unsigned long long*', a_723, a_720) in
+            pure(a_723) in
+        let strong a_724: unit =
+          ccall('void (*) (unsigned long long*)', a_714, a_719) in
+        kill('unsigned long_long*', a_719) ;
+        pure(a_724)
+  ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:22:2, ./de_facto_memory_model/qemu_trace_1.c:22:51> #-} let strong a_725: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/qemu_trace_1.c:22:15, ./de_facto_memory_model/qemu_trace_1.c:22:50> ./de_facto_memory_model/qemu_trace_1.c:22:15 #-} let weak a_726: loaded pointer =
+        {-# §6.5.2.2#10, sentence 1 #-}
+        {-# <./de_facto_memory_model/qemu_trace_1.c:22:26, ./de_facto_memory_model/qemu_trace_1.c:22:50> #-} let strong ((a_729: loaded pointer,
+        (a_730: ctype, a_731: [ctype], a_732: boolean, a_733: boolean)),
+        a_735: loaded integer) =
+          {-# §6.5.2.2#4, sentence 2 #-}
+          unseq(
+            let strong a_728: loaded pointer =
+              {-# <./de_facto_memory_model/qemu_trace_1.c:22:26, ./de_facto_memory_model/qemu_trace_1.c:22:32> #-} pure(
+                Specified(Cfunction(malloc_proxy))
+              ) in
+            pure((a_728, cfunction(a_728)))
+          ,
+            {-# <./de_facto_memory_model/qemu_trace_1.c:22:33, ./de_facto_memory_model/qemu_trace_1.c:22:49> ./de_facto_memory_model/qemu_trace_1.c:22:33 #-} pure(
+              Specified(Ivsizeof('unsigned long long'))
+            )
+          ) in
+        if not(params_length(a_731) = 1) then
+          pure(undef(<<UB038_number_of_args>>))
+        else
+          if a_732 \/ not(are_compatible ('void*', a_730)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            let strong a_734: pointer =
+              let a_736: ctype = params_nth(a_731, 0) in
+              if not(are_compatible ('size_t', a_736)) then
+                pure(undef(<<UB041_function_not_compatible>>))
+              else
+                {-# §6.5.2.2#7, sentence 1 #-}
+                let weak a_737: pointer =
+                  create(Ivalignof('size_t'), 'size_t') in
+                let weak _: unit =
+                  store('size_t', a_737, conv_loaded_int('size_t', a_735)) in
+                pure(a_737) in
+            let strong a_738: loaded pointer =
+              ccall('void* (*) (size_t)', a_729, a_734) in
+            kill('size_t', a_734) ;
+            pure(a_738) in
+      let Specified(a_727: pointer) = a_726 in
+      let weak a_739: boolean =
+        memop(PtrWellAligned, 'unsigned long long', a_727) in
+      pure(
+        Specified(if a_739 then
+          a_727
+        else
+          undef(<<UB025_misaligned_pointer_conversion>>))
+      )
+    ) in
+  store('unsigned long long*', pm, a_725) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:23:2, ./de_facto_memory_model/qemu_trace_1.c:23:8> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/qemu_trace_1.c:23:2, ./de_facto_memory_model/qemu_trace_1.c:23:7> ./de_facto_memory_model/qemu_trace_1.c:23:5 #-} let weak (a_671: pointer,
+      a_744: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/qemu_trace_1.c:23:2, ./de_facto_memory_model/qemu_trace_1.c:23:5> ./de_facto_memory_model/qemu_trace_1.c:23:2 #-} let weak a_740: loaded pointer =
+            {-# <./de_facto_memory_model/qemu_trace_1.c:23:3, ./de_facto_memory_model/qemu_trace_1.c:23:5> #-} let weak a_743: pointer =
+              {-# <./de_facto_memory_model/qemu_trace_1.c:23:3, ./de_facto_memory_model/qemu_trace_1.c:23:5> #-} pure(
+                pm
+              ) in
+            load('unsigned long long*', a_743) in
+          let Specified(a_741: pointer) = a_740 in
+          let weak a_742: boolean =
+            memop(PtrValidForDeref, 'unsigned long long', a_741) in
+          pure(
+            if a_742 then
+              a_741
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/qemu_trace_1.c:23:6, ./de_facto_memory_model/qemu_trace_1.c:23:7> #-} pure(
+            Specified(8)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('unsigned long long', a_671,
+        conv_loaded_int('unsigned long long', a_744))) in
+      pure(conv_loaded_int('unsigned long long', a_744))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:24:2, ./de_facto_memory_model/qemu_trace_1.c:24:8> #-} {-# §6.5#2 #-}
+  bound(
+    {-# §6.5.2.2#10, sentence 1 #-}
+    {-# <./de_facto_memory_model/qemu_trace_1.c:24:2, ./de_facto_memory_model/qemu_trace_1.c:24:7> #-} let strong ((a_745: loaded pointer,
+    (a_746: ctype, a_747: [ctype], a_748: boolean, a_749: boolean)),
+    a_751: loaded pointer) =
+      {-# §6.5.2.2#4, sentence 2 #-}
+      unseq(
+        let strong a_670: loaded pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:24:2, ./de_facto_memory_model/qemu_trace_1.c:24:3> #-} pure(
+            Specified(Cfunction(f))
+          ) in
+        pure((a_670, cfunction(a_670)))
+      ,
+        {-# <./de_facto_memory_model/qemu_trace_1.c:24:4, ./de_facto_memory_model/qemu_trace_1.c:24:6> #-} let weak a_752: pointer =
+          {-# <./de_facto_memory_model/qemu_trace_1.c:24:4, ./de_facto_memory_model/qemu_trace_1.c:24:6> #-} pure(
+            pm
+          ) in
+        load('unsigned long long*', a_752)
+      ) in
+    if not(params_length(a_747) = 1) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_748 \/ not(are_compatible ('void', a_746)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_750: pointer =
+          let a_753: ctype = params_nth(a_747, 0) in
+          if not(are_compatible ('unsigned long long*', a_753)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_754: pointer =
+              create(Ivalignof('unsigned long long*'), 'unsigned long long*') in
+            let weak _: unit = store('unsigned long long*', a_754, a_751) in
+            pure(a_754) in
+        let strong a_755: unit =
+          ccall('void (*) (unsigned long long*)', a_745, a_750) in
+        kill('unsigned long_long*', a_750) ;
+        pure(a_755)
+  ) ;
+  pure(Unit) ;
+  kill('unsigned long_long', xl) ;
+  kill('struct __cerbty_unnamed_tag_653', s) ;
+  kill('unsigned long_long*', pxg) ;
+  kill('unsigned long_long*', pxl) ;
+  kill('struct __cerbty_unnamed_tag_653*', ps) ;
+  kill('unsigned long_long*', psu) ;
+  kill('unsigned long_long*', pm) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/qemu_trace_1.c:12:0, ./de_facto_memory_model/qemu_trace_1.c:25:1> ./de_facto_memory_model/qemu_trace_1.c:12:4 - ./de_facto_memory_model/qemu_trace_1.c:12:8 #-} save ret_669: loaded integer (a_756: loaded integer:= Specified(0)) in
+    pure(a_756)
+

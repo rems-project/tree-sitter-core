@@ -1,0 +1,28 @@
+-- Aggregates
+def struct __cerbty_unnamed_tag_506 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_538 :=
+  quot: 'intmax_t'
+  rem: 'intmax_t'
+
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong v0: pointer = create(Ivalignof('ptraddr_t'), 'ptraddr_t') in
+  let strong a_704: loaded integer =
+    bound(
+      let weak a_705: loaded integer = pure(Specified(0)) in
+      pure(conv_loaded_int('ptraddr_t', a_705))
+    ) in
+  store_lock('ptraddr_t', v0, conv_loaded_int('ptraddr_t', a_704)) ;
+  kill('ptraddr_t', v0) ;
+  pure(Unit) ;
+  save ret_703: loaded integer (a_708: loaded integer:= Specified(0)) in
+    pure(a_708)
+

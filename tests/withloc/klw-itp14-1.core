@@ -1,0 +1,334 @@
+-- Aggregates
+def struct S :=
+  x: 'signed short'
+  r: 'signed short*'
+
+-- Fun map
+proc my_memcpy (dest: pointer, src: pointer, n: pointer): eff unit :=
+  {-# <./de_facto_memory_model/klw-itp14-1.c:1:45, ./de_facto_memory_model/klw-itp14-1.c:5:1> #-} let strong p: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong q: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  let strong end: pointer =
+    create(Ivalignof('unsigned char*'), 'unsigned char*') in
+  {-# <./de_facto_memory_model/klw-itp14-1.c:2:2, ./de_facto_memory_model/klw-itp14-1.c:2:50> #-} let strong a_562: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/klw-itp14-1.c:2:21, ./de_facto_memory_model/klw-itp14-1.c:2:25> #-} let weak a_563: pointer =
+        {-# <./de_facto_memory_model/klw-itp14-1.c:2:21, ./de_facto_memory_model/klw-itp14-1.c:2:25> #-} pure(
+          dest
+        ) in
+      load('void*', a_563)
+    ) in
+  store('unsigned char*', p, a_562) ;
+  let strong a_564: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/klw-itp14-1.c:2:32, ./de_facto_memory_model/klw-itp14-1.c:2:35> #-} let weak a_565: pointer =
+        {-# <./de_facto_memory_model/klw-itp14-1.c:2:32, ./de_facto_memory_model/klw-itp14-1.c:2:35> #-} pure(
+          src
+        ) in
+      load('void*', a_565)
+    ) in
+  store('unsigned char*', q, a_564) ;
+  let strong a_566: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.6 #-}
+      {-# <./de_facto_memory_model/klw-itp14-1.c:2:44, ./de_facto_memory_model/klw-itp14-1.c:2:49> ./de_facto_memory_model/klw-itp14-1.c:2:46 #-} let weak (a_567: loaded pointer,
+      a_569: loaded integer) =
+        unseq(
+          {-# <./de_facto_memory_model/klw-itp14-1.c:2:44, ./de_facto_memory_model/klw-itp14-1.c:2:45> #-} let weak a_572: pointer =
+            {-# <./de_facto_memory_model/klw-itp14-1.c:2:44, ./de_facto_memory_model/klw-itp14-1.c:2:45> #-} pure(
+              p
+            ) in
+          load('unsigned char*', a_572)
+        ,
+          {-# <./de_facto_memory_model/klw-itp14-1.c:2:48, ./de_facto_memory_model/klw-itp14-1.c:2:49> #-} let weak a_573: pointer =
+            {-# <./de_facto_memory_model/klw-itp14-1.c:2:48, ./de_facto_memory_model/klw-itp14-1.c:2:49> #-} pure(
+              n
+            ) in
+          load('signed int', a_573)
+        ) in
+      let (Specified(a_568: pointer), Specified(a_570: integer)) =
+        (a_567, a_569) in
+      let weak a_571: pointer =
+        memop(PtrArrayShift, a_568, 'unsigned char', a_570) in
+      pure(Specified(a_571))
+    ) in
+  store('unsigned char*', end, a_566) ;
+  {-# <./de_facto_memory_model/klw-itp14-1.c:3:2, ./de_facto_memory_model/klw-itp14-1.c:4:16> #-} {-# <./de_facto_memory_model/klw-itp14-1.c:3:2, ./de_facto_memory_model/klw-itp14-1.c:4:16> #-} save while_560: unit (p: pointer:= p,
+  q: pointer:= q, end: pointer:= end) in
+    let strong a_574: loaded integer =
+      {-# §6.5#2 #-}
+      bound(
+        {-# <./de_facto_memory_model/klw-itp14-1.c:3:9, ./de_facto_memory_model/klw-itp14-1.c:3:16> ./de_facto_memory_model/klw-itp14-1.c:3:11 #-} let weak (a_576: loaded integer,
+        a_577: loaded integer) =
+          unseq(
+            {-# §6.5.8 #-}
+            {-# <./de_facto_memory_model/klw-itp14-1.c:3:9, ./de_facto_memory_model/klw-itp14-1.c:3:16> ./de_facto_memory_model/klw-itp14-1.c:3:11 #-} let weak (a_583: loaded pointer,
+            a_584: loaded pointer) =
+              unseq(
+                {-# <./de_facto_memory_model/klw-itp14-1.c:3:9, ./de_facto_memory_model/klw-itp14-1.c:3:10> #-} let weak a_581: pointer =
+                  {-# <./de_facto_memory_model/klw-itp14-1.c:3:9, ./de_facto_memory_model/klw-itp14-1.c:3:10> #-} pure(
+                    p
+                  ) in
+                load('unsigned char*', a_581)
+              ,
+                {-# <./de_facto_memory_model/klw-itp14-1.c:3:13, ./de_facto_memory_model/klw-itp14-1.c:3:16> #-} let weak a_582: pointer =
+                  {-# <./de_facto_memory_model/klw-itp14-1.c:3:13, ./de_facto_memory_model/klw-itp14-1.c:3:16> #-} pure(
+                    end
+                  ) in
+                load('unsigned char*', a_582)
+              ) in
+            let (Specified(a_585: pointer), Specified(a_586: pointer)) =
+              (a_583, a_584) in
+            let weak a_587: boolean = memop(PtrLt, a_585, a_586) in
+            {-# §6.5.8#6 #-}
+            pure(if a_587 then Specified(1) else Specified(0))
+          ,
+            {-# <./de_facto_memory_model/klw-itp14-1.c:3:9, ./de_facto_memory_model/klw-itp14-1.c:3:16> ./de_facto_memory_model/klw-itp14-1.c:3:11 #-} pure(
+              Specified(0)
+            )
+          ) in
+        pure(
+          let (Specified(a_578: integer), Specified(a_579: integer)) =
+            (a_576, a_577) in
+          if conv_int('signed int', a_578) = conv_int('signed int', a_579) then
+            Specified(1)
+          else
+            Specified(0)
+        )
+      ) in
+    let strong a_561: boolean =
+      let Specified(a_575: integer) = a_574 in
+      pure(if not(a_575 = 1) then True else False) in
+    if a_561 then
+      {-# <./de_facto_memory_model/klw-itp14-1.c:3:2, ./de_facto_memory_model/klw-itp14-1.c:4:16> #-} {-# <./de_facto_memory_model/klw-itp14-1.c:4:4, ./de_facto_memory_model/klw-itp14-1.c:4:16> #-} let strong _: loaded integer =
+        {-# §6.5#2 #-}
+        bound(
+          {-# §6.5.16#3, sentence 4 #-}
+          {-# <./de_facto_memory_model/klw-itp14-1.c:4:4, ./de_facto_memory_model/klw-itp14-1.c:4:15> ./de_facto_memory_model/klw-itp14-1.c:4:9 #-} let weak (a_588: pointer,
+          a_602: loaded integer) =
+            {-# §6.5.16#3, sentence 5 #-}
+            unseq(
+              {-# §6.5.3.2 #-}
+              {-# <./de_facto_memory_model/klw-itp14-1.c:4:4, ./de_facto_memory_model/klw-itp14-1.c:4:8> ./de_facto_memory_model/klw-itp14-1.c:4:4 #-} let weak a_589: loaded pointer =
+                {-# §6.5.2.4#2, sentence 3 #-}
+                {-# §6.5.2.4#2, sentence 1 #-}
+                {-# §6.5.2.4 #-}
+                {-# <./de_facto_memory_model/klw-itp14-1.c:4:5, ./de_facto_memory_model/klw-itp14-1.c:4:8> ./de_facto_memory_model/klw-itp14-1.c:4:6 #-} let weak a_592: pointer =
+                  {-# <./de_facto_memory_model/klw-itp14-1.c:4:5, ./de_facto_memory_model/klw-itp14-1.c:4:6> #-} pure(
+                    p
+                  ) in
+                seq_rmw('unsigned char*', a_592, a_593 => let Specified(a_594: pointer) =
+                  a_593 in
+                Specified(array_shift(a_594, 'unsigned ichar', 1))) in
+              let Specified(a_590: pointer) = a_589 in
+              let weak a_591: boolean =
+                memop(PtrValidForDeref, 'unsigned char', a_590) in
+              pure(
+                if a_591 then
+                  a_590
+                else
+                  undef(<<UB043_indirection_invalid_value>>)
+              )
+            ,
+              {-# <./de_facto_memory_model/klw-itp14-1.c:4:11, ./de_facto_memory_model/klw-itp14-1.c:4:15> ./de_facto_memory_model/klw-itp14-1.c:4:11 #-} let weak a_601: pointer =
+                {-# §6.5.3.2 #-}
+                {-# <./de_facto_memory_model/klw-itp14-1.c:4:11, ./de_facto_memory_model/klw-itp14-1.c:4:15> ./de_facto_memory_model/klw-itp14-1.c:4:11 #-} let weak a_595: loaded pointer =
+                  {-# §6.5.2.4#2, sentence 3 #-}
+                  {-# §6.5.2.4#2, sentence 1 #-}
+                  {-# §6.5.2.4 #-}
+                  {-# <./de_facto_memory_model/klw-itp14-1.c:4:12, ./de_facto_memory_model/klw-itp14-1.c:4:15> ./de_facto_memory_model/klw-itp14-1.c:4:13 #-} let weak a_598: pointer =
+                    {-# <./de_facto_memory_model/klw-itp14-1.c:4:12, ./de_facto_memory_model/klw-itp14-1.c:4:13> #-} pure(
+                      q
+                    ) in
+                  seq_rmw('unsigned char*', a_598, a_599 => let Specified(a_600: pointer) =
+                    a_599 in
+                  Specified(array_shift(a_600, 'unsigned ichar', 1))) in
+                let Specified(a_596: pointer) = a_595 in
+                let weak a_597: boolean =
+                  memop(PtrValidForDeref, 'unsigned char', a_596) in
+                pure(
+                  if a_597 then
+                    a_596
+                  else
+                    undef(<<UB043_indirection_invalid_value>>)
+                ) in
+              load('unsigned char', a_601)
+            ) in
+          let weak _: unit =
+            {-# §6.5.16.1#2, store #-}
+            neg(store('unsigned char', a_588,
+            conv_loaded_int('unsigned char', a_602))) in
+          pure(conv_loaded_int('unsigned char', a_602))
+        ) in
+      pure(Unit) ;
+      {-# <./de_facto_memory_model/klw-itp14-1.c:3:2, ./de_facto_memory_model/klw-itp14-1.c:4:16> #-} save continue_558: unit (p: pointer:= p,
+      q: pointer:= q, end: pointer:= end) in
+        {-# <./de_facto_memory_model/klw-itp14-1.c:3:2, ./de_facto_memory_model/klw-itp14-1.c:4:16> #-} pure(
+          Unit
+        ) ;
+      pure(Unit) ;
+      run while_560(p, q, end)
+    else
+      pure(Unit) ;
+  {-# <./de_facto_memory_model/klw-itp14-1.c:3:2, ./de_facto_memory_model/klw-itp14-1.c:4:16> #-} save break_559: unit (p: pointer:= p,
+  q: pointer:= q, end: pointer:= end) in
+    {-# <./de_facto_memory_model/klw-itp14-1.c:3:2, ./de_facto_memory_model/klw-itp14-1.c:4:16> #-} pure(
+      Unit
+    ) ;
+  pure(Unit) ;
+  kill('unsigned ichar*', p) ;
+  kill('unsigned ichar*', q) ;
+  kill('unsigned ichar*', end) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/klw-itp14-1.c:1:0, ./de_facto_memory_model/klw-itp14-1.c:5:1> ./de_facto_memory_model/klw-itp14-1.c:1:5 - ./de_facto_memory_model/klw-itp14-1.c:1:14 #-} save ret_557: unit (a_603: unit:= Unit) in
+    pure(a_603)
+
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/klw-itp14-1.c:6:11, ./de_facto_memory_model/klw-itp14-1.c:10:1> #-} let strong s: pointer =
+    create(Ivalignof('struct S'), 'struct S') in
+  let strong s2: pointer = create(Ivalignof('struct S'), 'struct S') in
+  {-# <./de_facto_memory_model/klw-itp14-1.c:7:2, ./de_facto_memory_model/klw-itp14-1.c:7:55> #-} let strong a_521: loaded struct S_515 =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_525: loaded pointer,
+      a_522: loaded integer) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <./de_facto_memory_model/klw-itp14-1.c:7:44, ./de_facto_memory_model/klw-itp14-1.c:7:48> ./de_facto_memory_model/klw-itp14-1.c:7:44 #-} let weak a_523: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/klw-itp14-1.c:7:45, ./de_facto_memory_model/klw-itp14-1.c:7:48> ./de_facto_memory_model/klw-itp14-1.c:7:46 #-} let strong a_524: pointer =
+              {-# <./de_facto_memory_model/klw-itp14-1.c:7:45, ./de_facto_memory_model/klw-itp14-1.c:7:46> #-} pure(
+                s
+              ) in
+            memop(PtrArrayShift[S, x], a_524) in
+          pure(Specified(a_523))
+        ,
+          {-# <./de_facto_memory_model/klw-itp14-1.c:7:40, ./de_facto_memory_model/klw-itp14-1.c:7:42> #-} pure(
+            Specified(10)
+          )
+        ) in
+      pure(
+        Specified((struct S){.x= conv_loaded_int('signed short', a_522),
+        .r= a_525})
+      )
+    ) in
+  store('struct S', s, a_521) ;
+  {-# §6.2.4#6 #-}
+  store('struct S', s2, Unspecified('struct S')) ;
+  {-# <./de_facto_memory_model/klw-itp14-1.c:8:2, ./de_facto_memory_model/klw-itp14-1.c:8:39> #-} {-# §6.5#2 #-}
+  bound(
+    {-# §6.5.2.2#10, sentence 1 #-}
+    {-# <./de_facto_memory_model/klw-itp14-1.c:8:2, ./de_facto_memory_model/klw-itp14-1.c:8:38> #-} let strong ((a_526: loaded pointer,
+    (a_527: ctype, a_528: [ctype], a_529: boolean, a_530: boolean)),
+    a_534: loaded pointer, a_536: loaded pointer, a_538: loaded integer) =
+      {-# §6.5.2.2#4, sentence 2 #-}
+      unseq(
+        let strong a_520: loaded pointer =
+          {-# <./de_facto_memory_model/klw-itp14-1.c:8:2, ./de_facto_memory_model/klw-itp14-1.c:8:11> #-} pure(
+            Specified(Cfunction(my_memcpy))
+          ) in
+        pure((a_520, cfunction(a_520)))
+      ,
+        {-# §6.5.3.2#3, sentence 5 #-}
+        {-# <./de_facto_memory_model/klw-itp14-1.c:8:12, ./de_facto_memory_model/klw-itp14-1.c:8:15> ./de_facto_memory_model/klw-itp14-1.c:8:12 #-} let weak a_535: pointer =
+          {-# <./de_facto_memory_model/klw-itp14-1.c:8:13, ./de_facto_memory_model/klw-itp14-1.c:8:15> #-} pure(
+            s2
+          ) in
+        pure(Specified(a_535))
+      ,
+        {-# §6.5.3.2#3, sentence 5 #-}
+        {-# <./de_facto_memory_model/klw-itp14-1.c:8:17, ./de_facto_memory_model/klw-itp14-1.c:8:19> ./de_facto_memory_model/klw-itp14-1.c:8:17 #-} let weak a_537: pointer =
+          {-# <./de_facto_memory_model/klw-itp14-1.c:8:18, ./de_facto_memory_model/klw-itp14-1.c:8:19> #-} pure(
+            s
+          ) in
+        pure(Specified(a_537))
+      ,
+        {-# <./de_facto_memory_model/klw-itp14-1.c:8:21, ./de_facto_memory_model/klw-itp14-1.c:8:37> ./de_facto_memory_model/klw-itp14-1.c:8:21 #-} pure(
+          Specified(Ivsizeof('struct S'))
+        )
+      ) in
+    if not(params_length(a_528) = 3) then
+      pure(undef(<<UB038_number_of_args>>))
+    else
+      if a_529 \/ not(are_compatible ('void', a_527)) then
+        pure(undef(<<UB041_function_not_compatible>>))
+      else
+        let strong a_533: pointer =
+          let a_539: ctype = params_nth(a_528, 0) in
+          if not(are_compatible ('void*', a_539)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_540: pointer = create(Ivalignof('void*'), 'void*') in
+            let weak _: unit = store('void*', a_540, a_534) in
+            pure(a_540) in
+        let strong a_532: pointer =
+          let a_541: ctype = params_nth(a_528, 1) in
+          if not(are_compatible ('void*', a_541)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_542: pointer = create(Ivalignof('void*'), 'void*') in
+            let weak _: unit = store('void*', a_542, a_536) in
+            pure(a_542) in
+        let strong a_531: pointer =
+          let a_543: ctype = params_nth(a_528, 2) in
+          if not(are_compatible ('signed int', a_543)) then
+            pure(undef(<<UB041_function_not_compatible>>))
+          else
+            {-# §6.5.2.2#7, sentence 1 #-}
+            let weak a_544: pointer =
+              create(Ivalignof('signed int'), 'signed int') in
+            let weak _: unit =
+              store('signed int', a_544, conv_loaded_int('signed int', a_538)) in
+            pure(a_544) in
+        let strong a_545: unit =
+          ccall('void (*) (void*, void*, signed int)', a_526, a_533, a_532,
+          a_531) in
+        let strong _: (unit,unit,unit) =
+          unseq(
+            kill('void*', a_533)
+          ,
+            kill('void*', a_532)
+          ,
+            kill('signed int', a_531)
+          ) in
+        pure(a_545)
+  ) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/klw-itp14-1.c:9:2, ./de_facto_memory_model/klw-itp14-1.c:9:17> #-} let strong a_552: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/klw-itp14-1.c:9:9, ./de_facto_memory_model/klw-itp14-1.c:9:16> ./de_facto_memory_model/klw-itp14-1.c:9:9 #-} let weak a_551: pointer =
+        {-# §6.5.3.2 #-}
+        {-# <./de_facto_memory_model/klw-itp14-1.c:9:9, ./de_facto_memory_model/klw-itp14-1.c:9:16> ./de_facto_memory_model/klw-itp14-1.c:9:9 #-} let weak a_546: loaded pointer =
+          {-# <./de_facto_memory_model/klw-itp14-1.c:9:10, ./de_facto_memory_model/klw-itp14-1.c:9:16> #-} let weak a_550: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/klw-itp14-1.c:9:10, ./de_facto_memory_model/klw-itp14-1.c:9:16> #-} let strong a_549: pointer =
+              {-# <./de_facto_memory_model/klw-itp14-1.c:9:11, ./de_facto_memory_model/klw-itp14-1.c:9:13> #-} pure(
+                s2
+              ) in
+            memop(PtrArrayShift[S, r], a_549) in
+          load('signed short*', a_550) in
+        let Specified(a_547: pointer) = a_546 in
+        let weak a_548: boolean =
+          memop(PtrValidForDeref, 'signed short', a_547) in
+        pure(
+          if a_548 then a_547 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('signed short', a_551)
+    ) in
+  kill('struct S', s) ;
+  kill('struct S', s2) ;
+  run ret_519(conv_loaded_int('signed int', a_552)) ;
+  kill('struct S', s) ;
+  kill('struct S', s2) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/klw-itp14-1.c:6:0, ./de_facto_memory_model/klw-itp14-1.c:10:1> ./de_facto_memory_model/klw-itp14-1.c:6:4 - ./de_facto_memory_model/klw-itp14-1.c:6:8 #-} save ret_519: loaded integer (a_553: loaded integer:= Specified(0)) in
+    pure(a_553)
+

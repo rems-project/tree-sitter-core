@@ -1,0 +1,325 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_648 :=
+  __dummy_max_align_t: 'void*'
+
+def struct __cerbty_unnamed_tag_680 :=
+  quot: 'intmax_t'
+  rem: 'intmax_t'
+
+-- Globals
+glob a_769: pointer [ail_ctype = 'char[15]'] :=
+  create_readonly(Ivalignof('char[15]'), 'char[15]', Specified(Array(Specified(conv_int('char',
+  120)), Specified(conv_int('char', 91)), Specified(conv_int('char', 49)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 42)),
+  Specified(conv_int('char', 112)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 100)),
+  Specified(conv_int('char', 10)), Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:3:11, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:10:1> #-} let strong y: pointer =
+    create(Ivalignof('signed int[2]'), 'signed int[2]') in
+  let strong x: pointer =
+    create(Ivalignof('signed int[2]'), 'signed int[2]') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:4:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:4:17> #-} {-# §6.2.4#6 #-}
+  store('signed int[2]', y, Unspecified('signed int[2]')) ;
+  {-# §6.2.4#6 #-}
+  store('signed int[2]', x, Unspecified('signed int[2]')) ;
+  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:49> #-} let strong a_711: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:9, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:48> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:9 #-} let weak a_712: loaded integer =
+        {-# §6.5.6 #-}
+        {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:15, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:48> #-} let weak (a_714: loaded integer,
+        a_715: loaded integer) =
+          unseq(
+            {-# §6.5.4 #-}
+            {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:16, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:36> #-} let weak a_719: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# §6.5.3.2#3, sentence 3 #-}
+              {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:28, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:35> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:28 #-} let weak (a_721: loaded pointer,
+              a_723: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:30, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:31> #-} let weak a_726: pointer =
+                    {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:30, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:31> #-} pure(
+                      x
+                    ) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_727: pointer =
+                    memop(PtrArrayShift, a_726, 'signed int', 0) in
+                  pure(Specified(a_727))
+                ,
+                  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:32, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:5:33> #-} pure(
+                    Specified(0)
+                  )
+                ) in
+              let (Specified(a_722: pointer), Specified(a_724: integer)) =
+                (a_721, a_723) in
+              let weak a_725: pointer =
+                memop(PtrArrayShift, a_722, 'signed int', a_724) in
+              pure(Specified(a_725)) in
+            let Specified(a_720: pointer) = a_719 in
+            let weak a_728: integer =
+              memop(IntFromPtr, 'signed int', 'uintptr_t', a_720) in
+            pure(Specified(a_728))
+          ,
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:4, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:47> #-} let weak (a_749: loaded integer,
+            a_750: loaded integer) =
+              unseq(
+                {-# §6.5.4 #-}
+                {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:5, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:25> #-} let weak a_729: loaded pointer =
+                  {-# §6.5.6 #-}
+                  {-# §6.5.3.2#3, sentence 3 #-}
+                  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:17, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:24> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:17 #-} let weak (a_731: loaded pointer,
+                  a_733: loaded integer) =
+                    unseq(
+                      {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:19, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:20> #-} let weak a_736: pointer =
+                        {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:19, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:20> #-} pure(
+                          y
+                        ) in
+                      {-# §6.3.2.1#3 #-}
+                      let weak a_737: pointer =
+                        memop(PtrArrayShift, a_736, 'signed int', 0) in
+                      pure(Specified(a_737))
+                    ,
+                      {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:21, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:22> #-} pure(
+                        Specified(1)
+                      )
+                    ) in
+                  let (Specified(a_732: pointer), Specified(a_734: integer)) =
+                    (a_731, a_733) in
+                  let weak a_735: pointer =
+                    memop(PtrArrayShift, a_732, 'signed int', a_734) in
+                  pure(Specified(a_735)) in
+                let Specified(a_730: pointer) = a_729 in
+                let weak a_738: integer =
+                  memop(IntFromPtr, 'signed int', 'uintptr_t', a_730) in
+                pure(Specified(a_738))
+              ,
+                {-# §6.5.4 #-}
+                {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:26, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:46> #-} let weak a_739: loaded pointer =
+                  {-# §6.5.6 #-}
+                  {-# §6.5.3.2#3, sentence 3 #-}
+                  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:38, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:45> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:38 #-} let weak (a_741: loaded pointer,
+                  a_743: loaded integer) =
+                    unseq(
+                      {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:40, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:41> #-} let weak a_746: pointer =
+                        {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:40, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:41> #-} pure(
+                          y
+                        ) in
+                      {-# §6.3.2.1#3 #-}
+                      let weak a_747: pointer =
+                        memop(PtrArrayShift, a_746, 'signed int', 0) in
+                      pure(Specified(a_747))
+                    ,
+                      {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:42, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:6:43> #-} pure(
+                        Specified(0)
+                      )
+                    ) in
+                  let (Specified(a_742: pointer), Specified(a_744: integer)) =
+                    (a_741, a_743) in
+                  let weak a_745: pointer =
+                    memop(PtrArrayShift, a_742, 'signed int', a_744) in
+                  pure(Specified(a_745)) in
+                let Specified(a_740: pointer) = a_739 in
+                let weak a_748: integer =
+                  memop(IntFromPtr, 'signed int', 'uintptr_t', a_740) in
+                pure(Specified(a_748))
+              ) in
+            pure(
+              let (Specified(a_751: integer), Specified(a_752: integer)) =
+                (a_749, a_750) in
+              Specified(wrapI_sub('uintptr_t', conv_int('uintptr_t', a_751), conv_int('uintptr_t',
+              a_752)))
+            )
+          ) in
+        pure(
+          let (Specified(a_716: integer), Specified(a_717: integer)) =
+            (a_714, a_715) in
+          Specified(wrapI_add('uintptr_t', __conv_int__('uintptr_t', a_716), __conv_int__('uintptr_t', a_717)))
+        ) in
+      let Specified(a_713: integer) = a_712 in
+      let weak a_754: pointer =
+        memop(PtrFromInt, 'uintptr_t', 'signed int', a_713) in
+      pure(Specified(a_754))
+    ) in
+  store('signed int*', p, a_711) ;
+  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:10> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:9> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:5 #-} let weak (a_710: pointer,
+      a_759: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:4> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:2 #-} let weak a_755: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:3, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:4> #-} let weak a_758: pointer =
+              {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:3, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:4> #-} pure(
+                p
+              ) in
+            load('signed int*', a_758) in
+          let Specified(a_756: pointer) = a_755 in
+          let weak a_757: boolean =
+            memop(PtrValidForDeref, 'signed int', a_756) in
+          pure(
+            if a_757 then
+              a_756
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:7, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:7:9> #-} pure(
+            Specified(11)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_710, conv_loaded_int('signed int', a_759))) in
+      pure(conv_loaded_int('signed int', a_759))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:36> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:35> #-} let strong ((a_760: loaded pointer,
+      (a_761: ctype, a_762: [ctype], a_763: boolean, a_764: boolean)),
+      a_768: loaded pointer, a_772: loaded integer, a_784: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_709: loaded pointer =
+            {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_709, cfunction(a_709)))
+        ,
+          {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:9, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:26> #-} let weak a_770: pointer =
+            {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:9, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:26> #-} pure(
+              a_769
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_771: pointer = memop(PtrArrayShift, a_770, 'char', 0) in
+          pure(Specified(a_771))
+        ,
+          {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:27, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:31> #-} let weak a_783: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:27, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:31> #-} let weak a_773: loaded pointer =
+              {-# §6.5.6 #-}
+              {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:27, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:31> #-} let weak (a_776: loaded pointer,
+              a_778: loaded integer) =
+                unseq(
+                  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:27, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:28> #-} let weak a_781: pointer =
+                    {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:27, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:28> #-} pure(
+                      x
+                    ) in
+                  {-# §6.3.2.1#3 #-}
+                  let weak a_782: pointer =
+                    memop(PtrArrayShift, a_781, 'signed int', 0) in
+                  pure(Specified(a_782))
+                ,
+                  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:29, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:30> #-} pure(
+                    Specified(1)
+                  )
+                ) in
+              let (Specified(a_777: pointer), Specified(a_779: integer)) =
+                (a_776, a_778) in
+              let weak a_780: pointer =
+                memop(PtrArrayShift, a_777, 'signed int', a_779) in
+              pure(Specified(a_780)) in
+            let Specified(a_774: pointer) = a_773 in
+            let weak a_775: boolean =
+              memop(PtrValidForDeref, 'signed int', a_774) in
+            pure(
+              if a_775 then
+                a_774
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_783)
+        ,
+          {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:32, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:34> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:32 #-} let weak a_789: pointer =
+            {-# §6.5.3.2 #-}
+            {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:32, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:34> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:32 #-} let weak a_785: loaded pointer =
+              {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:33, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:34> #-} let weak a_788: pointer =
+                {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:33, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:8:34> #-} pure(
+                  p
+                ) in
+              load('signed int*', a_788) in
+            let Specified(a_786: pointer) = a_785 in
+            let weak a_787: boolean =
+              memop(PtrValidForDeref, 'signed int', a_786) in
+            pure(
+              if a_787 then
+                a_786
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('signed int', a_789)
+        ) in
+      if not(params_length(a_762) <= 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_763) \/ not(are_compatible ('signed int', a_761)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_767: pointer =
+            let a_790: ctype = params_nth(a_762, 0) in
+            if not(are_compatible ('const char*', a_790)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_791: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_791, a_768) in
+              pure(a_791) in
+          let strong a_766: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_772)) in
+          let strong a_765: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_784)) in
+          let strong a_792: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_760, a_767,
+            [('signed int', a_766), ('signed int', a_765)]) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('char*', a_767)
+            ,
+              kill('signed int', a_766)
+            ,
+              kill('signed int', a_765)
+            ) in
+          pure(a_792)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:9:2, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:9:11> #-} let strong a_793: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:9:9, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:9:10> #-} pure(
+        Specified(0)
+      )
+    ) in
+  kill('signed int[2]', y) ;
+  kill('signed int[2]', x) ;
+  kill('signed int*', p) ;
+  run ret_708(conv_loaded_int('signed int', a_793)) ;
+  kill('signed int[2]', y) ;
+  kill('signed int[2]', x) ;
+  kill('signed int*', p) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:3:0, ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:10:1> ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:3:4 - ./de_facto_memory_model/pointer_arith_algebraic_properties_2_auto.c:3:8 #-} save ret_708: loaded integer (a_794: loaded integer:= Specified(0)) in
+    pure(a_794)
+

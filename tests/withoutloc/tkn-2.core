@@ -1,0 +1,658 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_735: pointer [ail_ctype = 'char[28]'] :=
+  create_readonly(Ivalignof('char[28]'), 'char[28]', Specified(Array(Specified(conv_int('char',
+  97)), Specified(conv_int('char', 91)), Specified(conv_int('char', 48)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 97)), Specified(conv_int('char', 91)),
+  Specified(conv_int('char', 49)), Specified(conv_int('char', 93)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 108)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 97)),
+  Specified(conv_int('char', 91)), Specified(conv_int('char', 50)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+glob a_802: pointer [ail_ctype = 'char[34]'] :=
+  create_readonly(Ivalignof('char[34]'), 'char[34]', Specified(Array(Specified(conv_int('char',
+  97)), Specified(conv_int('char', 91)), Specified(conv_int('char', 48)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 97)), Specified(conv_int('char', 91)),
+  Specified(conv_int('char', 49)), Specified(conv_int('char', 93)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 108)), Specified(conv_int('char', 117)),
+  Specified(conv_int('char', 32)), Specified(conv_int('char', 97)),
+  Specified(conv_int('char', 91)), Specified(conv_int('char', 50)),
+  Specified(conv_int('char', 93)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 32)),
+  Specified(conv_int('char', 98)), Specified(conv_int('char', 61)),
+  Specified(conv_int('char', 37)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc reverse (i: pointer): eff loaded integer :=
+  let strong j: pointer =
+    create(Ivalignof('unsigned long'), 'unsigned long') in
+  let strong a_854: loaded integer = bound(pure(Specified(0))) in
+  store('unsigned long', j, conv_loaded_int('unsigned long', a_854)) ;
+  save while_851: unit (j: pointer:= j) in
+    let strong a_855: loaded integer =
+      bound(
+        let weak a_858: loaded pointer =
+          let weak a_857: pointer = pure(i) in
+          load('unsigned long*', a_857) in
+        let Specified(a_859: pointer) = a_858 in
+        let weak a_860: boolean = memop(PtrEq, a_859, NULL(unsigned long*)) in
+        pure(if a_860 then Specified(1) else Specified(0))
+      ) in
+    let strong a_853: boolean =
+      let Specified(a_856: integer) = a_855 in
+      pure(if not(a_856 = 1) then True else False) in
+    if a_853 then
+      save while_body_852: unit (j: pointer:= j) in
+        let strong k: pointer =
+          create(Ivalignof('unsigned long*'), 'unsigned long*') in
+        let strong a_864: loaded pointer =
+          bound(
+            let weak a_865: loaded integer =
+              let weak a_871: pointer =
+                let weak a_867: loaded pointer =
+                  let weak a_870: pointer = pure(i) in
+                  load('unsigned long*', a_870) in
+                let Specified(a_868: pointer) = a_867 in
+                let weak a_869: boolean =
+                  memop(PtrValidForDeref, 'unsigned long', a_868) in
+                pure(
+                  if a_869 then
+                    a_868
+                  else
+                    undef(<<UB043_indirection_invalid_value>>)
+                ) in
+              load('unsigned long', a_871) in
+            let Specified(a_866: integer) = a_865 in
+            let weak a_872: pointer =
+              memop(PtrFromInt, 'unsigned long', 'unsigned long', a_866) in
+            pure(Specified(a_872))
+          ) in
+        store('unsigned long*', k, a_864) ;
+        let strong _: loaded integer =
+          bound(
+            let weak (a_863: pointer, a_878: loaded integer) =
+              unseq(
+                let weak a_873: loaded pointer =
+                  let weak a_876: pointer = pure(i) in
+                  load('unsigned long*', a_876) in
+                let Specified(a_874: pointer) = a_873 in
+                let weak a_875: boolean =
+                  memop(PtrValidForDeref, 'unsigned long', a_874) in
+                pure(
+                  if a_875 then
+                    a_874
+                  else
+                    undef(<<UB043_indirection_invalid_value>>)
+                )
+              ,
+                let weak a_877: pointer = pure(j) in
+                load('unsigned long', a_877)
+              ) in
+            let weak _: unit =
+              neg(store('unsigned long', a_863,
+              conv_loaded_int('unsigned long', a_878))) in
+            pure(conv_loaded_int('unsigned long', a_878))
+          ) in
+        pure(Unit) ;
+        let strong _: loaded integer =
+          bound(
+            let weak (a_862: pointer, a_883: loaded integer) =
+              unseq(
+                pure(j)
+              ,
+                let weak a_879: loaded pointer =
+                  let weak a_881: pointer = pure(i) in
+                  load('unsigned long*', a_881) in
+                let Specified(a_880: pointer) = a_879 in
+                let weak a_882: integer =
+                  memop(IntFromPtr, 'unsigned long', 'unsigned long', a_880) in
+                pure(Specified(a_882))
+              ) in
+            let weak _: unit =
+              neg(store('unsigned long', a_862,
+              conv_loaded_int('unsigned long', a_883))) in
+            pure(conv_loaded_int('unsigned long', a_883))
+          ) in
+        pure(Unit) ;
+        let strong _: loaded pointer =
+          bound(
+            let weak (a_861: pointer, a_885: loaded pointer) =
+              unseq(
+                pure(i)
+              ,
+                let weak a_884: pointer = pure(k) in
+                load('unsigned long*', a_884)
+              ) in
+            let weak _: unit = neg(store('unsigned long*', a_861, a_885)) in
+            pure(a_885)
+          ) in
+        pure(Unit) ;
+        kill('unsigned long*', k) ;
+        pure(Unit) ;
+        save continue_849: unit (j: pointer:= j) in  pure(Unit) ;
+        pure(Unit) ;
+        run while_851(j)
+    else
+      pure(Unit) ;
+  save break_850: unit (j: pointer:= j) in  pure(Unit) ;
+  pure(Unit) ;
+  let strong a_887: loaded integer =
+    bound(
+      let weak a_886: pointer = pure(j) in
+      load('unsigned long', a_886)
+    ) in
+  kill('unsigned long', j) ;
+  run ret_848(conv_loaded_int('unsigned long', a_887)) ;
+  kill('unsigned long', j) ;
+  pure(Unit) ;
+  save ret_848: loaded integer (a_888: loaded integer:= undef(<<UB088_reached_end_of_function>>)) in
+    pure(a_888)
+
+proc main (): eff loaded integer :=
+  let strong a: pointer =
+    create(Ivalignof('unsigned long[3]'), 'unsigned long[3]') in
+  let strong b: pointer =
+    create(Ivalignof('unsigned long'), 'unsigned long') in
+  store('unsigned long[3]', a, Unspecified('unsigned long[3]')) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_668: pointer, a_689: loaded integer) =
+        unseq(
+          let weak a_669: loaded pointer =
+            let weak (a_672: loaded pointer, a_674: loaded integer) =
+              unseq(
+                let weak a_677: pointer = pure(a) in
+                let weak a_678: pointer =
+                  memop(PtrArrayShift, a_677, 'unsigned long', 0) in
+                pure(Specified(a_678))
+              ,
+                pure(Specified(0))
+              ) in
+            let (Specified(a_673: pointer), Specified(a_675: integer)) =
+              (a_672, a_674) in
+            let weak a_676: pointer =
+              memop(PtrArrayShift, a_673, 'unsigned long', a_675) in
+            pure(Specified(a_676)) in
+          let Specified(a_670: pointer) = a_669 in
+          let weak a_671: boolean =
+            memop(PtrValidForDeref, 'unsigned long', a_670) in
+          pure(
+            if a_671 then
+              a_670
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          let weak a_679: loaded pointer =
+            let weak (a_681: loaded pointer, a_683: loaded integer) =
+              unseq(
+                let weak a_686: pointer = pure(a) in
+                let weak a_687: pointer =
+                  memop(PtrArrayShift, a_686, 'unsigned long', 0) in
+                pure(Specified(a_687))
+              ,
+                pure(Specified(1))
+              ) in
+            let (Specified(a_682: pointer), Specified(a_684: integer)) =
+              (a_681, a_683) in
+            let weak a_685: pointer =
+              memop(PtrArrayShift, a_682, 'unsigned long', a_684) in
+            pure(Specified(a_685)) in
+          let Specified(a_680: pointer) = a_679 in
+          let weak a_688: integer =
+            memop(IntFromPtr, 'unsigned long', 'unsigned long', a_680) in
+          pure(Specified(a_688))
+        ) in
+      let weak _: unit =
+        neg(store('unsigned long', a_668,
+        conv_loaded_int('unsigned long', a_689))) in
+      pure(conv_loaded_int('unsigned long', a_689))
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_667: pointer, a_710: loaded integer) =
+        unseq(
+          let weak a_690: loaded pointer =
+            let weak (a_693: loaded pointer, a_695: loaded integer) =
+              unseq(
+                let weak a_698: pointer = pure(a) in
+                let weak a_699: pointer =
+                  memop(PtrArrayShift, a_698, 'unsigned long', 0) in
+                pure(Specified(a_699))
+              ,
+                pure(Specified(1))
+              ) in
+            let (Specified(a_694: pointer), Specified(a_696: integer)) =
+              (a_693, a_695) in
+            let weak a_697: pointer =
+              memop(PtrArrayShift, a_694, 'unsigned long', a_696) in
+            pure(Specified(a_697)) in
+          let Specified(a_691: pointer) = a_690 in
+          let weak a_692: boolean =
+            memop(PtrValidForDeref, 'unsigned long', a_691) in
+          pure(
+            if a_692 then
+              a_691
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          let weak a_700: loaded pointer =
+            let weak (a_702: loaded pointer, a_704: loaded integer) =
+              unseq(
+                let weak a_707: pointer = pure(a) in
+                let weak a_708: pointer =
+                  memop(PtrArrayShift, a_707, 'unsigned long', 0) in
+                pure(Specified(a_708))
+              ,
+                pure(Specified(2))
+              ) in
+            let (Specified(a_703: pointer), Specified(a_705: integer)) =
+              (a_702, a_704) in
+            let weak a_706: pointer =
+              memop(PtrArrayShift, a_703, 'unsigned long', a_705) in
+            pure(Specified(a_706)) in
+          let Specified(a_701: pointer) = a_700 in
+          let weak a_709: integer =
+            memop(IntFromPtr, 'unsigned long', 'unsigned long', a_701) in
+          pure(Specified(a_709))
+        ) in
+      let weak _: unit =
+        neg(store('unsigned long', a_667,
+        conv_loaded_int('unsigned long', a_710))) in
+      pure(conv_loaded_int('unsigned long', a_710))
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_666: pointer, a_724: loaded integer) =
+        unseq(
+          let weak a_711: loaded pointer =
+            let weak (a_714: loaded pointer, a_716: loaded integer) =
+              unseq(
+                let weak a_719: pointer = pure(a) in
+                let weak a_720: pointer =
+                  memop(PtrArrayShift, a_719, 'unsigned long', 0) in
+                pure(Specified(a_720))
+              ,
+                pure(Specified(2))
+              ) in
+            let (Specified(a_715: pointer), Specified(a_717: integer)) =
+              (a_714, a_716) in
+            let weak a_718: pointer =
+              memop(PtrArrayShift, a_715, 'unsigned long', a_717) in
+            pure(Specified(a_718)) in
+          let Specified(a_712: pointer) = a_711 in
+          let weak a_713: boolean =
+            memop(PtrValidForDeref, 'unsigned long', a_712) in
+          pure(
+            if a_713 then
+              a_712
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          let weak a_721: loaded integer = pure(Specified(0)) in
+          pure(conv_loaded_int('unsigned long', a_721))
+        ) in
+      let weak _: unit =
+        neg(store('unsigned long', a_666,
+        conv_loaded_int('unsigned long', a_724))) in
+      pure(conv_loaded_int('unsigned long', a_724))
+    ) in
+  pure(Unit) ;
+  store('unsigned long', b, Unspecified('unsigned long')) ;
+  let strong _: loaded integer =
+    bound(
+      let strong ((a_725: loaded pointer,
+      (a_726: ctype, a_727: [ctype], a_728: boolean, a_729: boolean)),
+      a_734: loaded pointer, a_738: loaded integer, a_750: loaded integer,
+      a_762: loaded integer) =
+        unseq(
+          let strong a_665: loaded pointer =
+            pure(Specified(Cfunction(printf_proxy))) in
+          pure((a_665, cfunction(a_665)))
+        ,
+          let weak a_736: pointer = pure(a_735) in
+          let weak a_737: pointer = memop(PtrArrayShift, a_736, 'char', 0) in
+          pure(Specified(a_737))
+        ,
+          let weak a_749: pointer =
+            let weak a_739: loaded pointer =
+              let weak (a_742: loaded pointer, a_744: loaded integer) =
+                unseq(
+                  let weak a_747: pointer = pure(a) in
+                  let weak a_748: pointer =
+                    memop(PtrArrayShift, a_747, 'unsigned long', 0) in
+                  pure(Specified(a_748))
+                ,
+                  pure(Specified(0))
+                ) in
+              let (Specified(a_743: pointer), Specified(a_745: integer)) =
+                (a_742, a_744) in
+              let weak a_746: pointer =
+                memop(PtrArrayShift, a_743, 'unsigned long', a_745) in
+              pure(Specified(a_746)) in
+            let Specified(a_740: pointer) = a_739 in
+            let weak a_741: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_740) in
+            pure(
+              if a_741 then
+                a_740
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_749)
+        ,
+          let weak a_761: pointer =
+            let weak a_751: loaded pointer =
+              let weak (a_754: loaded pointer, a_756: loaded integer) =
+                unseq(
+                  let weak a_759: pointer = pure(a) in
+                  let weak a_760: pointer =
+                    memop(PtrArrayShift, a_759, 'unsigned long', 0) in
+                  pure(Specified(a_760))
+                ,
+                  pure(Specified(1))
+                ) in
+              let (Specified(a_755: pointer), Specified(a_757: integer)) =
+                (a_754, a_756) in
+              let weak a_758: pointer =
+                memop(PtrArrayShift, a_755, 'unsigned long', a_757) in
+              pure(Specified(a_758)) in
+            let Specified(a_752: pointer) = a_751 in
+            let weak a_753: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_752) in
+            pure(
+              if a_753 then
+                a_752
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_761)
+        ,
+          let weak a_773: pointer =
+            let weak a_763: loaded pointer =
+              let weak (a_766: loaded pointer, a_768: loaded integer) =
+                unseq(
+                  let weak a_771: pointer = pure(a) in
+                  let weak a_772: pointer =
+                    memop(PtrArrayShift, a_771, 'unsigned long', 0) in
+                  pure(Specified(a_772))
+                ,
+                  pure(Specified(2))
+                ) in
+              let (Specified(a_767: pointer), Specified(a_769: integer)) =
+                (a_766, a_768) in
+              let weak a_770: pointer =
+                memop(PtrArrayShift, a_767, 'unsigned long', a_769) in
+              pure(Specified(a_770)) in
+            let Specified(a_764: pointer) = a_763 in
+            let weak a_765: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_764) in
+            pure(
+              if a_765 then
+                a_764
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_773)
+        ) in
+      if not(params_length(a_727) <= 4) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_728) \/ not(are_compatible ('signed int', a_726)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_733: pointer =
+            let a_774: ctype = params_nth(a_727, 0) in
+            if not(are_compatible ('const char*', a_774)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_775: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_775, a_734) in
+              pure(a_775) in
+          let strong a_732: pointer =
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_738)) in
+          let strong a_731: pointer =
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_750)) in
+          let strong a_730: pointer =
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_762)) in
+          let strong a_776: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_725, a_733,
+            [('unsigned long', a_732), ('unsigned long', a_731),
+            ('unsigned long', a_730)]) in
+          let strong _: (unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_733)
+            ,
+              kill('unsigned long', a_732)
+            ,
+              kill('unsigned long', a_731)
+            ,
+              kill('unsigned long', a_730)
+            ) in
+          pure(a_776)
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_664: pointer, a_790: loaded integer) =
+        unseq(
+          pure(b)
+        ,
+          let strong ((a_778: loaded pointer,
+          (a_779: ctype, a_780: [ctype], a_781: boolean, a_782: boolean)),
+          a_784: loaded pointer) =
+            unseq(
+              let strong a_777: loaded pointer =
+                pure(Specified(Cfunction(reverse))) in
+              pure((a_777, cfunction(a_777)))
+            ,
+              let weak a_785: pointer = pure(a) in
+              let weak a_786: pointer =
+                memop(PtrArrayShift, a_785, 'unsigned long', 0) in
+              pure(Specified(a_786))
+            ) in
+          if not(params_length(a_780) = 1) then
+            pure(undef(<<UB038_number_of_args>>))
+          else
+            if a_781 \/ not(are_compatible ('unsigned long', a_779)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let strong a_783: pointer =
+                let a_787: ctype = params_nth(a_780, 0) in
+                if not(are_compatible ('unsigned long*', a_787)) then
+                  pure(undef(<<UB041_function_not_compatible>>))
+                else
+                  let weak a_788: pointer =
+                    create(Ivalignof('unsigned long*'), 'unsigned long*') in
+                  let weak _: unit = store('unsigned long*', a_788, a_784) in
+                  pure(a_788) in
+              let strong a_789: loaded integer =
+                ccall('unsigned long (*) (unsigned long*)', a_778, a_783) in
+              kill('unsigned long*', a_783) ;
+              pure(a_789)
+        ) in
+      let weak _: unit =
+        neg(store('unsigned long', a_664,
+        conv_loaded_int('unsigned long', a_790))) in
+      pure(conv_loaded_int('unsigned long', a_790))
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let strong ((a_791: loaded pointer,
+      (a_792: ctype, a_793: [ctype], a_794: boolean, a_795: boolean)),
+      a_801: loaded pointer, a_805: loaded integer, a_817: loaded integer,
+      a_829: loaded integer, a_841: loaded integer) =
+        unseq(
+          let strong a_663: loaded pointer =
+            pure(Specified(Cfunction(printf_proxy))) in
+          pure((a_663, cfunction(a_663)))
+        ,
+          let weak a_803: pointer = pure(a_802) in
+          let weak a_804: pointer = memop(PtrArrayShift, a_803, 'char', 0) in
+          pure(Specified(a_804))
+        ,
+          let weak a_816: pointer =
+            let weak a_806: loaded pointer =
+              let weak (a_809: loaded pointer, a_811: loaded integer) =
+                unseq(
+                  let weak a_814: pointer = pure(a) in
+                  let weak a_815: pointer =
+                    memop(PtrArrayShift, a_814, 'unsigned long', 0) in
+                  pure(Specified(a_815))
+                ,
+                  pure(Specified(0))
+                ) in
+              let (Specified(a_810: pointer), Specified(a_812: integer)) =
+                (a_809, a_811) in
+              let weak a_813: pointer =
+                memop(PtrArrayShift, a_810, 'unsigned long', a_812) in
+              pure(Specified(a_813)) in
+            let Specified(a_807: pointer) = a_806 in
+            let weak a_808: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_807) in
+            pure(
+              if a_808 then
+                a_807
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_816)
+        ,
+          let weak a_828: pointer =
+            let weak a_818: loaded pointer =
+              let weak (a_821: loaded pointer, a_823: loaded integer) =
+                unseq(
+                  let weak a_826: pointer = pure(a) in
+                  let weak a_827: pointer =
+                    memop(PtrArrayShift, a_826, 'unsigned long', 0) in
+                  pure(Specified(a_827))
+                ,
+                  pure(Specified(1))
+                ) in
+              let (Specified(a_822: pointer), Specified(a_824: integer)) =
+                (a_821, a_823) in
+              let weak a_825: pointer =
+                memop(PtrArrayShift, a_822, 'unsigned long', a_824) in
+              pure(Specified(a_825)) in
+            let Specified(a_819: pointer) = a_818 in
+            let weak a_820: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_819) in
+            pure(
+              if a_820 then
+                a_819
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_828)
+        ,
+          let weak a_840: pointer =
+            let weak a_830: loaded pointer =
+              let weak (a_833: loaded pointer, a_835: loaded integer) =
+                unseq(
+                  let weak a_838: pointer = pure(a) in
+                  let weak a_839: pointer =
+                    memop(PtrArrayShift, a_838, 'unsigned long', 0) in
+                  pure(Specified(a_839))
+                ,
+                  pure(Specified(2))
+                ) in
+              let (Specified(a_834: pointer), Specified(a_836: integer)) =
+                (a_833, a_835) in
+              let weak a_837: pointer =
+                memop(PtrArrayShift, a_834, 'unsigned long', a_836) in
+              pure(Specified(a_837)) in
+            let Specified(a_831: pointer) = a_830 in
+            let weak a_832: boolean =
+              memop(PtrValidForDeref, 'unsigned long', a_831) in
+            pure(
+              if a_832 then
+                a_831
+              else
+                undef(<<UB043_indirection_invalid_value>>)
+            ) in
+          load('unsigned long', a_840)
+        ,
+          let weak a_842: pointer = pure(b) in
+          load('unsigned long', a_842)
+        ) in
+      if not(params_length(a_793) <= 5) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_794) \/ not(are_compatible ('signed int', a_792)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_800: pointer =
+            let a_843: ctype = params_nth(a_793, 0) in
+            if not(are_compatible ('const char*', a_843)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_844: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_844, a_801) in
+              pure(a_844) in
+          let strong a_799: pointer =
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_805)) in
+          let strong a_798: pointer =
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_817)) in
+          let strong a_797: pointer =
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_829)) in
+          let strong a_796: pointer =
+            pcall(create_and_store, 'unsigned long',
+            conv_loaded_int('unsigned long', a_841)) in
+          let strong a_845: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_791, a_800,
+            [('unsigned long', a_799), ('unsigned long', a_798),
+            ('unsigned long', a_797), ('unsigned long', a_796)]) in
+          let strong _: (unit,unit,unit,unit,unit) =
+            unseq(
+              kill('char*', a_800)
+            ,
+              kill('unsigned long', a_799)
+            ,
+              kill('unsigned long', a_798)
+            ,
+              kill('unsigned long', a_797)
+            ,
+              kill('unsigned long', a_796)
+            ) in
+          pure(a_845)
+    ) in
+  pure(Unit) ;
+  kill('unsigned long[3]', a) ;
+  kill('unsigned long', b) ;
+  pure(Unit) ;
+  save ret_662: loaded integer (a_846: loaded integer:= Specified(0)) in
+    pure(a_846)
+

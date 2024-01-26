@@ -1,0 +1,274 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+-- Globals
+glob a_716: pointer [ail_ctype = 'char[6]'] :=
+  create_readonly(Ivalignof('char[6]'), 'char[6]', Specified(Array(Specified(conv_int('char',
+  120)), Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/multidimensional_array_1.c:2:11, ./de_facto_memory_model/multidimensional_array_1.c:7:1> #-} let strong a: pointer =
+    create(Ivalignof('signed int[2][2]'), 'signed int[2][2]') in
+  let strong x: pointer = create(Ivalignof('signed int'), 'signed int') in
+  {-# <./de_facto_memory_model/multidimensional_array_1.c:3:2, ./de_facto_memory_model/multidimensional_array_1.c:3:30> #-} let strong a_658: loaded array(array(integer)) =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_664: loaded array(integer),
+      a_661: loaded array(integer)) =
+        {-# §6.7.9#23 #-}
+        unseq(
+          {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_663: loaded integer,
+          a_662: loaded integer) =
+            {-# §6.7.9#23 #-}
+            unseq(
+              {-# <./de_facto_memory_model/multidimensional_array_1.c:3:26, ./de_facto_memory_model/multidimensional_array_1.c:3:27> #-} pure(
+                Specified(0)
+              )
+            ,
+              {-# <./de_facto_memory_model/multidimensional_array_1.c:3:24, ./de_facto_memory_model/multidimensional_array_1.c:3:25> #-} pure(
+                Specified(0)
+              )
+            ) in
+          pure(
+            Specified(Array(conv_loaded_int('signed int', a_662),
+            conv_loaded_int('signed int', a_663)))
+          )
+        ,
+          {-# <other location (Cabs_to_ail.constructValue)> #-} let weak (a_660: loaded integer,
+          a_659: loaded integer) =
+            {-# §6.7.9#23 #-}
+            unseq(
+              {-# <./de_facto_memory_model/multidimensional_array_1.c:3:20, ./de_facto_memory_model/multidimensional_array_1.c:3:21> #-} pure(
+                Specified(0)
+              )
+            ,
+              {-# <./de_facto_memory_model/multidimensional_array_1.c:3:18, ./de_facto_memory_model/multidimensional_array_1.c:3:19> #-} pure(
+                Specified(0)
+              )
+            ) in
+          pure(
+            Specified(Array(conv_loaded_int('signed int', a_659),
+            conv_loaded_int('signed int', a_660)))
+          )
+        ) in
+      pure(Specified(Array(a_661, a_664)))
+    ) in
+  store('signed int[2][2]', a, a_658) ;
+  {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:14> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:13> ./de_facto_memory_model/multidimensional_array_1.c:4:10 #-} let weak (a_657: pointer,
+      a_685: loaded integer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.3.2 #-}
+          {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:9> #-} let weak a_665: loaded pointer =
+            {-# §6.5.6 #-}
+            {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:9> #-} let weak (a_668: loaded pointer,
+            a_670: loaded integer) =
+              unseq(
+                {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:6> #-} let weak a_683: pointer =
+                  {-# §6.5.3.2 #-}
+                  {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:6> #-} let weak a_673: loaded pointer =
+                    {-# §6.5.6 #-}
+                    {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:6> #-} let weak (a_676: loaded pointer,
+                    a_678: loaded integer) =
+                      unseq(
+                        {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:3> #-} let weak a_681: pointer =
+                          {-# <./de_facto_memory_model/multidimensional_array_1.c:4:2, ./de_facto_memory_model/multidimensional_array_1.c:4:3> #-} pure(
+                            a
+                          ) in
+                        {-# §6.3.2.1#3 #-}
+                        let weak a_682: pointer =
+                          memop(PtrArrayShift, a_681, 'signed int[2]', 0) in
+                        pure(Specified(a_682))
+                      ,
+                        {-# <./de_facto_memory_model/multidimensional_array_1.c:4:4, ./de_facto_memory_model/multidimensional_array_1.c:4:5> #-} pure(
+                          Specified(0)
+                        )
+                      ) in
+                    let (Specified(a_677: pointer), Specified(a_679: integer)) =
+                      (a_676, a_678) in
+                    let weak a_680: pointer =
+                      memop(PtrArrayShift, a_677, 'signed int[2]', a_679) in
+                    pure(Specified(a_680)) in
+                  let Specified(a_674: pointer) = a_673 in
+                  let weak a_675: boolean =
+                    memop(PtrValidForDeref, 'signed int[2]', a_674) in
+                  pure(
+                    if a_675 then
+                      a_674
+                    else
+                      undef(<<UB043_indirection_invalid_value>>)
+                  ) in
+                {-# §6.3.2.1#3 #-}
+                let weak a_684: pointer =
+                  memop(PtrArrayShift, a_683, 'signed int', 0) in
+                pure(Specified(a_684))
+              ,
+                {-# <./de_facto_memory_model/multidimensional_array_1.c:4:7, ./de_facto_memory_model/multidimensional_array_1.c:4:8> #-} pure(
+                  Specified(2)
+                )
+              ) in
+            let (Specified(a_669: pointer), Specified(a_671: integer)) =
+              (a_668, a_670) in
+            let weak a_672: pointer =
+              memop(PtrArrayShift, a_669, 'signed int', a_671) in
+            pure(Specified(a_672)) in
+          let Specified(a_666: pointer) = a_665 in
+          let weak a_667: boolean =
+            memop(PtrValidForDeref, 'signed int', a_666) in
+          pure(
+            if a_667 then
+              a_666
+            else
+              undef(<<UB043_indirection_invalid_value>>)
+          )
+        ,
+          {-# <./de_facto_memory_model/multidimensional_array_1.c:4:12, ./de_facto_memory_model/multidimensional_array_1.c:4:13> #-} pure(
+            Specified(1)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int', a_657, conv_loaded_int('signed int', a_685))) in
+      pure(conv_loaded_int('signed int', a_685))
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/multidimensional_array_1.c:5:2, ./de_facto_memory_model/multidimensional_array_1.c:5:18> #-} let strong a_686: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/multidimensional_array_1.c:5:10, ./de_facto_memory_model/multidimensional_array_1.c:5:17> #-} let weak a_707: pointer =
+        {-# §6.5.3.2 #-}
+        {-# <./de_facto_memory_model/multidimensional_array_1.c:5:10, ./de_facto_memory_model/multidimensional_array_1.c:5:17> #-} let weak a_687: loaded pointer =
+          {-# §6.5.6 #-}
+          {-# <./de_facto_memory_model/multidimensional_array_1.c:5:10, ./de_facto_memory_model/multidimensional_array_1.c:5:17> #-} let weak (a_690: loaded pointer,
+          a_692: loaded integer) =
+            unseq(
+              {-# <./de_facto_memory_model/multidimensional_array_1.c:5:10, ./de_facto_memory_model/multidimensional_array_1.c:5:14> #-} let weak a_705: pointer =
+                {-# §6.5.3.2 #-}
+                {-# <./de_facto_memory_model/multidimensional_array_1.c:5:10, ./de_facto_memory_model/multidimensional_array_1.c:5:14> #-} let weak a_695: loaded pointer =
+                  {-# §6.5.6 #-}
+                  {-# <./de_facto_memory_model/multidimensional_array_1.c:5:10, ./de_facto_memory_model/multidimensional_array_1.c:5:14> #-} let weak (a_698: loaded pointer,
+                  a_700: loaded integer) =
+                    unseq(
+                      {-# <./de_facto_memory_model/multidimensional_array_1.c:5:10, ./de_facto_memory_model/multidimensional_array_1.c:5:11> #-} let weak a_703: pointer =
+                        {-# <./de_facto_memory_model/multidimensional_array_1.c:5:10, ./de_facto_memory_model/multidimensional_array_1.c:5:11> #-} pure(
+                          a
+                        ) in
+                      {-# §6.3.2.1#3 #-}
+                      let weak a_704: pointer =
+                        memop(PtrArrayShift, a_703, 'signed int[2]', 0) in
+                      pure(Specified(a_704))
+                    ,
+                      {-# <./de_facto_memory_model/multidimensional_array_1.c:5:12, ./de_facto_memory_model/multidimensional_array_1.c:5:13> #-} pure(
+                        Specified(1)
+                      )
+                    ) in
+                  let (Specified(a_699: pointer), Specified(a_701: integer)) =
+                    (a_698, a_700) in
+                  let weak a_702: pointer =
+                    memop(PtrArrayShift, a_699, 'signed int[2]', a_701) in
+                  pure(Specified(a_702)) in
+                let Specified(a_696: pointer) = a_695 in
+                let weak a_697: boolean =
+                  memop(PtrValidForDeref, 'signed int[2]', a_696) in
+                pure(
+                  if a_697 then
+                    a_696
+                  else
+                    undef(<<UB043_indirection_invalid_value>>)
+                ) in
+              {-# §6.3.2.1#3 #-}
+              let weak a_706: pointer =
+                memop(PtrArrayShift, a_705, 'signed int', 0) in
+              pure(Specified(a_706))
+            ,
+              {-# <./de_facto_memory_model/multidimensional_array_1.c:5:15, ./de_facto_memory_model/multidimensional_array_1.c:5:16> #-} pure(
+                Specified(0)
+              )
+            ) in
+          let (Specified(a_691: pointer), Specified(a_693: integer)) =
+            (a_690, a_692) in
+          let weak a_694: pointer =
+            memop(PtrArrayShift, a_691, 'signed int', a_693) in
+          pure(Specified(a_694)) in
+        let Specified(a_688: pointer) = a_687 in
+        let weak a_689: boolean =
+          memop(PtrValidForDeref, 'signed int', a_688) in
+        pure(
+          if a_689 then a_688 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('signed int', a_707)
+    ) in
+  store('signed int', x, conv_loaded_int('signed int', a_686)) ;
+  {-# <./de_facto_memory_model/multidimensional_array_1.c:6:2, ./de_facto_memory_model/multidimensional_array_1.c:6:21> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/multidimensional_array_1.c:6:2, ./de_facto_memory_model/multidimensional_array_1.c:6:20> #-} let strong ((a_708: loaded pointer,
+      (a_709: ctype, a_710: [ctype], a_711: boolean, a_712: boolean)),
+      a_715: loaded pointer, a_719: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_656: loaded pointer =
+            {-# <./de_facto_memory_model/multidimensional_array_1.c:6:2, ./de_facto_memory_model/multidimensional_array_1.c:6:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_656, cfunction(a_656)))
+        ,
+          {-# <./de_facto_memory_model/multidimensional_array_1.c:6:9, ./de_facto_memory_model/multidimensional_array_1.c:6:17> #-} let weak a_717: pointer =
+            {-# <./de_facto_memory_model/multidimensional_array_1.c:6:9, ./de_facto_memory_model/multidimensional_array_1.c:6:17> #-} pure(
+              a_716
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_718: pointer = memop(PtrArrayShift, a_717, 'char', 0) in
+          pure(Specified(a_718))
+        ,
+          {-# <./de_facto_memory_model/multidimensional_array_1.c:6:18, ./de_facto_memory_model/multidimensional_array_1.c:6:19> #-} let weak a_720: pointer =
+            {-# <./de_facto_memory_model/multidimensional_array_1.c:6:18, ./de_facto_memory_model/multidimensional_array_1.c:6:19> #-} pure(
+              x
+            ) in
+          load('signed int', a_720)
+        ) in
+      if not(params_length(a_710) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_711) \/ not(are_compatible ('signed int', a_709)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_714: pointer =
+            let a_721: ctype = params_nth(a_710, 0) in
+            if not(are_compatible ('const char*', a_721)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_722: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_722, a_715) in
+              pure(a_722) in
+          let strong a_713: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_719)) in
+          let strong a_723: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_708, a_714,
+            [('signed int', a_713)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_714), kill('signed int', a_713)) in
+          pure(a_723)
+    ) in
+  pure(Unit) ;
+  kill('signed int[2][2]', a) ;
+  kill('signed int', x) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/multidimensional_array_1.c:2:0, ./de_facto_memory_model/multidimensional_array_1.c:7:1> ./de_facto_memory_model/multidimensional_array_1.c:2:4 - ./de_facto_memory_model/multidimensional_array_1.c:2:8 #-} save ret_655: loaded integer (a_724: loaded integer:= Specified(0)) in
+    pure(a_724)
+

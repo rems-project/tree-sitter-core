@@ -1,0 +1,48 @@
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/cast_misaligned_integer.c:6:0, ./de_facto_memory_model/cast_misaligned_integer.c:9:1> #-} let strong x: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/cast_misaligned_integer.c:7:2, ./de_facto_memory_model/cast_misaligned_integer.c:7:8> #-} store('signed int',
+  x, Unspecified('signed int')) ;
+  {-# <./de_facto_memory_model/cast_misaligned_integer.c:8:2, ./de_facto_memory_model/cast_misaligned_integer.c:8:30> #-} let strong _: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.4 #-}
+      {-# <./de_facto_memory_model/cast_misaligned_integer.c:8:2, ./de_facto_memory_model/cast_misaligned_integer.c:8:29> ./de_facto_memory_model/cast_misaligned_integer.c:8:2 #-} let weak a_535: loaded integer =
+        {-# §6.5.6 #-}
+        {-# <./de_facto_memory_model/cast_misaligned_integer.c:8:8, ./de_facto_memory_model/cast_misaligned_integer.c:8:29> #-} let weak (a_537: loaded integer,
+        a_538: loaded integer) =
+          unseq(
+            {-# §6.5.4 #-}
+            {-# <./de_facto_memory_model/cast_misaligned_integer.c:8:9, ./de_facto_memory_model/cast_misaligned_integer.c:8:24> #-} let weak a_542: loaded pointer =
+              {-# §6.5.3.2#3, sentence 5 #-}
+              {-# <./de_facto_memory_model/cast_misaligned_integer.c:8:21, ./de_facto_memory_model/cast_misaligned_integer.c:8:23> ./de_facto_memory_model/cast_misaligned_integer.c:8:21 #-} let weak a_544: pointer =
+                {-# <./de_facto_memory_model/cast_misaligned_integer.c:8:22, ./de_facto_memory_model/cast_misaligned_integer.c:8:23> #-} pure(
+                  x
+                ) in
+              pure(Specified(a_544)) in
+            let Specified(a_543: pointer) = a_542 in
+            let weak a_545: integer =
+              memop(IntFromPtr, 'signed int', 'uintptr_t', a_543) in
+            pure(Specified(a_545))
+          ,
+            {-# <./de_facto_memory_model/cast_misaligned_integer.c:8:27, ./de_facto_memory_model/cast_misaligned_integer.c:8:28> #-} pure(
+              Specified(1)
+            )
+          ) in
+        pure(
+          let (Specified(a_539: integer), Specified(a_540: integer)) =
+            (a_537, a_538) in
+          Specified(wrapI_add('uintptr_t', __conv_int__('uintptr_t', a_539), __conv_int__('uintptr_t', a_540)))
+        ) in
+      let Specified(a_536: integer) = a_535 in
+      let weak a_546: pointer =
+        memop(PtrFromInt, 'uintptr_t', 'signed int', a_536) in
+      pure(Specified(a_546))
+    ) in
+  pure(Unit) ;
+  kill('signed int', x) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/cast_misaligned_integer.c:5:0, ./de_facto_memory_model/cast_misaligned_integer.c:9:1> ./de_facto_memory_model/cast_misaligned_integer.c:5:4 - ./de_facto_memory_model/cast_misaligned_integer.c:5:8 #-} save ret_534: loaded integer (a_547: loaded integer:= Specified(0)) in
+    pure(a_547)
+

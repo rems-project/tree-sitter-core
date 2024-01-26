@@ -1,0 +1,166 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def union a_union :=
+  i: 'signed int'
+  d: 'double'
+
+-- Globals
+glob a_676: pointer [ail_ctype = 'char[6]'] :=
+  create_readonly(Ivalignof('char[6]'), 'char[6]', Specified(Array(Specified(conv_int('char',
+  106)), Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <./de_facto_memory_model/union_punning_gcc_2.c:7:11, ./de_facto_memory_model/union_punning_gcc_2.c:14:1> #-} let strong t: pointer =
+    create(Ivalignof('union a_union'), 'union a_union') in
+  let strong ip: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  let strong j: pointer = create(Ivalignof('signed int'), 'signed int') in
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/union_punning_gcc_2.c:8:2, ./de_facto_memory_model/union_punning_gcc_2.c:8:18> #-} store('union a_union',
+  t, Unspecified('union a_union')) ;
+  {-# §6.2.4#6 #-}
+  {-# <./de_facto_memory_model/union_punning_gcc_2.c:9:2, ./de_facto_memory_model/union_punning_gcc_2.c:9:10> #-} store('signed int*',
+  ip, Unspecified('signed int*')) ;
+  {-# <./de_facto_memory_model/union_punning_gcc_2.c:10:2, ./de_facto_memory_model/union_punning_gcc_2.c:10:15> #-} let strong _: loaded floating =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/union_punning_gcc_2.c:10:2, ./de_facto_memory_model/union_punning_gcc_2.c:10:14> ./de_facto_memory_model/union_punning_gcc_2.c:10:6 #-} let weak (a_656: pointer,
+      a_658: loaded floating) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# §6.5.2.3#3, sentence 2 #-}
+          {-# <./de_facto_memory_model/union_punning_gcc_2.c:10:2, ./de_facto_memory_model/union_punning_gcc_2.c:10:5> ./de_facto_memory_model/union_punning_gcc_2.c:10:3 #-} let strong a_657: pointer =
+            {-# <./de_facto_memory_model/union_punning_gcc_2.c:10:2, ./de_facto_memory_model/union_punning_gcc_2.c:10:3> #-} pure(
+              t
+            ) in
+          memop(PtrArrayShift[a_union, d], a_657)
+        ,
+          {-# <./de_facto_memory_model/union_punning_gcc_2.c:10:8, ./de_facto_memory_model/union_punning_gcc_2.c:10:14> #-} pure(
+            Specified(3.1415)
+          )
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('double', a_656, a_658)) in
+      pure(a_658)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/union_punning_gcc_2.c:11:2, ./de_facto_memory_model/union_punning_gcc_2.c:11:12> #-} let strong _: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.16#3, sentence 4 #-}
+      {-# <./de_facto_memory_model/union_punning_gcc_2.c:11:2, ./de_facto_memory_model/union_punning_gcc_2.c:11:11> ./de_facto_memory_model/union_punning_gcc_2.c:11:5 #-} let weak (a_655: pointer,
+      a_661: loaded pointer) =
+        {-# §6.5.16#3, sentence 5 #-}
+        unseq(
+          {-# <./de_facto_memory_model/union_punning_gcc_2.c:11:2, ./de_facto_memory_model/union_punning_gcc_2.c:11:4> #-} pure(
+            ip
+          )
+        ,
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <./de_facto_memory_model/union_punning_gcc_2.c:11:7, ./de_facto_memory_model/union_punning_gcc_2.c:11:11> ./de_facto_memory_model/union_punning_gcc_2.c:11:7 #-} let weak a_659: pointer =
+            {-# §6.5.2.3#3, sentence 2 #-}
+            {-# <./de_facto_memory_model/union_punning_gcc_2.c:11:8, ./de_facto_memory_model/union_punning_gcc_2.c:11:11> ./de_facto_memory_model/union_punning_gcc_2.c:11:9 #-} let strong a_660: pointer =
+              {-# <./de_facto_memory_model/union_punning_gcc_2.c:11:8, ./de_facto_memory_model/union_punning_gcc_2.c:11:9> #-} pure(
+                t
+              ) in
+            memop(PtrArrayShift[a_union, i], a_660) in
+          pure(Specified(a_659))
+        ) in
+      let weak _: unit =
+        {-# §6.5.16.1#2, store #-}
+        neg(store('signed int*', a_655, a_661)) in
+      pure(a_661)
+    ) in
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/union_punning_gcc_2.c:12:2, ./de_facto_memory_model/union_punning_gcc_2.c:12:14> #-} let strong a_662: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# <./de_facto_memory_model/union_punning_gcc_2.c:12:10, ./de_facto_memory_model/union_punning_gcc_2.c:12:13> ./de_facto_memory_model/union_punning_gcc_2.c:12:10 #-} let weak a_667: pointer =
+        {-# §6.5.3.2 #-}
+        {-# <./de_facto_memory_model/union_punning_gcc_2.c:12:10, ./de_facto_memory_model/union_punning_gcc_2.c:12:13> ./de_facto_memory_model/union_punning_gcc_2.c:12:10 #-} let weak a_663: loaded pointer =
+          {-# <./de_facto_memory_model/union_punning_gcc_2.c:12:11, ./de_facto_memory_model/union_punning_gcc_2.c:12:13> #-} let weak a_666: pointer =
+            {-# <./de_facto_memory_model/union_punning_gcc_2.c:12:11, ./de_facto_memory_model/union_punning_gcc_2.c:12:13> #-} pure(
+              ip
+            ) in
+          load('signed int*', a_666) in
+        let Specified(a_664: pointer) = a_663 in
+        let weak a_665: boolean =
+          memop(PtrValidForDeref, 'signed int', a_664) in
+        pure(
+          if a_665 then a_664 else undef(<<UB043_indirection_invalid_value>>)
+        ) in
+      load('signed int', a_667)
+    ) in
+  store('signed int', j, conv_loaded_int('signed int', a_662)) ;
+  {-# <./de_facto_memory_model/union_punning_gcc_2.c:13:2, ./de_facto_memory_model/union_punning_gcc_2.c:13:21> #-} let strong _: loaded integer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <./de_facto_memory_model/union_punning_gcc_2.c:13:2, ./de_facto_memory_model/union_punning_gcc_2.c:13:20> #-} let strong ((a_668: loaded pointer,
+      (a_669: ctype, a_670: [ctype], a_671: boolean, a_672: boolean)),
+      a_675: loaded pointer, a_679: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_654: loaded pointer =
+            {-# <./de_facto_memory_model/union_punning_gcc_2.c:13:2, ./de_facto_memory_model/union_punning_gcc_2.c:13:8> #-} pure(
+              Specified(Cfunction(printf_proxy))
+            ) in
+          pure((a_654, cfunction(a_654)))
+        ,
+          {-# <./de_facto_memory_model/union_punning_gcc_2.c:13:9, ./de_facto_memory_model/union_punning_gcc_2.c:13:17> #-} let weak a_677: pointer =
+            {-# <./de_facto_memory_model/union_punning_gcc_2.c:13:9, ./de_facto_memory_model/union_punning_gcc_2.c:13:17> #-} pure(
+              a_676
+            ) in
+          {-# §6.3.2.1#3 #-}
+          let weak a_678: pointer = memop(PtrArrayShift, a_677, 'char', 0) in
+          pure(Specified(a_678))
+        ,
+          {-# <./de_facto_memory_model/union_punning_gcc_2.c:13:18, ./de_facto_memory_model/union_punning_gcc_2.c:13:19> #-} let weak a_680: pointer =
+            {-# <./de_facto_memory_model/union_punning_gcc_2.c:13:18, ./de_facto_memory_model/union_punning_gcc_2.c:13:19> #-} pure(
+              j
+            ) in
+          load('signed int', a_680)
+        ) in
+      if not(params_length(a_670) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_671) \/ not(are_compatible ('signed int', a_669)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_674: pointer =
+            let a_681: ctype = params_nth(a_670, 0) in
+            if not(are_compatible ('const char*', a_681)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_682: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_682, a_675) in
+              pure(a_682) in
+          let strong a_673: pointer =
+            {-# §6.5.2.2#7, sentences 2 and 3 #-}
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_679)) in
+          let strong a_683: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_668, a_674,
+            [('signed int', a_673)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_674), kill('signed int', a_673)) in
+          pure(a_683)
+    ) in
+  pure(Unit) ;
+  kill('union a_union', t) ;
+  kill('signed int*', ip) ;
+  kill('signed int', j) ;
+  pure(Unit) ;
+  {-# <./de_facto_memory_model/union_punning_gcc_2.c:7:0, ./de_facto_memory_model/union_punning_gcc_2.c:14:1> ./de_facto_memory_model/union_punning_gcc_2.c:7:4 - ./de_facto_memory_model/union_punning_gcc_2.c:7:8 #-} save ret_653: loaded integer (a_684: loaded integer:= Specified(0)) in
+    pure(a_684)
+

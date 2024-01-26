@@ -1,0 +1,108 @@
+-- Aggregates
+def union _G_fpos64_t :=
+  __opaque: 'char[16]'
+  __lldata: 'signed long_long'
+  __align: 'double'
+
+def struct __cerbty_unnamed_tag_646 :=
+  i1: 'signed int'
+  i2: 'signed int'
+
+-- Globals
+glob a_669: pointer [ail_ctype = 'char[10]'] :=
+  create_readonly(Ivalignof('char[10]'), 'char[10]', Specified(Array(Specified(conv_int('char',
+  115)), Specified(conv_int('char', 50)), Specified(conv_int('char', 46)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 49)),
+  Specified(conv_int('char', 61)), Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 105)), Specified(conv_int('char', 10)),
+  Specified(0))))
+
+-- Fun map
+proc main (): eff loaded integer :=
+  let strong s1: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_646'), 'struct __cerbty_unnamed_tag_646') in
+  let strong s2: pointer =
+    create(Ivalignof('struct __cerbty_unnamed_tag_646'), 'struct __cerbty_unnamed_tag_646') in
+  store('struct __cerbty_unnamed_tag_646', s1,
+  Unspecified('struct __cerbty_unnamed_tag_646')) ;
+  let strong _: loaded integer =
+    bound(
+      let weak (a_656: pointer, a_658: loaded integer) =
+        unseq(
+          let strong a_657: pointer = pure(s1) in
+          memop(PtrArrayShift[__cerbty_unnamed_tag_646, i1], a_657)
+        ,
+          pure(Specified(1))
+        ) in
+      let weak _: unit =
+        neg(store('signed int', a_656, conv_loaded_int('signed int', a_658))) in
+      pure(conv_loaded_int('signed int', a_658))
+    ) in
+  pure(Unit) ;
+  store('struct __cerbty_unnamed_tag_646', s2,
+  Unspecified('struct __cerbty_unnamed_tag_646')) ;
+  let strong _: loaded struct a_646 =
+    bound(
+      let weak (a_655: pointer, a_660: loaded struct a_646) =
+        unseq(
+          pure(s2)
+        ,
+          let weak a_659: pointer = pure(s1) in
+          load('struct __cerbty_unnamed_tag_646', a_659)
+        ) in
+      let weak _: unit =
+        neg(store('struct __cerbty_unnamed_tag_646', a_655, a_660)) in
+      pure(a_660)
+    ) in
+  pure(Unit) ;
+  let strong _: loaded integer =
+    bound(
+      let strong ((a_661: loaded pointer,
+      (a_662: ctype, a_663: [ctype], a_664: boolean, a_665: boolean)),
+      a_668: loaded pointer, a_672: loaded integer) =
+        unseq(
+          let strong a_654: loaded pointer =
+            pure(Specified(Cfunction(printf_proxy))) in
+          pure((a_654, cfunction(a_654)))
+        ,
+          let weak a_670: pointer = pure(a_669) in
+          let weak a_671: pointer = memop(PtrArrayShift, a_670, 'char', 0) in
+          pure(Specified(a_671))
+        ,
+          let weak a_674: pointer =
+            let strong a_673: pointer = pure(s2) in
+            memop(PtrArrayShift[__cerbty_unnamed_tag_646, i1], a_673) in
+          load('signed int', a_674)
+        ) in
+      if not(params_length(a_663) <= 2) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if not(a_664) \/ not(are_compatible ('signed int', a_662)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_667: pointer =
+            let a_675: ctype = params_nth(a_663, 0) in
+            if not(are_compatible ('const char*', a_675)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              let weak a_676: pointer =
+                create(Ivalignof('const char*'), 'const char*') in
+              let weak _: unit = store('const char*', a_676, a_668) in
+              pure(a_676) in
+          let strong a_666: pointer =
+            pcall(create_and_store, 'signed int',
+            conv_loaded_int('signed int', a_672)) in
+          let strong a_677: loaded integer =
+            ccall('signed int (*) (const char*restrict , ...)', a_661, a_667,
+            [('signed int', a_666)]) in
+          let strong _: (unit,unit) =
+            unseq(kill('char*', a_667), kill('signed int', a_666)) in
+          pure(a_677)
+    ) in
+  pure(Unit) ;
+  kill('struct __cerbty_unnamed_tag_646', s1) ;
+  kill('struct __cerbty_unnamed_tag_646', s2) ;
+  pure(Unit) ;
+  save ret_653: loaded integer (a_678: loaded integer:= Specified(0)) in
+    pure(a_678)
+
