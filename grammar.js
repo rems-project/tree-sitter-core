@@ -328,7 +328,7 @@ module.exports = grammar({
             $.int_const,
             $.floating_const,
             "IvMaxAlignment",
-            seq("NULL", "(", $.ctype, ")"),
+            seq("NULL", optional(seq("(", $.ctype, ")"))),
             seq("Cfunction","(", $.name, ")"),
             //{ (*TODO*) Vobject (OVpointer (Impl_mem.null_ptrval Ctype.void)) }
             "Unit",
