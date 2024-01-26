@@ -29,8 +29,8 @@
 "cfunction" @function.builtin
 "is_scalar" @function.builtin
 "is_integer" @function.builtin
-;"is_signed" @function.builtin
-;"is_unsigned" @function.builtin
+"is_signed(" @function.builtin
+"is_unsigned(" @function.builtin
 "are_compatible" @function.builtin
 (ctor)  @function.builtin
 "create_readonly" @function.builtin
