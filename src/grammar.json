@@ -88,8 +88,11 @@
       "value": "[-+]?([0-9]+(\\.[0-9]*)?|\\.[0-9]+)"
     },
     "sym": {
-      "type": "PATTERN",
-      "value": "[_A-Za-z][_A-Za-z0-9_]*"
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[_A-Za-z][_A-Za-z0-9]*"
+      }
     },
     "def_fields": {
       "type": "REPEAT1",
@@ -1335,10 +1338,6 @@
           },
           {
             "type": "SYMBOL",
-            "name": "sym"
-          },
-          {
-            "type": "SYMBOL",
             "name": "impl"
           },
           {
@@ -2020,11 +2019,7 @@
             "members": [
               {
                 "type": "STRING",
-                "value": "is_signed"
-              },
-              {
-                "type": "STRING",
-                "value": "("
+                "value": "is_signed("
               },
               {
                 "type": "SYMBOL",
@@ -2041,11 +2036,7 @@
             "members": [
               {
                 "type": "STRING",
-                "value": "is_unsigned"
-              },
-              {
-                "type": "STRING",
-                "value": "("
+                "value": "is_unsigned("
               },
               {
                 "type": "SYMBOL",
@@ -2085,6 +2076,39 @@
                 "value": ")"
               }
             ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "conv_loaded_int"
+              },
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "SYMBOL",
+                "name": "core_ctype"
+              },
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "pexpr"
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "sym"
           }
         ]
       }
@@ -2961,7 +2985,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "pexpr"
+              "name": "core_ctype"
             },
             {
               "type": "STRING",
@@ -2998,7 +3022,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "pexpr"
+              "name": "core_ctype"
             },
             {
               "type": "STRING",
@@ -3035,7 +3059,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "pexpr"
+              "name": "core_ctype"
             },
             {
               "type": "STRING",
@@ -3064,7 +3088,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "pexpr"
+              "name": "core_ctype"
             },
             {
               "type": "STRING",
@@ -3109,7 +3133,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "pexpr"
+              "name": "core_ctype"
             },
             {
               "type": "STRING",
@@ -3154,7 +3178,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "pexpr"
+              "name": "core_ctype"
             },
             {
               "type": "STRING",

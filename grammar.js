@@ -51,7 +51,7 @@ module.exports = grammar({
           */
         floating_const: $ => /[-+]?([0-9]+(\.[0-9]*)?|\.[0-9]+)/,
         
-        sym: $ => /[_A-Za-z][_A-Za-z0-9_]*/,
+        sym: $ => token(/[_A-Za-z][_A-Za-z0-9]*/),
 
         def_fields: $ => repeat1 ($.def_field),
 
@@ -139,7 +139,6 @@ module.exports = grammar({
             seq("undef", "(", $.ub, ")"),
             seq("error", "(", $.string, ",", $.pexpr, ")"),
             $.value,
-            $.sym,
             $.impl,
             seq("(", separated_nonempty_list(",", $.pexpr), ")"),
             seq('(', $.pexpr, ',', separated_nonempty_list(',', $.pexpr), ')'),
@@ -161,9 +160,11 @@ module.exports = grammar({
             seq("if", $.pexpr, "then", $.pexpr, "else", $.pexpr),
             seq("is_scalar", "(", $.pexpr, ")"),
             seq("is_integer", "(", $.pexpr, ")"),
-            seq("is_signed","(", $.pexpr, ")"),
-            seq("is_unsigned", "(", $.pexpr, ")"),
-            seq("are_compatible", "(", $.pexpr, ",", $.pexpr, ")")
+            seq("is_signed(", $.pexpr, ")"), // hack
+            seq("is_unsigned(", $.pexpr, ")"), // hack
+            seq("are_compatible", "(", $.pexpr, ",", $.pexpr, ")"),
+            seq("conv_loaded_int", "(", $.core_ctype, ",", $.pexpr, ")"),
+            $.sym,
         )),
 
         list_pexpr: $ => prec.left(1,choice(
@@ -253,12 +254,12 @@ module.exports = grammar({
             seq("alloc", "(", $.pexpr, ",", $.pexpr, ")"),
             seq("free", "(", $.pexpr, ")"),
             seq("kill", "(", $.core_ctype, ",", $.pexpr, ")"),
-            seq("store", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr , ")"),
-            seq("store_lock", "(", $.pexpr, ",",$.pexpr, ",", $.pexpr, ")"),
-            seq("load", "(", $.pexpr, ",", $.pexpr, ")"),
-            seq("store", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ",", $.memory_order , ")"),
-            seq("store_lock", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ",", $.memory_order , ")"),
-            seq("load", "(", $.pexpr, ",", $.pexpr, ",", $.memory_order , ")"),
+            seq("store", "(", $.core_ctype, ",", $.pexpr, ",", $.pexpr , ")"),
+            seq("store_lock", "(", $.core_ctype, ",",$.pexpr, ",", $.pexpr, ")"),
+            seq("load", "(", $.core_ctype, ",", $.pexpr, ")"),
+            seq("store", "(", $.core_ctype, ",", $.pexpr, ",", $.pexpr, ",", $.memory_order , ")"),
+            seq("store_lock", "(", $.core_ctype, ",", $.pexpr, ",", $.pexpr, ",", $.memory_order , ")"),
+            seq("load", "(", $.core_ctype, ",", $.pexpr, ",", $.memory_order , ")"),
             seq("seq_rmw", "(", $.pexpr, ",", $.pexpr, ",", $.sym, "=>", $.pexpr /*",", $.memory_order*/ , ")"),
             seq("seq_rmw_with_forward", "(", $.pexpr, ",", $.pexpr, ",", $.sym, "=>", $.pexpr /*",", $.memory_order*/ , ")"),
             seq("rmw", "(", $.pexpr, ",", $.pexpr, ",", $.pexpr, ",", $.pexpr, ",", $.memory_order, ",", $.memory_order , ")"),
