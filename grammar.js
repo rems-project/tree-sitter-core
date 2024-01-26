@@ -191,6 +191,7 @@ module.exports = grammar({
             "PtrValidForDeref",
             "PtrWellAligned",
             seq("PtrArrayShift",optional(seq('[', $.sym, ",", $.sym, "]"))),
+            seq(/cheri_[a-z_]+/, "[", separated_nonempty_list(",", $.pexpr), "]"),
             "PtrMemberShift",
         ),
 
