@@ -273,7 +273,7 @@ module.exports = grammar({
             seq("neg", "(", $.action, ")")
         ),
 
-        ub: $ => /<<(([A-Za-z_0-9]*)|(DUMMY\([A-Za-z_ .:-=<>0-9()]*\)))>>/,
+        ub: $ => /<<.+>>/,
 
         string: $ => /"[^\"]*"/,
         cstring: $ => /"[^\"]*"/,
