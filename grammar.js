@@ -20,7 +20,7 @@ module.exports = grammar({
 
         comment: _ => token(choice(
             /--.*\n/,
-            /{-.*-}/)),
+            /\{-.*-\}/)),
           
         declaration: $ => choice(
             $.def_declaration,

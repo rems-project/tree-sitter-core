@@ -8,6 +8,7 @@
 ```
     tree-sitter generate
     tree-sitter build
+    make
 ```
 
 
