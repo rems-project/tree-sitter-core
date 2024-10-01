@@ -11,7 +11,6 @@ module.exports = grammar({
 
     extras: $ => [
         /\s/,
-        $.location,
         $.comment,
     ],
 
@@ -25,27 +24,60 @@ module.exports = grammar({
         position: $ => seq(
             field("filename", $.filename),
             ":",
-            field("line", $.line),
+            $.line,
             ":",
-            field("column", $.column)
+            $.column
         ), // Combines file, line, and column into a single position
 
-        location: $ => seq(
-            token("{-# <"),
+        //Example: {-# <dummy.c:4:0, dummy.c:6:1> #-}
+        location_range: $ => seq(
             field("start", $.position),
             token(", "),
-            field("end", $.position),
-            token("> #-}")
+            field("end", $.position)
+        ),
+
+        //Example: {-# <unknown location> #-}
+        location_unknown: _ => token("unknown location"),
+
+        location: $ => seq(
+            token(" <"),
+            choice(
+                $.location_range,
+                $.location_unknown
+            ),
+            token("> ")
+        ),
+
+        //Example: {-# §6.5.2.2#10, sentence 1 #-}
+        iso_reference: _ => /§.+/,
+
+        //Example: -- just comment
+        single_line_comment: _ => token(/--.*\n/),
+
+        special_comment: $ => seq(
+            "#",
+            choice(
+                $.location,
+                $.iso_reference
+            ),
+            "#",
+        ),
+
+        just_comment: _ => /.+/,
+
+        multiline_comment: $ => seq(
+            token("{-"),
+            optional(
+                choice(
+                    $.special_comment,
+                    $.just_comment
+                )),
+            token("-}")
         ),
         
-        justcomment: _ => token(choice(
-            /--.*\n/,
-            /\{-.*-\}/
-        )),
-
         comment: $ => choice(
-            $.location,
-            $.justcomment
+            $.single_line_comment,
+            $.multiline_comment
         ),
           
         declaration: $ => choice(

@@ -91,6 +91,26 @@
     }
   },
   {
+    "type": "column",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "single_line_comment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "core_base_type",
     "named": true,
     "fields": {},
@@ -416,6 +436,11 @@
     "fields": {}
   },
   {
+    "type": "line",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "list_pattern",
     "named": true,
     "fields": {},
@@ -451,6 +476,47 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "location",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "location_range",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "location_range",
+    "named": true,
+    "fields": {
+      "end": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "position",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "position",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -643,6 +709,42 @@
     }
   },
   {
+    "type": "position",
+    "named": true,
+    "fields": {
+      "column": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "column",
+            "named": true
+          }
+        ]
+      },
+      "filename": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "filename",
+            "named": true
+          }
+        ]
+      },
+      "line": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "line",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "proc_declaration",
     "named": true,
     "fields": {},
@@ -768,6 +870,10 @@
     }
   },
   {
+    "type": " <",
+    "named": false
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -792,7 +898,15 @@
     "named": false
   },
   {
+    "type": ", ",
+    "named": false
+  },
+  {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": "-}",
     "named": false
   },
   {
@@ -825,6 +939,10 @@
   },
   {
     "type": "=>",
+    "named": false
+  },
+  {
+    "type": "> ",
     "named": false
   },
   {
@@ -1036,10 +1154,6 @@
     "named": false
   },
   {
-    "type": "comment",
-    "named": true
-  },
-  {
     "type": "const",
     "named": false
   },
@@ -1082,6 +1196,10 @@
   {
     "type": "fence",
     "named": false
+  },
+  {
+    "type": "filename",
+    "named": true
   },
   {
     "type": "floating",
@@ -1232,6 +1350,10 @@
     "named": false
   },
   {
+    "type": "single_line_comment",
+    "named": true
+  },
+  {
     "type": "storable",
     "named": false
   },
@@ -1297,6 +1419,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "{-",
     "named": false
   },
   {

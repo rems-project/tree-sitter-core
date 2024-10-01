@@ -8,21 +8,216 @@
         "name": "declaration"
       }
     },
-    "comment": {
+    "filename": {
       "type": "TOKEN",
       "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "--.*\\n"
-          },
-          {
-            "type": "PATTERN",
-            "value": "\\{-.*-\\}"
-          }
-        ]
+        "type": "PATTERN",
+        "value": "[a-zA-Z0-9_\\-\\/.]+"
       }
+    },
+    "line": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\d+"
+      }
+    },
+    "column": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\d+"
+      }
+    },
+    "position": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "filename",
+          "content": {
+            "type": "SYMBOL",
+            "name": "filename"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "line"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "column"
+        }
+      ]
+    },
+    "location_range": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "start",
+          "content": {
+            "type": "SYMBOL",
+            "name": "position"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ", "
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "end",
+          "content": {
+            "type": "SYMBOL",
+            "name": "position"
+          }
+        }
+      ]
+    },
+    "location_unknown": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "unknown location"
+      }
+    },
+    "location": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": " <"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "location_range"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "location_unknown"
+            }
+          ]
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "> "
+          }
+        }
+      ]
+    },
+    "iso_reference": {
+      "type": "PATTERN",
+      "value": "§.+"
+    },
+    "single_line_comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "--.*\\n"
+      }
+    },
+    "special_comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "location"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "iso_reference"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "#"
+        }
+      ]
+    },
+    "just_comment": {
+      "type": "PATTERN",
+      "value": ".+"
+    },
+    "multiline_comment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "{-"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "special_comment"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "just_comment"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "-}"
+          }
+        }
+      ]
+    },
+    "comment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "single_line_comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "multiline_comment"
+        }
+      ]
     },
     "declaration": {
       "type": "CHOICE",
