@@ -11,16 +11,42 @@ module.exports = grammar({
 
     extras: $ => [
         /\s/,
+        $.location,
         $.comment,
     ],
 
-    
     rules: {
         source_file: $ => repeat1($.declaration),
 
-        comment: _ => token(choice(
+        filename: _ => token(/[a-zA-Z0-9_\-\/.]+/), // Matches Unix file paths with multiple '/' and '.'
+        line: _ => token(/\d+/), // Matches line numbers
+        column: _ => token(/\d+/), // Matches column numbers
+
+        position: $ => seq(
+            field("filename", $.filename),
+            ":",
+            field("line", $.line),
+            ":",
+            field("column", $.column)
+        ), // Combines file, line, and column into a single position
+
+        location: $ => seq(
+            token("{-# <"),
+            field("start", $.position),
+            token(", "),
+            field("end", $.position),
+            token("> #-}")
+        ),
+        
+        justcomment: _ => token(choice(
             /--.*\n/,
-            /\{-.*-\}/)),
+            /\{-.*-\}/
+        )),
+
+        comment: $ => choice(
+            $.location,
+            $.justcomment
+        ),
           
         declaration: $ => choice(
             $.def_declaration,
