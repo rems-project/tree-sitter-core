@@ -1,30 +1,28 @@
 proc main (): eff loaded integer :=
-  {-# <./cheri/cast0.c:2:0, ./cheri/cast0.c:6:1> #-} let strong x: pointer =
+  {-# <cast0.c:2:0, cast0.c:6:1> #-} let strong x: pointer =
     create(Ivalignof('signed int'), 'signed int') in
   let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
   let strong c: pointer = create(Ivalignof('char'), 'char') in
-  {-# <./cheri/cast0.c:3:4, ./cheri/cast0.c:3:13> #-} let strong a_509: loaded integer =
+  {-# <cast0.c:3:4, cast0.c:3:13> #-} let strong a_509: loaded integer =
     {-# §6.5#2 #-}
-    bound(
-      {-# <./cheri/cast0.c:3:10, ./cheri/cast0.c:3:12> #-} pure(Specified(42))
-    ) in
+    bound({-# <cast0.c:3:10, cast0.c:3:12> #-} pure(Specified(42))) in
   store('signed int', x, conv_loaded_int('signed int', a_509)) ;
-  {-# <./cheri/cast0.c:4:4, ./cheri/cast0.c:4:16> #-} let strong a_510: loaded pointer =
+  {-# <cast0.c:4:4, cast0.c:4:16> #-} let strong a_510: loaded pointer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.3.2#3, sentence 5 #-}
-      {-# <./cheri/cast0.c:4:13, ./cheri/cast0.c:4:15> ./cheri/cast0.c:4:13 #-} let weak a_511: pointer =
-        {-# <./cheri/cast0.c:4:14, ./cheri/cast0.c:4:15> #-} pure(x) in
+      {-# <cast0.c:4:13, cast0.c:4:15> cast0.c:4:13 #-} let weak a_511: pointer =
+        {-# <cast0.c:4:14, cast0.c:4:15> #-} pure(x) in
       pure(Specified(a_511))
     ) in
   store('signed int*', p, a_510) ;
-  {-# <./cheri/cast0.c:5:4, ./cheri/cast0.c:5:21> #-} let strong a_512: loaded integer =
+  {-# <cast0.c:5:4, cast0.c:5:21> #-} let strong a_512: loaded integer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.4 #-}
-      {-# <./cheri/cast0.c:5:13, ./cheri/cast0.c:5:20> ./cheri/cast0.c:5:13 #-} let weak a_513: loaded pointer =
-        {-# <./cheri/cast0.c:5:19, ./cheri/cast0.c:5:20> #-} let weak a_515: pointer =
-          {-# <./cheri/cast0.c:5:19, ./cheri/cast0.c:5:20> #-} pure(p) in
+      {-# <cast0.c:5:13, cast0.c:5:20> cast0.c:5:13 #-} let weak a_513: loaded pointer =
+        {-# <cast0.c:5:19, cast0.c:5:20> #-} let weak a_515: pointer =
+          {-# <cast0.c:5:19, cast0.c:5:20> #-} pure(p) in
         load('signed int*', a_515) in
       case a_513 of
         | Specified(a_514: pointer) =>
@@ -40,6 +38,6 @@ proc main (): eff loaded integer :=
   kill('signed int*', p) ;
   kill('char', c) ;
   pure(Unit) ;
-  {-# <./cheri/cast0.c:1:0, ./cheri/cast0.c:6:1> ./cheri/cast0.c:1:4 - ./cheri/cast0.c:1:8 #-} save ret_508: loaded integer (a_517: loaded integer:= Specified(0)) in
+  {-# <cast0.c:1:0, cast0.c:6:1> cast0.c:1:4 - cast0.c:1:8 #-} save ret_508: loaded integer (a_517: loaded integer:= Specified(0)) in
     pure(a_517)
 

@@ -5,38 +5,32 @@ glob glob: pointer [ail_ctype = 'char'] :=
   let strong a_518: loaded integer =
     {-# §6.5#2 #-}
     bound(
-      {-# <./cheri/regression0.c:1:12, ./cheri/regression0.c:1:14> #-} pure(
-        Specified(10)
-      )
+      {-# <regression0.c:1:12, regression0.c:1:14> #-} pure(Specified(10))
     ) in
   store('char', a_517, conv_loaded_int('char', a_518)) ;
   pure(a_517)
 
 -- Fun map
 proc main (): eff loaded integer :=
-  {-# <./cheri/regression0.c:4:0, ./cheri/regression0.c:7:1> #-} let strong p: pointer =
+  {-# <regression0.c:4:0, regression0.c:7:1> #-} let strong p: pointer =
     create(Ivalignof('char*'), 'char*') in
-  {-# <./cheri/regression0.c:5:2, ./cheri/regression0.c:5:18> #-} let strong a_508: loaded pointer =
+  {-# <regression0.c:5:2, regression0.c:5:18> #-} let strong a_508: loaded pointer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.3.2#3, sentence 5 #-}
-      {-# <./cheri/regression0.c:5:12, ./cheri/regression0.c:5:17> ./cheri/regression0.c:5:12 #-} let weak a_509: pointer =
-        {-# <./cheri/regression0.c:5:13, ./cheri/regression0.c:5:17> #-} pure(
-          glob
-        ) in
+      {-# <regression0.c:5:12, regression0.c:5:17> regression0.c:5:12 #-} let weak a_509: pointer =
+        {-# <regression0.c:5:13, regression0.c:5:17> #-} pure(glob) in
       pure(Specified(a_509))
     ) in
   store('char*', p, a_508) ;
-  {-# <./cheri/regression0.c:6:2, ./cheri/regression0.c:6:12> #-} let strong a_515: loaded integer =
+  {-# <regression0.c:6:2, regression0.c:6:12> #-} let strong a_515: loaded integer =
     {-# §6.5#2 #-}
     bound(
-      {-# <./cheri/regression0.c:6:9, ./cheri/regression0.c:6:11> ./cheri/regression0.c:6:9 #-} let weak a_514: pointer =
+      {-# <regression0.c:6:9, regression0.c:6:11> regression0.c:6:9 #-} let weak a_514: pointer =
         {-# §6.5.3.2 #-}
-        {-# <./cheri/regression0.c:6:9, ./cheri/regression0.c:6:11> ./cheri/regression0.c:6:9 #-} let weak a_510: loaded pointer =
-          {-# <./cheri/regression0.c:6:10, ./cheri/regression0.c:6:11> #-} let weak a_513: pointer =
-            {-# <./cheri/regression0.c:6:10, ./cheri/regression0.c:6:11> #-} pure(
-              p
-            ) in
+        {-# <regression0.c:6:9, regression0.c:6:11> regression0.c:6:9 #-} let weak a_510: loaded pointer =
+          {-# <regression0.c:6:10, regression0.c:6:11> #-} let weak a_513: pointer =
+            {-# <regression0.c:6:10, regression0.c:6:11> #-} pure(p) in
           load('char*', a_513) in
         case a_510 of
           | Specified(a_511: pointer) =>
@@ -57,6 +51,6 @@ proc main (): eff loaded integer :=
   run ret_507(conv_loaded_int('signed int', a_515)) ;
   kill('char*', p) ;
   pure(Unit) ;
-  {-# <./cheri/regression0.c:3:0, ./cheri/regression0.c:7:1> ./cheri/regression0.c:3:4 - ./cheri/regression0.c:3:8 #-} save ret_507: loaded integer (a_516: loaded integer:= Specified(0)) in
+  {-# <regression0.c:3:0, regression0.c:7:1> regression0.c:3:4 - regression0.c:3:8 #-} save ret_507: loaded integer (a_516: loaded integer:= Specified(0)) in
     pure(a_516)
 

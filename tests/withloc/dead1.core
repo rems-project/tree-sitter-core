@@ -1,75 +1,64 @@
 -- Aggregates
-def union _G_fpos64_t :=
-  __opaque: 'char[16]'
-  __lldata: 'signed long_long'
-  __align: 'double'
 
-def struct div :=
-  quot: 'signed int'
-  rem: 'signed int'
 
-def struct ldiv :=
-  quot: 'signed long'
-  rem: 'signed long'
 
-def struct lldiv :=
-  quot: 'signed long_long'
-  rem: 'signed long_long'
+
+
 
 -- Globals
 -- Fun map
 proc main (): eff loaded integer :=
-  {-# <./cheri/dead1.c:5:0, ./cheri/dead1.c:10:1> #-} let strong p: pointer =
+  {-# <dead1.c:5:0, dead1.c:10:1> #-} let strong p: pointer =
     create(Ivalignof('signed int*'), 'signed int*') in
-  {-# <./cheri/dead1.c:6:4, ./cheri/dead1.c:6:39> #-} let strong a_752: loaded pointer =
+  {-# <dead1.c:6:4, dead1.c:6:39> #-} let strong a_748: loaded pointer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.4 #-}
-      {-# <./cheri/dead1.c:6:13, ./cheri/dead1.c:6:38> ./cheri/dead1.c:6:13 #-} let weak a_753: loaded pointer =
+      {-# <dead1.c:6:13, dead1.c:6:38> dead1.c:6:13 #-} let weak a_749: loaded pointer =
         {-# §6.5.2.2#10, sentence 1 #-}
-        {-# <./cheri/dead1.c:6:19, ./cheri/dead1.c:6:38> #-} let strong ((a_756: loaded pointer,
-        (a_757: ctype, a_758: [ctype], a_759: boolean, a_760: boolean)),
-        a_762: loaded integer) =
+        {-# <dead1.c:6:19, dead1.c:6:38> #-} let strong ((a_752: loaded pointer,
+        (a_753: ctype, a_754: [ctype], a_755: boolean, a_756: boolean)),
+        a_758: loaded integer) =
           {-# §6.5.2.2#4, sentence 2 #-}
           unseq(
-            let strong a_755: loaded pointer =
-              {-# <./cheri/dead1.c:6:19, ./cheri/dead1.c:6:25> #-} pure(
+            let strong a_751: loaded pointer =
+              {-# <dead1.c:6:19, dead1.c:6:25> #-} pure(
                 Specified(Cfunction(malloc_proxy))
               ) in
-            pure((a_755, cfunction(a_755)))
+            pure((a_751, cfunction(a_751)))
           ,
-            {-# <./cheri/dead1.c:6:26, ./cheri/dead1.c:6:37> ./cheri/dead1.c:6:26 #-} pure(
+            {-# <dead1.c:6:26, dead1.c:6:37> dead1.c:6:26 #-} pure(
               Specified(Ivsizeof('signed int'))
             )
           ) in
-        if not(params_length(a_758) = 1) then
+        if not(params_length(a_754) = 1) then
           pure(undef(<<UB038_number_of_args>>))
         else
-          if a_759 \/ not(are_compatible ('void*', a_757)) then
+          if a_755 \/ not(are_compatible ('void*', a_753)) then
             pure(undef(<<UB041_function_not_compatible>>))
           else
-            let strong a_761: pointer =
-              let a_763: ctype = params_nth(a_758, 0) in
-              if not(are_compatible ('size_t', a_763)) then
+            let strong a_757: pointer =
+              let a_759: ctype = params_nth(a_754, 0) in
+              if not(are_compatible ('size_t', a_759)) then
                 pure(undef(<<UB041_function_not_compatible>>))
               else
                 {-# §6.5.2.2#7, sentence 1 #-}
-                let weak a_764: pointer =
+                let weak a_760: pointer =
                   create(Ivalignof('size_t'), 'size_t') in
                 let weak _: unit =
-                  store('size_t', a_764, conv_loaded_int('size_t', a_762)) in
-                pure(a_764) in
-            let strong a_765: loaded pointer =
-              ccall('void* (*) (size_t)', a_756, a_761) in
-            kill('size_t', a_761) ;
-            pure(a_765) in
-      case a_753 of
-        | Specified(a_754: pointer) =>
-            let weak a_766: boolean =
-              memop(PtrWellAligned, 'signed int', a_754) in
+                  store('size_t', a_760, conv_loaded_int('size_t', a_758)) in
+                pure(a_760) in
+            let strong a_761: loaded pointer =
+              ccall('void* (*) (size_t)', a_752, a_757) in
+            kill('size_t', a_757) ;
+            pure(a_761) in
+      case a_749 of
+        | Specified(a_750: pointer) =>
+            let weak a_762: boolean =
+              memop(PtrWellAligned, 'signed int', a_750) in
             pure(
-              Specified(if a_766 then
-                a_754
+              Specified(if a_762 then
+                a_750
               else
                 undef(<<UB025_misaligned_pointer_conversion>>))
             )
@@ -77,27 +66,27 @@ proc main (): eff loaded integer :=
             pure(undef(<<UB025_misaligned_pointer_conversion>>))
       end
     ) in
-  store('signed int*', p, a_752) ;
-  {-# <./cheri/dead1.c:7:4, ./cheri/dead1.c:7:12> #-} let strong _: loaded integer =
+  store('signed int*', p, a_748) ;
+  {-# <dead1.c:7:4, dead1.c:7:12> #-} let strong _: loaded integer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.16#3, sentence 4 #-}
-      {-# <./cheri/dead1.c:7:4, ./cheri/dead1.c:7:11> ./cheri/dead1.c:7:7 #-} let weak (a_751: pointer,
-      a_771: loaded integer) =
+      {-# <dead1.c:7:4, dead1.c:7:11> dead1.c:7:7 #-} let weak (a_747: pointer,
+      a_767: loaded integer) =
         {-# §6.5.16#3, sentence 5 #-}
         unseq(
           {-# §6.5.3.2 #-}
-          {-# <./cheri/dead1.c:7:4, ./cheri/dead1.c:7:6> ./cheri/dead1.c:7:4 #-} let weak a_767: loaded pointer =
-            {-# <./cheri/dead1.c:7:5, ./cheri/dead1.c:7:6> #-} let weak a_770: pointer =
-              {-# <./cheri/dead1.c:7:5, ./cheri/dead1.c:7:6> #-} pure(p) in
-            load('signed int*', a_770) in
-          case a_767 of
-            | Specified(a_768: pointer) =>
-                let weak a_769: boolean =
-                  memop(PtrValidForDeref, 'signed int', a_768) in
+          {-# <dead1.c:7:4, dead1.c:7:6> dead1.c:7:4 #-} let weak a_763: loaded pointer =
+            {-# <dead1.c:7:5, dead1.c:7:6> #-} let weak a_766: pointer =
+              {-# <dead1.c:7:5, dead1.c:7:6> #-} pure(p) in
+            load('signed int*', a_766) in
+          case a_763 of
+            | Specified(a_764: pointer) =>
+                let weak a_765: boolean =
+                  memop(PtrValidForDeref, 'signed int', a_764) in
                 pure(
-                  if a_769 then
-                    a_768
+                  if a_765 then
+                    a_764
                   else
                     undef(<<UB043_indirection_invalid_value>>)
                 )
@@ -105,82 +94,80 @@ proc main (): eff loaded integer :=
                 pure(undef(<<UB043_indirection_invalid_value>>))
           end
         ,
-          {-# <./cheri/dead1.c:7:9, ./cheri/dead1.c:7:11> #-} pure(
-            Specified(42)
-          )
+          {-# <dead1.c:7:9, dead1.c:7:11> #-} pure(Specified(42))
         ) in
       let weak _: unit =
         {-# §6.5.16.1#2, store #-}
-        neg(store('signed int', a_751, conv_loaded_int('signed int', a_771))) in
-      pure(conv_loaded_int('signed int', a_771))
+        neg(store('signed int', a_747, conv_loaded_int('signed int', a_767))) in
+      pure(conv_loaded_int('signed int', a_767))
     ) in
   pure(Unit) ;
-  {-# <./cheri/dead1.c:8:4, ./cheri/dead1.c:8:12> #-} {-# §6.5#2 #-}
+  {-# <dead1.c:8:4, dead1.c:8:12> #-} {-# §6.5#2 #-}
   bound(
     {-# §6.5.2.2#10, sentence 1 #-}
-    {-# <./cheri/dead1.c:8:4, ./cheri/dead1.c:8:11> #-} let strong ((a_772: loaded pointer,
-    (a_773: ctype, a_774: [ctype], a_775: boolean, a_776: boolean)),
-    a_778: loaded pointer) =
+    {-# <dead1.c:8:4, dead1.c:8:11> #-} let strong ((a_769: loaded pointer,
+    (a_770: ctype, a_771: [ctype], a_772: boolean, a_773: boolean)),
+    a_775: loaded pointer) =
       {-# §6.5.2.2#4, sentence 2 #-}
       unseq(
-        let strong a_750: loaded pointer =
-          {-# <./cheri/dead1.c:8:4, ./cheri/dead1.c:8:8> #-} pure(
+        let strong a_768: loaded pointer =
+          {-# <dead1.c:8:4, dead1.c:8:8> #-} pure(
             Specified(Cfunction(free_proxy))
           ) in
-        pure((a_750, cfunction(a_750)))
+        pure((a_768, cfunction(a_768)))
       ,
-        {-# <./cheri/dead1.c:8:9, ./cheri/dead1.c:8:10> #-} let weak a_779: pointer =
-          {-# <./cheri/dead1.c:8:9, ./cheri/dead1.c:8:10> #-} pure(p) in
-        load('signed int*', a_779)
+        {-# <dead1.c:8:9, dead1.c:8:10> #-} let weak a_776: pointer =
+          {-# <dead1.c:8:9, dead1.c:8:10> #-} pure(p) in
+        load('signed int*', a_776)
       ) in
-    if not(params_length(a_774) = 1) then
+    if not(params_length(a_771) = 1) then
       pure(undef(<<UB038_number_of_args>>))
     else
-      if a_775 \/ not(are_compatible ('void', a_773)) then
+      if a_772 \/ not(are_compatible ('void', a_770)) then
         pure(undef(<<UB041_function_not_compatible>>))
       else
-        let strong a_777: pointer =
-          let a_780: ctype = params_nth(a_774, 0) in
-          if not(are_compatible ('void*', a_780)) then
+        let strong a_774: pointer =
+          let a_777: ctype = params_nth(a_771, 0) in
+          if not(are_compatible ('void*', a_777)) then
             pure(undef(<<UB041_function_not_compatible>>))
           else
             {-# §6.5.2.2#7, sentence 1 #-}
-            let weak a_781: pointer = create(Ivalignof('void*'), 'void*') in
-            let weak _: unit = store('void*', a_781, a_778) in
-            pure(a_781) in
-        let strong a_782: unit = ccall('void (*) (void*)', a_772, a_777) in
-        kill('void*', a_777) ;
-        pure(a_782)
+            let weak a_778: pointer = create(Ivalignof('void*'), 'void*') in
+            let weak _: unit = store('void*', a_778, a_775) in
+            pure(a_778) in
+        let strong a_779: unit = ccall('void (*) (void*)', a_769, a_774) in
+        kill('void*', a_774) ;
+        pure(a_779)
   ) ;
   pure(Unit) ;
-  {-# <./cheri/dead1.c:9:4, ./cheri/dead1.c:9:15> #-} let strong a_788: loaded integer =
+  {-# <dead1.c:9:4, dead1.c:9:15> #-} let strong a_785: loaded integer =
     {-# §6.5#2 #-}
     bound(
-      {-# <./cheri/dead1.c:9:10, ./cheri/dead1.c:9:14> #-} let weak a_787: pointer =
+      {-# <dead1.c:9:10, dead1.c:9:14> #-} let weak a_784: pointer =
         {-# §6.5.3.2 #-}
-        {-# <./cheri/dead1.c:9:10, ./cheri/dead1.c:9:14> #-} let weak a_783: loaded pointer =
-          {-# <./cheri/dead1.c:9:12, ./cheri/dead1.c:9:13> #-} let weak a_786: pointer =
-            {-# <./cheri/dead1.c:9:12, ./cheri/dead1.c:9:13> #-} pure(p) in
-          load('signed int*', a_786) in
-        case a_783 of
-          | Specified(a_784: pointer) =>
-              let weak a_785: boolean =
-                memop(PtrValidForDeref, 'signed int', a_784) in
+        {-# <dead1.c:9:10, dead1.c:9:14> #-} let weak a_780: loaded pointer =
+          {-# <dead1.c:9:12, dead1.c:9:13> #-} let weak a_783: pointer =
+            {-# <dead1.c:9:12, dead1.c:9:13> #-} pure(p) in
+          load('signed int*', a_783) in
+        case a_780 of
+          | Specified(a_781: pointer) =>
+              let weak a_782: boolean =
+                memop(PtrValidForDeref, 'signed int', a_781) in
               pure(
-                if a_785 then
-                  a_784
+                if a_782 then
+                  a_781
                 else
                   undef(<<UB043_indirection_invalid_value>>)
               )
           | Unspecified(_: ctype) =>
               pure(undef(<<UB043_indirection_invalid_value>>))
         end in
-      load('signed int', a_787)
+      load('signed int', a_784)
     ) in
   kill('signed int*', p) ;
-  run ret_749(conv_loaded_int('signed int', a_788)) ;
+  run ret_746(conv_loaded_int('signed int', a_785)) ;
   kill('signed int*', p) ;
   pure(Unit) ;
-  {-# <./cheri/dead1.c:4:0, ./cheri/dead1.c:10:1> ./cheri/dead1.c:4:4 - ./cheri/dead1.c:4:8 #-} save ret_749: loaded integer (a_789: loaded integer:= Specified(0)) in
-    pure(a_789)
+  {-# <dead1.c:4:0, dead1.c:10:1> dead1.c:4:4 - dead1.c:4:8 #-} save ret_746: loaded integer (a_786: loaded integer:= Specified(0)) in
+    pure(a_786)
 

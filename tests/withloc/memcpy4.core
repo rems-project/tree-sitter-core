@@ -1,0 +1,201 @@
+-- Aggregates
+
+
+
+
+
+
+-- Fun map
+proc main (): eff loaded integer :=
+  {-# <memcpy4.c:5:0, memcpy4.c:9:1> #-} let strong a: pointer =
+    create(Ivalignof('signed int'), 'signed int') in
+  let strong b: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong c: pointer = create(Ivalignof('signed int'), 'signed int') in
+  let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
+  {-# <memcpy4.c:6:4, memcpy4.c:6:20> #-} let strong a_688: loaded integer =
+    {-# §6.5#2 #-}
+    bound({-# <memcpy4.c:6:10, memcpy4.c:6:11> #-} pure(Specified(1))) in
+  store('signed int', a, conv_loaded_int('signed int', a_688)) ;
+  let strong a_689: loaded integer =
+    {-# §6.5#2 #-}
+    bound({-# <memcpy4.c:6:14, memcpy4.c:6:15> #-} pure(Specified(2))) in
+  store('signed int', b, conv_loaded_int('signed int', a_689)) ;
+  let strong a_690: loaded integer =
+    {-# §6.5#2 #-}
+    bound({-# <memcpy4.c:6:18, memcpy4.c:6:19> #-} pure(Specified(3))) in
+  store('signed int', c, conv_loaded_int('signed int', a_690)) ;
+  {-# <memcpy4.c:7:4, memcpy4.c:7:35> #-} let strong a_691: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <memcpy4.c:7:13, memcpy4.c:7:34> #-} let strong ((a_693: loaded pointer,
+      (a_694: ctype, a_695: [ctype], a_696: boolean, a_697: boolean)),
+      a_699: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_692: loaded pointer =
+            {-# <memcpy4.c:7:13, memcpy4.c:7:19> #-} pure(
+              Specified(Cfunction(malloc_proxy))
+            ) in
+          pure((a_692, cfunction(a_692)))
+        ,
+          {-# §6.5.5 #-}
+          {-# <memcpy4.c:7:20, memcpy4.c:7:33> memcpy4.c:7:21 #-} let weak (a_700: loaded integer,
+          a_701: loaded integer) =
+            unseq(
+              {-# <memcpy4.c:7:20, memcpy4.c:7:21> #-} pure(Specified(2))
+            ,
+              {-# <memcpy4.c:7:22, memcpy4.c:7:33> memcpy4.c:7:22 #-} pure(
+                Specified(Ivsizeof('signed int'))
+              )
+            ) in
+          pure(
+            case (a_700, a_701) of
+              | (Specified(a_702: integer), Specified(a_703: integer)) =>
+                  Specified(wrapI_mul('size_t', if all_values_representable_in('size_t',
+                  'signed int') then
+                    conv_int('signed int', a_702)
+                  else
+                    conv_int('unsigned int', a_702), if all_values_representable_in('size_t',
+                  'signed int') then
+                    conv_int('signed int', a_703)
+                  else
+                    conv_int('unsigned int', a_703)))
+              | _: (loaded integer,loaded integer) =>
+                  Unspecified('size_t')
+            end
+          )
+        ) in
+      if not(params_length(a_695) = 1) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_696 \/ not(are_compatible ('void*', a_694)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_698: pointer =
+            let a_705: ctype = params_nth(a_695, 0) in
+            if not(are_compatible ('size_t', a_705)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_706: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_706, conv_loaded_int('size_t', a_699)) in
+              pure(a_706) in
+          let strong a_707: loaded pointer =
+            ccall('void* (*) (size_t)', a_693, a_698) in
+          kill('size_t', a_698) ;
+          pure(a_707)
+    ) in
+  store('signed int*', p, a_691) ;
+  {-# <memcpy4.c:8:4, memcpy4.c:8:31> #-} let strong _: loaded pointer =
+    {-# §6.5#2 #-}
+    bound(
+      {-# §6.5.2.2#10, sentence 1 #-}
+      {-# <memcpy4.c:8:4, memcpy4.c:8:30> #-} let strong ((a_709: loaded pointer,
+      (a_710: ctype, a_711: [ctype], a_712: boolean, a_713: boolean)),
+      a_717: loaded pointer, a_719: loaded pointer, a_721: loaded integer) =
+        {-# §6.5.2.2#4, sentence 2 #-}
+        unseq(
+          let strong a_708: loaded pointer =
+            {-# <memcpy4.c:8:4, memcpy4.c:8:10> #-} pure(
+              Specified(Cfunction(memcpy_proxy))
+            ) in
+          pure((a_708, cfunction(a_708)))
+        ,
+          {-# <memcpy4.c:8:11, memcpy4.c:8:12> #-} let weak a_718: pointer =
+            {-# <memcpy4.c:8:11, memcpy4.c:8:12> #-} pure(p) in
+          load('signed int*', a_718)
+        ,
+          {-# §6.5.3.2#3, sentence 5 #-}
+          {-# <memcpy4.c:8:13, memcpy4.c:8:15> memcpy4.c:8:13 #-} let weak a_720: pointer =
+            {-# <memcpy4.c:8:14, memcpy4.c:8:15> #-} pure(b) in
+          pure(Specified(a_720))
+        ,
+          {-# §6.5.5 #-}
+          {-# <memcpy4.c:8:16, memcpy4.c:8:29> memcpy4.c:8:17 #-} let weak (a_722: loaded integer,
+          a_723: loaded integer) =
+            unseq(
+              {-# <memcpy4.c:8:16, memcpy4.c:8:17> #-} pure(Specified(2))
+            ,
+              {-# <memcpy4.c:8:18, memcpy4.c:8:29> memcpy4.c:8:18 #-} pure(
+                Specified(Ivsizeof('signed int'))
+              )
+            ) in
+          pure(
+            case (a_722, a_723) of
+              | (Specified(a_724: integer), Specified(a_725: integer)) =>
+                  Specified(wrapI_mul('size_t', if all_values_representable_in('size_t',
+                  'signed int') then
+                    conv_int('signed int', a_724)
+                  else
+                    conv_int('unsigned int', a_724), if all_values_representable_in('size_t',
+                  'signed int') then
+                    conv_int('signed int', a_725)
+                  else
+                    conv_int('unsigned int', a_725)))
+              | _: (loaded integer,loaded integer) =>
+                  Unspecified('size_t')
+            end
+          )
+        ) in
+      if not(params_length(a_711) = 3) then
+        pure(undef(<<UB038_number_of_args>>))
+      else
+        if a_712 \/ not(are_compatible ('void*', a_710)) then
+          pure(undef(<<UB041_function_not_compatible>>))
+        else
+          let strong a_716: pointer =
+            let a_727: ctype = params_nth(a_711, 0) in
+            if not(are_compatible ('void*', a_727)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_728: pointer =
+                create(Ivalignof('void*'), 'void*') in
+              let weak _: unit = store('void*', a_728, a_717) in
+              pure(a_728) in
+          let strong a_715: pointer =
+            let a_729: ctype = params_nth(a_711, 1) in
+            if not(are_compatible ('const void*', a_729)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_730: pointer =
+                create(Ivalignof('const void*'), 'const void*') in
+              let weak _: unit = store('const void*', a_730, a_719) in
+              pure(a_730) in
+          let strong a_714: pointer =
+            let a_731: ctype = params_nth(a_711, 2) in
+            if not(are_compatible ('size_t', a_731)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_732: pointer =
+                create(Ivalignof('size_t'), 'size_t') in
+              let weak _: unit =
+                store('size_t', a_732, conv_loaded_int('size_t', a_721)) in
+              pure(a_732) in
+          let strong a_733: loaded pointer =
+            ccall('void* (*) (void*restrict , const void*restrict , size_t)',
+            a_709, a_716, a_715, a_714) in
+          let strong _: (unit,unit,unit) =
+            unseq(
+              kill('void*', a_716)
+            ,
+              kill('void*', a_715)
+            ,
+              kill('size_t', a_714)
+            ) in
+          pure(a_733)
+    ) in
+  pure(Unit) ;
+  kill('signed int', a) ;
+  kill('signed int', b) ;
+  kill('signed int', c) ;
+  kill('signed int*', p) ;
+  pure(Unit) ;
+  {-# <memcpy4.c:4:0, memcpy4.c:9:1> memcpy4.c:4:4 - memcpy4.c:4:8 #-} save ret_687: loaded integer (a_734: loaded integer:= Specified(0)) in
+    pure(a_734)
+

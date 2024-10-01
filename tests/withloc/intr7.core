@@ -1,172 +1,173 @@
--- Aggregates
-def union _G_fpos64_t :=
-  __opaque: 'char[16]'
-  __lldata: 'signed long_long'
-  __align: 'double'
-
 -- Globals
-glob a_676: pointer [ail_ctype = 'char[4]'] :=
-  create_readonly(Ivalignof('char[4]'), 'char[4]', Specified(Array(Specified(conv_int('char',
-  37)), Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
-  Specified(0))))
+glob a_673: pointer [ail_ctype = 'char[4]'] :=
+  let strong a_691: pointer = create(Ivalignof('char[4]'), 'char[4]') in
+  store_lock('char[4]', a_691,
+  Specified(Array(Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 100)), Specified(conv_int('char', 10)),
+  Specified(0)))) ;
+  let strong a_692: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_691,
+    18446744073701163007) in
+  case a_692 of
+    | Specified(a_691: pointer) =>
+        pure(a_691)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
 -- Fun map
 proc main (): eff loaded integer :=
-  {-# <./cheri/intr7.c:5:0, ./cheri/intr7.c:10:1> #-} let strong x: pointer =
+  {-# <intr7.c:5:0, intr7.c:10:1> #-} let strong x: pointer =
     create(Ivalignof('signed int'), 'signed int') in
   let strong p: pointer = create(Ivalignof('signed int*'), 'signed int*') in
-  {-# <./cheri/intr7.c:6:4, ./cheri/intr7.c:6:14> #-} let strong a_654: loaded integer =
+  {-# <intr7.c:6:4, intr7.c:6:14> #-} let strong a_650: loaded integer =
     {-# §6.5#2 #-}
-    bound(
-      {-# <./cheri/intr7.c:6:12, ./cheri/intr7.c:6:13> #-} pure(Specified(0))
-    ) in
-  store('signed int', x, conv_loaded_int('signed int', a_654)) ;
-  {-# <./cheri/intr7.c:7:4, ./cheri/intr7.c:7:16> #-} let strong a_655: loaded pointer =
+    bound({-# <intr7.c:6:12, intr7.c:6:13> #-} pure(Specified(0))) in
+  store('signed int', x, conv_loaded_int('signed int', a_650)) ;
+  {-# <intr7.c:7:4, intr7.c:7:16> #-} let strong a_651: loaded pointer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.3.2#3, sentence 5 #-}
-      {-# <./cheri/intr7.c:7:13, ./cheri/intr7.c:7:15> ./cheri/intr7.c:7:13 #-} let weak a_656: pointer =
-        {-# <./cheri/intr7.c:7:14, ./cheri/intr7.c:7:15> #-} pure(x) in
-      pure(Specified(a_656))
+      {-# <intr7.c:7:13, intr7.c:7:15> intr7.c:7:13 #-} let weak a_652: pointer =
+        {-# <intr7.c:7:14, intr7.c:7:15> #-} pure(x) in
+      pure(Specified(a_652))
     ) in
-  store('signed int*', p, a_655) ;
-  {-# <./cheri/intr7.c:8:4, ./cheri/intr7.c:8:37> #-} let strong _: loaded pointer =
+  store('signed int*', p, a_651) ;
+  {-# <intr7.c:8:4, intr7.c:8:37> #-} let strong _: loaded pointer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.16#3, sentence 4 #-}
-      {-# <./cheri/intr7.c:8:4, ./cheri/intr7.c:8:36> ./cheri/intr7.c:8:6 #-} let weak (a_653: pointer,
-      a_664: loaded pointer) =
+      {-# <intr7.c:8:4, intr7.c:8:36> intr7.c:8:6 #-} let weak (a_649: pointer,
+      a_660: loaded pointer) =
         {-# §6.5.16#3, sentence 5 #-}
         unseq(
-          {-# <./cheri/intr7.c:8:4, ./cheri/intr7.c:8:5> #-} pure(p)
+          {-# <intr7.c:8:4, intr7.c:8:5> #-} pure(p)
         ,
-          {-# <./cheri/intr7.c:8:8, ./cheri/intr7.c:8:36> #-} let strong a_662: loaded pointer =
+          {-# <intr7.c:8:8, intr7.c:8:36> #-} let strong a_658: loaded pointer =
             {-# §6.5.4 #-}
-            {-# <./cheri/intr7.c:8:34, ./cheri/intr7.c:8:35> #-} let weak a_657: loaded pointer =
-              {-# <./cheri/intr7.c:8:34, ./cheri/intr7.c:8:35> #-} let weak a_659: pointer =
-                {-# <./cheri/intr7.c:8:34, ./cheri/intr7.c:8:35> #-} pure(p) in
-              load('signed int*', a_659) in
-            case a_657 of
-              | Specified(a_658: pointer) =>
-                  let weak a_660: boolean =
-                    memop(PtrWellAligned, 'signed int', a_658) in
+            {-# <intr7.c:8:34, intr7.c:8:35> #-} let weak a_653: loaded pointer =
+              {-# <intr7.c:8:34, intr7.c:8:35> #-} let weak a_655: pointer =
+                {-# <intr7.c:8:34, intr7.c:8:35> #-} pure(p) in
+              load('signed int*', a_655) in
+            case a_653 of
+              | Specified(a_654: pointer) =>
+                  let weak a_656: boolean =
+                    memop(PtrWellAligned, 'signed int', a_654) in
                   pure(
-                    Specified(if a_660 then
-                      a_658
+                    Specified(if a_656 then
+                      a_654
                     else
                       undef(<<UB025_misaligned_pointer_conversion>>))
                   )
               | Unspecified(_: ctype) =>
                   pure(undef(<<UB025_misaligned_pointer_conversion>>))
             end in
-          case a_662 of
-            | Specified(a_663: pointer) =>
-                memop(cheri_cheri_tag_clear['signed int* (signed int*)'], a_663)
+          case a_658 of
+            | Specified(a_659: pointer) =>
+                memop(cheri_cheri_tag_clear['signed int* (signed int*)'], a_659)
             | _: loaded pointer =>
                 pure(undef(<<DUMMY(Elab, CHERI intrinsics (unspec))>>))
           end
         ) in
       let weak _: unit =
         {-# §6.5.16.1#2, store #-}
-        neg(store('signed int*', a_653, a_664)) in
-      pure(a_664)
+        neg(store('signed int*', a_649, a_660)) in
+      pure(a_660)
     ) in
   pure(Unit) ;
-  {-# <./cheri/intr7.c:9:4, ./cheri/intr7.c:9:33> #-} let strong _: loaded integer =
+  {-# <intr7.c:9:4, intr7.c:9:33> #-} let strong _: loaded integer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.2.2#10, sentence 1 #-}
-      {-# <./cheri/intr7.c:9:4, ./cheri/intr7.c:9:32> #-} let strong ((a_665: loaded pointer,
-      (a_666: ctype, a_667: [ctype], a_668: boolean, a_669: boolean)),
-      a_673: loaded pointer, a_675: loaded pointer, a_679: loaded integer) =
+      {-# <intr7.c:9:4, intr7.c:9:32> #-} let strong ((a_662: loaded pointer,
+      (a_663: ctype, a_664: [ctype], a_665: boolean, a_666: boolean)),
+      a_670: loaded pointer, a_672: loaded pointer, a_676: loaded integer) =
         {-# §6.5.2.2#4, sentence 2 #-}
         unseq(
-          let strong a_652: loaded pointer =
-            {-# <./cheri/intr7.c:9:4, ./cheri/intr7.c:9:11> #-} pure(
+          let strong a_661: loaded pointer =
+            {-# <intr7.c:9:4, intr7.c:9:11> #-} pure(
               Specified(Cfunction(fprintf))
             ) in
-          pure((a_652, cfunction(a_652)))
+          pure((a_661, cfunction(a_661)))
         ,
-          {-# <./cheri/intr7.c:9:12, ./cheri/intr7.c:9:20> #-} let weak a_674: pointer =
-            {-# <./cheri/intr7.c:9:12, ./cheri/intr7.c:9:20> #-} pure(
-              __stderr
-            ) in
-          load('struct _IO_FILE*', a_674)
+          {-# <intr7.c:9:12, intr7.c:9:20> #-} let weak a_671: pointer =
+            {-# <intr7.c:9:12, intr7.c:9:20> #-} pure(__stderr) in
+          load('struct _IO_FILE*', a_671)
         ,
-          {-# <./cheri/intr7.c:9:21, ./cheri/intr7.c:9:27> #-} let weak a_677: pointer =
-            {-# <./cheri/intr7.c:9:21, ./cheri/intr7.c:9:27> #-} pure(a_676) in
+          {-# <intr7.c:9:21, intr7.c:9:27> #-} let weak a_674: pointer =
+            {-# <intr7.c:9:21, intr7.c:9:27> #-} pure(a_673) in
           {-# §6.3.2.1#3 #-}
-          let weak a_678: pointer = memop(PtrArrayShift, a_677, 'char', 0) in
-          pure(Specified(a_678))
+          let weak a_675: pointer = memop(PtrArrayShift, a_674, 'char', 0) in
+          pure(Specified(a_675))
         ,
-          {-# <./cheri/intr7.c:9:29, ./cheri/intr7.c:9:31> ./cheri/intr7.c:9:29 #-} let weak a_684: pointer =
+          {-# <intr7.c:9:29, intr7.c:9:31> intr7.c:9:29 #-} let weak a_681: pointer =
             {-# §6.5.3.2 #-}
-            {-# <./cheri/intr7.c:9:29, ./cheri/intr7.c:9:31> ./cheri/intr7.c:9:29 #-} let weak a_680: loaded pointer =
-              {-# <./cheri/intr7.c:9:30, ./cheri/intr7.c:9:31> #-} let weak a_683: pointer =
-                {-# <./cheri/intr7.c:9:30, ./cheri/intr7.c:9:31> #-} pure(p) in
-              load('signed int*', a_683) in
-            case a_680 of
-              | Specified(a_681: pointer) =>
-                  let weak a_682: boolean =
-                    memop(PtrValidForDeref, 'signed int', a_681) in
+            {-# <intr7.c:9:29, intr7.c:9:31> intr7.c:9:29 #-} let weak a_677: loaded pointer =
+              {-# <intr7.c:9:30, intr7.c:9:31> #-} let weak a_680: pointer =
+                {-# <intr7.c:9:30, intr7.c:9:31> #-} pure(p) in
+              load('signed int*', a_680) in
+            case a_677 of
+              | Specified(a_678: pointer) =>
+                  let weak a_679: boolean =
+                    memop(PtrValidForDeref, 'signed int', a_678) in
                   pure(
-                    if a_682 then
-                      a_681
+                    if a_679 then
+                      a_678
                     else
                       undef(<<UB043_indirection_invalid_value>>)
                   )
               | Unspecified(_: ctype) =>
                   pure(undef(<<UB043_indirection_invalid_value>>))
             end in
-          load('signed int', a_684)
+          load('signed int', a_681)
         ) in
-      if not(params_length(a_667) <= 3) then
+      if not(params_length(a_664) <= 3) then
         pure(undef(<<UB038_number_of_args>>))
       else
-        if not(a_668) \/ not(are_compatible ('signed int', a_666)) then
+        if not(a_665) \/ not(are_compatible ('signed int', a_663)) then
           pure(undef(<<UB041_function_not_compatible>>))
         else
-          let strong a_672: pointer =
-            let a_685: ctype = params_nth(a_667, 0) in
-            if not(are_compatible ('struct _IO_FILE*', a_685)) then
+          let strong a_669: pointer =
+            let a_682: ctype = params_nth(a_664, 0) in
+            if not(are_compatible ('struct _IO_FILE*', a_682)) then
               pure(undef(<<UB041_function_not_compatible>>))
             else
               {-# §6.5.2.2#7, sentence 1 #-}
-              let weak a_686: pointer =
+              let weak a_683: pointer =
                 create(Ivalignof('struct _IO_FILE*'), 'struct _IO_FILE*') in
-              let weak _: unit = store('struct _IO_FILE*', a_686, a_673) in
-              pure(a_686) in
-          let strong a_671: pointer =
-            let a_687: ctype = params_nth(a_667, 1) in
-            if not(are_compatible ('const char*', a_687)) then
+              let weak _: unit = store('struct _IO_FILE*', a_683, a_670) in
+              pure(a_683) in
+          let strong a_668: pointer =
+            let a_684: ctype = params_nth(a_664, 1) in
+            if not(are_compatible ('const char*', a_684)) then
               pure(undef(<<UB041_function_not_compatible>>))
             else
               {-# §6.5.2.2#7, sentence 1 #-}
-              let weak a_688: pointer =
+              let weak a_685: pointer =
                 create(Ivalignof('const char*'), 'const char*') in
-              let weak _: unit = store('const char*', a_688, a_675) in
-              pure(a_688) in
-          let strong a_670: pointer =
+              let weak _: unit = store('const char*', a_685, a_672) in
+              pure(a_685) in
+          let strong a_667: pointer =
             {-# §6.5.2.2#7, sentences 2 and 3 #-}
             pcall(create_and_store, 'signed int',
-            conv_loaded_int('signed int', a_679)) in
-          let strong a_689: loaded integer =
+            conv_loaded_int('signed int', a_676)) in
+          let strong a_686: loaded integer =
             ccall('signed int (*) (struct _IO_FILE*restrict , const char*restrict , ...)',
-            a_665, a_672, a_671, [('signed int', a_670)]) in
+            a_662, a_669, a_668, [('signed int', a_667)]) in
           let strong _: (unit,unit,unit) =
             unseq(
-              kill('struct _IO_FILE*', a_672)
+              kill('struct _IO_FILE*', a_669)
             ,
-              kill('char*', a_671)
+              kill('char*', a_668)
             ,
-              kill('signed int', a_670)
+              kill('signed int', a_667)
             ) in
-          pure(a_689)
+          pure(a_686)
     ) in
   pure(Unit) ;
   kill('signed int', x) ;
   kill('signed int*', p) ;
   pure(Unit) ;
-  {-# <./cheri/intr7.c:4:0, ./cheri/intr7.c:10:1> ./cheri/intr7.c:4:4 - ./cheri/intr7.c:4:8 #-} save ret_651: loaded integer (a_690: loaded integer:= Specified(0)) in
-    pure(a_690)
+  {-# <intr7.c:4:0, intr7.c:10:1> intr7.c:4:4 - intr7.c:4:8 #-} save ret_648: loaded integer (a_687: loaded integer:= Specified(0)) in
+    pure(a_687)
 

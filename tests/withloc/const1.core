@@ -1,63 +1,116 @@
 -- Aggregates
-def struct __cerbty_unnamed_tag_506 :=
-  __dummy_max_align_t: 'void*'
 
-def struct __cerbty_unnamed_tag_538 :=
-  quot: 'intmax_t'
-  rem: 'intmax_t'
 
-def union _G_fpos64_t :=
-  __opaque: 'char[16]'
-  __lldata: 'signed long_long'
-  __align: 'double'
 
-def struct div :=
-  quot: 'signed int'
-  rem: 'signed int'
 
-def struct ldiv :=
-  quot: 'signed long'
-  rem: 'signed long'
 
-def struct lldiv :=
-  quot: 'signed long_long'
-  rem: 'signed long_long'
+
+
+
+
 
 -- Globals
-glob a_920: pointer [ail_ctype = 'char[4]'] :=
-  create_readonly(Ivalignof('char[4]'), 'char[4]', Specified(Array(Specified(conv_int('char',
-  37)), Specified(conv_int('char', 115)), Specified(conv_int('char', 10)),
-  Specified(0))))
+glob a_918: pointer [ail_ctype = 'char[4]'] :=
+  let strong a_1283: pointer = create(Ivalignof('char[4]'), 'char[4]') in
+  store_lock('char[4]', a_1283,
+  Specified(Array(Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 10)),
+  Specified(0)))) ;
+  let strong a_1284: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1283,
+    18446744073701163007) in
+  case a_1284 of
+    | Specified(a_1283: pointer) =>
+        pure(a_1283)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_959: pointer [ail_ctype = 'char[5]'] :=
-  create_readonly(Ivalignof('char[5]'), 'char[5]', Specified(Array(Specified(conv_int('char',
-  110)), Specified(conv_int('char', 117)), Specified(conv_int('char', 108)),
-  Specified(conv_int('char', 108)), Specified(0))))
+glob a_957: pointer [ail_ctype = 'char[5]'] :=
+  let strong a_1285: pointer = create(Ivalignof('char[5]'), 'char[5]') in
+  store_lock('char[5]', a_1285,
+  Specified(Array(Specified(conv_int('char', 110)),
+  Specified(conv_int('char', 117)), Specified(conv_int('char', 108)),
+  Specified(conv_int('char', 108)), Specified(0)))) ;
+  let strong a_1286: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1285,
+    18446744073701163007) in
+  case a_1286 of
+    | Specified(a_1285: pointer) =>
+        pure(a_1285)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_963: pointer [ail_ctype = 'char[9]'] :=
-  create_readonly(Ivalignof('char[9]'), 'char[9]', Specified(Array(Specified(conv_int('char',
-  110)), Specified(conv_int('char', 111)), Specified(conv_int('char', 116)),
+glob a_961: pointer [ail_ctype = 'char[9]'] :=
+  let strong a_1287: pointer = create(Ivalignof('char[9]'), 'char[9]') in
+  store_lock('char[9]', a_1287,
+  Specified(Array(Specified(conv_int('char', 110)),
+  Specified(conv_int('char', 111)), Specified(conv_int('char', 116)),
   Specified(conv_int('char', 32)), Specified(conv_int('char', 110)),
   Specified(conv_int('char', 117)), Specified(conv_int('char', 108)),
-  Specified(conv_int('char', 108)), Specified(0))))
+  Specified(conv_int('char', 108)), Specified(0)))) ;
+  let strong a_1288: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1287,
+    18446744073701163007) in
+  case a_1288 of
+    | Specified(a_1287: pointer) =>
+        pure(a_1287)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_988: pointer [ail_ctype = 'char[4]'] :=
-  create_readonly(Ivalignof('char[4]'), 'char[4]', Specified(Array(Specified(conv_int('char',
-  37)), Specified(conv_int('char', 115)), Specified(conv_int('char', 32)),
-  Specified(0))))
+glob a_985: pointer [ail_ctype = 'char[4]'] :=
+  let strong a_1289: pointer = create(Ivalignof('char[4]'), 'char[4]') in
+  store_lock('char[4]', a_1289,
+  Specified(Array(Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 115)), Specified(conv_int('char', 32)),
+  Specified(0)))) ;
+  let strong a_1290: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1289,
+    18446744073701163007) in
+  case a_1290 of
+    | Specified(a_1289: pointer) =>
+        pure(a_1289)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_1029: pointer [ail_ctype = 'char[5]'] :=
-  create_readonly(Ivalignof('char[5]'), 'char[5]', Specified(Array(Specified(conv_int('char',
-  37)), Specified(conv_int('char', 48)), Specified(conv_int('char', 50)),
-  Specified(conv_int('char', 120)), Specified(0))))
+glob a_1026: pointer [ail_ctype = 'char[5]'] :=
+  let strong a_1291: pointer = create(Ivalignof('char[5]'), 'char[5]') in
+  store_lock('char[5]', a_1291,
+  Specified(Array(Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 48)), Specified(conv_int('char', 50)),
+  Specified(conv_int('char', 120)), Specified(0)))) ;
+  let strong a_1292: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1291,
+    18446744073701163007) in
+  case a_1292 of
+    | Specified(a_1291: pointer) =>
+        pure(a_1291)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_1076: pointer [ail_ctype = 'char[2]'] :=
-  create_readonly(Ivalignof('char[2]'), 'char[2]', Specified(Array(Specified(conv_int('char',
-  10)), Specified(0))))
+glob a_1074: pointer [ail_ctype = 'char[2]'] :=
+  let strong a_1293: pointer = create(Ivalignof('char[2]'), 'char[2]') in
+  store_lock('char[2]', a_1293,
+  Specified(Array(Specified(conv_int('char', 10)), Specified(0)))) ;
+  let strong a_1294: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1293,
+    18446744073701163007) in
+  case a_1294 of
+    | Specified(a_1293: pointer) =>
+        pure(a_1293)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_1150: pointer [ail_ctype = 'char[26]'] :=
-  create_readonly(Ivalignof('char[26]'), 'char[26]', Specified(Array(Specified(conv_int('char',
-  109)), Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
+glob a_1147: pointer [ail_ctype = 'char[26]'] :=
+  let strong a_1295: pointer = create(Ivalignof('char[26]'), 'char[26]') in
+  store_lock('char[26]', a_1295,
+  Specified(Array(Specified(conv_int('char', 109)),
+  Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
   Specified(conv_int('char', 108)), Specified(conv_int('char', 111)),
   Specified(conv_int('char', 99)), Specified(conv_int('char', 40)),
   Specified(conv_int('char', 41)), Specified(conv_int('char', 32)),
@@ -69,16 +122,38 @@ glob a_1150: pointer [ail_ctype = 'char[26]'] :=
   Specified(conv_int('char', 96)), Specified(conv_int('char', 115)),
   Specified(conv_int('char', 112)), Specified(conv_int('char', 116)),
   Specified(conv_int('char', 114)), Specified(conv_int('char', 96)),
-  Specified(0))))
+  Specified(0)))) ;
+  let strong a_1296: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1295,
+    18446744073701163007) in
+  case a_1296 of
+    | Specified(a_1295: pointer) =>
+        pure(a_1295)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_1165: pointer [ail_ctype = 'char[4]'] :=
-  create_readonly(Ivalignof('char[4]'), 'char[4]', Specified(Array(Specified(conv_int('char',
-  37)), Specified(conv_int('char', 35)), Specified(conv_int('char', 112)),
-  Specified(0))))
+glob a_1163: pointer [ail_ctype = 'char[4]'] :=
+  let strong a_1297: pointer = create(Ivalignof('char[4]'), 'char[4]') in
+  store_lock('char[4]', a_1297,
+  Specified(Array(Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 35)), Specified(conv_int('char', 112)),
+  Specified(0)))) ;
+  let strong a_1298: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1297,
+    18446744073701163007) in
+  case a_1298 of
+    | Specified(a_1297: pointer) =>
+        pure(a_1297)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_1205: pointer [ail_ctype = 'char[31]'] :=
-  create_readonly(Ivalignof('char[31]'), 'char[31]', Specified(Array(Specified(conv_int('char',
-  109)), Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
+glob a_1203: pointer [ail_ctype = 'char[31]'] :=
+  let strong a_1299: pointer = create(Ivalignof('char[31]'), 'char[31]') in
+  store_lock('char[31]', a_1299,
+  Specified(Array(Specified(conv_int('char', 109)),
+  Specified(conv_int('char', 97)), Specified(conv_int('char', 108)),
   Specified(conv_int('char', 108)), Specified(conv_int('char', 111)),
   Specified(conv_int('char', 99)), Specified(conv_int('char', 40)),
   Specified(conv_int('char', 41)), Specified(conv_int('char', 32)),
@@ -92,11 +167,22 @@ glob a_1205: pointer [ail_ctype = 'char[31]'] :=
   Specified(conv_int('char', 108)), Specified(conv_int('char', 95)),
   Specified(conv_int('char', 115)), Specified(conv_int('char', 112)),
   Specified(conv_int('char', 116)), Specified(conv_int('char', 114)),
-  Specified(conv_int('char', 96)), Specified(0))))
+  Specified(conv_int('char', 96)), Specified(0)))) ;
+  let strong a_1300: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1299,
+    18446744073701163007) in
+  case a_1300 of
+    | Specified(a_1299: pointer) =>
+        pure(a_1299)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_1220: pointer [ail_ctype = 'char[27]'] :=
-  create_readonly(Ivalignof('char[27]'), 'char[27]', Specified(Array(Specified(conv_int('char',
-  37)), Specified(conv_int('char', 35)), Specified(conv_int('char', 120)),
+glob a_1218: pointer [ail_ctype = 'char[27]'] :=
+  let strong a_1301: pointer = create(Ivalignof('char[27]'), 'char[27]') in
+  store_lock('char[27]', a_1301,
+  Specified(Array(Specified(conv_int('char', 37)),
+  Specified(conv_int('char', 35)), Specified(conv_int('char', 120)),
   Specified(conv_int('char', 97)), Specified(conv_int('char', 32)),
   Specified(conv_int('char', 91)), Specified(conv_int('char', 37)),
   Specified(conv_int('char', 80)), Specified(conv_int('char', 44)),
@@ -108,141 +194,158 @@ glob a_1220: pointer [ail_ctype = 'char[27]'] :=
   Specified(conv_int('char', 116)), Specified(conv_int('char', 93)),
   Specified(conv_int('char', 37)), Specified(conv_int('char', 63)),
   Specified(conv_int('char', 32)), Specified(conv_int('char', 37)),
-  Specified(conv_int('char', 65)), Specified(0))))
+  Specified(conv_int('char', 65)), Specified(0)))) ;
+  let strong a_1302: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1301,
+    18446744073701163007) in
+  case a_1302 of
+    | Specified(a_1301: pointer) =>
+        pure(a_1301)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
-glob a_1261: pointer [ail_ctype = 'char[15]'] :=
-  create_readonly(Ivalignof('char[15]'), 'char[15]', Specified(Array(Specified(conv_int('char',
-  115)), Specified(conv_int('char', 116)), Specified(conv_int('char', 114)),
+glob a_1258: pointer [ail_ctype = 'char[15]'] :=
+  let strong a_1303: pointer = create(Ivalignof('char[15]'), 'char[15]') in
+  store_lock('char[15]', a_1303,
+  Specified(Array(Specified(conv_int('char', 115)),
+  Specified(conv_int('char', 116)), Specified(conv_int('char', 114)),
   Specified(conv_int('char', 102)), Specified(conv_int('char', 99)),
   Specified(conv_int('char', 97)), Specified(conv_int('char', 112)),
   Specified(conv_int('char', 32)), Specified(conv_int('char', 101)),
   Specified(conv_int('char', 114)), Specified(conv_int('char', 114)),
   Specified(conv_int('char', 111)), Specified(conv_int('char', 114)),
-  Specified(conv_int('char', 10)), Specified(0))))
+  Specified(conv_int('char', 10)), Specified(0)))) ;
+  let strong a_1304: loaded pointer =
+    memop(cheri_cheri_perms_and['char* (char*, size_t)'], a_1303,
+    18446744073701163007) in
+  case a_1304 of
+    | Specified(a_1303: pointer) =>
+        pure(a_1303)
+    | Unspecified(_: ctype) =>
+        pure(undef(<<DUMMY(Unspecified cheri_perms_and())>>))
+  end
 
 -- Fun map
 proc main (): eff loaded integer :=
-  {-# <./cheri/const1.c:6:0, ./cheri/const1.c:9:1> #-} let strong v: pointer =
+  {-# <const1.c:6:0, const1.c:9:1> #-} let strong v: pointer =
     create(Ivalignof('signed int'), 'signed int') in
-  {-# <./cheri/const1.c:7:4, ./cheri/const1.c:7:21> #-} let strong a_908: loaded integer =
+  let strong Specified(a_904: pointer) =
+    memop(cheri_cheri_perms_and['signed int* (signed int*, size_t)'], v,
+    18446744073701163007) in
+  {-# <const1.c:7:4, const1.c:7:21> #-} let strong a_905: loaded integer =
     {-# §6.5#2 #-}
-    bound(
-      {-# <./cheri/const1.c:7:18, ./cheri/const1.c:7:20> #-} pure(
-        Specified(42)
-      )
-    ) in
-  store_lock('signed int', v, conv_loaded_int('signed int', a_908)) ;
-  {-# <./cheri/const1.c:8:4, ./cheri/const1.c:8:52> #-} let strong _: loaded integer =
+    bound({-# <const1.c:7:18, const1.c:7:20> #-} pure(Specified(42))) in
+  store_lock('signed int', v, conv_loaded_int('signed int', a_905)) ;
+  {-# <const1.c:8:4, const1.c:8:52> #-} let strong _: loaded integer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.2.2#10, sentence 1 #-}
-      {-# <./cheri/const1.c:8:4, ./cheri/const1.c:8:51> #-} let strong ((a_909: loaded pointer,
-      (a_910: ctype, a_911: [ctype], a_912: boolean, a_913: boolean)),
-      a_917: loaded pointer, a_919: loaded pointer, a_923: loaded pointer) =
+      {-# <const1.c:8:4, const1.c:8:51> #-} let strong ((a_907: loaded pointer,
+      (a_908: ctype, a_909: [ctype], a_910: boolean, a_911: boolean)),
+      a_915: loaded pointer, a_917: loaded pointer, a_921: loaded pointer) =
         {-# §6.5.2.2#4, sentence 2 #-}
         unseq(
-          let strong a_907: loaded pointer =
-            {-# <./cheri/const1.c:8:4, ./cheri/const1.c:8:11> #-} pure(
+          let strong a_906: loaded pointer =
+            {-# <const1.c:8:4, const1.c:8:11> #-} pure(
               Specified(Cfunction(fprintf))
             ) in
-          pure((a_907, cfunction(a_907)))
+          pure((a_906, cfunction(a_906)))
         ,
-          {-# <./cheri/const1.c:8:12, ./cheri/const1.c:8:20> #-} let weak a_918: pointer =
-            {-# <./cheri/const1.c:8:12, ./cheri/const1.c:8:20> #-} pure(
-              __stderr
-            ) in
-          load('struct _IO_FILE*', a_918)
+          {-# <const1.c:8:12, const1.c:8:20> #-} let weak a_916: pointer =
+            {-# <const1.c:8:12, const1.c:8:20> #-} pure(__stderr) in
+          load('struct _IO_FILE*', a_916)
         ,
-          {-# <./cheri/const1.c:8:21, ./cheri/const1.c:8:33> #-} let weak a_921: pointer =
-            {-# <./cheri/const1.c:8:21, ./cheri/const1.c:8:33> #-} pure(a_920) in
+          {-# <const1.c:8:21, const1.c:8:33> #-} let weak a_919: pointer =
+            {-# <const1.c:8:21, const1.c:8:33> #-} pure(a_918) in
           {-# §6.3.2.1#3 #-}
-          let weak a_922: pointer = memop(PtrArrayShift, a_921, 'char', 0) in
-          pure(Specified(a_922))
+          let weak a_920: pointer = memop(PtrArrayShift, a_919, 'char', 0) in
+          pure(Specified(a_920))
         ,
           {-# §6.5.2.2#10, sentence 1 #-}
-          {-# <./cheri/const1.c:8:35, ./cheri/const1.c:8:50> #-} let strong ((a_925: loaded pointer,
-          (a_926: ctype, a_927: [ctype], a_928: boolean, a_929: boolean)),
-          a_931: loaded pointer) =
+          {-# <const1.c:8:35, const1.c:8:50> #-} let strong ((a_923: loaded pointer,
+          (a_924: ctype, a_925: [ctype], a_926: boolean, a_927: boolean)),
+          a_929: loaded pointer) =
             {-# §6.5.2.2#4, sentence 2 #-}
             unseq(
-              let strong a_924: loaded pointer =
-                {-# <./cheri/const1.c:8:35, ./cheri/const1.c:8:39> #-} pure(
+              let strong a_922: loaded pointer =
+                {-# <const1.c:8:35, const1.c:8:39> #-} pure(
                   Specified(Cfunction(sptr))
                 ) in
-              pure((a_924, cfunction(a_924)))
+              pure((a_922, cfunction(a_922)))
             ,
               {-# §6.5.3.2#3, sentence 5 #-}
               {-# §6.5.4 #-}
-              {-# <./cheri/const1.c:8:40, ./cheri/const1.c:8:49> ./cheri/const1.c:8:40 #-} let weak a_934: pointer =
-                {-# <./cheri/const1.c:8:48, ./cheri/const1.c:8:49> #-} pure(v) in
-              pure(Specified(a_934))
+              {-# <const1.c:8:40, const1.c:8:49> const1.c:8:40 #-} let weak a_932: pointer =
+                {-# <const1.c:8:48, const1.c:8:49> #-} pure(a_904) in
+              pure(Specified(a_932))
             ) in
-          if not(params_length(a_927) = 1) then
+          if not(params_length(a_925) = 1) then
             pure(undef(<<UB038_number_of_args>>))
           else
-            if a_928 \/ not(are_compatible ('const char*', a_926)) then
+            if a_926 \/ not(are_compatible ('const char*', a_924)) then
               pure(undef(<<UB041_function_not_compatible>>))
             else
-              let strong a_930: pointer =
-                let a_936: ctype = params_nth(a_927, 0) in
-                if not(are_compatible ('void*', a_936)) then
+              let strong a_928: pointer =
+                let a_934: ctype = params_nth(a_925, 0) in
+                if not(are_compatible ('void*', a_934)) then
                   pure(undef(<<UB041_function_not_compatible>>))
                 else
                   {-# §6.5.2.2#7, sentence 1 #-}
-                  let weak a_937: pointer =
+                  let weak a_935: pointer =
                     create(Ivalignof('void*'), 'void*') in
-                  let weak _: unit = store('void*', a_937, a_931) in
-                  pure(a_937) in
-              let strong a_938: loaded pointer =
-                ccall('const char* (*) (void*)', a_925, a_930) in
-              kill('void*', a_930) ;
-              pure(a_938)
+                  let weak _: unit = store('void*', a_935, a_929) in
+                  pure(a_935) in
+              let strong a_936: loaded pointer =
+                ccall('const char* (*) (void*)', a_923, a_928) in
+              kill('void*', a_928) ;
+              pure(a_936)
         ) in
-      if not(params_length(a_911) <= 3) then
+      if not(params_length(a_909) <= 3) then
         pure(undef(<<UB038_number_of_args>>))
       else
-        if not(a_912) \/ not(are_compatible ('signed int', a_910)) then
+        if not(a_910) \/ not(are_compatible ('signed int', a_908)) then
           pure(undef(<<UB041_function_not_compatible>>))
         else
-          let strong a_916: pointer =
-            let a_939: ctype = params_nth(a_911, 0) in
-            if not(are_compatible ('struct _IO_FILE*', a_939)) then
+          let strong a_914: pointer =
+            let a_937: ctype = params_nth(a_909, 0) in
+            if not(are_compatible ('struct _IO_FILE*', a_937)) then
+              pure(undef(<<UB041_function_not_compatible>>))
+            else
+              {-# §6.5.2.2#7, sentence 1 #-}
+              let weak a_938: pointer =
+                create(Ivalignof('struct _IO_FILE*'), 'struct _IO_FILE*') in
+              let weak _: unit = store('struct _IO_FILE*', a_938, a_915) in
+              pure(a_938) in
+          let strong a_913: pointer =
+            let a_939: ctype = params_nth(a_909, 1) in
+            if not(are_compatible ('const char*', a_939)) then
               pure(undef(<<UB041_function_not_compatible>>))
             else
               {-# §6.5.2.2#7, sentence 1 #-}
               let weak a_940: pointer =
-                create(Ivalignof('struct _IO_FILE*'), 'struct _IO_FILE*') in
-              let weak _: unit = store('struct _IO_FILE*', a_940, a_917) in
-              pure(a_940) in
-          let strong a_915: pointer =
-            let a_941: ctype = params_nth(a_911, 1) in
-            if not(are_compatible ('const char*', a_941)) then
-              pure(undef(<<UB041_function_not_compatible>>))
-            else
-              {-# §6.5.2.2#7, sentence 1 #-}
-              let weak a_942: pointer =
                 create(Ivalignof('const char*'), 'const char*') in
-              let weak _: unit = store('const char*', a_942, a_919) in
-              pure(a_942) in
-          let strong a_914: pointer =
+              let weak _: unit = store('const char*', a_940, a_917) in
+              pure(a_940) in
+          let strong a_912: pointer =
             {-# §6.5.2.2#7, sentences 2 and 3 #-}
-            pcall(create_and_store, 'const char*', a_923) in
-          let strong a_943: loaded integer =
+            pcall(create_and_store, 'const char*', a_921) in
+          let strong a_941: loaded integer =
             ccall('signed int (*) (struct _IO_FILE*restrict , const char*restrict , ...)',
-            a_909, a_916, a_915, [('const char*', a_914)]) in
+            a_907, a_914, a_913, [('const char*', a_912)]) in
           let strong _: (unit,unit,unit) =
             unseq(
-              kill('struct _IO_FILE*', a_916)
+              kill('struct _IO_FILE*', a_914)
             ,
-              kill('char*', a_915)
+              kill('char*', a_913)
             ,
-              kill('char*', a_914)
+              kill('char*', a_912)
             ) in
-          pure(a_943)
+          pure(a_941)
     ) in
   pure(Unit) ;
   kill('signed int', v) ;
   pure(Unit) ;
-  {-# <./cheri/const1.c:5:0, ./cheri/const1.c:9:1> ./cheri/const1.c:5:4 - ./cheri/const1.c:5:8 #-} save ret_906: loaded integer (a_944: loaded integer:= Specified(0)) in
-    pure(a_944)
+  {-# <const1.c:5:0, const1.c:9:1> const1.c:5:4 - const1.c:5:8 #-} save ret_903: loaded integer (a_942: loaded integer:= Specified(0)) in
+    pure(a_942)
 

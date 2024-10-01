@@ -1,34 +1,27 @@
 -- Aggregates
-def struct __cerbty_unnamed_tag_506 :=
-  __dummy_max_align_t: 'void*'
 
-def struct __cerbty_unnamed_tag_538 :=
-  quot: 'intmax_t'
-  rem: 'intmax_t'
 
-def union _G_fpos64_t :=
-  __opaque: 'char[16]'
-  __lldata: 'signed long_long'
-  __align: 'double'
+
 
 -- Globals
 -- Fun map
 proc main (): eff loaded integer :=
-  {-# <./cheri/ptraddr1.c:5:0, ./cheri/ptraddr1.c:7:1> #-} let strong v0: pointer =
+  {-# <ptraddr1.c:5:0, ptraddr1.c:7:1> #-} let strong v0: pointer =
     create(Ivalignof('ptraddr_t'), 'ptraddr_t') in
-  {-# <./cheri/ptraddr1.c:6:4, ./cheri/ptraddr1.c:6:38> #-} let strong a_704: loaded integer =
+  let strong Specified(a_701: pointer) =
+    memop(cheri_cheri_perms_and['ptraddr_t* (ptraddr_t*, size_t)'], v0,
+    18446744073701163007) in
+  {-# <ptraddr1.c:6:4, ptraddr1.c:6:38> #-} let strong a_702: loaded integer =
     {-# §6.5#2 #-}
     bound(
       {-# §6.5.4 #-}
-      {-# <./cheri/ptraddr1.c:6:25, ./cheri/ptraddr1.c:6:37> ./cheri/ptraddr1.c:6:25 #-} let weak a_705: loaded integer =
-        {-# <./cheri/ptraddr1.c:6:36, ./cheri/ptraddr1.c:6:37> #-} pure(
-          Specified(0)
-        ) in
-      pure(conv_loaded_int('ptraddr_t', a_705))
+      {-# <ptraddr1.c:6:25, ptraddr1.c:6:37> ptraddr1.c:6:25 #-} let weak a_703: loaded integer =
+        {-# <ptraddr1.c:6:36, ptraddr1.c:6:37> #-} pure(Specified(0)) in
+      pure(conv_loaded_int('ptraddr_t', a_703))
     ) in
-  store_lock('ptraddr_t', v0, conv_loaded_int('ptraddr_t', a_704)) ;
+  store_lock('ptraddr_t', v0, conv_loaded_int('ptraddr_t', a_702)) ;
   kill('ptraddr_t', v0) ;
   pure(Unit) ;
-  {-# <./cheri/ptraddr1.c:4:0, ./cheri/ptraddr1.c:7:1> ./cheri/ptraddr1.c:4:4 - ./cheri/ptraddr1.c:4:8 #-} save ret_703: loaded integer (a_708: loaded integer:= Specified(0)) in
-    pure(a_708)
+  {-# <ptraddr1.c:4:0, ptraddr1.c:7:1> ptraddr1.c:4:4 - ptraddr1.c:4:8 #-} save ret_700: loaded integer (a_706: loaded integer:= Specified(0)) in
+    pure(a_706)
 
