@@ -104,10 +104,6 @@
       "required": true,
       "types": [
         {
-          "type": "multiline_comment",
-          "named": true
-        },
-        {
           "type": "single_line_comment",
           "named": true
         }
@@ -493,10 +489,6 @@
         {
           "type": "location_range",
           "named": true
-        },
-        {
-          "type": "location_unknown",
-          "named": true
         }
       ]
     }
@@ -560,25 +552,6 @@
         },
         {
           "type": "sym",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "multiline_comment",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "just_comment",
-          "named": true
-        },
-        {
-          "type": "special_comment",
           "named": true
         }
       ]
@@ -739,6 +712,16 @@
     "type": "position",
     "named": true,
     "fields": {
+      "column": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "column",
+            "named": true
+          }
+        ]
+      },
       "filename": {
         "multiple": false,
         "required": true,
@@ -748,21 +731,17 @@
             "named": true
           }
         ]
+      },
+      "line": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "line",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "column",
-          "named": true
-        },
-        {
-          "type": "line",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -838,7 +817,6 @@
   {
     "type": "source_file",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -846,25 +824,6 @@
       "types": [
         {
           "type": "declaration",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "special_comment",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "iso_reference",
-          "named": true
-        },
-        {
-          "type": "location",
           "named": true
         }
       ]
@@ -912,10 +871,6 @@
   },
   {
     "type": " <",
-    "named": false
-  },
-  {
-    "type": "#",
     "named": false
   },
   {
@@ -1303,14 +1258,6 @@
     "named": false
   },
   {
-    "type": "iso_reference",
-    "named": true
-  },
-  {
-    "type": "just_comment",
-    "named": true
-  },
-  {
     "type": "kill",
     "named": false
   },
@@ -1325,10 +1272,6 @@
   {
     "type": "loaded",
     "named": false
-  },
-  {
-    "type": "location_unknown",
-    "named": true
   },
   {
     "type": "member_shift",
