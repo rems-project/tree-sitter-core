@@ -1,8 +1,9 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "core",
   "rules": {
     "source_file": {
-      "type": "REPEAT1",
+      "type": "REPEAT",
       "content": {
         "type": "SYMBOL",
         "name": "declaration"
@@ -100,7 +101,7 @@
           "type": "TOKEN",
           "content": {
             "type": "STRING",
-            "value": " <"
+            "value": "{-# <"
           }
         },
         {
@@ -120,14 +121,10 @@
           "type": "TOKEN",
           "content": {
             "type": "STRING",
-            "value": "> "
+            "value": "> #-}"
           }
         }
       ]
-    },
-    "iso_reference": {
-      "type": "PATTERN",
-      "value": "§.+"
     },
     "single_line_comment": {
       "type": "TOKEN",
@@ -136,88 +133,19 @@
         "value": "--.*\\n"
       }
     },
-    "special_comment": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "#"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "location"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "iso_reference"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "#"
-        }
-      ]
-    },
-    "just_comment": {
-      "type": "PATTERN",
-      "value": ".+"
-    },
     "multiline_comment": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": "{-"
-          }
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "special_comment"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "just_comment"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "STRING",
-            "value": "-}"
-          }
-        }
-      ]
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\{- [^#].* -}"
+      }
     },
-    "comment": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "single_line_comment"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "multiline_comment"
-        }
-      ]
+    "iso_ref": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\{-# §.+ #-}"
+      }
     },
     "declaration": {
       "type": "CHOICE",
@@ -4227,12 +4155,24 @@
   },
   "extras": [
     {
-      "type": "PATTERN",
-      "value": "\\s"
+      "type": "SYMBOL",
+      "name": "single_line_comment"
     },
     {
       "type": "SYMBOL",
-      "name": "comment"
+      "name": "iso_ref"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "location"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "multiline_comment"
+    },
+    {
+      "type": "PATTERN",
+      "value": "\\s"
     }
   ],
   "conflicts": [],

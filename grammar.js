@@ -10,12 +10,15 @@ module.exports = grammar({
     name: 'core',
 
     extras: $ => [
+        $.single_line_comment,
+        $.iso_ref,
+        $.location,
+        $.multiline_comment,
         /\s/,
-        $.comment,
     ],
 
     rules: {
-        source_file: $ => repeat1($.declaration),
+        source_file: $ => repeat($.declaration),
 
         filename: _ => token(/[a-zA-Z0-9_\-\/.]+/), // Matches Unix file paths with multiple '/' and '.'
         line: _ => token(/\d+/), // Matches line numbers
@@ -40,46 +43,23 @@ module.exports = grammar({
         location_unknown: _ => token("unknown location"),
 
         location: $ => seq(
-            token(" <"),
+            token("{-# <"),
             choice(
                 $.location_range,
                 $.location_unknown
             ),
-            token("> ")
+            token("> #-}")
         ),
-
-        //Example: {-# §6.5.2.2#10, sentence 1 #-}
-        iso_reference: _ => /§.+/,
 
         //Example: -- just comment
         single_line_comment: _ => token(/--.*\n/),
 
-        special_comment: $ => seq(
-            "#",
-            choice(
-                $.location,
-                $.iso_reference
-            ),
-            "#",
-        ),
+        // Example: {- foo -}
+        multiline_comment: $ => token(/\{- [^#].* -}/),
 
-        just_comment: _ => /.+/,
-
-        multiline_comment: $ => seq(
-            token("{-"),
-            optional(
-                choice(
-                    $.special_comment,
-                    $.just_comment
-                )),
-            token("-}")
-        ),
+        //Example: {-# §6.3.2.1#3 #-}
+        iso_ref: $ => token(/\{-# §.+ #-}/),
         
-        comment: $ => choice(
-            $.single_line_comment,
-            $.multiline_comment
-        ),
-          
         declaration: $ => choice(
             $.def_declaration,
             //$.ifun_declaration,
