@@ -472,6 +472,10 @@
       "required": true,
       "types": [
         {
+          "type": "location_other",
+          "named": true
+        },
+        {
           "type": "location_range",
           "named": true
         },
@@ -496,9 +500,29 @@
           }
         ]
       },
+      "end_cursor": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "position",
+            "named": true
+          }
+        ]
+      },
       "start": {
         "multiple": false,
         "required": true,
+        "types": [
+          {
+            "type": "position",
+            "named": true
+          }
+        ]
+      },
+      "start_cursor": {
+        "multiple": false,
+        "required": false,
         "types": [
           {
             "type": "position",
@@ -701,6 +725,16 @@
     "type": "position",
     "named": true,
     "fields": {
+      "column": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "column",
+            "named": true
+          }
+        ]
+      },
       "filename": {
         "multiple": false,
         "required": true,
@@ -710,21 +744,17 @@
             "named": true
           }
         ]
+      },
+      "line": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "line",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "column",
-          "named": true
-        },
-        {
-          "type": "line",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -854,6 +884,10 @@
     }
   },
   {
+    "type": "#-}",
+    "named": false
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -875,10 +909,6 @@
   },
   {
     "type": ",",
-    "named": false
-  },
-  {
-    "type": ", ",
     "named": false
   },
   {
@@ -910,6 +940,10 @@
     "named": false
   },
   {
+    "type": "<",
+    "named": false
+  },
+  {
     "type": "=",
     "named": false
   },
@@ -918,7 +952,7 @@
     "named": false
   },
   {
-    "type": "> #-}",
+    "type": ">",
     "named": false
   },
   {
@@ -1254,6 +1288,10 @@
     "named": false
   },
   {
+    "type": "location_other",
+    "named": true
+  },
+  {
     "type": "location_unknown",
     "named": true
   },
@@ -1410,7 +1448,7 @@
     "named": false
   },
   {
-    "type": "{-# <",
+    "type": "{-#",
     "named": false
   },
   {

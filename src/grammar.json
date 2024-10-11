@@ -13,7 +13,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "[a-zA-Z0-9_\\-\\/.]+"
+        "value": "[a-zA-Z0-9\\_\\-\\+\\/\\..]+"
       }
     },
     "line": {
@@ -46,22 +46,37 @@
           "value": ":"
         },
         {
-          "type": "SYMBOL",
-          "name": "line"
+          "type": "FIELD",
+          "name": "line",
+          "content": {
+            "type": "SYMBOL",
+            "name": "line"
+          }
         },
         {
           "type": "STRING",
           "value": ":"
         },
         {
-          "type": "SYMBOL",
-          "name": "column"
+          "type": "FIELD",
+          "name": "column",
+          "content": {
+            "type": "SYMBOL",
+            "name": "column"
+          }
         }
       ]
     },
     "location_range": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "<"
+          }
+        },
         {
           "type": "FIELD",
           "name": "start",
@@ -74,7 +89,7 @@
           "type": "TOKEN",
           "content": {
             "type": "STRING",
-            "value": ", "
+            "value": ","
           }
         },
         {
@@ -84,6 +99,62 @@
             "type": "SYMBOL",
             "name": "position"
           }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ">"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "start_cursor",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "position"
+                  }
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "TOKEN",
+                          "content": {
+                            "type": "STRING",
+                            "value": "-"
+                          }
+                        },
+                        {
+                          "type": "FIELD",
+                          "name": "end_cursor",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "position"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -91,7 +162,14 @@
       "type": "TOKEN",
       "content": {
         "type": "STRING",
-        "value": "unknown location"
+        "value": "<unknown location>"
+      }
+    },
+    "location_other": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "<other location (.+)>"
       }
     },
     "location": {
@@ -101,7 +179,7 @@
           "type": "TOKEN",
           "content": {
             "type": "STRING",
-            "value": "{-# <"
+            "value": "{-#"
           }
         },
         {
@@ -114,6 +192,10 @@
             {
               "type": "SYMBOL",
               "name": "location_unknown"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "location_other"
             }
           ]
         },
@@ -121,7 +203,7 @@
           "type": "TOKEN",
           "content": {
             "type": "STRING",
-            "value": "> #-}"
+            "value": "#-}"
           }
         }
       ]
@@ -144,7 +226,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "\\{-# §.+ #-}"
+        "value": "\\{\\-# §?[0-9]+(\\.[0-9]+).* #\\-\\}"
       }
     },
     "declaration": {

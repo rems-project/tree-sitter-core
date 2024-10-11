@@ -20,35 +20,47 @@ module.exports = grammar({
     rules: {
         source_file: $ => repeat($.declaration),
 
-        filename: _ => token(/[a-zA-Z0-9_\-\/.]+/), // Matches Unix file paths with multiple '/' and '.'
+        filename: _ => token(/[a-zA-Z0-9\_\-\+\/\..]+/), // Matches Unix file paths with multiple '/' and '.'
         line: _ => token(/\d+/), // Matches line numbers
         column: _ => token(/\d+/), // Matches column numbers
 
         position: $ => seq(
             field("filename", $.filename),
             ":",
-            $.line,
+            field("line", $.line),
             ":",
-            $.column
+            field("column", $.column)
         ), // Combines file, line, and column into a single position
 
         //Example: {-# <dummy.c:4:0, dummy.c:6:1> #-}
         location_range: $ => seq(
+            token("<"),
             field("start", $.position),
-            token(", "),
-            field("end", $.position)
+            token(","),
+            field("end", $.position),
+            token(">"),
+            optional(seq(
+                field("start_cursor", $.position),
+                optional(seq(
+                    token("-"),
+                    field("end_cursor", $.position)))
+            ))
         ),
 
         //Example: {-# <unknown location> #-}
-        location_unknown: _ => token("unknown location"),
+        location_unknown: _ => token("<unknown location>"),
 
+        //Example: {-# <other location (Cabs_to_ail.constructValue)> #-} 
+        location_other: _ => token(/<other location (.+)>/),
+        
         location: $ => seq(
-            token("{-# <"),
+            token("{-#"),
             choice(
                 $.location_range,
-                $.location_unknown
+                $.location_unknown,
+                $.location_other
             ),
-            token("> #-}")
+            token("#-}")
         ),
 
         //Example: -- just comment
@@ -58,7 +70,9 @@ module.exports = grammar({
         multiline_comment: $ => token(/\{- [^#].* -}/),
 
         //Example: {-# §6.3.2.1#3 #-}
-        iso_ref: $ => token(/\{-# §.+ #-}/),
+        //Example: {-# 6.5.13#4 #-}
+        //Example: {-# §6.5.3.2#3, sentence 5 #-}
+        iso_ref: $ => token(/\{\-# §?[0-9]+(\.[0-9]+).* #\-\}/),
         
         declaration: $ => choice(
             $.def_declaration,
